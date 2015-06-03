@@ -51,7 +51,7 @@
 						<th>Demos</th>
 					</tr>
           <tr>
-					   <td><a href='Presentation/Keynote/1-Keynote.pptx'>Keynote</a></td>
+					   <td><a href='Presentation/Keynote/Keynote.pptx'>Keynote</a></td>
 					   <td>This session will overview the Microsoft web platform and introduce fundamental building blocks like Visual Studio 2013 and NuGet. It will include an overview of Windows Azure and encourage attendees to sign up so they can "play along" with demos throughout the day.</td>
 					   <td></td>
 					</tr>
@@ -61,8 +61,6 @@
              <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/One-ASP-NET/Demo.md'>One ASP.NET</a></td>
 					</tr>
           <tr>
-					   <td></td>
-					   <td></td>
              <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/Visual-Studio-and-Web-Essentials/DEMO.md'>Visual Studio and Web Essentials</a></td>
 					</tr>
           <tr>
@@ -78,13 +76,13 @@
           <tr>
 					   <td rowspan="3"><a href='Presentation/HTTP-Services/HTTP-Services.pptx'>API Services for both web and devices</a></td>
 					   <td rowspan="3">This session will begin by explaining what HTTP services are and some HTTP API design principles like REST and Hypermedia. We'll build out the HTTP API back end for the GeekQuiz application using ASP.NET Web API, then show how we can leverage it with a Windows Store front end and apps for Office in Excel.</td>
-             <td><a href='Presentation/HTTP-Service/GeekQuiz-Web-API-backend/Demo.md'>Overview of Web API backend from GeekQuiz</a></td>
+             <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-backend/Demo.md'>Overview of Web API backend from GeekQuiz</a></td>
 					</tr>
           <tr>
-             <td><a href='Presentation/HTTP-Service/GeekQuiz-Excel-front-end/Demo.md'>Building an Excel front end (using apps for Office)</a></td>
+             <td><a href='Presentation/HTTP-Services/GeekQuiz-Excel-front-end/Demo.md'>Building an Excel front end (using apps for Office)</a></td>
 					</tr>
           <tr>
-             <td><a href='Presentation/HTTP-Service/GeekQuiz-Web-API-Windows-Store/DEMO.md'>Building a Windows Store front end</a></td>
+             <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-Windows-Store/DEMO.md'>Building a Windows Store front end</a></td>
 					</tr>
           <tr>
 					   <td rowspan="3"><a href='Presentation/ASPNET-in-Production/ASPNET-in-Production.pptx'>Running, improving and maintaining a site in the real world</a></td>
