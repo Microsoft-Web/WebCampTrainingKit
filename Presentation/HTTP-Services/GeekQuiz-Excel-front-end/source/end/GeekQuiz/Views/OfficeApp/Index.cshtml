@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_OfficeAppLayout.cshtml";
+}
+
+<!-- Page content -->
+<div id="content-header">
+    <div class="padding">
+        <h1>GeekQuiz for Office</h1>
+    </div>
+</div>
+<div id="content-main">
+    <div class="padding">
+        <p><strong>This Office application retrieve the statistics from a Web API.</strong></p>
+        <p>For update the statistics use the following button:</p>
+        <button id="update-statistics" disabled >Update Statistics</button>
+
+        <p style="margin-top: 50px;">
+            &copy; 2013 Geek Quiz.
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("~/Scripts/OfficeApp.js")"></script>
+}

@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20910.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StressGeekQuiz", "StressGeekQuiz\StressGeekQuiz.csproj", "{8A31AC35-A889-403C-8F3C-940D4EE9680B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9D760ADE-D4AA-4FF0-8501-2FE3295764C4}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A31AC35-A889-403C-8F3C-940D4EE9680B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A31AC35-A889-403C-8F3C-940D4EE9680B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A31AC35-A889-403C-8F3C-940D4EE9680B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A31AC35-A889-403C-8F3C-940D4EE9680B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

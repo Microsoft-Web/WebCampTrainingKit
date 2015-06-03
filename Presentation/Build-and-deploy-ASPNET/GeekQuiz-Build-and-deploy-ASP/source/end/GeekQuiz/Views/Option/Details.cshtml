@@ -1,0 +1,42 @@
+﻿@model GeekQuiz.Models.TriviaOption
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TriviaOption</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TriviaQuestion.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TriviaQuestion.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsCorrect)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsCorrect)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

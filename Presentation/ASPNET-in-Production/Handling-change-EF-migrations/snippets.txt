@@ -1,0 +1,25 @@
+Enable-Migrations -ContextTypeName GeekQuiz.Models.TriviaContext
+
+============================
+
+public string Hint { get; set; }
+
+============================
+
+Add-Migration QuestionHint
+
+============================
+
+Update-Database -Verbose
+
+============================
+
+[StringLength(150)]
+
+============================
+
+Add-Migration QuestionHintLength
+
+============================
+
+Update-Database -Verbose

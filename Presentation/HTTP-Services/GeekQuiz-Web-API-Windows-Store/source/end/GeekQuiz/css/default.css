@@ -1,0 +1,111 @@
+﻿/* default app styles*/
+#contenthost {
+    height: 100%;
+    width: 100%;
+}
+
+.fragment {
+    /* Define a grid with rows for a banner and a body */
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 128px 1fr;
+    display: -ms-grid;
+    height: 100%;
+    width: 100%;
+}
+
+.fragment header[role=banner] {
+    /* Define a grid with columns for the back button and page title. */
+    -ms-grid-columns: 37px 83px 1fr;
+    -ms-grid-rows: 1fr;
+    display: -ms-grid;
+}
+
+    .fragment header[role=banner] .titlearea {
+        -ms-grid-column: 3;
+        margin-top: 37px;
+    }
+
+        .fragment header[role=banner] .titlearea .pagetitle {
+            width: calc(100% - 20px);
+        }
+
+.fragment section[role=main] {
+    -ms-grid-row: 2;
+    height: 100%;
+    width: 100%;
+}
+
+/* specific styles */
+
+.grid{
+	width:100%;
+	height:100%;
+	 -ms-grid-columns: 100%;
+    -ms-grid-rows: 100%;
+	display: -ms-grid;
+}
+
+.layout {
+    display: -ms-grid;
+    -ms-grid-columns: 25% 25% 25% 25%;
+    -ms-grid-rows: 50% 50%;
+    width: 90%;
+    height: 100%;
+	-ms-grid-column-align:center;
+}
+
+.next{
+    -ms-grid-column-span: 4;
+    -ms-grid-column-align: center;
+    margin-top: 25px;
+}
+
+.title {
+    -ms-grid-column-span: 4;
+    -ms-grid-column-align: center;
+	-ms-grid-row-align:  end;
+	font-size: 54px;
+    margin-bottom: 25px;
+}
+
+.progress {
+    -ms-grid-column-span: 4;
+	-ms-grid-column-align:  center;
+    margin-top: 25px;
+}
+
+.option {
+    -ms-grid-column-align:stretch;
+    margin-top: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.option>button, .next>button{
+    width:100%;
+    font-size: xx-large;
+}
+
+.row1{
+    -ms-grid-row:1;
+}
+
+.row2{
+    -ms-grid-row:2;
+}
+
+.col1{
+    -ms-grid-column: 1;
+}
+
+.col2{
+    -ms-grid-column: 2;
+}
+
+.col3{
+    -ms-grid-column: 3;
+}
+
+.col4{
+    -ms-grid-column: 4;
+}

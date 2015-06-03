@@ -1,0 +1,22 @@
+﻿button.btn-info.option{Answer $}*4
+
+--------------------------------------
+
+@section Scripts {
+	<script src="~/Scripts/init.js"></script>
+}
+
+---------------------------------
+
+(function () {
+	 $(document).ready(function () {
+		  
+	 });
+}());
+
+---------------------------
+
+var len = audioElements.length;
+for (var i = 0; i < len; i++) {
+	 audioElements[i].play();
+}	

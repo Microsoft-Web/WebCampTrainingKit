@@ -1,0 +1,27 @@
+﻿public int Id { get; set; }
+
+[Required]
+public string Title { get; set; }
+
+public virtual List<TriviaOption> Options { get; set; }
+
+-----------------------------
+
+using System.ComponentModel.DataAnnotations;
+
+-----------------------------
+
+[Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+public int Id { get; set; }
+
+[ForeignKey("TriviaQuestion")]
+public int QuestionId { get; set; }
+
+public virtual TriviaQuestion TriviaQuestion { get; set; }
+
+[Required]
+public string Title { get; set; }
+
+public bool IsCorrect { get; set; }
+
+-----------------------------

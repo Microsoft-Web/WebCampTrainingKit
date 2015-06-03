@@ -1,0 +1,1 @@
+﻿<p class="text-success">You have successfully signed out.</p>
