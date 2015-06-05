@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAndLoadTestProject", "WebAndLoadTestProject\WebAndLoadTestProject.csproj", "{B8904E29-CBDA-4D3D-B8AD-6D44BAC11DCD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AA9FADD4-2F08-4027-BC35-13BFE2782452}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8904E29-CBDA-4D3D-B8AD-6D44BAC11DCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8904E29-CBDA-4D3D-B8AD-6D44BAC11DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8904E29-CBDA-4D3D-B8AD-6D44BAC11DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8904E29-CBDA-4D3D-B8AD-6D44BAC11DCD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

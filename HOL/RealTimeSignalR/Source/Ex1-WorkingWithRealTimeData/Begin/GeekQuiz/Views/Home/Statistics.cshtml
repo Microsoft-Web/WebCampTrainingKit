@@ -1,0 +1,67 @@
+﻿@model GeekQuiz.Models.StatisticsViewModel
+@{
+    ViewBag.Title = "Trivia Statistics";
+}
+
+<section id="content" class="statistics">
+    <div class="container">
+        <div id="noDataMessage" class="row" style="display: none;">
+            <div class="col-md-12"><p class="lead text-center">No results yet.</p></div>
+        </div>
+        <div id="answersHeader" class="row" style="display: none;">
+            <div class="col-md-6">
+                <div class="alert alert-success">
+                    <h2 class="text-center">
+                        Correct answers:
+                        <span id="correctAnswersCounter">
+                            @Html.DisplayFor(model => model.CorrectAnswers)
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="alert alert-danger">
+                    <h2 class="text-center">
+                        Incorrect answers:
+                        <span id="incorrectAnswersCounter">
+                            @Html.DisplayFor(model => model.IncorrectAnswers)
+                        </span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div id="charts" class="row" style="display: none;">
+            <div class="col-md-6">
+                <h3>Correct vs Incorrect</h3>
+                <div id="leftChartContainer" class="chartContainer">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>Average per user</h3>
+                <div id="rightChartContainer" class="chartContainer">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/flotr2.js")
+    @Scripts.Render("~/Scripts/statistics.js")
+    <script>
+        var statisticsData = {
+            CorrectAnswers: parseInt('@Model.CorrectAnswers'),
+            IncorrectAnswers: parseInt('@Model.IncorrectAnswers'),
+            TotalAnswers: parseInt('@Model.TotalAnswers'),
+            CorrectAnswersAverage: parseFloat('@Model.CorrectAnswersAverage'),
+            IncorrectAnswersAverage: parseFloat('@Model.IncorrectAnswersAverage'),
+            TotalAnswersAverage: parseFloat('@Model.TotalAnswersAverage')
+        };
+
+        showCharts(statisticsData);
+
+        $(window).bind("resize", function () {
+            showCharts(statisticsData);
+        }).trigger("resize");
+    </script>
+}

@@ -1,0 +1,103 @@
+/* Flip styles */
+.flip-container div.front, .flip-container div.back.flip, .flip-container div.front.flip, .flip-container div.back {
+    display: block;
+}
+
+/* entire container */
+.flip-container {
+    position: relative;
+    margin: 0;
+    width: 90%;
+}
+
+/* size*/
+.flip-container, .front, .back {
+    width: 100%;
+    height: 200px;
+}
+
+    /* flip speed */
+    .flip-container > div {
+        position: absolute;
+        -moz-transition: .2s;
+        -o-transition: .2s;
+        -webkit-transition: .2s;
+        transition: .2s;
+    }
+
+/* hide back of pane during flip */
+.front, .back {
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* flip transformation */
+.flip-container div.front {
+    -moz-transform: perspective(2000px) rotateY(0deg);
+    -webkit-transform: perspective(2000px) rotateY(0deg);
+    -o-transform: perspective(2000px) rotateY(0deg);
+    transform: perspective(2000px) rotateY(0deg);
+}
+
+    .flip-container div.front.flip {
+        -moz-transform: perspective(2000px) rotateY(179.9deg);
+        -webkit-transform: perspective(2000px) rotateY(179.9deg);
+        -o-transform: perspective(2000px) rotateY(179.9deg);
+        transform: perspective(2000px) rotateY(179.9deg);
+    }
+
+.flip-container div.back {
+    -moz-transform: perspective(2000px) rotateY(-180deg);
+    -webkit-transform: perspective(2000px) rotateY(-180deg);
+    -o-transform: perspective(2000px) rotateY(-180deg);
+    transform: perspective(2000px) rotateY(-180deg);
+}
+
+    .flip-container div.back.flip {
+        -moz-transform: perspective(2000px) rotateY(0deg);
+        -webkit-transform: perspective(2000px) rotateY(0deg);
+        -ms-transform: perspective(2000px) rotateY(0);
+        -o-transform: perspective(2000px) rotateY(0);
+        transform: perspective(2000px) rotateY(0);
+    }
+
+
+
+/* additional styles for mobile devices */
+
+@media (max-width: 767px) {
+    /* size*/
+    .flip-container, .front, .back {
+        height: 400px;
+    }
+
+    .front, .back {
+        width: 97%;
+    }
+}
+
+/* fallback behavior for browsers not supporting css transformations and/or css transitions */
+.no-csstransitions.no-csstransforms3d .flip-container div.back,
+.csstransitions.no-csstransforms3d .flip-container div.back,
+.no-csstransitions.csstransforms3d .flip-container div.back {
+    display: none;
+}
+
+.no-csstransitions.no-csstransforms3d .flip-container div.front,
+.csstransitions.no-csstransforms3d .flip-container div.front,
+.no-csstransitions.csstransforms3d .flip-container div.front {
+    display: block;
+}
+
+.no-csstransitions.no-csstransforms3d .flip-container div.back.flip,
+.csstransitions.no-csstransforms3d .flip-container div.back.flip,
+.no-csstransitions.csstransforms3d .flip-container div.back.flip {
+    display: block;
+}
+
+.no-csstransitions.no-csstransforms3d .flip-container div.front.flip,
+.csstransitions.no-csstransforms3d .flip-container div.front.flip,
+.no-csstransitions.csstransforms3d .flip-container div.front.flip {
+    display: none;
+}
