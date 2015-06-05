@@ -89,7 +89,7 @@
             <td><a href='Presentation/ASPNET-in-Production/Handling-change-EF-migrations/DEMO.md'>Demo - Handling change (EF migrations, Deployment rollback)</a></td>
 					</tr>
           <tr>
-             <td><a href='Presentation/ASPNET-in-Production/Windows-Azure-Active-Directory/Demo.md'>Demo - WAAD Authentication</a></td>
+             <td><a href='Presentation/ASPNET-in-Production/Azure-Active-Directory/Demo.md'>Demo - AAD Authentication</a></td>
 					</tr>
 					<tr>
 						<td rowspan="2">Real-time Communications with SignalR</td>
@@ -125,7 +125,7 @@
 					</tr>
           <tr>
 					   <td><a href='Presentation/Keynote/Keynote.pptx'>Keynote</a></td>
-					   <td>This session will overview the Microsoft web platform and introduce fundamental building blocks like Visual Studio 2013 and NuGet. It will include an overview of Windows Azure and encourage attendees to sign up so they can "play along" with demos throughout the day.</td>
+					   <td>This session will overview the Microsoft web platform and introduce fundamental building blocks like Visual Studio 2013 and NuGet. It will include an overview of Microsoft Azure and encourage attendees to sign up so they can "play along" with demos throughout the day.</td>
 					   <td></td>
 					</tr>
           <tr>
@@ -138,7 +138,7 @@
 					</tr>
           <tr>
 					   <td><a href='Presentation/Build-and-deploy-ASPNET/Build-and-deploy-ASPNET.pptx'>Building Web Applications using the latest ASP.NET technologies</a></td>
-					   <td>This session will include a quick introduction to the MVC pattern, then build and deploy a website using ASP.NET MVC, Entity Framework Code First, and Windows Azure Web Sites. We'll continue building this demo scenario (the GeekQuiz app from the BUILD 2013 keynote) throughout the day.</td>
+					   <td>This session will include a quick introduction to the MVC pattern, then build and deploy a website using ASP.NET MVC, Entity Framework Code First, and Microsoft Azure Web Sites. We'll continue building this demo scenario (the GeekQuiz app from the BUILD 2013 keynote) throughout the day.</td>
              <td><a href='Presentation/Build-and-deploy-ASPNET/GeekQuiz-Build-and-deploy-ASP/Demo.md'>Building and deploying an ASP.NET application</a></td>
 					</tr>
           <tr>
@@ -159,14 +159,14 @@
 					</tr>
           <tr>
 					   <td rowspan="3"><a href='Presentation/ASPNET-in-Production/ASPNET-in-Production.pptx'>Running, improving and maintaining a site in the real world</a></td>
-					   <td rowspan="3">We've built and deployed a site, but that's the easy part. How do we keep it running and make it better? We'll see how to leverage Windows Azure to solve three real world challenges: scaling, handling change (without downtime or headaches) and managing multiple environments.</td>
+					   <td rowspan="3">We've built and deployed a site, but that's the easy part. How do we keep it running and make it better? We'll see how to leverage Microsoft Azure to solve three real world challenges: scaling, handling change (without downtime or headaches) and managing multiple environments.</td>
              <td><a href='Presentation/ASPNET-in-Production/Scaling-a-production-website/DEMO.md'>Scaling a production website</a></td>
 					</tr>
           <tr>
             <td><a href='Presentation/ASPNET-in-Production/Handling-change-EF-migrations/DEMO.md'>Handling change (EF migrations, Deployment rollback)</a></td>
 					</tr>
           <tr>
-             <td><a href='Presentation/ASPNET-in-Production/Windows-Azure-Active-Directory/Demo.md'>WAAD Authentication</a></td>
+             <td><a href='Presentation/ASPNET-in-Production/Azure-Active-Directory/Demo.md'>AAD Authentication</a></td>
 					</tr>
           <tr>
 					   <td><a href='Presentation/Realtime/Realtime.pptx'>Real-time Communications with SignalR</a></td>

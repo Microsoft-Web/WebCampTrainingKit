@@ -1,25 +1,25 @@
 ﻿<a name="title" />
-# WAAD Authentication #
+# Azure Active Directory Authentication #
 
 ---
 <a name="Overview" />
 ## Overview ##
 
-1. File / New / Configure WAAD in a new project.
-1. Show the GeekQuiz solution with WAAD Authentication.
+1. File / New / Configure Azure Active Directory in a new project.
+1. Show the GeekQuiz solution with Azure Active Directory Authentication.
 1. Deploy and show portal configuration.
 
 <a id="goals" />
 ### Goals ###
 In this demo, you will see how to:
 
-1. Create an application in Visual Studio that is automatically integrated with a Windows Azure Active Directory tenant.
+1. Create an application in Visual Studio that is automatically integrated with a Azure Active Directory tenant.
 1. Deploy an existing application using Visual Studio to an Azure web site and have it automaitically integrate with a WAAD tenant.
 
 <a name="technologies" />
 ### Key Technologies ###
 
-- [Windows Azure Active Directory](http://www.windowsazure.com/en-us/services/active-directory/)
+- [Azure Active Directory](http://www.windowsazure.com/en-us/services/active-directory/)
 - [Visual Studio 2013](http://www.microsoft.com/visualstudio/esn/products/2013-editions)
 
 <a name="Setup" />
@@ -33,9 +33,9 @@ Follow these steps to setup your environment for the demo.
 
 	![NuGet Sources](images/nuget-sources.png?raw=true)
 
-1. Create a new [Windows Azure Active Directory tenant](http://msdn.microsoft.com/en-us/library/windowsazure/dn151790.aspx).
+1. Create a new [Azure Active Directory tenant](http://msdn.microsoft.com/en-us/library/windowsazure/dn151790.aspx).
 
-1. Create a new website in Windows Azure.
+1. Create a new website in Microsoft Azure.
 
 1. Add a database as a linked **Linked Resource**.
 
@@ -198,7 +198,7 @@ This demo is composed of the following segments:
 
 	_Showing that you are logged as the organization's user_
 
-1. Switch to the _Windows Azure Management Portal_.
+1. Switch to the _Microsoft Azure Management Portal_.
 
 1. Navigate to the **Active Directory** section and select the one used for this demo.
 
