@@ -1,4 +1,4 @@
-<html lang="en">
+﻿<html lang="en">
    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,15 +22,88 @@
             <div class="panel-body">
                <table class="table table-bordered table-hover">
 				  <colgroup>
-					<col>
-					<col>
-					<col>
+						<col>
+						<col>
+						<col>
 				  </colgroup>
-                  <tr>
-                     <th>Session</th>
-                     <th>Time (min)</th>
-                     <th>Activity</th>
-                  </tr>
+          <tr>
+             <th>Session</th>
+             <th>Time (min)</th>
+             <th>Activity</th>
+          </tr>
+          <tr>
+						<td>Keynote</td>
+					  <td>30</td>
+					  <td><a href='Presentation/Keynote/Keynote.pptx'>Presentation</a></td>
+					</tr>
+          <tr>
+					  <td rowspan="3">Introduction to ASP.NET and Visual Studio 2013 Web Tooling</td>
+						<td rowspan="3">60</td>
+						<td><a href='Presentation/ASPNET-and-VS-Web-Tooling/ASPNET-and-VS-Web-Tooling.pptx'>Presentation</a></td>
+					</tr>
+          <tr>
+             <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/One-ASP-NET/Demo.md'>Demo - One ASP.NET</a></td>
+					</tr>
+          <tr>
+             <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/Visual-Studio-and-Web-Essentials/DEMO.md'>Demo - Visual Studio and Web Essentials</a></td>
+					</tr>
+          <tr>
+						<td rowspan="2">Building Web Applications using the latest ASP.NET technologies</td>
+						<td rowspan="2">60</td>
+						<td><a href='Presentation/Build-and-deploy-ASPNET/Build-and-deploy-ASPNET.pptx'>Presentation</a></td>
+					</tr>
+          <tr>
+						<td><a href='Presentation/Build-and-deploy-ASPNET/GeekQuiz-Build-and-deploy-ASP/Demo.md'>Demo - Building and deploying an ASP.NET application</a></td>
+					</tr>
+          <tr>
+						<td rowspan="2">Building web front ends for both desktop and mobile using the latest web standards</td>
+						<td rowspan="2">60</td>
+						<td><a href='Presentation/Modern-Web-Front-Ends/Modern-web-front-ends.pptx'>Presentation</a></td>
+					</tr>
+					<tr>
+             <td><a href='Presentation/Modern-Web-Front-Ends/GeekQuiz-SPA-Interface/DEMO.md'>Demo - Building a SPA Interface using EmberJS</a></td>
+					</tr>
+          <tr>
+						<td rowspan="4">API Services for both web and devices</td>
+						<td rowspan="4">60</td>
+						<td><a href='Presentation/HTTP-Services/HTTP-Services.pptx'>Presentation</a></td>
+					</tr>
+          <tr>
+						<td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-backend/Demo.md'>Demo - Overview of Web API backend from GeekQuiz</a></td>
+					</tr>
+          <tr>
+						<td><a href='Presentation/HTTP-Services/GeekQuiz-Excel-front-end/Demo.md'>Demo - Building an Excel front end (using apps for Office)</a></td>
+					</tr>
+          <tr>
+						<td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-Windows-Store/DEMO.md'>Demo - Building a Windows Store front end</a></td>
+					</tr>
+					<tr>
+						<td rowspan="4">Running, improving and maintaining a site in the real world</td>
+						<td rowspan="4">60</td>
+						<td><a href='Presentation/ASPNET-in-Production/ASPNET-in-Production.pptx'>Presentation</a></td>
+					</tr>
+          <tr>
+             <td><a href='Presentation/ASPNET-in-Production/Scaling-a-production-website/DEMO.md'>Demo - Scaling a production website</a></td>
+					</tr>
+          <tr>
+            <td><a href='Presentation/ASPNET-in-Production/Handling-change-EF-migrations/DEMO.md'>Demo - Handling change (EF migrations, Deployment rollback)</a></td>
+					</tr>
+          <tr>
+             <td><a href='Presentation/ASPNET-in-Production/Windows-Azure-Active-Directory/Demo.md'>Demo - WAAD Authentication</a></td>
+					</tr>
+					<tr>
+						<td rowspan="2">Real-time Communications with SignalR</td>
+						<td rowspan="2">60</td>
+						<td><a href='Presentation/Realtime/Realtime.pptx'>Presentation</a></td>
+					</tr>
+          <tr>
+					   <td><a href='Presentation/Realtime/GeekQuiz-Real-time-charts/DEMO.md'>Demo -Real-time charts in the GeekQuiz application</a></td>
+					</tr>
+					<tr>
+						<td>Wrap Up</td>
+					  <td>30</td>
+					  <td><a href='Presentation/Conclusion/Conclusion.pptx'>Presentation</a></td>
+					</tr>
                </table>
             </div>
          </div>
