@@ -22,7 +22,7 @@ namespace GeekQuiz
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        void WSFederationAuthenticationModule_RedirectingToIdentityProvider(object sender, RedirectingToIdentityProviderEventArgs e)
+        private void WSFederationAuthenticationModule_RedirectingToIdentityProvider(object sender, RedirectingToIdentityProviderEventArgs e)
         {
             if (!String.IsNullOrEmpty(IdentityConfig.Realm))
             {

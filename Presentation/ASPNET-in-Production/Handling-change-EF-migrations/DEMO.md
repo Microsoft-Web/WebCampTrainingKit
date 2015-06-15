@@ -5,7 +5,7 @@
 <a name="Overview" />
 ## Overview ##
 
-In this demo you go through the steps of enabling Entity Framework migrations to GeekQuiz database, changing the model and understanding how those changes are reflected in the database. Additionally, you will deploy to windows Azure using Git and perform a rollback to the previous deployment from Windows Azure management portal.
+In this demo you go through the steps of enabling Entity Framework migrations to GeekQuiz database, changing the model and understanding how those changes are reflected in the database. Additionally, you will deploy to Azure using Git and perform a rollback to the previous deployment from Microsoft Azure management portal.
 
 <a id="goals" />
 ### Goals ###
@@ -14,31 +14,26 @@ In this demo, you will see how to:
 
 1. Enable Entity Framework migrations on an existing database
 1. Update the object model and database accordingly using Entity Framework migrations
-1. Deploy to Windows Azure using Git
+1. Deploy to Microsoft Azure using Git
 1. Rollback to a previous deployment using the Azure Management portal
 
 <a name="technologies" />
 ### Key Technologies ###
 
-1. [Entity Framework 6](http://entityframework.codeplex.com/wikipage?title=specs).
+1. [Entity Framework 6](http://www.asp.net/entity-framework).
 1. [Git](http://git-scm.com/).
 
 <a name="setup" />
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
-1. Follow the steps detailed in [this link](http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds) to setup local sources for the following directories:
-
-	1. **C:\Program Files (x86)\Microsoft Web Tools\Packages**
-	1. **C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Packages**
-
-	![Nuget Sources](Images/nuget-sources.png?raw=true)
-
 1. Copy the contents of the **source\begin** folder to a separate directory. Both demo segments start from the same begin solution, so you will need to remember the directory to where you copied the files for the second segment.
-1. Configure a SQL Azure Database following the steps provided in [this link](http://www.windowsazure.com/en-us/manage/services/web-sites/how-to-configure-websites/#howtoconfigSQL).
-1. In the **Configure** tab, update the connection string key for the DB to _DefaultConnection_ and save the changes.
+1. Configure an Azure SQL Database following the steps provided in [this link](https://azure.microsoft.com/documentation/articles/sql-database-create-configure/). Copy the ADO.NET connection string value.
+1. Create a new Web App in Azure portal.
+1. In the **Configure** tab of your new Web App, update the connection string key for the DB to _DefaultConnection_ and value copied from previous step. Save the changes.
+
 	![Default Connection](Images/default-connection.png?raw=true)
-1. Configure the **GeekQuiz** web site to support [Publishing with Git](http://www.windowsazure.com/en-us/develop/net/common-tasks/publishing-with-git/) and push the duplicate of the begin solution to the remote repository.
+1. Configure the **GeekQuiz** web site to support [Publishing with Git](https://azure.microsoft.com/documentation/articles/web-sites-publish-source-control/) and push the duplicate of the begin solution to the remote repository.
 1. Leave the management portal in a separate browser window/tab.
 1. Navigate to the created site and register an account.
 1. Open Visual Studio 2013.
@@ -69,7 +64,7 @@ This demo is composed of the following segments:
 	_Trivia Questions Columns_
 
 1. In the **Package Manager Console**, enter the following command and then press **Enter**. An initial migration based on the existing model will be created.
-	
+
 	<!-- mark:1 -->
 	````PowerShell
 	Enable-Migrations -ContextTypeName GeekQuiz.Models.TriviaContext
@@ -78,7 +73,7 @@ This demo is composed of the following segments:
 1. In **Solution Explorer**, double-click the **TriviaQuestion.cs** file located inside the **Models** folder.
 
 1. Add the *Hint* property, as shown in the following code snippet.
-	
+
 	<!-- mark:10 -->
 	````C#
 	public class TriviaQuestion
@@ -100,7 +95,7 @@ This demo is composed of the following segments:
 	````PowerShell
 	Add-Migration QuestionHint
 	````
-	
+
 	> **Speaking point:** Explain that the migration only accounts for the diff between the current model and the one from the previous migration. The `Up` method applies the changes to the target database and the `Down` method reverts those changes.
 
 1. In the **Package Manager Console**, enter the following command and then press **Enter**.
@@ -111,7 +106,7 @@ This demo is composed of the following segments:
 	````
 
 1. Highlight the generated SQL statement that is displayed as part of the command's output, as highlighted in the following code snippet.
-	
+
 	<!-- mark:8 -->
 	````PowerShell
 	PM> Update-Database -Verbose
@@ -159,7 +154,7 @@ This demo is composed of the following segments:
 	````
 
 1. In the **Package Manager Console**, enter the following command and then press **Enter**.
-	
+
 	<!-- mark:1 -->
 	````PowerShell
 	Add-Migration QuestionHintLength
@@ -172,7 +167,7 @@ This demo is composed of the following segments:
 	````
 
 1. Highlight the generated SQL statement that is displayed as part of the command's output, as highlighted in the following code snippet.
-	
+
 	<!-- mark:8 -->
 	````PowerShell
 	PM> Update-Database -Verbose
@@ -194,7 +189,7 @@ This demo is composed of the following segments:
 	![Showing the new constrain](Images/constraint.png?raw=true "Showing the new constrain")
 
 	_Showing the new constrain_
-	
+
 <a name="segment1" />
 ### Deployment Rollback ###
 
@@ -206,10 +201,10 @@ This demo is composed of the following segments:
 
 	_Selecting the code_
 
-1. Right-click the selected code, expand the **Refactor** menu and select **Extract Method...**. 
+1. Right-click the selected code, expand the **Refactor** menu and select **Extract Method...**.
 
 	![Extracting code as a new method](Images/extract-method.png?raw=true "Extracting code as a new method")
-	
+
 	_Extracting code as a new method_
 
 1. Name the method _MatchesOption_. The resulting code is shown in the following snippet.
@@ -251,7 +246,7 @@ This demo is composed of the following segments:
 1. Log-in using the previously created credentials.
 
 	![Log in](Images/log-in.png?raw=true "Log in")
-	
+
 	_Log in_
 
 1. Press **F12** to open the development tools.
@@ -282,7 +277,7 @@ This demo is composed of the following segments:
 
 1. Do not close the GeekQuiz site, and switch to the browser window/tab that has the management portal open.
 
-1. Open the web site and select the **DEPLOYMENTS** tab. Both commits will be listed in the deployment history.
+1. Open the web site and select **Active Deployment**. Both commits will be listed in the deployment history.
 
 	![Showing the existing deployments](Images/existing-deployment.png?raw=true "Showing the existing deployments")
 
@@ -297,7 +292,7 @@ This demo is composed of the following segments:
 1. When prompted to confirm, click **YES**.
 
 1. Once the deployment is finished, switch back to the web site and press **CTRL + F5**.
-	
+
 1. Click any of the options. The flip animation will take place and the result (correct/incorrect) will be displayed.
 
 ---
@@ -308,7 +303,7 @@ This demo is composed of the following segments:
 By completing this demo you should have:
 
 1. Used Entity Framework migrations to update GeekQuiz database to reflect the changes in the object model
-1. Deployed a change (bug) to Windows Azure using Git
-1. Rollback to the last working deployment using the Azure Management portal 
+1. Deployed a change (bug) to Microsoft Azure using Git
+1. Rollback to the last working deployment using the Azure Management portal
 
 ---

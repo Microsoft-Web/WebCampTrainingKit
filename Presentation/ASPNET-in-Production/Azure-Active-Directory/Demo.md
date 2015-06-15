@@ -13,33 +13,26 @@
 ### Goals ###
 In this demo, you will see how to:
 
-1. Create an application in Visual Studio that is automatically integrated with a Azure Active Directory tenant.
-1. Deploy an existing application using Visual Studio to an Azure web site and have it automaitically integrate with a WAAD tenant.
+1. Create an application in Visual Studio that is automatically integrated with an Azure Active Directory tenant.
+1. Deploy an existing application using Visual Studio to an Azure Web App and have it automaitically integrate with an Azure Active Directory tenant.
 
 <a name="technologies" />
 ### Key Technologies ###
 
-- [Azure Active Directory](http://www.windowsazure.com/en-us/services/active-directory/)
-- [Visual Studio 2013](http://www.microsoft.com/visualstudio/esn/products/2013-editions)
+- [Azure Active Directory](http://azure.microsoft.com/services/active-directory/)
+- [Visual Studio 2013](https://www.visualstudio.com/)
 
 <a name="Setup" />
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
-1. Follow the steps detailed in [this link](http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds) to setup local sources for the following directories:
+1. Create a new [Azure Active Directory tenant](https://azure.microsoft.com/documentation/articles/active-directory-howto-tenant/).
 
-	1. **C:\Program Files (x86)\Microsoft Web Tools\Packages**
-	1. **C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Packages**
+1. Create a new Web App in Azure.
 
-	![NuGet Sources](images/nuget-sources.png?raw=true)
+1. Add a database as a **Linked Resource**.
 
-1. Create a new [Azure Active Directory tenant](http://msdn.microsoft.com/en-us/library/windowsazure/dn151790.aspx).
-
-1. Create a new website in Microsoft Azure.
-
-1. Add a database as a linked **Linked Resource**.
-
-1. Download the publishing profile. This is be required for segment #2.
+1. Download the publish profile. This is required for segment #2.
 
 	> **Important:** At the time of writing, you can only create one AD per subscription and it cannot be deleted.
 
@@ -71,7 +64,7 @@ This demo is composed of the following segments:
 
 	_Updating the authentication method_
 
-	> **Speaking Point:** VS tooling allows you to enable WAAD authentication easily. All you need is to provide your tenant domain name and administrator credentials, the two-way trust between your WAAD tenant and your web application is automatically configured.
+	> **Speaking Point:** VS tooling allows you to enable AAD authentication easily. All you need is to provide your tenant domain name and administrator credentials, the two-way trust between your AAD tenant and your web application is automatically configured.
 
 1. In the **Change Authentication** dialog, select **Organizational Accounts**.
 
@@ -80,7 +73,7 @@ This demo is composed of the following segments:
 	_Selecting Organizational Accounts_
 
 1. 	Expand the first combo box to show the different options.
-	
+
 	![Showing the organization account types](images/showing-the-organization-types.png?raw=true "Showing the organization account types")
 
 	_Showing the organization account types_
@@ -121,19 +114,19 @@ This demo is composed of the following segments:
 
 	_Completing the project creation_
 
-	> **Speaking Point:** VS tooling configures two-way trust relationship between your app and your WAAD tenant. Your app is registered as a Relying Party in the tenant; and the tenant is configured as an Identity Provider for the app.
+	> **Speaking Point:** VS tooling configures two-way trust relationship between your app and your AAD tenant. Your app is registered as a Relying Party in the tenant; and the tenant is configured as an Identity Provider for the app.
 
 1. Press **CTRL+F5** to run the web site.
 
 1. If a certificate error is displayed, click **Continue to this website**.
 
-1.	Sign in using a user account for your organization (ex. "user@mydomainname.onmicrosoft.com").
+1.	Sign in using a user account for your organization (e.g.: "admin@mydomainname.onmicrosoft.com")
 
 	![Signing in using one of the organization's user account](images/logging-in-with-an-organization-user.png?raw=true "Signing in using one of the organization's user account")
 
 	_Signing in using one of the organization's user account_
 
-1. Show that you are logged as the organization's user. 
+1. Show that you are logged as the organization's user.
 
 	![Showing that you are logged as the organization's user](images/showing-the-organization-user-logged.png?raw=true "Showing that you are logged as the organization's user")
 
@@ -146,25 +139,25 @@ This demo is composed of the following segments:
 
 1. Open the **GeekQuiz.sln** solution located under **source\end-segment2**.
 
-1. Right-click the **GeekQuiz** project and select **Publish…**
+1. Update the federation configuration in the Web.config file with the AAD domain name used in segment one.
+
+1. Right-click the **GeekQuiz** project and select **Publish**.
 
 	![Publishing the Website](images/publishing-the-site.png?raw=true "Publishing the Website")
 
 	_Publishing the Website_
 
-1. In the Publish dialog box, click **Import…**.
+1. In the **Publish Web** dialog box, click **Import**.
 
 	![Importing the publish profile](images/selecting-the-profile.png?raw=true "Importing the publish profile")
 
 	_Importing the publish profile_
 
-1. In the **Import Publish Profile** dialog select **Import from a publish profile file** and click **Browse...** to select the previously downloaded publish profile file.
+1. In the **Import Publish Settings** dialog, click **Browse...** to select the previously downloaded publish profile file and click **OK**.
 
 	![Selecting the publish profile file](images/selecting-import-publish-profile.png?raw=true "Selecting the publish profile file")
 
 	_Selecting the publish profile file_
-
-1. Back in the **Import Publish Profile** dialog click **OK**.
 
 1. Back in the **Publish Web** dialog, click **Next**.
 
@@ -178,27 +171,21 @@ This demo is composed of the following segments:
 
 	_Showing the organizational authentication configuration_
 
-1. Select the connection string for the **TriviaContext** and click **Publish** to publish the site.
+1. Select the connection string for the **TenantDbContext** and click **Publish** to publish the site.
 
-1. Once the browser is opened, sign in using an admin account for your organization (e.g.: "admin@mydomainname.onmicrosoft.com")
+1. Once the deployment is completed and the browser is opened, sign in using an admin account for your organization (e.g.: "admin@mydomainname.onmicrosoft.com")
 
-	![Signing in with an organization admin account](images/signing-in-with-an-organization-admin-account.png?raw=true "Signing in with an organization admin account")
+	![Signing in with an organization admin account](images/signing-in-with-an-organization-admin-account-published-site.png?raw=true "Signing in with an organization admin account")
 
 	_Signing in with an organization admin account_
 
-1.	When the deployment is completed, sign in using a user account for your organization (e.g.: "user@mydomainname.onmicrosoft.com").
+1. Show that you are logged as the organization's user.
 
-	![Signing in using one of the organization's user account](images/logging-in-with-an-organization-user.png?raw=true "Signing in using one of the organization's user account")
-
-	_Signing in using one of the organization's user account_
-
-1. Show that you are logged as the organization's user. 
-
-	![Showing that you are logged as the organization's user](images/showing-the-geekquiz-with-waad.png?raw=true "Showing that you are logged as the organization's user")
+	![Showing that you are logged as the organization's user](images/showing-the-geekquiz-with-ad.png?raw=true "Showing that you are logged as the organization's user")
 
 	_Showing that you are logged as the organization's user_
 
-1. Switch to the _Microsoft Azure Management Portal_.
+1. Switch to the _Azure Management Portal_.
 
 1. Navigate to the **Active Directory** section and select the one used for this demo.
 
@@ -213,7 +200,7 @@ This demo is composed of the following segments:
 
 	_Showing the organization's users_
 
-1. Navigate to the **APPLICATIONS** tab and show the new two applications, which were automatically created.
+1. Navigate to the **APPLICATIONS** tab and filter them by **Application that my company owns** to show the new two applications, which were automatically created.
 
 	![Showing the organization's applications](images/showing-the-geekquiz-application-in-the-portal.png?raw=true "Showing the organization's applications")
 
@@ -224,6 +211,6 @@ This demo is composed of the following segments:
 <a name="summary" />
 ## Summary ##
 
-By completing this demo you learned how to integrate your website with an existing WAAD tenant.
+By completing this demo you learned how to integrate your website with an existing Azure Active Directory tenant.
 
 ---

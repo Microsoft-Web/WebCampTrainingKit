@@ -4,46 +4,43 @@
 ---
 ## Overview ##
 
-In this demo you will go through the steps required to configure auto-scaling in a _Windows Azure Web Site_ and demostrate this feature using a Visual Studio Load test. Additionally, you will see how to scale a site using _Windows Azure Storage_.
+In this demo you will go through the steps required to configure auto-scaling in a _Microsoft Azure Web App_ and demostrate this feature using a Visual Studio Load test. Additionally, you will see how to scale a site using _Azure Storage_.
 
 <a id="goals" />
 ### Goals ###
 
 In this demo, you will see how to:
 
-1. Configure auto-scaling for a website using the _Windows Azure portal_
+1. Configure auto-scaling for a Web App using the _Microsoft Azure portal_
 1. Create and configure a load test project in _Visual Studio_
-1. Use _Windows Azure Storage_ to scale a website
+1. Use _Azure Storage_ to scale a web app
 
 <a name="technologies" />
 ### Key Technologies ###
 
-- [Microsoft Visual Studio 2013][1]
-- [Windows Azure][2]
+- [Visual Studio 2013][1]
+- [Microsoft Azure][2]
 
-[1]: http://www.microsoft.com/visualstudio/eng/visual-studio-2013
-[2]: http://www.windowsazure.com
+[1]: https://www.visualstudio.com/
+[2]: http://azure.microsoft.com/
 
 <a name="setup" />
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
-1. Follow the steps detailed in [this link](http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds) to setup local sources for the following directories:
+1. Create a _Azure Storage account_ (e.g. _geekquizstorage_), create a blob container named _images_ and upload the **logo-big.png** image located inside the **source\assets** folder.
 
-	1. **C:\Program Files (x86)\Microsoft Web Tools\Packages**
-	1. **C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Packages**
-
-	![NuGet Sources](images/nuget-sources.png?raw=true)
-
-1. Create a _Windows Azure storage account_ (e.g. _geekquizstorage_), create a blob container named _images_ and upload the **logo-big.png** image located inside the **source\assets** folder.
-
-1. Open the **GeekQuiz.sln** solution located under the **source\end** folder. Find the '<system.webServer>' element in the **web.config** file and change the url of the **Redirect** action using the _Windows Azure storage account_ you have just created.
+1. Open the **GeekQuiz.sln** solution located under the **source\end** folder. Find the '<system.webServer>' element in the **web.config** file and change the url of the **Redirect** action using the _Azure Storage account_ you have just created.
 
 	![Updating the Rewrite Rule](images/highlighting-rewrite-rule.png?raw=true "Updating the Rewrite Rule")
 
 	_Updating the Rewrite Rule_
 
-1. Create a (free) web site in Windows Azure and deploy the web site that is part of the **GeekQuiz.sln** solution located under the **source\end** folder.
+1. Open the **GeekQuiz.sln** solution located under the **source\end** folder in Visual Studio and publish it to a new (free) Azure Web App. In the **Create Web App on Microsoft Azure dialog**, select an existing Database server or create a new one.
+
+	![Create Web App on Microsoft Azure dialog](images/create-web-app-dialog-box.png?raw=true "Create Web App on Microsoft Azure dialog")
+
+	_Create Web App on Microsoft Azure dialog_
 
 1. Register a new user account.
 
@@ -60,7 +57,7 @@ Follow these steps to setup your environment for the demo.
 1. In the **Properties** window, update the **Url** field to point to the site you just created.
 
 	![Changing the Url](images/url-change.png?raw=true "Changing the Url")
-	
+
 	_Changing the Url_
 
 1. Save all files and close the solution.
@@ -71,39 +68,29 @@ This demo is composed of the following segments:
 
 1. [Configuring auto-scaling](#segment1)
 1. [Load testing with Visual Studio](#segment2)
-1. [Scaling GeekQuiz using Windows Azure storage](#segment3)
+1. [Scaling GeekQuiz using Azure Storage](#segment3)
 1. [Auto-scaling result](#segment4)
 
 <a name="segment1" />
 ### Configuring auto-scaling ###
 
-1. Open the [Azure Management portal](https://manage.windowsazure.com/) and log in with your credentials.
+1. Open the [Azure Preview Portal](https://portal.azure.com/) and log in with your credentials.
 
-1. Select the **WEB SITES** tab.
+1. Select the **BROWSE** tab and filter by **Web Apps**.
 
-	![Opening the Web site tab](images/web-sites.png?raw=true "Opening the Web site tab")
-	
-	_Opening the Web site tab_
+	![filtering Web apps](images/web-apps.png?raw=true "filtering Web apps")
 
-1. Click the website where you deployed GeekQuiz during the setup steps.
+	_Filtering Web apps_
 
-1. Open the scaling configuration page.
+1. Click the web app where you deployed GeekQuiz during the setup steps.
 
-	![Opening the Scaling configuration page](images/scale.png?raw=true "Opening the Scaling configuration page")
+1. Open the Pricing tier page.
 
-	_Opening the Scaling configuration page_
+	![Opening the Pricing tier page](images/pricing-tier.png?raw=true "Opening the Pricing tier page")
 
-1. Change the web site's mode to **Standard**.
+	_Opening the Pricing tier page_
 
-	![Changing the web site's mode to Standard](images/web-site-mode.png?raw=true "Changing the web site's mode to Standard")
-
-	_Changing the web site's mode to Standard_
-
-1. Clear all other web sites from the list of sites to be updated.
-
-	![Clearing all other Web Sites](images/clear-web-sites.png?raw=true "Clearing all other Web Sites")
-
-	_Clearing all other Web Sites_
+1. Change the web app's pricing tier to **S1 Standard**.
 
 1. Show that there is only one instance.
 
@@ -111,22 +98,22 @@ This demo is composed of the following segments:
 
 	_Showing that there is only one instance_
 
-1. Select the **CPU** metric for scaling.
+1. Select the **CPU Percentage** metric for scaling.
 
-	![Selecting the CPU metric for scaling](images/cpu-scaling.png?raw=true "Selecting the CPU metric for scaling")
+	![Selecting the CPU metric for scaling](images/cpu-percentage-scaling.png?raw=true "Selecting the CPU Percentage metric for scaling")
 
-	_Selecting the CPU metric for scaling_
+	_Selecting the CPU Percentage metric for scaling_
 
-1. Change the target CPU to **20**-**40**.
+1. Change the Instances to **1**-**3** and Target range to **5**-**25**.
 
-	![Changing the target CPU](images/target-cpu.png?raw=true "Changing the target CPU")
+	![Changing the CPU Percentage](images/target-cpu-percentage.png?raw=true "Changing the CPU Percentage")
 
-	_Changing the target CPU_
+	_Changing the CPU Percentage_
 
 	> **Speaking point:** Explain that this is done as we cannot ensure that a bigger load is generated with VS.
 
-1. Save the changes. 
-	
+1. Save the changes.
+
 	> **Note:** Don't close the management portal.
 
 
@@ -160,12 +147,12 @@ This demo is composed of the following segments:
 1. Right-click **WebTest1** and select **Add Request**.
 
 	![Adding a request](images/add-request.png?raw=true "Adding a request")
-	
+
 	_Adding a request_
 
 1. Select the new node.
 
-1. In the **Properties** window, update the **Url** field to point to the Azure web site.
+1. In the **Properties** window, update the **Url** field to point to the Azure web app.
 
 	![Changing the Url property](images/url-change.png?raw=true "Changing the Url property")
 
@@ -184,7 +171,7 @@ This demo is composed of the following segments:
 	_Selecting the For Loop_
 
 1. Update the following values:
-	
+
 	1. **Terminating value:** 1000.
 	1. **Context Parameter Name:** Iterator.
 	1. **Increment Value:** 1.
@@ -212,7 +199,7 @@ This demo is composed of the following segments:
 1. Select **Do not use think times** and click **Next**.
 
 	![Selecting not to use Think times](images/think-times.png?raw=true "Selecting not to use Think times")
-	
+
 	_Selecting not to use Think times_
 
 1. Change the **User Count** to **250** users and click **Next**.
@@ -239,7 +226,7 @@ This demo is composed of the following segments:
 
 1. In the **Network Mix** page, click **Next**.
 
-1. Select **Internet Explorer 10.0** as the browser type and click **Next**.
+1. Select **Internet Explorer 11.0** as the browser type and click **Next**.
 
 	![Selecting the Browser Type](images/browser-type.png?raw=true "Selecting the Browser Type")
 
@@ -247,7 +234,7 @@ This demo is composed of the following segments:
 
 1. In the **Counter Sets** page, click **Next**.
 
-1. Set the load test duration to 5 minutes and click **Finish**.
+1. Set the load test duration to 10 minutes and click **Finish**.
 
 	![Setting the load test duration](images/load-test-duration.png?raw=true "Setting the load test duration")
 
@@ -256,11 +243,11 @@ This demo is composed of the following segments:
 1. Close the current instance of **Visual Studio**.
 
 <a name="segment3" />
-### Scaling GeekQuiz using Windows Azure storage ###
+### Scaling GeekQuiz using Azure Storage ###
 
 1. Open _Internet Explorer_.
 
-1. Navigate to the image that you uploaded to _Windows Azure Storage_ during setup. For example, if the name of the storage account is _geekquizstorage_ the URL for the image will be _http://geekquizstorage.blob.core.windows.net/images/logo-big.png_.
+1. Navigate to the image that you uploaded to _Azure Storage_ during setup. For example, if the name of the storage account is _geekquizstorage_ the URL for the image will be _http://geekquizstorage.blob.core.windows.net/images/logo-big.png_.
 
 	![Showing the logo](images/logo-big.png?raw=true "Showing the logo")
 
@@ -292,7 +279,7 @@ This demo is composed of the following segments:
 
 1. Press **CTRL + F5** to refresh the web page.
 
-1. Once the page has finished loading, switch back to the development tools and show that the request for the image was redirected to _Windows Azure storage_.
+1. Once the page has finished loading, switch back to the development tools and show that the request for the image was redirected to _Azure Storage_.
 
 	![Showing the redirect in Dev Tools](images/redirect-in-dev-tools.png?raw=true "Showing the redirect in Dev Tools")
 
@@ -316,8 +303,8 @@ This demo is composed of the following segments:
 
 By completing this demo you should have:
 
-1. Configured auto-scaling for a website using the _Windows Azure portal_
+1. Configured auto-scaling for a Web App using the _Microsoft Azure portal_
 1. Created a load test project in _Visual Studio_
-1. Used _Windows Azure Storage_ to scale the static content of a web site
+1. Used _Azure Storage_ to scale the static content of a web site
 
 ---

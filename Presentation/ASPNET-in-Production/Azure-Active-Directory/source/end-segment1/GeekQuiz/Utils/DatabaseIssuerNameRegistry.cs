@@ -37,38 +37,63 @@ namespace GeekQuiz.Utils
             IssuingAuthority issuingAuthority = ValidatingIssuerNameRegistry.GetIssuingAuthority(metadataLocation);
 
             bool newKeys = false;
+            bool refreshTenant = false;
             foreach (string thumbprint in issuingAuthority.Thumbprints)
             {
                 if (!ContainsKey(thumbprint))
                 {
                     newKeys = true;
+                    refreshTenant = true;
                     break;
                 }
             }
 
-            if (newKeys)
+            foreach (string issuer in issuingAuthority.Issuers)
+            {
+                if (!ContainsTenant(GetIssuerId(issuer)))
+                {
+                    refreshTenant = true;
+                    break;
+                }
+            }
+
+            if (newKeys || refreshTenant)
             {
                 using (TenantDbContext context = new TenantDbContext())
                 {
-                    context.IssuingAuthorityKeys.RemoveRange(context.IssuingAuthorityKeys);
-                    foreach (string thumbprint in issuingAuthority.Thumbprints)
+                    if (newKeys)
                     {
-                        context.IssuingAuthorityKeys.Add(new IssuingAuthorityKey { Id = thumbprint });
+                      context.IssuingAuthorityKeys.RemoveRange(context.IssuingAuthorityKeys);
+                      foreach (string thumbprint in issuingAuthority.Thumbprints)
+                      {
+                          context.IssuingAuthorityKeys.Add(new IssuingAuthorityKey { Id = thumbprint });
+                      }
                     }
-                    foreach (string issuer in issuingAuthority.Issuers)
+
+                    if (refreshTenant)
                     {
-                        context.Tenants.Add(new Tenant { Id = issuer.TrimEnd('/').Split('/').Last() });
+                        foreach (string issuer in issuingAuthority.Issuers)
+                        {
+                            string issuerId = GetIssuerId(issuer);
+                            if (!ContainsTenant(issuerId))
+                            {
+                                context.Tenants.Add(new Tenant { Id = issuerId });
+                            }
+                        }
                     }
                     context.SaveChanges();
                 }
             }
         }
 
+        private static string GetIssuerId(string issuer)
+        {
+            return issuer.TrimEnd('/').Split('/').Last();
+        }
+
         protected override bool IsThumbprintValid(string thumbprint, string issuer)
         {
-            string issuerID = issuer.TrimEnd('/').Split('/').Last();
-
-            return ContainsTenant(issuerID)
+            return ContainsTenant(GetIssuerId(issuer))
                 && ContainsKey(thumbprint);
         }
     }
