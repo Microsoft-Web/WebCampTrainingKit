@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-using System;
+﻿using System;
 using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Owin;
 using MyHybridSite.Models;
 
 namespace MyHybridSite.Account
@@ -20,26 +22,34 @@ namespace MyHybridSite.Account
             private set { ViewState["ProviderAccountKey"] = value; }
         }
 
+        private void RedirectOnFail()
+        {
+            Response.Redirect((User.Identity.IsAuthenticated) ? "~/Account/Manage" : "~/Account/Login");
+        }
+
         protected void Page_Load()
         {
             // Process the result from an auth provider in the request
             ProviderName = IdentityHelper.GetProviderNameFromRequest(Request);
             if (String.IsNullOrEmpty(ProviderName))
             {
-                Response.Redirect("~/Account/Login");
+                RedirectOnFail();
+                return;
             }
             if (!IsPostBack)
             {
-                var manager = new UserManager();
+                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
                 var loginInfo = Context.GetOwinContext().Authentication.GetExternalLoginInfo();
                 if (loginInfo == null)
                 {
-                    Response.Redirect("~/Account/Login");
+                    RedirectOnFail();
+                    return;
                 }
                 var user = manager.Find(loginInfo.Login);
                 if (user != null)
                 {
-                    IdentityHelper.SignIn(manager, user, isPersistent: false);
+                    signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                 }
                 else if (User.Identity.IsAuthenticated)
@@ -48,7 +58,8 @@ namespace MyHybridSite.Account
                     var verifiedloginInfo = Context.GetOwinContext().Authentication.GetExternalLoginInfo(IdentityHelper.XsrfKey, User.Identity.GetUserId());
                     if (verifiedloginInfo == null)
                     {
-                        Response.Redirect("~/Account/Login");
+                        RedirectOnFail();
+                        return;
                     }
 
                     var result = manager.AddLogin(User.Identity.GetUserId(), verifiedloginInfo.Login);
@@ -64,7 +75,7 @@ namespace MyHybridSite.Account
                 }
                 else
                 {
-                    userName.Text = loginInfo.DefaultUserName;
+                    email.Text = loginInfo.Email;
                 }
             }
         }        
@@ -80,21 +91,27 @@ namespace MyHybridSite.Account
             {
                 return;
             }
-            var manager = new UserManager();
-            var user = new ApplicationUser() { UserName = userName.Text };
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var signInManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
+            var user = new ApplicationUser() { UserName = email.Text, Email = email.Text };
             IdentityResult result = manager.Create(user);
             if (result.Succeeded)
             {
                 var loginInfo = Context.GetOwinContext().Authentication.GetExternalLoginInfo();
                 if (loginInfo == null)
                 {
-                    Response.Redirect("~/Account/Login");
+                    RedirectOnFail();
                     return;
                 }
                 result = manager.AddLogin(user.Id, loginInfo.Login);
                 if (result.Succeeded)
                 {
-                    IdentityHelper.SignIn(manager, user, isPersistent: false);
+                    signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // var code = manager.GenerateEmailConfirmationToken(user.Id);
+                    // Send this link via email: IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id)
+
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                     return;
                 }

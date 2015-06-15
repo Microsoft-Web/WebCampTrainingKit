@@ -17,13 +17,13 @@ namespace MyHybridSite.Controllers
     {
         private PersonContext db = new PersonContext();
 
-        // GET api/ApiPerson
+        // GET: api/ApiPerson
         public IQueryable<Person> GetPeople()
         {
             return db.People;
         }
 
-        // GET api/ApiPerson/5
+        // GET: api/ApiPerson/5
         [ResponseType(typeof(Person))]
         public async Task<IHttpActionResult> GetPerson(int id)
         {
@@ -36,7 +36,8 @@ namespace MyHybridSite.Controllers
             return Ok(person);
         }
 
-        // PUT api/ApiPerson/5
+        // PUT: api/ApiPerson/5
+        [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutPerson(int id, Person person)
         {
             if (!ModelState.IsValid)
@@ -70,7 +71,7 @@ namespace MyHybridSite.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST api/ApiPerson
+        // POST: api/ApiPerson
         [ResponseType(typeof(Person))]
         public async Task<IHttpActionResult> PostPerson(Person person)
         {
@@ -85,7 +86,7 @@ namespace MyHybridSite.Controllers
             return CreatedAtRoute("DefaultApi", new { id = person.Id }, person);
         }
 
-        // DELETE api/ApiPerson/5
+        // DELETE: api/ApiPerson/5
         [ResponseType(typeof(Person))]
         public async Task<IHttpActionResult> DeletePerson(int id)
         {

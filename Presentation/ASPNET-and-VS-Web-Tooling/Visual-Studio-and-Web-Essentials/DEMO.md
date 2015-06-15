@@ -12,7 +12,7 @@ In this demo you will perform several changes to GeekQuiz in order to showcase t
 
 In this demo, you will see:
 
-1. The new HTML editor features, including HTML 5 snippets and zen coding 
+1. The new HTML editor features, including HTML 5 snippets and zen coding
 1. The new CSS editor features, including Color
 1. Browser Link and the extension support for it
 1. IDs and classes Intellisense in JavaScript
@@ -21,20 +21,13 @@ In this demo, you will see:
 ### Key Technologies ###
 
 * [Web Essentials](http://vswebessentials.com/)
-* [Visual Studio 2013](http://www.microsoft.com/visualstudio/esn/products/2013-editions)
+* [Visual Studio 2013](http://www.visualstudio.com/)
 * [Browser Link](http://blogs.msdn.com/b/webdev/archive/2013/09/10/what-is-new-in-browser-link-with-visual-studio-2013-rc.aspx)
 
 <a name="setup" />
 ### Setup and Configuration ###
 
 Follow these steps to setup your environment for the demo.
-
-1. Follow the steps detailed in [this link](http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds) to setup local sources for the following directories:
-
-	1. **C:\Program Files (x86)\Microsoft Web Tools\Packages**
-	1. **C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Packages**
-
-	![Nuget Sources](Images/nuget-packages.png?raw=true)
 
 1. Install **Web Essentials 2013** (if it is not already installed).
 
@@ -55,7 +48,7 @@ Follow these steps to setup your environment for the demo.
 This demo is composed of the following segments:
 
 1. [Browser Link and Web Essentials](#segment1)
-1. [Intellisense improvements](#segment2)
+1. [Snippets and Intellisense](#segment2)
 
 <a name="segment1" />
 ### Browser Link and Web Essentials ###
@@ -67,7 +60,7 @@ This demo is composed of the following segments:
 1. Hold down **CTRL** and select **Google Chrome and Internet Explorer**.
 
 	![Selecting multiple browsers](Images/multiple-browsers.png?raw=true "Selecting multiple browsers")
-	
+
 	_Selecting multiple browsers_
 
 1. Click **Set as Default** and click **Cancel**.
@@ -75,7 +68,7 @@ This demo is composed of the following segments:
 1. Press **CTRL + F5** to start debugging.
 
 1. Replace the `<!-- TODO: add options here-->` comment in the **index.cshtml** file with the following code snippet and press **TAB**.
-	
+
 	<!-- mark:1 -->
 	````HTML
 	button.btn.btn-info.btn-lg.option{Answer $}*4
@@ -88,7 +81,7 @@ This demo is composed of the following segments:
 	_Refreshing Linked Browsers_
 
 1. Click **Internet Explorer** (to set focus on it) and press **CTRL + ALT + I**.
-	
+
 	> **Speaking point:** Let's change the color of the border around the question.
 
 1. Place the mouse over the light blue border and click on it, as shown in the following figure.
@@ -102,7 +95,7 @@ This demo is composed of the following segments:
 1. Back in Visual Studio, press **CTRL + ,**,  type _site.css_ and press **ENTER**.
 
 	![Opening the Site.css file](Images/opening-sitecss.png?raw=true "Opening the Site.css file")
-	
+
 	_Opening the Site.css file_
 
 1. Scroll to the bottom of the file.
@@ -114,7 +107,7 @@ This demo is composed of the following segments:
 1. Click the light blue square that is part of the border property of the `.flip-container .front` class.
 
 	![Opening the Color Picker](Images/color-picker.png?raw=true "Opening the Color Picker")
-	
+
 	_Opening the Color Picker_
 
 1. Expand the color picker by clicking the button with the chevrons, circled in the following figure.
@@ -126,7 +119,7 @@ This demo is composed of the following segments:
 1. Select a new color, close the color picker and press **CTRL + ALT + ENTER** to update the browsers.
 
 	![Updating the Border color](Images/update-border.png?raw=true "Updating the Border color")
-	
+
 	_Updating the Border color_
 
 1. Open the **Index.cshtml** editor.
@@ -149,9 +142,9 @@ This demo is composed of the following segments:
 1. Expand the **Error List** window and double-click the SEO related warning.
 
 	![Opening the SEO warning](Images/seo-error.png?raw=true "Opening the SEO warning")
-	
+
 	_Opening the SEO warning_
-	
+
 1. When asked if you would like to insert a `<meta>` tag, click **Yes**. The editor for **\_Layout.cshtml** is opened an the following code is automatically added.
 
 	````HTML
@@ -159,6 +152,7 @@ This demo is composed of the following segments:
 	````
 1. Change the value of the `content` attribute to _GeekQuiz_ and save the file.
 
+<a name="segment2" />
 ### Snippets and Intellisense ###
 
 1. Switch back to the **Index.cshtml** editor.
@@ -216,17 +210,17 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 
 	![Adding a Javascript File](Images/adding-javascript-file.png?raw=true "Adding a Javascript File]")
 
-	_Adding a Javascript File]_
+	_Adding a Javascript File_
 
 1. Name the file _init_ and click **OK**.
 
 1. Add the following code to the new JS file.
-	
+
 	<!-- mark:1-5 -->
 	````JavaScript
 	(function () {
 		 $(document).ready(function () {
-			  
+
 		 });
 	}());
 	````
@@ -252,13 +246,13 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 	_Retrieving Audio Elements_
 
 1. Add the following code below the line you just typed.
-	
+
 	<!-- mark:1-4 -->
 	````JavaScript
 	var len = audioElements.length;
 	for (var i = 0; i < len; i++) {
 		 audioElements[i].play();
-	}	
+	}
 	````
 
 1. Click the Browser Link **Refresh** button. Once the pages are refreshed, audio will start playing.
@@ -286,4 +280,3 @@ By completing this demo you should have showcased the featuers included in the n
 1. HTML 5 code snippets for adding audio
 
 ---
-

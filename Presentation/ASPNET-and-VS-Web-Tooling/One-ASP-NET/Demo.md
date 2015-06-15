@@ -19,22 +19,15 @@ In this demo, you will see how to:
 <a name="technologies" />
 ### Key Technologies ###
 
-- [Microsoft Visual Studio 2013][1]
+- [Visual Studio 2013][1]
 - [ASP.NET][2]
 
-[1]: http://www.microsoft.com/visualstudio/eng/visual-studio-2013
+[1]: http://www.visualstudio.com/
 [2]: http://www.asp.net
 
 <a name="Setup" />
 ### Setup and Configuration ###
 In order to execute this demo you need to set up your environment.
-
-1. Follow the steps detailed in [this link](http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds) to setup local sources for the following directories:
-
-	1. **C:\Program Files (x86)\Microsoft Web Tools\Packages**
-	1. **C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Packages**
-
-	![Nuget Sources](images/nuget-sources.png?raw=true)
 
 1. Open Visual Studio 2013.
 
@@ -47,7 +40,7 @@ This demo is composed of the following segments:
 1. [Creating a Web API using Scaffolding](#segment3).
 1. [Running the site](#segment4).
 
-<a name="Segment1" />
+<a name="segment1" />
 ### Creating a new site ###
 
 1. Open the **File / New Project** dialog and show the options in the **Visual C# / Web** section.
@@ -115,7 +108,7 @@ This demo is composed of the following segments:
 
 1. Build the solution.
 
-<a name="Segment2" />
+<a name="segment2" />
 ### Creating an MVC Controller using Scaffolding ###
 
 1. Create the controller and views for the _Person_ model class using scaffolding. To do that, right-click the **Controllers** folder, expand the **Add** menu and select **New Scaffolded Item...**
@@ -166,7 +159,9 @@ This demo is composed of the following segments:
 
 1. Expand the **Views** folder and show the new views under the **MvcPerson** folder.
 
-<a name="Segment3" />
+1. Build the solution.
+
+<a name="segment3" />
 ### Creating a Web API using Scaffolding ###
 
 1. Create the Web API controller for the _Person_ Model class using scaffolding. To do that, right-click the **Controllers** folder, expand the **Add** menu and select **New Scaffolded Item...**
@@ -201,14 +196,14 @@ This demo is composed of the following segments:
 
 1. Open the **ApiPersonController.cs** file to show the generated code.
 
-<a name="Segment4" />
+<a name="segment4" />
 ### Running the site ###
 
 1. Press **F5** to run the web site.
 
 1. Navigate to **/MvcPerson** to show the scaffolded view.
 
-1. Start creting a new person by clicking **Create New**. 
+1. Start creting a new person by clicking **Create New**.
 
 	![Navigating to the scaffolded MVC views](images/running-mvc-index.png?raw=true "Navigating to the scaffolded MVC views")
 
