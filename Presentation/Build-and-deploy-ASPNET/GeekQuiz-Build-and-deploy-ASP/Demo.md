@@ -4,8 +4,8 @@
 ---
 <a name="Overview" />
 ## Overview ##
- 
-In this demo you will create a new ASP.NET MVC application using the new One ASP.NET template, explain how routing works in MVC and show the default HomeController and Views. Then you will walk through the process of creating GeekQuiz object model (TriviaQuestion and TriviaOption) and leverage MVC scaffolding to create the controllers and views. Finally, you'll deploy the site to a new Windows Azure web site created from within Visual Studio using the new tooling.
+
+In this demo you will create a new ASP.NET MVC application using the new One ASP.NET template, explain how routing works in MVC and show the default HomeController and Views. Then you will walk through the process of creating GeekQuiz object model (TriviaQuestion and TriviaOption) and leverage MVC scaffolding to create the controllers and views. Finally, you'll deploy the site to a new Microsoft Azure Web App created from within Visual Studio using the new tooling.
 
 <a id="goals" />
 ### Goals ###
@@ -14,57 +14,48 @@ In this demo, you will see how to:
 1. Create a new MVC application using the new One ASP.NET tooling
 1. Create GeekQuiz object model
 1. Use MVC Scaffolding to create controllers and views for your model
-1. Create a new web site in Windows Azure and deploy
+1. Create a new Web App in Microsoft Azure and deploy
 
 <a name="technologies" />
 ### Key Technologies ###
 
-- [Microsoft Visual Studio 2013][1]
+- [Visual Studio 2013][1]
 - [ASP.NET MVC][2]
-- [Windows Azure][3]
+- [Microsoft Azure][3]
 
-[1]: http://www.microsoft.com/visualstudio/eng/visual-studio-2013
+[1]: https://www.visualstudio.com/
 [2]: http://www.asp.net/mvc
-[3]: http://www.windowsazure.com
+[3]: http://azure.microsoft.com/
 
 <a name="Setup" />
 ### Setup and Configuration ###
 In order to execute this demo you need to set up your environment.
 
-1. Follow the steps detailed in [this link](http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds) to setup local sources for the following directories:
+1. Azure SDK for Visual Studio 2013 from [here](http://azure.microsoft.com/en-us/downloads/).
 
-	1. **C:\Program Files (x86)\Microsoft Web Tools\Packages**
-	1. **C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Packages**
+1. Azure Subscription.
 
-	![Nuget Sources](images/nuget-source.png?raw=true)
-
-1. Visual Studio 2013 running
-
-1. Windows Azure Tools for Visual Studio
-
-1. Windows Azure Subscription
-
-1. Windows Azure subscription imported in Visual Studio
+1. Visual Studio 2013 running.
 
 <a name="Demo" />
 ## Demo ##
 This demo is composed of the following segments:
 
-1. [Creating the project](#segment1).
-1. [Creating the Controllers using Scaffolding](#segment2)
-1. [Running the site locally](#segment3)
-1. [Deploying to Windows Azure Web Sites](#segment4).
+1. [Creating the project](#Segment1).
+1. [Creating the Controllers using Scaffolding](#Segment2)
+1. [Running the site locally](#Segment3)
+1. [Deploying to Microsoft Azure Web Apps](#Segment4).
 
 <a name="Segment1" />
 ### Creating the project ###
 
 1. Open the **File / New Project** dialog and show the options in the **Visual C# / Web** section.
-	
+
 	![Simplified File/New experience with a single ASP.NET Web application template](images/file-new-experience-single-aspnet-web-application-template.png?raw=true "Simplified File/New experience with a single ASP.NET Web application template")
 
 	_Simplified File/New experience with a single ASP.NET Web application template_
 
-	> 	**Speaking Point:** 
+	> 	**Speaking Point:**
 	>
 	Explain that instead of having to select from many Web templates, now is only "ASP.NET Web Application". Compare this to the set of templates available in Visual Studio 2012.
 
@@ -78,13 +69,13 @@ This demo is composed of the following segments:
 
 	_New ASP.NET template options for other project types_
 
-	> 	**Speaking Point:** 
+	> 	**Speaking Point:**
 	>
 	Explain the options in the new ASP.NET Project dialog. There are still base templates, but you can include folders and core references for other project types.
 
 1. Click **OK** to create the project.
 
-	> 	**Speaking Point:** 
+	> 	**Speaking Point:**
 	>
 	As the project is loading, talk about changes to the project template, including Bootstrap, updates to user authentication, and decoupling the tooling from project types (so Web Forms applications can easily use ASP.NET MVC controllers, etc.)
 
@@ -110,9 +101,9 @@ This demo is composed of the following segments:
 
 1. Open the **App_Start/RouteConfig.cs** file and explain routing.
 
-	> 	**Speaking Point:** 
+	> 	**Speaking Point:**
 	>
-	Note that when accessing to the url ending with /home/index you will be calling the home controller and the index action of that controller. Additionally, the index action is mapped to the cshtml file with the same name inside the home folder. 
+	Note that when accessing to the url ending with /home/index you will be calling the home controller and the index action of that controller. Additionally, the index action is mapped to the cshtml file with the same name inside the home folder.
 
 1. Create the GeekQuiz model classes. To do that, right-click the **Model** folder and expand the **Add** menu and select **Class**.
 
@@ -177,15 +168,15 @@ This demo is composed of the following segments:
 <a name="Segment2" />
 ### Creating the Controllers using Scaffolding ###
 
-1. Create the controller to manage the model's CRUD operations. To do that, right-click the **Controllers** folder and expand the **Add** menu and select **Controller...&**
+1. Create the controller to manage the model's CRUD operations. To do that, right-click the **Controllers** folder and expand the **Add** menu and select **Controller...**
 
 	![Creating a new Controller](images/creating-a-new-controller.png?raw=true "Creating a new Controller")
 
 	_Creating a new Controller_
 
-	> 	**Speaking Point:** 
+	> 	**Speaking Point:**
 	>
-	Let's create the controllers and views using scaffolding for each model class. 
+	Let's create the controllers and views using scaffolding for each model class.
 
 1. Select the **MVC 5 Controller with views, using Entity Framework** option in the **Add Scaffold** dialog and click **Add**.
 
@@ -229,7 +220,7 @@ This demo is composed of the following segments:
 
 1. Expand the **Views** folder and show the new views under the **Question** folder.
 
-1. Repeat steps 1 through 7 to create the **OptionController** for the **TriviaOption** class using the already existing **TriviaContext**.
+1. Build the solution. Then, repeat steps 1 through 7 to create the **OptionController** for the **TriviaOption** class using the already existing **TriviaContext**.
 
 <a name="Segment3" />
 ### Running the site locally ###
@@ -257,7 +248,7 @@ This demo is composed of the following segments:
 1. Close the browser to stop the solution.
 
 <a name="Segment4" />
-### Deploying to Windows Azure Web Sites ###
+### Deploying to Microsoft Azure Web Apps ###
 
 1. Right-click the **GeekQuiz** project and select **Publish…**
 
@@ -265,39 +256,33 @@ This demo is composed of the following segments:
 
 	_Publishing the Website_
 
-1. In the Publish dialog box, click **Import…**.
+1. In the **Publish Web** dialog, click **Microsoft Azure Web Apps**.
 
-	![Importing the publish profile](images/importing-a-publish-profile.png?raw=true "Importing the publish profile")
+	![Selecting Microsoft Azure Web Apps](images/selecting-web-apps.png?raw=true "Selecting Microsoft Azure Web Apps")
 
-	_Importing the publish profile_
+	_Selecting Microsoft Azure Web Apps_
 
-1. Select **Import from a Windows Azure web site**. To create a new Windows Azure Web Site, click on **New...**.
+1. Click **Sign in...**. to sign in to Visual Studio with your Azure account.
 
-	![Creating a Windows Azure Website](images/creating-a-windows-azure-website.png?raw=true "Creating a Windows Azure Website")
+	![Sign in to Azure](images/sign-in-to-azure.png?raw=true "Sign in to Azure")
 
-	_Creating a Windows Azure Website_
+	_Sign in to Azure_
 
-1. The _Create site on Windows Azure_ dialog box will appear. Fill the Site name field and select **Create new server** in the **Database server** list (or use an existing one).
+1. Then, click **New...* to open the _Create Web App on Microsoft Azure_ dialog box.
 
-	![Create site on Windows Azure dialog](images/creating-a-new-website-dialog.png?raw=true "Create site on Windows Azure dialog")
+	![Create new Web App](images/create-new-web-app.png?raw=true "Create new Web App")
 
-	_Create site on Windows Azure dialog_
+	_Create new Web App_
 
-	> 	**Speaking Point:** 
+1. The _Create Web App on Microsoft Azure_ dialog box will appear. Fill the Web App name field, the App Service plan and select **Create new server** in the **Database server** list, or use an existing one. Then, click **Create** and wait until the Web App is created.
+
+	![Create Web App on Microsoft Azure dialog](images/create-web-app-dialog-box.png?raw=true "Create Web App on Microsoft Azure dialog")
+
+	_Create Web App on Microsoft Azure dialog_
+
+	> 	**Speaking Point:**
 	>
-	You can create a new web site without a database, or a new web site with a new database on an existing database server, or a new web site with a new database on a new database server. Fill in all the required information and voila… your new Windows Azure Web Site is ready and you can deploy your web site project there. 
-
-1. Click **Create** and wait until the site is created.
-
-	![Waiting the site to be created](images/waiting-the-site-to-be-created.png?raw=true "Create site on Windows Azure dialog")
-
-	_Waiting for the site to be created_
-
-1. Back in the **Import Publish Profile** dialog, select the newly created site and click **OK**.
-
-	![Importing the Publish Settings file from the new site](images/importing-the-publish-settings-from-the-new-site.png?raw=true "Importing the Publish Settings file from the new site")
-
-	_Importing the Publish Settings file from the new site_
+	You can create a new Web App without a database, or a new Web App with a new database on an existing database server, or a new Web App with a new database on a new database server. Fill in all the required information and voila… your new Microsoft Azure Web App is ready and you can deploy your website project there.
 
 1. Back in the **Publish Web** dialog, click **Next >**.
 
@@ -313,9 +298,9 @@ This demo is composed of the following segments:
 
 1. Finally, click **Publish** to publish the site.
 
-	![Publishing the site to the new Windows Azure Website](images/publishing-the-site-to-azure.png?raw=true "Publishing the site to the new Windows Azure Website")
+	![Publishing the site to the new Microsoft Azure Web Appp](images/publishing-the-site-to-azure.png?raw=true "Publishing the site to the new Microsoft Azure Web Appp")
 
-	_Publishing the site to the new Windows Azure Website_
+	_Publishing the site to the new Microsoft Azure Web Appp_
 
 ---
 
@@ -325,9 +310,9 @@ This demo is composed of the following segments:
 By completing this demo you should have:
 
 * Created a new MVC application using the new One ASP.NET template
-* Leared how MVC routing, views and controllers work
+* Learned how MVC routing, views and controllers work
 * Created GeekQuiz object model (TriviaQuestion and TriviaOption)
 * Scaffolded the views and controllers for your model
-* Created a new web site in Windows Azure and Deployed to it from within Visual Studio
+* Created a new Web App in Azure and deployed to it from within Visual Studio
 
 ---

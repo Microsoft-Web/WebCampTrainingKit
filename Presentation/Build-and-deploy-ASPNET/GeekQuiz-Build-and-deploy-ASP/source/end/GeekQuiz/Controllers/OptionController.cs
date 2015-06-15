@@ -15,108 +15,108 @@ namespace GeekQuiz.Controllers
     {
         private TriviaContext db = new TriviaContext();
 
-        // GET: /Option/
+        // GET: Option
         public async Task<ActionResult> Index()
         {
-            var triviaoptions = db.TriviaOptions.Include(t => t.TriviaQuestion);
-            return View(await triviaoptions.ToListAsync());
+            var triviaOptions = db.TriviaOptions.Include(t => t.TriviaQuestion);
+            return View(await triviaOptions.ToListAsync());
         }
 
-        // GET: /Option/Details/5
+        // GET: Option/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TriviaOption triviaoption = await db.TriviaOptions.FindAsync(id);
-            if (triviaoption == null)
+            TriviaOption triviaOption = await db.TriviaOptions.FindAsync(id);
+            if (triviaOption == null)
             {
                 return HttpNotFound();
             }
-            return View(triviaoption);
+            return View(triviaOption);
         }
 
-        // GET: /Option/Create
+        // GET: Option/Create
         public ActionResult Create()
         {
             ViewBag.QuestionId = new SelectList(db.TriviaQuestions, "Id", "Title");
             return View();
         }
 
-        // POST: /Option/Create
+        // POST: Option/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="Id,QuestionId,Title,IsCorrect")] TriviaOption triviaoption)
+        public async Task<ActionResult> Create([Bind(Include = "Id,QuestionId,Title,IsCorrect")] TriviaOption triviaOption)
         {
             if (ModelState.IsValid)
             {
-                db.TriviaOptions.Add(triviaoption);
+                db.TriviaOptions.Add(triviaOption);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.QuestionId = new SelectList(db.TriviaQuestions, "Id", "Title", triviaoption.QuestionId);
-            return View(triviaoption);
+            ViewBag.QuestionId = new SelectList(db.TriviaQuestions, "Id", "Title", triviaOption.QuestionId);
+            return View(triviaOption);
         }
 
-        // GET: /Option/Edit/5
+        // GET: Option/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TriviaOption triviaoption = await db.TriviaOptions.FindAsync(id);
-            if (triviaoption == null)
+            TriviaOption triviaOption = await db.TriviaOptions.FindAsync(id);
+            if (triviaOption == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.QuestionId = new SelectList(db.TriviaQuestions, "Id", "Title", triviaoption.QuestionId);
-            return View(triviaoption);
+            ViewBag.QuestionId = new SelectList(db.TriviaQuestions, "Id", "Title", triviaOption.QuestionId);
+            return View(triviaOption);
         }
 
-        // POST: /Option/Edit/5
+        // POST: Option/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include="Id,QuestionId,Title,IsCorrect")] TriviaOption triviaoption)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,QuestionId,Title,IsCorrect")] TriviaOption triviaOption)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(triviaoption).State = EntityState.Modified;
+                db.Entry(triviaOption).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.QuestionId = new SelectList(db.TriviaQuestions, "Id", "Title", triviaoption.QuestionId);
-            return View(triviaoption);
+            ViewBag.QuestionId = new SelectList(db.TriviaQuestions, "Id", "Title", triviaOption.QuestionId);
+            return View(triviaOption);
         }
 
-        // GET: /Option/Delete/5
+        // GET: Option/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TriviaOption triviaoption = await db.TriviaOptions.FindAsync(id);
-            if (triviaoption == null)
+            TriviaOption triviaOption = await db.TriviaOptions.FindAsync(id);
+            if (triviaOption == null)
             {
                 return HttpNotFound();
             }
-            return View(triviaoption);
+            return View(triviaOption);
         }
 
-        // POST: /Option/Delete/5
+        // POST: Option/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            TriviaOption triviaoption = await db.TriviaOptions.FindAsync(id);
-            db.TriviaOptions.Remove(triviaoption);
+            TriviaOption triviaOption = await db.TriviaOptions.FindAsync(id);
+            db.TriviaOptions.Remove(triviaOption);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
