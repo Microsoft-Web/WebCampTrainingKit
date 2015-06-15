@@ -21,18 +21,11 @@ In this demo, you will see how to:
 
 - [Ember](http://emberjs.com/)
 - [Handlebars](http://handlebarsjs.com/)
-- [CSS3](http://www.w3schools.com/css3/)
+- [CSS3](http://www.w3schools.com/css/css3_intro.asp)
 
 <a name="setup" />
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
-
-1. Follow the steps detailed in [this link](http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds) to setup local sources for the following directories:
-
-	1. **C:\Program Files (x86)\Microsoft Web Tools\Packages**
-	1. **C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Packages**
-
-	![NuGet Sources](images/nuget-sources.png?raw=true)
 
 1. Open Visual Studio 2013.
 1. Open the **GeekQuiz.sln** solution located under **source\begin**.
@@ -41,7 +34,7 @@ Follow these steps to setup your environment for the demo.
 	> **Note:** Remember the information you provided as you will be using it during the demo.
 
 1. In Visual Studio, close all open files.
-1. Make sure that you have an Internet connection, as this demo requires it to the download NuGet packages.
+1. Make sure that you have an Internet connection, as this demo requires it to download the NuGet packages.
 
 <a name="Demo" />
 ## Demo ##
@@ -58,16 +51,16 @@ This demo is composed of the following segments:
 	![Manage NuGet Packages](images/managenugetpackages.png?raw=true)
 
 1. Select **Online** on the left panel.
-1. Search for "ember" (without the quotes). A list of results similar to the one shown below will be displayed.
+1. Search for "emberjs" (without the quotes). A list of results similar to the one shown below will be displayed.
 
 	![Search Ember](images/searchember.png?raw=true)
 
-1. Install the package with Id **Ember**.
+1. Install the package with Id **EmberJS**.
 
 	![Install Ember](images/installember.png?raw=true)
 
 1. Click **Close** to close the dialog.
-1. Press **CTRL + ,** and search for "index.cs" (without the quotes).
+1. Press **CTRL + ,** and search for "index.cshtml" (without the quotes).
 
 	![index.cshtml](images/indexcshtml.png?raw=true)
 
@@ -85,7 +78,8 @@ This demo is composed of the following segments:
 	````JavaScript
 	@section Scripts {
     <script src="@Url.Content("~/Scripts/handlebars.js")"></script>
-    <script src="@Url.Content("~/Scripts/ember-1.0.0.js")"></script>
+    <script src="@Url.Content("~/Scripts/ember-1.12.1/ember-template-compiler.js")"></script>
+    <script src="@Url.Content("~/Scripts/ember-1.12.1/ember.js")"></script>
     <script>
         var App = Ember.Application.create({ rootElement: '#bodyContainer' });
 
