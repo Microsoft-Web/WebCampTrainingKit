@@ -19,8 +19,8 @@ In this demo, you will see how to:
 ### Key Technologies ###
 
 - [Apps for Office (Excel)][1]
-- [Excel][3]
-- [ASP.NET Web API][2]
+- [Excel][2]
+- [ASP.NET Web API][3]
 
 [1]: http://msdn.microsoft.com/library/office/apps/jj220082(v=office.15)
 [2]: http://office.microsoft.com/en-us/excel/
@@ -30,13 +30,7 @@ In this demo, you will see how to:
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
-1. Follow the steps detailed in [this link](http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds) to setup local sources for the following directories:
-
-	1. **C:\Program Files (x86)\Microsoft Web Tools\Packages**
-	1. **C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Packages**
-
-	![NuGet Sources](images/nuget-sources.png?raw=true)
-
+1. Install the [Office Developer Tools for Visual Studio 2013](http://aka.ms/officedevtoolsforvs2013)
 1. Open Visual Studio 2013.
 1. Open the **GeekQuiz.sln** solution located under **source\end**.
 1. Press **F5** to start the application.

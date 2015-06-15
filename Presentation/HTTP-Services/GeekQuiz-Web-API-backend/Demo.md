@@ -19,21 +19,12 @@ In this demo, you will see how to:
 <a name="technologies" />
 ### Key Technologies ###
 
-- [ASP.NET Web API][1]
-
-[1]: www.asp.net/web-api
+- [ASP.NET Web API](http://www.asp.net/web-api)
 
 <a name="Setup" />
 ### Setup and Configuration ###
 
 In order to execute this demo you need to set up your environment.
-
-1. Follow the steps detailed in [this link](http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds) to setup local sources for the following directories:
-
-	1. **C:\Program Files (x86)\Microsoft Web Tools\Packages**
-	1. **C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Packages**
-
-	![Nuget Sources](images/nuget-sources.png?raw=true)
 
 1. Open Visual Studio 2013.
 1. Open the **GeekQuiz.sln** solution located under **source\begin**.
