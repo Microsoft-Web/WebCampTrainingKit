@@ -64,7 +64,6 @@
     <Content Include="js\converters.js" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
-    <None Include="GeekQuiz_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
