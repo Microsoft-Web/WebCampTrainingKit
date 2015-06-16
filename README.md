@@ -21,11 +21,6 @@
       </div>
       <div class="panel-body">
         <table class="table table-bordered table-hover">
-          <colgroup>
-            <col>
-            <col>
-            <col>
-          </colgroup>
           <tr>
             <th>Session</th>
             <th>Time (min)</th>
@@ -113,11 +108,6 @@
       </div>
       <div class="panel-body">
         <table class="table table-bordered table-hover">
-          <colgroup>
-            <col>
-            <col>
-            <col>
-          </colgroup>
           <tr>
             <th>Name</th>
             <th>Time (min)</th>
@@ -157,11 +147,6 @@
       </div>
       <div class="panel-body">
         <table class="table table-bordered table-hover">
-          <colgroup>
-            <col>
-            <col>
-            <col>
-          </colgroup>
           <tr>
             <th>Session</th>
             <th>Description</th>
