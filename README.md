@@ -1,5 +1,4 @@
-<html lang="en">
-
+﻿<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +6,6 @@
   <title>AzureReadiness: Web Camp</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <div class="container">
     <div class="jumbotron">
@@ -109,7 +107,6 @@
         </table>
       </div>
     </div>
-
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Hands on Labs</h3>
@@ -154,7 +151,6 @@
         </table>
       </div>
     </div>
-
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Full presentation list</h3>
@@ -189,7 +185,7 @@
           </tr>
           <tr>
             <td><a href='Presentation/Build-and-deploy-ASPNET/Build-and-deploy-ASPNET.pptx'>Building Web Applications using the latest ASP.NET technologies</a></td>
-            <td>This session will include a quick introduction to the MVC pattern, then build and deploy a website using ASP.NET MVC, Entity Framework Code First, and Microsoft Azure Web Sites. We'll continue building this demo scenario (the GeekQuiz app
+            <td>This session will include a quick introduction to the MVC pattern, then build and deploy a website using ASP.NET MVC, Entity Framework Code First, and Microsoft Azure Web Apps. We'll continue building this demo scenario (the GeekQuiz app
               from the BUILD 2013 keynote) throughout the day.</td>
             <td><a href='Presentation/Build-and-deploy-ASPNET/GeekQuiz-Build-and-deploy-ASP/Demo.md'>Building and deploying an ASP.NET application</a></td>
           </tr>
@@ -238,5 +234,4 @@
       </div>
     </div>
 </body>
-
 </html>
