@@ -27,6 +27,7 @@ namespace GeekQuiz
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/Flip.css"));
+
         }
     }
 }

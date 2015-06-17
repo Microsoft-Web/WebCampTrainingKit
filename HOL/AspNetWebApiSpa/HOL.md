@@ -28,9 +28,9 @@ In this hands-on lab, you will learn how to:
 
 The following is required to complete this hands-on lab:
 
-- [Visual Studio Express 2013 for Web][1] or greater
+- [Visual Studio Community 2013][1] or greater
 
-[1]: http://www.microsoft.com/visualstudio/
+[1]: https://www.visualstudio.com/products/visual-studio-community-vs
 
 <a name="Setup" />
 ### Setup ###
@@ -74,7 +74,7 @@ The Web API framework is part of the ASP.NET Stack and is designed to make it ea
 
 In this task you will start creating a new ASP.NET MVC project with support for ASP.NET Web API based on the **One ASP.NET** project type that comes with Visual Studio. **One ASP.NET** unifies all ASP.NET technologies and gives you the option to mix and match them as desired. You will then add the Entity Framework's model classes and the database initializator to insert the quiz questions.
 
-1. Open **Visual Studio Express 2013 for Web** and select **File | New Project...** to start a new solution.
+1. Open **Visual Studio Community 2013** and select **File | New Project...** to start a new solution.
 
 	![Creating a New Project](Images/creating-a-new-project.png?raw=true "Creating a New Project")
 
@@ -482,9 +482,9 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
 
 > **Note:** For more information about AngularJS, refer to [http://angularjs.org/](http://angularjs.org/).
 
-1. Open **Visual Studio Express 2013 for Web** and open the **GeekQuiz.sln** solution located in the **Source/Ex2-CreatingASPAInterface/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
+1. Open **Visual Studio Community 2013** and open the **GeekQuiz.sln** solution located in the **Source/Ex2-CreatingASPAInterface/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
 
-1. Open the **Package Manager Console** from **Tools** | **Library Package Manager**. Type the following command to install the **AngularJS.Core** NuGet package.
+1. Open the **Package Manager Console** from **Tools** | **NuGet Package Manager**. Type the following command to install the **AngularJS.Core** NuGet package.
 
 	<!--mark:1-->
 	````PowerShell
@@ -570,7 +570,7 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
 			$scope.answered = true;
 
 			$http.post('/api/trivia', { 'questionId': option.questionId, 'optionId': option.id }).success(function (data, status, headers, config) {
-				$scope.correctAnswer = (data === "true");
+				$scope.correctAnswer = (data === true);
 				$scope.working = false;
 			}).error(function (data, status, headers, config) {
 				$scope.title = "Oops... something went wrong";

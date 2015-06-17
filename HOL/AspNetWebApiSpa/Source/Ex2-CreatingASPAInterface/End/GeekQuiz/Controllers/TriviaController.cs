@@ -4,49 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Data.Entity;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Web.Http.Description;
-using GeekQuiz.Models;
 
 namespace GeekQuiz.Controllers
 {
+    using System.Data.Entity;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using System.Web.Http.Description;
+    using GeekQuiz.Models;
+
     [Authorize]
     public class TriviaController : ApiController
     {
         private TriviaContext db = new TriviaContext();
-
-        // GET api/Trivia
-        [ResponseType(typeof(TriviaQuestion))]
-        public async Task<IHttpActionResult> Get()
-        {
-            var userId = User.Identity.Name;
-
-            TriviaQuestion nextQuestion = await this.NextQuestionAsync(userId);
-
-            if (nextQuestion == null)
-            {
-                return this.NotFound();
-            }
-
-            return this.Ok(nextQuestion);
-        }
-
-        // POST api/Trivia
-        [ResponseType(typeof(TriviaAnswer))]
-        public async Task<IHttpActionResult> Post(TriviaAnswer answer)
-        {
-            if (!ModelState.IsValid)
-            {
-                return this.BadRequest(this.ModelState);
-            }
-
-            answer.UserId = User.Identity.Name;
-
-            var isCorrect = await this.StoreAsync(answer);
-            return this.Ok<bool>(isCorrect);
-        }
 
         protected override void Dispose(bool disposing)
         {
@@ -74,6 +44,22 @@ namespace GeekQuiz.Controllers
             return await this.db.TriviaQuestions.FindAsync(CancellationToken.None, nextQuestionId);
         }
 
+        // GET api/Trivia
+        [ResponseType(typeof(TriviaQuestion))]
+        public async Task<IHttpActionResult> Get()
+        {
+            var userId = User.Identity.Name;
+
+            TriviaQuestion nextQuestion = await this.NextQuestionAsync(userId);
+
+            if (nextQuestion == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.Ok(nextQuestion);
+        }
+
         private async Task<bool> StoreAsync(TriviaAnswer answer)
         {
             this.db.TriviaAnswers.Add(answer);
@@ -84,5 +70,21 @@ namespace GeekQuiz.Controllers
 
             return selectedOption.IsCorrect;
         }
+
+        // POST api/Trivia
+        [ResponseType(typeof(TriviaAnswer))]
+        public async Task<IHttpActionResult> Post(TriviaAnswer answer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState);
+            }
+
+            answer.UserId = User.Identity.Name;
+
+            var isCorrect = await this.StoreAsync(answer);
+            return this.Ok<bool>(isCorrect);
+        }
+
     }
 }
