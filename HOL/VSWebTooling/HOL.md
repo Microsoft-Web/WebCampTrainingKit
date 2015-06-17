@@ -27,11 +27,11 @@ In this hands-on lab, you will learn how to:
 
 The following is required to complete this hands-on lab:
 
-- [Microsoft Visual Studio Professional 2013][1] or greater
+- [Visual Studio Community 2013 or greater][1]
 - [Web Essentials 2013][2]
 - [Google Chrome][3]
 
-[1]: http://www.microsoft.com/visualstudio/
+[1]: https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx
 [2]: http://vswebessentials.com/
 [3]: http://www.google.com/chrome/
 
@@ -62,7 +62,7 @@ This hands-on lab includes the following exercises:
 1. [Taking Advantage of Code Snippets and IntelliSense](#Exercise2)
 
 
-Estimated time to complete this lab: **[TBC] minutes**
+Estimated time to complete this lab: **45 minutes**
 
 >**Note:** When you first start Visual Studio, you must select one of the predefined settings collections. Each predefined collection is designed to match a particular development style and determines window layouts, editor behavior, IntelliSense code snippets, and dialog box options. The procedures in this lab describe the actions necessary to accomplish a given task in Visual Studio when using the **General Development Settings** collection. If you choose a different settings collection for your development environment, there may be differences in the steps that you should take into account.
 
@@ -227,7 +227,7 @@ In this task, you will use the Browser Link's **Inspect Mode** feature to detect
 
 	_Opening file Site.css_
 
-1. Press **CTRL** + **F** and type **.flip-containter .front** to find the CSS selector. 
+1. Press **CTRL** + **F** and type **.flip-container .front** to find the CSS selector. 
 
 1. Click the light blue square in the border property of the class to open the Color Picker.
 
@@ -378,11 +378,11 @@ The first new feature you will see in this task is called **Dynamic IntelliSense
 
 In this task, you will create a new HTML form element which contains a label and an input field. Then you will add a **for** attribute to the label to bind it to the input, and you will see IntelliSense suggestions based on the ids of the inputs in scope.
 
-1. Open **Visual Studio Express 2013 for Web** and the **Begin.sln** solution located in the **Source/Ex2-TakingAdvantageofCodeSnippetsandIntelliSense/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
+1. Open **Visual Studio** and the **Begin.sln** solution located in the **Source/Ex2-TakingAdvantageofCodeSnippetsandIntelliSense/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
 
 1. In **Solution Explorer**, open the **Index.cshtml** file located in the **Views** | **Home** folder.
 
-1. Add the following form inside the **\<section\>** element. 
+1. Add the following form inside the **div element with container as class value**.
 
 	(Code Snippet - _VisualStudio2013WebTooling_ - _Ex2_ - _Form_)
 
