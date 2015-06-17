@@ -28,9 +28,9 @@ In this hands-on lab, you will learn how to:
 
 The following is required to complete this hands-on lab:
 
-- [Visual Studio Express 2013 for Web][1] or greater
+- [Visual Studio Community 2013][1] or greater
 
-[1]: http://www.microsoft.com/visualstudio/
+[1]: https://www.visualstudio.com/products/visual-studio-community-vs
 
 <a name="Setup" />
 ### Setup ###
@@ -76,7 +76,7 @@ In this exercise, you will configure the **Geek Quiz** application to use Signal
 
 In this task, you will go through the application and verify how the statistics page is shown and how you can improve the way the information is updated.
 
-1. Open **Visual Studio Express 2013 for Web** and open the **GeekQuiz.sln** solution located in the **Source\Ex1-WorkingWithRealTimeData\Begin** folder.
+1. Open **Visual Studio** and open the **GeekQuiz.sln** solution located in the **Source\Ex1-WorkingWithRealTimeData\Begin** folder.
 
 1. Press **F5** to run the solution. The **Log in** page should appear in the browser.
 
@@ -129,7 +129,7 @@ In this task, you will go through the application and verify how the statistics 
 
 In this task, you will add SignalR to the solution and send updates to the clients automatically when a new answer is sent to the server. 
 
-1. From the **Tools** menu in Visual Studio, select **Library Package Manager**, and then click **Package Manager Console**. 
+1. From the **Tools** menu in Visual Studio, select **NuGet Package Manager**, and then click **Package Manager Console**. 
 
 1. In the **Package Manager Console** window, execute the following command:
 
@@ -141,7 +141,7 @@ In this task, you will add SignalR to the solution and send updates to the clien
 
 	_SignalR package installation_
 
-	> **Note:** When installing **SignalR** NuGet packages version 2.0.2 from a brand new MVC 5 application, you will need to manually update **OWIN** packages to version 2.0.1 (or higher) before installing SignalR. To do this, you can execute the following script in the **Package Manager Console**:
+	> **Note:** When installing **SignalR** NuGet packages version 2.2.0 from a brand new MVC 5 application, you will need to manually update **OWIN** packages to version 2.1.0 (or higher) before installing SignalR. To do this, you can execute the following script in the **Package Manager Console**:
 	
 	>	````NuGet
 	>	get-package | where-object { $_.Id -like "Microsoft.Owin*"} | Update-Package
@@ -261,7 +261,7 @@ In this task, you will add SignalR to the solution and send updates to the clien
 	<!--mark: 2-3-->
 	````HTML
 	@section Scripts {
-		@Scripts.Render("~/Scripts/jquery.signalR-2.0.2.min.js");
+		@Scripts.Render("~/Scripts/jquery.signalR-2.2.0.min.js");
 		@Scripts.Render("~/signalr/hubs");
 		...
 	}
@@ -328,11 +328,11 @@ You can solve these issues by using a component called _backplane_, to forward m
 
 There are currently three types of backplanes for SignalR:
 
-- **Windows Azure Service Bus**. Service Bus is a messaging infrastructure that allows components to send loosely coupled messages. 
+- **Azure Service Bus**. Service Bus is a messaging infrastructure that allows components to send loosely coupled messages. 
 - **SQL Server**. The SQL Server backplane writes messages to SQL tables. The backplane uses Service Broker for efficient messaging. However, it also works if Service Broker is not enabled.
 - **Redis**. Redis is an in-memory key-value store. Redis supports a publish/subscribe (“pub/sub”) pattern for sending messages. 
 
-Every message is sent through a message bus. A message bus implements the [IMessageBus](http://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.messaging.imessagebus\(v=vs.100\).aspx) interface, which provides a publish/subscribe abstraction. The backplanes work by replacing the default **IMessageBus** with a bus designed for that backplane.
+Every message is sent through a message bus. A message bus implements the [IMessageBus](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.messaging.imessagebus/) interface, which provides a publish/subscribe abstraction. The backplanes work by replacing the default **IMessageBus** with a bus designed for that backplane.
 
 Each server instance connects to the backplane through the bus. When a message is sent, it goes to the backplane, and the backplane sends it to every server. When a server receives a message from the backplane, it stores the message in its local cache. The server then delivers messages to clients from its local cache.
 
@@ -446,7 +446,7 @@ In this task, you will create a database that will serve as a backplane for the 
 	
 In this task, you will configure **Geek Quiz** to connect to the SQL Server backplane. You will first add the **SignalR.SqlServer** NuGet package and set the connection string to your backplane database.
 
-1. Open the **Package Manager Console** from **Tools** | **Library Package Manager**. Make sure that **GeekQuiz** project is selected in the **Default project** drop-down list. Type the following command to install the **Microsoft.AspNet.SignalR.SqlServer** NuGet package. 
+1. Open the **Package Manager Console** from **Tools** | **NuGet Package Manager**. Make sure that **GeekQuiz** project is selected in the **Default project** drop-down list. Type the following command to install the **Microsoft.AspNet.SignalR.SqlServer** NuGet package. 
 
 	<!--mark:1-->
 	````PowerShell
@@ -472,9 +472,18 @@ In this task, you will configure **Geek Quiz** to connect to the SQL Server back
 	}
 	````
 
+1. Make sure to update the web.config. Replace **\<YOUR-DATABASE\>** with your database name used in preview step. Repeat this step for the **GeekQuiz2** project.
+
+	<!-- mark:5-6 -->
+	````XML
+	<connectionStrings>
+		<add name="DefaultConnection" connectionString="Data Source=(LocalDb)\v11.0;Initial Catalog=<YOUR-DATABASE>;Integrated Security=True" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+	````
+
 1. Now that both projects are configured to use the SQL Server backplane, press **F5** to run them simultaneously.
 
-1.  Again, **Visual Studio** will launch two instances of **Geek Quiz** in different ports. Pin one of the browsers on the left and the other on the right of your screen and log in with your credentials. Keep the Trivia page on the left and go to **Statistics** pagein the right browser.
+1.  Again, **Visual Studio** will launch two instances of **Geek Quiz** in different ports. Pin one of the browsers on the left and the other on the right of your screen and log in with your credentials. Keep the Trivia page on the left and go to **Statistics** page in the right browser.
 
 1. Start answering questions in the left browser. This time, the **Statistics** page is updated thanks to the backplane. Switch between applications (**Statistics** is now on the left, and **Trivia** is on the right) and repeat the test to validate that it is working for both instances. The backplane serves as a _shared cache_ of messages for each connected server, and each server will store the messages in their own local cache to distribute to connected clients.
 
