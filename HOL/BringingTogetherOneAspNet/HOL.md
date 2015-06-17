@@ -25,11 +25,9 @@ In this hands-on lab, you will learn how to:
 
 The following is required to complete this hands-on lab:
 
-- [Visual Studio Express 2013 for Web][1] or greater
-- [Visual Studio 2013 Update 1][2]
+- [Visual Studio Community 2013][1] or greater
 
-[1]: http://www.microsoft.com/visualstudio/
-[2]: http://go.microsoft.com/fwlink/?LinkId=301714
+[1]: https://www.visualstudio.com/products/visual-studio-community-vs
 
 <a name="Setup" />
 ### Setup ###
@@ -72,7 +70,7 @@ In this exercise you will create a new Web Forms site in Visual Studio 2013 usin
 
 In this task you will start creating a new Web site in Visual Studio based on the **One ASP.NET** project type. **One ASP.NET** unifies all ASP.NET technologies and gives you the option to mix and match them as desired. You will then recognize the different components of Web Forms, MVC and Web API that live side by side within your application.
 
-1. Open **Visual Studio Express 2013 for Web** and select **File | New Project...** to start a new solution.
+1. Open **Visual Studio Community 2013** and select **File | New Project...** to start a new solution.
 
 	![Creating a New Project](Images/creating-a-new-project.png?raw=true)
 
@@ -207,7 +205,7 @@ The Entity Framework Code First modeling workflow allows you to use your own dom
 
 You will now define a **Person** class, which will be the model used by the scaffolding process to create the MVC controller and the views. You will start by creating a **Person** model class, and the CRUD operations in the controller will be automatically created using scaffolding features.
 
-1. Open **Visual Studio Express 2013 for Web** and the **MyHybridSite.sln** solution located in the **Source/Ex2-MvcScaffolding/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
+1. Open **Visual Studio Community 2013** and the **MyHybridSite.sln** solution located in the **Source/Ex2-MvcScaffolding/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
 
 1. In **Solution Explorer**, right-click the **Models** folder of the **MyHybridSite** project and select **Add | Class...**.
 
@@ -264,7 +262,7 @@ Now that the **Person** model is created, you will use ASP.NET MVC scaffolding w
 
 	_Adding an MVC controller with scaffolding_
 
-1. Under **Data context class**, click **New data context...**. 
+1. Under **Data context class**, click **New data context** button. 
 
 	![Creating a new data context](Images/creating-a-new-data-context.png?raw=true)
 
@@ -371,7 +369,7 @@ In this exercise, you will use ASP.NET Scaffolding again to generate a Web API c
 
 In this task you will create a new **Web API Controller** that will expose the person data in a machine-consumable format like JSON.
 
-1. If not already opened, open **Visual Studio Express 2013 for Web** and open the **MyHybridSite.sln** solution located in the **Source/Ex3-WebAPI/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
+1. If not already opened, open **Visual Studio Community 2013** and open the **MyHybridSite.sln** solution located in the **Source/Ex3-WebAPI/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
 
 	>**Note:** If you start with the Begin solution from Exercise 3, press **CTRL + SHIFT + B** to build the solution.
 
