@@ -84,38 +84,45 @@ This demo is composed of the following segments:
 	    <script src="@Url.Content("~/Scripts/ember-1.12.1/ember.js")"></script>
 	    <script>
 	        var App = Ember.Application.create({ rootElement: '#bodyContainer' });
-	
+
 	        App.Question = Ember.Object.extend({ title: "loading question...", options: [], answered: false });
-	
-	        App.IndexController = Ember.ObjectController.extend({
+
+	        App.IndexController = Ember.Controller.extend({
 	            question: null,
 	            answer: null,
-	
+
 	            init: function () {
 	                this._super();
-	                this.nextQuestion();
+	                this.showNewQuestion();
 	            },
-	
-	            nextQuestion: function () {
+
+	            showNewQuestion: function () {
 	                var controller = this;
 	                var question = App.Question.create();
-	                this.set('question', question);
-	
+	                controller.set('question', question);
+
 	                jQuery.getJSON("/api/trivia", function (response) {
 	                    question.setProperties(response);
 	                }).fail(function () { question.set('title', "Oops... something went wrong") });
 	            },
-	
-	            sendAnswer: function (question, option) {
-	                var controller = this;
-	
-	                // prevent multiple posts for the same question
-	                jQuery('.front button').attr('disabled', 'disabled');
-	
-	                jQuery.post('/api/trivia', { 'questionId': question.id, 'optionId': option.id }, function (response) {
-	                    controller.set('answer', response ? 'correct' : 'incorrect');
-	                    controller.set('question.answered', true);
-	                });
+
+	            actions: {
+	                nextQuestion: function () {
+	                    var controller = this;
+	                    controller.showNewQuestion();
+	                },
+
+	                sendAnswer: function (question, option) {
+	                    var controller = this;
+
+	                    // prevent multiple posts for the same question
+	                    jQuery('.front button').attr('disabled', 'disabled');
+
+	                    jQuery.post('/api/trivia', { 'questionId': question.id, 'optionId': option.id }, function (response) {
+	                        controller.set('answer', response ? 'correct' : 'incorrect');
+	                        controller.set('question.answered', true);
+	                    });
+	                }
 	            }
 	        });
 	    </script>
