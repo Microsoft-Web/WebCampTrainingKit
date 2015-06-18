@@ -76,7 +76,7 @@ This demo is composed of the following segments:
 
 1. Open the [Azure Preview Portal](https://portal.azure.com/) and log in with your credentials.
 
-1. Select the **BROWSE** tab and filter by **Web Apps**.
+1. Select the **BROWSE ALL** tab and filter by **Web Apps**.
 
 	![filtering Web apps](images/web-apps.png?raw=true "filtering Web apps")
 
@@ -303,7 +303,7 @@ This demo is composed of the following segments:
 
 By completing this demo you should have:
 
-1. Configured auto-scaling for a Web App using the _Microsoft Azure portal_
+1. Configured auto-scaling for a website using the _Microsoft Azure portal_
 1. Created a load test project in _Visual Studio_
 1. Used _Azure Storage_ to scale the static content of a web site
 

@@ -49,7 +49,7 @@ This demo is composed of the following segments:
 <a name="Segment1" />
 ### Creating the project ###
 
-1. Open the **File / New Project** dialog and show the options in the **Visual C# / Web** section.
+1. Open the **File / New / Project** dialog and show the options in the **Visual C# / Web** section.
 
 	![Simplified File/New experience with a single ASP.NET Web application template](images/file-new-experience-single-aspnet-web-application-template.png?raw=true "Simplified File/New experience with a single ASP.NET Web application template")
 

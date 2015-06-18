@@ -5,7 +5,7 @@
 <a name="Overview" />
 ## Overview ##
 
-In this demo you go through the steps of enabling Entity Framework migrations to GeekQuiz database, changing the model and understanding how those changes are reflected in the database. Additionally, you will deploy to Azure using Git and perform a rollback to the previous deployment from Microsoft Azure management portal.
+In this demo you go through the steps of enabling Entity Framework migrations to GeekQuiz database, changing the model and understanding how those changes are reflected in the database. Additionally, you will deploy to Azure using Git and perform a rollback to the previous deployment from Azure Preview Portal.
 
 <a id="goals" />
 ### Goals ###
@@ -15,7 +15,7 @@ In this demo, you will see how to:
 1. Enable Entity Framework migrations on an existing database
 1. Update the object model and database accordingly using Entity Framework migrations
 1. Deploy to Microsoft Azure using Git
-1. Rollback to a previous deployment using the Azure Management portal
+1. Rollback to a previous deployment using the Azure Preview Portal
 
 <a name="technologies" />
 ### Key Technologies ###
@@ -28,16 +28,25 @@ In this demo, you will see how to:
 Follow these steps to setup your environment for the demo.
 
 1. Copy the contents of the **source\begin** folder to a separate directory. Both demo segments start from the same begin solution, so you will need to remember the directory to where you copied the files for the second segment.
-1. Configure an Azure SQL Database following the steps provided in [this link](https://azure.microsoft.com/documentation/articles/sql-database-create-configure/). Copy the ADO.NET connection string value.
-1. Create a new Web App in Azure portal.
-1. In the **Configure** tab of your new Web App, update the connection string key for the DB to _DefaultConnection_ and value copied from previous step. Save the changes.
+1. Configure an Azure SQL Database following the steps provided in [this link](https://azure.microsoft.com/en-gb/documentation/articles/sql-database-get-started/). Copy the ADO.NET connection string value.
+1. Create a new **Web App** in Azure Preview Portal.
 
-	![Default Connection](Images/default-connection.png?raw=true)
+	![Create Web App](Images/createwebapp.png?raw=true "Create Web App")
+
+	_Create Web App_
+
+1. In the **Application settings** of your new Web App, update the connection string key for the DB to _DefaultConnection_ and value copied from previous step. Save the changes.
+
+	![Default Connection](Images/default-connection.png?raw=true "Default Connection")
+
+	_Default connection_
+
 1. Configure the **GeekQuiz** web site to support [Publishing with Git](https://azure.microsoft.com/documentation/articles/web-sites-publish-source-control/) and push the duplicate of the begin solution to the remote repository.
-1. Leave the management portal in a separate browser window/tab.
+1. Leave the Azure Preview Portal in a separate browser window/tab.
 1. Navigate to the created site and register an account.
 1. Open Visual Studio 2013.
 1. Open the **GeekQuiz.sln** solution located under **source\begin**.
+1. Run the solution and register a new user in order to generate the SQL database.
 1. In Visual Studio, close all open files.
 1. Make sure that you have an Internet connection, as this demo requires it to push to a remote git repository.
 1. Open the **Package Manager Console** and dock it in the bottom panel.
@@ -45,7 +54,10 @@ Follow these steps to setup your environment for the demo.
 1. Open the **Solution Explorer** and dock it in the right panel.
 
 After completing the aforementioned steps, the resulting Visual Studio layout should be similar to the one shown in the following figure.
-	![Visual Studio Layout](Images/vslayout.png?raw=true)
+	
+![Visual Studio Layout](Images/vslayout.png?raw=true "Visual Studio Layout")
+
+_Visual Studio Layout_ 
 
 <a name="Demo" />
 ## Demo ##
@@ -190,7 +202,7 @@ This demo is composed of the following segments:
 
 	_Showing the new constrain_
 
-<a name="segment1" />
+<a name="segment2" />
 ### Deployment Rollback ###
 
 1. Open the **GeekQuiz.sln** solution that you copied to a separate folder during the setup phase.
@@ -275,7 +287,7 @@ This demo is composed of the following segments:
 
 	> **Speaking point:** This clearly point to the last refactoring. Let's rollback to the previous working version.
 
-1. Do not close the GeekQuiz site, and switch to the browser window/tab that has the management portal open.
+1. Do not close the GeekQuiz site, and switch to the browser window/tab that has the Azure Preview Portal open.
 
 1. Open the web site and select **Active Deployment**. Both commits will be listed in the deployment history.
 
@@ -304,6 +316,6 @@ By completing this demo you should have:
 
 1. Used Entity Framework migrations to update GeekQuiz database to reflect the changes in the object model
 1. Deployed a change (bug) to Microsoft Azure using Git
-1. Rollback to the last working deployment using the Azure Management portal
+1. Rollback to the last working deployment using the Azure Preview Portal
 
 ---

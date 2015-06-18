@@ -74,51 +74,54 @@ This demo is composed of the following segments:
 
 1. Add the following code snippet at the bottom of the file:
 
+	> **Note:** When you add EmberJS and other script libraries to your Visual Studio project, the Package Manager might install a version of the library that is more recent than the version shown in this topic. Make sure that the script reference in your code matches the version of the script library installed in your project.
+
 	<!-- mark:1-41 -->
 	````JavaScript
 	@section Scripts {
-    <script src="@Url.Content("~/Scripts/handlebars.js")"></script>
-    <script src="@Url.Content("~/Scripts/ember-1.12.1/ember-template-compiler.js")"></script>
-    <script src="@Url.Content("~/Scripts/ember-1.12.1/ember.js")"></script>
-    <script>
-        var App = Ember.Application.create({ rootElement: '#bodyContainer' });
-
-        App.Question = Ember.Object.extend({ title: "loading question...", options: [], answered: false });
-
-        App.IndexController = Ember.ObjectController.extend({
-            question: null,
-            answer: null,
-
-            init: function () {
-                this._super();
-                this.nextQuestion();
-            },
-
-            nextQuestion: function () {
-                var controller = this;
-                var question = App.Question.create();
-                this.set('question', question);
-
-                jQuery.getJSON("/api/trivia", function (response) {
-                    question.setProperties(response);
-                }).fail(function () { question.set('title', "Oops... something went wrong") });
-            },
-
-            sendAnswer: function (question, option) {
-                var controller = this;
-
-                // prevent multiple posts for the same question
-                jQuery('.front button').attr('disabled', 'disabled');
-
-                jQuery.post('/api/trivia', { 'questionId': question.id, 'optionId': option.id }, function (response) {
-                    controller.set('answer', response ? 'correct' : 'incorrect');
-                    controller.set('question.answered', true);
-                });
-            }
-        });
-    </script>
-}
+	    <script src="@Url.Content("~/Scripts/handlebars.js")"></script>
+	    <script src="@Url.Content("~/Scripts/ember-1.12.1/ember-template-compiler.js")"></script>
+	    <script src="@Url.Content("~/Scripts/ember-1.12.1/ember.js")"></script>
+	    <script>
+	        var App = Ember.Application.create({ rootElement: '#bodyContainer' });
+	
+	        App.Question = Ember.Object.extend({ title: "loading question...", options: [], answered: false });
+	
+	        App.IndexController = Ember.ObjectController.extend({
+	            question: null,
+	            answer: null,
+	
+	            init: function () {
+	                this._super();
+	                this.nextQuestion();
+	            },
+	
+	            nextQuestion: function () {
+	                var controller = this;
+	                var question = App.Question.create();
+	                this.set('question', question);
+	
+	                jQuery.getJSON("/api/trivia", function (response) {
+	                    question.setProperties(response);
+	                }).fail(function () { question.set('title', "Oops... something went wrong") });
+	            },
+	
+	            sendAnswer: function (question, option) {
+	                var controller = this;
+	
+	                // prevent multiple posts for the same question
+	                jQuery('.front button').attr('disabled', 'disabled');
+	
+	                jQuery.post('/api/trivia', { 'questionId': question.id, 'optionId': option.id }, function (response) {
+	                    controller.set('answer', response ? 'correct' : 'incorrect');
+	                    controller.set('question.answered', true);
+	                });
+	            }
+	        });
+	    </script>
+	}
 	````
+	
 1. Add the following code snippet between the `<div id=bodyContainer"></div>` element and the `Scripts` section:
 
 	<!-- mark:1-20 -->

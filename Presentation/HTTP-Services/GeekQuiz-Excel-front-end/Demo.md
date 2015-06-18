@@ -22,7 +22,7 @@ In this demo, you will see how to:
 - [Excel][2]
 - [ASP.NET Web API][3]
 
-[1]: http://msdn.microsoft.com/library/office/apps/jj220082(v=office.15)
+[1]: https://msdn.microsoft.com/en-us/library/office/jj220060.aspx
 [2]: http://office.microsoft.com/en-us/excel/
 [3]: http://www.asp.net/web-api
 
@@ -46,9 +46,11 @@ Follow these steps to setup your environment for the demo.
 	_Configuring the start action for the web site_
 
 1. Save the settings.
-1. Click the **GeekQuiz.Office** project, open the properties window and set the **Start Action** to **StatisticsDev.xlsx**.
+1. Click the **GeekQuiz.Office** project, open the properties window and set the **Start Document** to **StatisticsDev.xlsx**.
 
-	![Start Action](images/start-action.png?raw=true)
+	![_Setting Start Document](images/start-action.png?raw=true "_Setting Start Document")
+
+	_Setting Start Document_
 
 1. In Visual Studio, close all open files.
 1. Install **Microsoft Excel 2013** (if it is not already installed).
@@ -205,6 +207,7 @@ This demo is composed of the following segments:
 	> **Note:** If the Log in page is displayed, provide the credentials you created during the setup steps.
 	
 	> ![Logging in the site](images/logging-in-the-app.png?raw=true "Logging in the site")	
+
 
 1. Answer a few questions.
 
