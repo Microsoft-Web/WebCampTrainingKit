@@ -256,6 +256,8 @@ In this task, you will add SignalR to the solution and send updates to the clien
 
 1. Open the **Statistics.cshtml** page inside the **Views | Home** folder. Locate the **Scripts** section and add the following script references at the beginning of the section.
 
+	> **Note:** When you add SignalR and other script libraries to your Visual Studio project, the Package Manager might install a version of the SignalR script file that is more recent than the version shown in this topic. Make sure that the script reference in your code matches the version of the script library installed in your project.
+
 	(Code Snippet - _RealTimeSignalR - Ex1 - SignalRScriptReferences_)
 	
 	<!--mark: 2-3-->
@@ -266,7 +268,6 @@ In this task, you will add SignalR to the solution and send updates to the clien
 		...
 	}
 ````
-	> **Note:** When you add SignalR and other script libraries to your Visual Studio project, the Package Manager might install a version of the SignalR script file that is more recent than the version shown in this topic. Make sure that the script reference in your code matches the version of the script library installed in your project.
 
 1. Add the following highlighted code to connect the client to the SignalR hub and update the statistics data when a new message is received from the hub.
 
