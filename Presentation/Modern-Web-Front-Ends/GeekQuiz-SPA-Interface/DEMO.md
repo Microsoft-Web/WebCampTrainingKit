@@ -80,8 +80,8 @@ This demo is composed of the following segments:
 	````JavaScript
 	@section Scripts {
 	    <script src="@Url.Content("~/Scripts/handlebars.js")"></script>
-	    <script src="@Url.Content("~/Scripts/ember-1.12.1/ember-template-compiler.js")"></script>
-	    <script src="@Url.Content("~/Scripts/ember-1.12.1/ember.js")"></script>
+	    <script src="@Url.Content("~/Scripts/ember-1.13.0/ember-template-compiler.js")"></script>
+	    <script src="@Url.Content("~/Scripts/ember-1.13.0/ember.js")"></script>
 	    <script>
 	        var App = Ember.Application.create({ rootElement: '#bodyContainer' });
 
@@ -174,7 +174,7 @@ This demo is composed of the following segments:
 
 	![dock](images/dock.png?raw=true)
 
-1. In Visual Studio, add the `{{action "sendAnswer" question option}}` to the `<button>` element inside the for each. The resulting `<button>` element is the one from the following code snippet:
+1. In Visual Studio, add the `{{action "sendAnswer" question option}}` to the `<button>` element inside the *each* loop. The resulting `<button>` element is the one from the following code snippet:
 
 	<!-- mark:1 -->
 	````HTML
