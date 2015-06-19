@@ -1,4 +1,4 @@
-﻿<html lang="en">
+﻿﻿<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -121,12 +121,12 @@
           <tr>
             <td><a href='HOL/VSWebTooling/HOL.md'>Visual Studio 2013 Web Tooling</a></td>
             <td>45</td>
-            <td>This hands-on lab will show you how to use the new HTML, CSS and JavaScript editor features including in Web Essentials.</td>
+            <td>This hands-on lab will show you how to use the new HTML, CSS and JavaScript editor features included in Web Essentials.</td>
           </tr>
           <tr>
             <td><a href='HOL/RealTimeSignalR/HOL.md'>Real-Time SignalR</a></td>
             <td>60</td>
-            <td>This hands-on lab will show you how to add SignalR to your application and send notifications from the server to your connected clients using Hubs. Additionally, you will learn how to scale out your application by using a backplane component when your application is deployed in multiple IIS instances.</td>
+            <td>This hands-on lab will show you how to add SignalR to your application for sending notifications from the server to your connected clients using Hubs. Additionally, you will learn how to scale out your application by using a backplane component when your application is deployed in multiple IIS instances.</td>
           </tr>
           <tr>
             <td><a href='HOL/BringingTogetherOneAspNet/HOL.md'>Bringing Together One ASP.NET</a></td>
@@ -177,7 +177,7 @@
           <tr>
             <td><a href='Presentation/Modern-Web-Front-Ends/Modern-web-front-ends.pptx'>Building web front ends for both desktop and mobile using the latest web standards</a></td>
             <td>In this session, we'll dig into the latest web standards - HTML5, CSS3, JavaScript with jQuery, and responsive web design. We'll see how to apply some of the web dev features in Visual Studio 2013 shown earlier in the day with real world application.
-              This session extends the GeekQuiz applicaiton by building in a single page application (SPA) interface using Ember.js and CSS3 transitions.</td>
+              This session extends the GeekQuiz application by building in a single page application (SPA) interface using Ember.js and CSS3 transitions.</td>
             <td><a href='Presentation/Modern-Web-Front-Ends/GeekQuiz-SPA-Interface/DEMO.md'>Building a SPA Interface using EmberJS</a></td>
           </tr>
           <tr>
@@ -206,7 +206,7 @@
           </tr>
           <tr>
             <td><a href='Presentation/Realtime/Realtime.pptx'>Real-time Communications with SignalR</a></td>
-            <td>ASP.NET SignalR enables real-time communications between your application and each connected client - browsers or otherwise. We'll learn how to write code for SignalR, then use it to add real-time HTML5 charts to the GeekQuiz application,
+            <td>ASP.NET SignalR enables real-time communications between your application and each connected client - browsers or otherwise. We'll learn how to write code for SignalR and then use it to add real-time HTML5 charts to the GeekQuiz application,
               power interactive games and more.</td>
             <td><a href='Presentation/Realtime/GeekQuiz-Real-time-charts/DEMO.md'>Real-time charts in the GeekQuiz application</a></td>
           </tr>
