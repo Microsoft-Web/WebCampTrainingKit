@@ -534,7 +534,7 @@ Now that you have verified that the site is working correctly in the deployment 
 <a name="Exercise3" />
 ### Exercise 3: Performing Deployment Rollback in Production ###
 
-There are scenarios where you do not have a staging slot to perform hot swap between staging and production, for example, if you are working with **Web Apps** running in **Free** or **Shared** mode. In those scenarios, you should test your application in a testing environment –either locally or in a remote site– before deploying to production. However, it is possible that an issue not detected during the testing phase may arise in the production site. In this case, it is important to have a mechanism to easily switch to a previous and more stable version of the application as quickly as possible.
+There are scenarios where you do not have a staging slot to perform hot swap between staging and production, for example, if you are working with **Web Apps** running in **Free** or **Shared** mode. In those scenarios, you should test your application in a testing environment – either locally or in a remote site – before deploying to production. However, it is possible that an issue not detected during the testing phase may arise in the production site. In this case, it is important to have a mechanism to easily switch to a previous and more stable version of the application as quickly as possible.
 
 In **Azure Web Apps**, continuous deployment from source control makes this possible thanks to the **Redeploy** action available in the Azure Preview Portal. Microsoft Azure keeps track of the deployments associated with the commits pushed to the repository and provides an option to redeploy your application using any of your previous deployments, at any time.
 
@@ -543,11 +543,11 @@ In this exercise you will perform a change to the code in the **Geek Quiz** appl
 <a name="Ex3Task1" />
 #### Task 1 – Updating the Geek Quiz Application ####
 
-In this task, you will refactor a small piece of code of the **TriviaController** class to extract part of the logic that retrieves the selected quiz option from the database into a new method.
+In this task, you will refactor a small piece of code from the **TriviaController** class by extracting part of the logic that retrieves the selected quiz option from the database to a new method.
 
 1. Switch to the Visual Studio instance with the **GeekQuiz** solution from the previous exercise.
 
-1. In **Solution Explorer**, open the **TriviaController.cs** file inside the **Controllers** folder.
+1. In **Solution Explorer**, open the **TriviaController.cs** file in the **Controllers** folder.
 
 1. Locate the **StoreAsync** method and select the code highlighted in the following figure.
 
@@ -567,7 +567,7 @@ In this task, you will refactor a small piece of code of the **TriviaController*
 
 	_Specifying the name for the extracted method_
 
-1. The selected code is then extracted into the **MatchesOption** method. The resulting code is shown in the following snippet.
+1. The selected code is then extracted to the **MatchesOption** method. The resulting code is shown in the following snippet.
 
 	<!-- mark:6,11-15 -->
 	````C#
@@ -593,7 +593,7 @@ In this task, you will refactor a small piece of code of the **TriviaController*
 <a name="Ex3Task2" />
 #### Task 2 – Redeploying the Geek Quiz Application ####
 
-You will now push the changes you made in the previous task to the repository, which will trigger a new deployment to the production environment. Then, you will troubleshot an issue using the **F12 development tools** provided by Internet Explorer, and then perform a rollback to the previous deployment from the Azure Preview Portal.
+You will now push the changes you made in the previous task to the repository, which will trigger a new deployment to the production environment. Then, you will troubleshoot an issue using the **F12 development tools** provided by Internet Explorer and then perform a rollback to the previous deployment from the Azure Preview Portal.
 
 1. Open a new **Git Bash** console to deploy the updated application to Azure Web Apps.
 
@@ -610,7 +610,7 @@ You will now push the changes you made in the previous task to the repository, w
 
 	_Pushing refactored code to Microsoft Azure_
 
-1. Open Internet Explorer and navigate to your site (e.g. _http://geek-quiz.azurewebsites.net_). Log in using the previously created credentials.
+1. Open Internet Explorer and navigate to your site (e.g. _http://geek-quiz.azurewebsites.net_). Log in with your user credentials.
 
 1. Press **F12** to launch the development tools, select the **Network** tab and click the **Play** button to start recording.
 
@@ -618,7 +618,7 @@ You will now push the changes you made in the previous task to the repository, w
 
 	_Starting network recording_
 
-1. Select any option of the quiz. You will see that nothing happens.
+1. Select any of the quiz options. You will see that nothing happens.
 
 1. In the **F12** window, the entry corresponding to the POST HTTP request shows an HTTP **500** result.
 
@@ -674,7 +674,7 @@ You will now push the changes you made in the previous task to the repository, w
 <a name="Exercise4" />
 ### Exercise 4: Scaling Using Azure Storage ###
 
-**Blobs** are the simplest way to store large amounts of unstructured text or binary data such as video, audio and images. Moving the static content of your application to Storage, helps to scale your application by serving images or documents directly to the browser.
+**Blobs** are the simplest way to store large amounts of unstructured text or binary data such as video, audio and images. Moving the static content of your application to Storage helps scale your application by serving images or documents directly to the browser.
 
 In this exercise, you will move the static content of your application to a Blob container. Then you will configure your application to add an **ASP.NET URL rewrite rule** in the **Web.config** to redirect your content to the Blob container.
 
@@ -703,7 +703,7 @@ previous task and click
 	
 	_Manage Access Keys button_
 	
-1. In the **Manage Keys** dialog box, copy the **Storage Account Name** and **Primary Access Key** as you will need them in the following exercise. Then, close the dialog box.
+1. Take note of the **Storage Account Name** and **Primary Access Key** in the **Manage Keys** dialog box, as you will need them in the following exercise. Then, close the dialog box.
 
 	![Manage Access Key dialog box](Images/manage-access-key-dialog-box.png?raw=true "Manage Access Key dialog box")
 	
@@ -762,7 +762,7 @@ In this task, you will use the Server Explorer window from Visual Studio to conn
 	
 	_Microsoft Visual Studio warning_
 	
-1. In **Server Explorer**, right-click in the **images** blob container and select **View Blob Container**.
+1. In **Server Explorer**, right-click the **images** blob container and select **View Blob Container**.
 
 	![View Blob Container](Images/view-blob-container.png?raw=true "View Blob Container")
 	
@@ -774,7 +774,7 @@ In this task, you will use the Server Explorer window from Visual Studio to conn
 
 	_Images container with no entries_
 	
-1. Upload the **logo-big.png** file located inside the **Assets** folder of this lab. Leave the **Folder (optional)** field empty.
+1. Upload the **logo-big.png** file located in the **Assets** folder of this lab. Leave the **Folder (optional)** field empty.
 
 1. When the upload completes, the file should be listed in the images container. Right-click the file entry and select **Copy URL**.
 
@@ -793,9 +793,9 @@ In this task, you will use the Server Explorer window from Visual Studio to conn
 
 In this task, you will configure the **GeekQuiz** solution to consume the image uploaded to Azure Blob Storage (instead of the image located in the web site) by adding an ASP.NET URL rewrite rule in the **web.config** file.
 
-1. In Visual Studio, open the **Web.config** file inside the **GeekQuiz** project and locate the **\<system.webServer>** element.
+1. In Visual Studio, open the **Web.config** file in the **GeekQuiz** project and locate the **\<system.webServer>** element.
 
-1. Add the following code to add an URL rewrite rule, updating the placeholder with your storage account name.
+1. Add the following code to add a URL rewrite rule, updating the placeholder with your storage account name.
 
 	(Code Snippet - _WebSitesInProduction - Ex4 - UrlRewriteRule_)
 	
@@ -812,7 +812,7 @@ In this task, you will configure the **GeekQuiz** solution to consume the image 
 		</rewrite>
 	````
 
-	> **Note:** URL rewriting is the process of intercepting an incoming Web request and redirecting the request to a different resource. The URL rewriting rules tells the rewriting engine when a request needs to be redirected, and where should they be redirected. A rewriting rule is composed of two strings: the pattern to look for in the requested URL (usually, using regular expressions), and the string to replace the pattern with, if found. For more information, see [URL Rewriting in ASP.NET](http://msdn.microsoft.com/en-us/library/ms972974.aspx).
+	> **Note:** URL rewriting is the process of intercepting an incoming Web request and redirecting the request to a different resource. The URL rewriting rules tells the rewriting engine when and where a request needs to be redirected. A rewriting rule is composed of two strings: the pattern to look for in the requested URL (usually, using regular expressions), and the string to replace the pattern with, if found. For more information, see [URL Rewriting in ASP.NET](http://msdn.microsoft.com/en-us/library/ms972974.aspx).
 
 1. Press **CTRL + S** to save the changes.
 
@@ -834,9 +834,9 @@ In this task, you will configure the **GeekQuiz** solution to consume the image 
 <a name="Ex4Task4" />
 #### Task 4 – Verification ####
 
-In this task you will use **Internet Explorer** to browse the **Geek Quiz** application and check that the URL rewrite rule for images works and you are redirected to the image hosted on **Azure Blob Storage**.
+In this task you will use **Internet Explorer** to browse the **Geek Quiz** application and check that the URL rewrite rule for images works and that you are redirected to the image hosted on **Azure Blob Storage**.
 
-1. Open Internet Explorer and navigate to your site (e.g. _http://geek-quiz.azurewebsites.net_). Log in using the previously created credentials.
+1. Open Internet Explorer and navigate to your site (e.g. _http://geek-quiz.azurewebsites.net_). Log in using the credentials you created previously.
 
 	![Showing the Geek Quiz website with the image](Images/showing-the-geek-quiz-website-with-the-image.png?raw=true "Showing the Geek Quiz website with the image")
 
@@ -850,7 +850,7 @@ In this task you will use **Internet Explorer** to browse the **Geek Quiz** appl
 
 1. Press **CTRL + F5** to refresh the web page.
 
-1. Once the page has finished loading, you should see an HTTP request for the **/img/logo-big.png** URL with an HTTP **301** result (redirect) and another request for **http://[YOUR-STORAGE-ACCOUNT].blob.core.windows.net/images/logo-big.png** URL with a HTTP **200** result.
+1. Once the page has finished loading, you should see an HTTP request for the **/img/logo-big.png** URL with an HTTP **301** result (redirect) and another request for **http://[YOUR-STORAGE-ACCOUNT].blob.core.windows.net/images/logo-big.png** URL with an HTTP **200** result.
 
 	![Verifying the URL redirect](Images/showing-the-redirect-in-dev-tools.png?raw=true "Showing the redirect in Dev Tools")
 
@@ -861,7 +861,7 @@ In this task you will use **Internet Explorer** to browse the **Geek Quiz** appl
 
 > **Note:** This exercise is optional, since it requires support for Web Load & Performance Testing which is only available for **Visual Studio 2013 Ultimate Edition**. For more information on specific Visual Studio 2013 features, compare versions [here](http://www.microsoft.com/visualstudio/eng/products/compare).
 
-**Azure Web Apps** provides the Autoscale feature for Web Apps running in a Standard plan. Autoscale lets Azure automatically scale the instance count of your Web App depending on the load. When Autoscale is enabled, Azure checks the CPU of your Web App once every five minutes and adds instances as needed at that point in time. If the CPU usage is low, Azure will remove instances once every two hours to ensure that the performance of your Web App is not degraded.
+**Azure Web Apps** provides the Autoscale feature for Web Apps running on a Standard plan. Autoscale lets Azure automatically scale the instance count of your Web App depending on the load. When Autoscale is enabled, Azure checks the CPU of your Web App once every five minutes and adds instances as needed at that point in time. If the CPU usage is low, Azure will remove instances once every two hours to ensure that the performance of your Web App is not degraded.
 
 In this exercise you will go through the steps required to configure the **Autoscale** feature for the **Geek Quiz** Web App. You will verify this feature by running a Visual Studio load test to generate enough CPU load on the application to trigger an instance upgrade.
 
@@ -872,7 +872,7 @@ In this task you will use the Azure Preview Portal to enable the Autoscale featu
 
 1. In the [Azure Preview Portal](https://portal.azure.com/), select **Browse All | Web Apps** and click the Web app you created in Exercise 2.
 
-1. Navigate to the **Scale** tile under the **Usage** section. In the **Scale setting** blade select the **CPU Percentage** option for the **Scale by** configuration.
+1. Navigate to the **Scale** tile under the **Usage** section. In the **Scale setting** blade, select the **CPU Percentage** option for the **Scale by** configuration.
 
 	> **Note:** When scaling by CPU, Azure dynamically adjusts the number of instances that the Web app uses if the CPU usage changes.
 
@@ -880,7 +880,7 @@ In this task you will use the Azure Preview Portal to enable the Autoscale featu
 
 	_Selecting to scale by CPU_
 
-1. Set the maximum number of **Instances** to 3. And the **Target range** to **5**-**25** percent. Then, click **Save** in the command bar at the top to save the changes.
+1. Set the maximum number of **Instances** to 3 and the **Target range** to **5**-**25** percent. Then, click **Save** in the command bar at the top to save the changes.
 
 	> **Note:** This range represents the average CPU usage for your Web App. Azure will add or remove instances to keep the CPU within this range. The minimum and maximum number of instances used for scaling is specified in the **Instance** configuration. Azure will never go above or beyond that limit.
 	> 
@@ -907,7 +907,7 @@ Now that **Autoscale** has been configured, you will create a **Web Performance 
 
 	_Creating a new Web and Load Test project_
 
-1. Inside the **WebTest1.webtest** window, right-click the **WebTest1** node and click **Add Request**.
+1. Inside the **WebTest1.webtest** window, right-click the **WebTest1** node and select **Add Request**.
 
 	![Adding a request to WebTest1](Images/adding-a-request-to-webtest1.png?raw=true "Adding a request to WebTest1")
 	
@@ -919,7 +919,7 @@ Now that **Autoscale** has been configured, you will create a **Web Performance 
 
 	_Changing the Url property_
 
-1. Back in the **WebTest1.webtest** window, right-click **WebTest1** and click **Add Loop...**.
+1. Back in the **WebTest1.webtest** window, right-click **WebTest1** and select **Add Loop...**.
 
 	![Adding a loop to WebTest1](Images/adding-a-loop-to-webtest1.png?raw=true "Adding a loop to WebTest1")
 
@@ -935,7 +935,7 @@ Now that **Autoscale** has been configured, you will create a **Web Performance 
 
 	_Selecting the For Loop rule and updating the properties_
 
-1. Under the **Items in loop** section, select the request you created previously to be the first and last item for the loop. Click **OK** to continue.
+1. Under the **Items in loop** section, select the request you created previously as the first and last items for the loop. Click **OK** to continue.
 
 	![Selecting the first and last items for the loop](Images/selecting-the-first-and-last-items-for-the-lo.png?raw=true "Selecting the first and last items for the loop")
 
@@ -959,7 +959,7 @@ Now that **Autoscale** has been configured, you will create a **Web Performance 
 
 	_Selecting not to use think times_
 
-1. In the **Load Pattern** page, make sure that the **Constant Load** option is selected. Change the **User Count** setting to **250** users and click **Next**.
+1. In the **Load Pattern** page, make sure the **Constant Load** option is selected. Change the **User Count** setting to **250** users and click **Next**.
 
 	![Changing the user count to 250](Images/changing-the-user-count-to-250.png?raw=true "Changing the user count to 250")
 
@@ -991,9 +991,9 @@ Now that **Autoscale** has been configured, you will create a **Web Performance 
 
 1. In the **Network Mix** page, click **Next**.
 
-	![Clicking next in the Network Mix page](Images/clicking-next-in-the-network-mix-page.png?raw=true "Clicking next in the Network Mix page")
+	![Clicking Next in the Network Mix page](Images/clicking-next-in-the-network-mix-page.png?raw=true "Clicking Next in the Network Mix page")
 
-	_Clicking next in the Network Mix page_
+	_Clicking Next in the Network Mix page_
 
 1. In the **Browser Mix** page, select **Internet Explorer 11.0** as the browser type and click **Next**.
 
@@ -1056,7 +1056,7 @@ You will now execute the load test you created in the previous task and see how 
 
 	_Load test running_
 
-1. Once the test completes, go back to the Azure Preview Portal and navigate to to your Web App. In the **Scale** tile under the **Usage** section, you should see that the number of instances have increased.
+1. Once the test completes, go back to the Azure Preview Portal and navigate to your Web App. In the **Scale** tile under the **Usage** section, you should see that the number of instances has increased.
 
 	![New instance automatically deployed](Images/new-instance-automatically-deployed.png?raw=true)
 
@@ -1074,4 +1074,4 @@ You will now execute the load test you created in the previous task and see how 
 <a name="Summary" />
 ## Summary ##
 
-In this hands-on lab, you learned how to set up and deploy your application to a production Web App in Microsoft Azure. You started by detecting and updating your databases using **Entity Framework Code First Migrations**, then continued by deploying new versions of your site to different deployment slots using **Git** and performing rollbacks to the latest stable version of your site. Additionally, you learned how to scale your Web App using Storage to move your static content to a Blob container. 
+In this hands-on lab, you have learned how to set up and deploy your application to a production Web App in Microsoft Azure. You started by detecting and updating your databases using **Entity Framework Code First Migrations**, then continued by deploying new versions of your site to different deployment slots using **Git** and performing rollbacks to the latest stable version of your site. Additionally, you learned how to scale your Web App using Storage to move your static content to a Blob container. 
