@@ -297,11 +297,15 @@ This demo is composed of the following segments:
 
 1. In **Solution Explorer**, right-click the **GeekQuiz.Web** project, expand the **Start** menu and select **Start new instance**.
 
-	![newInstance](Images/newinstance.png?raw=true)
+	![Starting new instance](Images/newinstance.png?raw=true "Starting new instance")
+
+	_Starting new instance_
 
 1. Once the site is up and running, repeat the previous step to start the **GeekQuiz** Windows Store project. The application will be launched, and once the **Loading...** message disappears, the first question will be displayed.
 
 	![app](Images/app.png?raw=true)
+
+	_Showing the App_
 
 1. Answer some questions to show how the application works.
 

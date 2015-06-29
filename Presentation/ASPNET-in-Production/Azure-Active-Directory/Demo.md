@@ -19,14 +19,14 @@ In this demo, you will see how to:
 <a name="technologies" />
 ### Key Technologies ###
 
-- [Azure Active Directory](http://azure.microsoft.com/services/active-directory/)
+- [Azure Active Directory](http://azure.microsoft.com/en-us/services/active-directory/)
 - [Visual Studio 2013](https://www.visualstudio.com/)
 
 <a name="Setup" />
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
-1. Create a new [Azure Active Directory tenant](https://azure.microsoft.com/documentation/articles/active-directory-howto-tenant/).
+1. Create a new [Azure Active Directory tenant](https://azure.microsoft.com/en-us/documentation/articles/active-directory-howto-tenant/).
 
 1. Create a new Web App in Azure.
 
@@ -48,7 +48,7 @@ This demo is composed of the following segments:
 <a name="segment1" />
 ### Adding a new website to an organization ###
 
-1. Open the **File / New Project** dialog and select the **Visual C# / Web** templates.
+1. Open the **File / New / Project** dialog and select the **Visual C# / Web** templates.
 
 1. Name the application _GeekQuiz_ and click **OK**.
 
