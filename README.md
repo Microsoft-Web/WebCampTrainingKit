@@ -3,14 +3,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AzureReadiness: Web Camp</title>
+  <title>Web Camp Training Kit</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <div class="jumbotron">
       <h1>Web Camp</h1>
-      <p>Mar 31, 2015 release. Source: <a href="http://aka.ms/msftwebcamps">http://aka.ms/msftwebcamps</a></p>
+      <p>Mar 31, 2015 release. Source: <a href="http://aka.ms/webcamps-training-kit">http://aka.ms/webcamps-training-kit</a></p>
       <p>
         <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
       </p>
