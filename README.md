@@ -37,10 +37,10 @@
             <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/ASPNET-and-VS-Web-Tooling.pptx'>Presentation</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/One-ASP-NET/Demo.md'>Demo - One ASP.NET</a></td>
+            <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/One-ASP-NET/'>Demo - One ASP.NET</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/Visual-Studio-and-Web-Essentials/DEMO.md'>Demo - Visual Studio and Web Essentials</a></td>
+            <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/Visual-Studio-and-Web-Essentials/'>Demo - Visual Studio and Web Essentials</a></td>
           </tr>
           <tr>
             <td rowspan="2">Building Web Applications using the latest ASP.NET technologies</td>
@@ -48,7 +48,7 @@
             <td><a href='Presentation/Build-and-deploy-ASPNET/Build-and-deploy-ASPNET.pptx'>Presentation</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/Build-and-deploy-ASPNET/GeekQuiz-Build-and-deploy-ASP/Demo.md'>Demo - Building and deploying an ASP.NET application</a></td>
+            <td><a href='Presentation/Build-and-deploy-ASPNET/GeekQuiz-Build-and-deploy-ASP/'>Demo - Building and deploying an ASP.NET application</a></td>
           </tr>
           <tr>
             <td rowspan="2">Building web front ends for both desktop and mobile using the latest web standards</td>
@@ -56,7 +56,7 @@
             <td><a href='Presentation/Modern-Web-Front-Ends/Modern-web-front-ends.pptx'>Presentation</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/Modern-Web-Front-Ends/GeekQuiz-SPA-Interface/DEMO.md'>Demo - Building a SPA Interface using EmberJS</a></td>
+            <td><a href='Presentation/Modern-Web-Front-Ends/GeekQuiz-SPA-Interface/'>Demo - Building a SPA Interface using EmberJS</a></td>
           </tr>
           <tr>
             <td rowspan="4">API Services for both web and devices</td>
@@ -64,13 +64,13 @@
             <td><a href='Presentation/HTTP-Services/HTTP-Services.pptx'>Presentation</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-backend/Demo.md'>Demo - Overview of Web API backend from GeekQuiz</a></td>
+            <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-backend/'>Demo - Overview of Web API backend from GeekQuiz</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/HTTP-Services/GeekQuiz-Excel-front-end/Demo.md'>Demo - Building an Excel front end (using apps for Office)</a></td>
+            <td><a href='Presentation/HTTP-Services/GeekQuiz-Excel-front-end/'>Demo - Building an Excel front end (using apps for Office)</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-Windows-Store/DEMO.md'>Demo - Building a Windows Store front end</a></td>
+            <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-Windows-Store/'>Demo - Building a Windows Store front end</a></td>
           </tr>
           <tr>
             <td rowspan="4">Running, improving and maintaining a site in the real world</td>
@@ -78,13 +78,13 @@
             <td><a href='Presentation/ASPNET-in-Production/ASPNET-in-Production.pptx'>Presentation</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/ASPNET-in-Production/Scaling-a-production-website/DEMO.md'>Demo - Scaling a production website</a></td>
+            <td><a href='Presentation/ASPNET-in-Production/Scaling-a-production-website/'>Demo - Scaling a production website</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/ASPNET-in-Production/Handling-change-EF-migrations/DEMO.md'>Demo - Handling change (EF migrations, Deployment rollback)</a></td>
+            <td><a href='Presentation/ASPNET-in-Production/Handling-change-EF-migrations/'>Demo - Handling change (EF migrations, Deployment rollback)</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/ASPNET-in-Production/Azure-Active-Directory/Demo.md'>Demo - AAD Authentication</a></td>
+            <td><a href='Presentation/ASPNET-in-Production/Azure-Active-Directory/'>Demo - AAD Authentication</a></td>
           </tr>
           <tr>
             <td rowspan="2">Real-time Communications with SignalR</td>
@@ -92,7 +92,7 @@
             <td><a href='Presentation/Realtime/Realtime.pptx'>Presentation</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/Realtime/GeekQuiz-Real-time-charts/DEMO.md'>Demo -Real-time charts in the GeekQuiz application</a></td>
+            <td><a href='Presentation/Realtime/GeekQuiz-Real-time-charts/'>Demo -Real-time charts in the GeekQuiz application</a></td>
           </tr>
           <tr>
             <td>Wrap Up</td>
@@ -163,52 +163,52 @@
             <td rowspan="2">We'll start out by explaining the One ASP.NET experience in Visual Studio 2013, showing how to create hybrid web applications. Next, we'll introduce new features for web developers in Visual Studio 2013 and Web Essentials, explaining how Visual
               Studio is the best editor for HTML, CSS and JavaScript as well as your back end code. We'll also look at some new features across the ASP.NET platform including new Bootstrap templates, the new scaffolding system, and the new membership
               and identity system.</td>
-            <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/One-ASP-NET/Demo.md'>One ASP.NET</a></td>
+            <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/One-ASP-NET/'>One ASP.NET</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/Visual-Studio-and-Web-Essentials/DEMO.md'>Visual Studio and Web Essentials</a></td>
+            <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/Visual-Studio-and-Web-Essentials/'>Visual Studio and Web Essentials</a></td>
           </tr>
           <tr>
             <td><a href='Presentation/Build-and-deploy-ASPNET/Build-and-deploy-ASPNET.pptx'>Building Web Applications using the latest ASP.NET technologies</a></td>
             <td>This session will include a quick introduction to the MVC pattern, then build and deploy a website using ASP.NET MVC, Entity Framework Code First, and Microsoft Azure Web Apps. We'll continue building this demo scenario (the GeekQuiz app
               from the BUILD 2013 keynote) throughout the day.</td>
-            <td><a href='Presentation/Build-and-deploy-ASPNET/GeekQuiz-Build-and-deploy-ASP/Demo.md'>Building and deploying an ASP.NET application</a></td>
+            <td><a href='Presentation/Build-and-deploy-ASPNET/GeekQuiz-Build-and-deploy-ASP/'>Building and deploying an ASP.NET application</a></td>
           </tr>
           <tr>
             <td><a href='Presentation/Modern-Web-Front-Ends/Modern-web-front-ends.pptx'>Building web front ends for both desktop and mobile using the latest web standards</a></td>
             <td>In this session, we'll dig into the latest web standards - HTML5, CSS3, JavaScript with jQuery, and responsive web design. We'll see how to apply some of the web dev features in Visual Studio 2013 shown earlier in the day with real world application.
               This session extends the GeekQuiz application by building in a single page application (SPA) interface using Ember.js and CSS3 transitions.</td>
-            <td><a href='Presentation/Modern-Web-Front-Ends/GeekQuiz-SPA-Interface/DEMO.md'>Building a SPA Interface using EmberJS</a></td>
+            <td><a href='Presentation/Modern-Web-Front-Ends/GeekQuiz-SPA-Interface/'>Building a SPA Interface using EmberJS</a></td>
           </tr>
           <tr>
             <td rowspan="3"><a href='Presentation/HTTP-Services/HTTP-Services.pptx'>API Services for both web and devices</a></td>
             <td rowspan="3">This session will begin by explaining what HTTP services are and some HTTP API design principles like REST and Hypermedia. We'll build out the HTTP API back end for the GeekQuiz application using ASP.NET Web API, then show how we can leverage
               it with a Windows Store front end and apps for Office in Excel.</td>
-            <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-backend/Demo.md'>Overview of Web API backend from GeekQuiz</a></td>
+            <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-backend/'>Overview of Web API backend from GeekQuiz</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/HTTP-Services/GeekQuiz-Excel-front-end/Demo.md'>Building an Excel front end (using apps for Office)</a></td>
+            <td><a href='Presentation/HTTP-Services/GeekQuiz-Excel-front-end/'>Building an Excel front end (using apps for Office)</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-Windows-Store/DEMO.md'>Building a Windows Store front end</a></td>
+            <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-Windows-Store/'>Building a Windows Store front end</a></td>
           </tr>
           <tr>
             <td rowspan="3"><a href='Presentation/ASPNET-in-Production/ASPNET-in-Production.pptx'>Running, improving and maintaining a site in the real world</a></td>
             <td rowspan="3">We've built and deployed a site, but that's the easy part. How do we keep it running and make it better? We'll see how to leverage Microsoft Azure to solve three real world challenges: scaling, handling change (without downtime or headaches)
               and managing multiple environments.</td>
-            <td><a href='Presentation/ASPNET-in-Production/Scaling-a-production-website/DEMO.md'>Scaling a production website</a></td>
+            <td><a href='Presentation/ASPNET-in-Production/Scaling-a-production-website/'>Scaling a production website</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/ASPNET-in-Production/Handling-change-EF-migrations/DEMO.md'>Handling change (EF migrations, Deployment rollback)</a></td>
+            <td><a href='Presentation/ASPNET-in-Production/Handling-change-EF-migrations/'>Handling change (EF migrations, Deployment rollback)</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/ASPNET-in-Production/Azure-Active-Directory/Demo.md'>AAD Authentication</a></td>
+            <td><a href='Presentation/ASPNET-in-Production/Azure-Active-Directory/'>AAD Authentication</a></td>
           </tr>
           <tr>
             <td><a href='Presentation/Realtime/Realtime.pptx'>Real-time Communications with SignalR</a></td>
             <td>ASP.NET SignalR enables real-time communications between your application and each connected client - browsers or otherwise. We'll learn how to write code for SignalR and then use it to add real-time HTML5 charts to the GeekQuiz application,
               power interactive games and more.</td>
-            <td><a href='Presentation/Realtime/GeekQuiz-Real-time-charts/DEMO.md'>Real-time charts in the GeekQuiz application</a></td>
+            <td><a href='Presentation/Realtime/GeekQuiz-Real-time-charts/'>Real-time charts in the GeekQuiz application</a></td>
           </tr>
           <tr>
             <td><a href='Presentation/Conclusion/Conclusion.pptx'>Wrap Up</a></td>
