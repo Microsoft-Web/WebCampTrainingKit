@@ -114,27 +114,27 @@
             <th>Description</th>
           </tr>
           <tr>
-            <td><a href='HOL/WebSitesInProduction/HOL.md'>Web Sites in Production</a></td>
+            <td><a href='HOL/WebSitesInProduction/'>Web Sites in Production</a></td>
             <td>75</td>
             <td>This hands-on lab will show you the different topics you could encounter when deploying your site to production environments in Microsoft Azure.</td>
           </tr>
           <tr>
-            <td><a href='HOL/VSWebTooling/HOL.md'>Visual Studio 2013 Web Tooling</a></td>
+            <td><a href='HOL/VSWebTooling/'>Visual Studio 2013 Web Tooling</a></td>
             <td>45</td>
             <td>This hands-on lab will show you how to use the new HTML, CSS and JavaScript editor features included in Web Essentials.</td>
           </tr>
           <tr>
-            <td><a href='HOL/RealTimeSignalR/HOL.md'>Real-Time SignalR</a></td>
+            <td><a href='HOL/RealTimeSignalR/'>Real-Time SignalR</a></td>
             <td>60</td>
             <td>This hands-on lab will show you how to add SignalR to your application for sending notifications from the server to your connected clients using Hubs. Additionally, you will learn how to scale out your application by using a backplane component when your application is deployed in multiple IIS instances.</td>
           </tr>
           <tr>
-            <td><a href='HOL/BringingTogetherOneAspNet/HOL.md'>Bringing Together One ASP.NET</a></td>
+            <td><a href='HOL/BringingTogetherOneAspNet/'>Bringing Together One ASP.NET</a></td>
             <td>60</td>
             <td>Visual Studio 2013 introduces a new unified project system which lets you build an application and use all the ASP.NET technologies in one project. This feature eliminates the need to pick one technology at the start of a project and stick with it, and instead encourages the use of multiple ASP.NET frameworks within one project.</td>
           </tr>
           <tr>
-            <td><a href='HOL/AspNetWebApiSpa/HOL.md'>ASP.NET Web API and Single-Page Applications (SPAs)</a></td>
+            <td><a href='HOL/AspNetWebApiSpa/'>ASP.NET Web API and Single-Page Applications (SPAs)</a></td>
             <td>60</td>
             <td>This hands-on lab will show you how to create an Single-Page Application (SPA) by implementing the service layer with ASP.NET Web API to expose the required endpoints to retrieve the application data. Then, you will build a rich and responsive UI using AngularJS and CSS3 transformation effects.</td>
           </tr>
