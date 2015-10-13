@@ -13,6 +13,8 @@
       <p>October 2015 release. Source: <a href="http://aka.ms/webcamps-training-kit">http://aka.ms/webcamps-training-kit</a></p>
       <p>
         <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
+        <a href="http://visualstudio.com" class="btn btn-success">Get Visual Studio 2015</a>
+        <a href="http://docs.asp.net/en/latest/getting-started/installing-on-windows.html" class="btn btn-success">Install ASP.NET 5 (preview)</a>        
       </p>
     </div>
     <div class="panel panel-default">
