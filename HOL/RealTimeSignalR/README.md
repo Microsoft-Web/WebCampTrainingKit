@@ -1,4 +1,4 @@
-Ôªø<a name="HOLTop" />
+<a name="HOLTop" />
 # Real-Time SignalR #
 
 ---
@@ -45,7 +45,7 @@ In order to run the exercises in this hands-on lab, you will need to set up your
 <a name="CodeSnippets" />
 ### Using the Code Snippets ###
 
-Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2013 to avoid having to add it manually. 
+Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2015 to avoid having to add it manually. 
 
 >**Note**: Each exercise is accompanied by a starting solution located in the **Begin** folder of the exercise that allows you to follow each exercise independently of the others. Please be aware that the code snippets that are added during an exercise are missing from these starting solutions and may not  work until you have completed the exercise. Inside the source code for an exercise, you will also find an **End** folder containing a Visual Studio solution with the code that results from completing the steps in the corresponding exercise. You can use these solutions as guidance if you need additional help as you work through this hands-on lab.
 
@@ -72,7 +72,7 @@ SignalR supports **server push** or **broadcasting** functionality; it handles c
 In this exercise, you will configure the **Geek Quiz** application to use SignalR to display the Statistics dashboard with the updated metrics without the need to refresh the entire page.
 
 <a name="Ex1Task1" />
-#### Task 1 ‚Äì Exploring the Geek Quiz Statistics Page  ####
+#### Task 1 ñ Exploring the Geek Quiz Statistics Page  ####
 
 In this task, you will go through the application and verify how the statistics page is shown and how you can improve the way the information is updated.
 
@@ -125,7 +125,7 @@ In this task, you will go through the application and verify how the statistics 
 1. Go back to Visual Studio and stop debugging.
 	
 <a name="Ex1Task2" />
-#### Task 2 ‚Äì Adding SignalR to Geek Quiz to Show Online Charts ####
+#### Task 2 ñ Adding SignalR to Geek Quiz to Show Online Charts ####
 
 In this task, you will add SignalR to the solution and send updates to the clients automatically when a new answer is sent to the server. 
 
@@ -298,7 +298,7 @@ In this task, you will add SignalR to the solution and send updates to the clien
 	In this code, you are creating a Hub Proxy and registering an event handler to listen for messages sent by the server. In this case, you listen for messages sent through the _updateStatistics_ method.
 	
 <a name="Ex1Task3" />
-#### Task 3 ‚Äì Running the Solution ####
+#### Task 3 ñ Running the Solution ####
 
 In this task, you will run the solution to verify that the statistics view is updated automatically using SignalR after answering a new question.
 
@@ -331,7 +331,7 @@ There are currently three types of backplanes for SignalR:
 
 - **Azure Service Bus**. Service Bus is a messaging infrastructure that allows components to send loosely coupled messages. 
 - **SQL Server**. The SQL Server backplane writes messages to SQL tables. The backplane uses Service Broker for efficient messaging. However, it also works if Service Broker is not enabled.
-- **Redis**. Redis is an in-memory key-value store. Redis supports a publish/subscribe (‚Äúpub/sub‚Äù) pattern for sending messages. 
+- **Redis**. Redis is an in-memory key-value store. Redis supports a publish/subscribe (ìpub/subî) pattern for sending messages. 
 
 Every message is sent through a message bus. A message bus implements the [IMessageBus](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.messaging.imessagebus/) interface, which provides a publish/subscribe abstraction. The backplanes work by replacing the default **IMessageBus** with a bus designed for that backplane.
 
@@ -382,7 +382,7 @@ In this task, you will run 2 instances of **Geek Quiz** simulating multiple IIS 
 1. Go back to Visual Studio and stop debugging.
 
 <a name="Ex2Task2" />
-#### Task 2 ‚Äì Creating the SQL Server Backplane ####
+#### Task 2 ñ Creating the SQL Server Backplane ####
 
 In this task, you will create a database that will serve as a backplane for the **Geek Quiz** application. You will use **SQL Server Object Explorer** to browse your server and initialize the database. Additionally, you will enable the **Service Broker**.
 
@@ -443,7 +443,7 @@ In this task, you will create a database that will serve as a backplane for the 
 	> **Note:** If this query appears to deadlock, make sure there are no applications connected to the DB.
 	
 <a name="Ex2Task3" />
-#### Task 3 ‚Äì Configuring the SignalR Application ####
+#### Task 3 ñ Configuring the SignalR Application ####
 	
 In this task, you will configure **Geek Quiz** to connect to the SQL Server backplane. You will first add the **SignalR.SqlServer** NuGet package and set the connection string to your backplane database.
 

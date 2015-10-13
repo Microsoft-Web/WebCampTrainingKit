@@ -1,4 +1,4 @@
-﻿<a name="title" />
+<a name="title" />
 # Handling change (EF migrations, Deployment rollback) #
 
 ---
@@ -44,7 +44,7 @@ Follow these steps to setup your environment for the demo.
 1. Configure the **GeekQuiz** web site to support [Publishing with Git](https://azure.microsoft.com/documentation/articles/web-sites-publish-source-control/) and push the duplicate of the begin solution to the remote repository.
 1. Leave the Azure Preview Portal in a separate browser window/tab.
 1. Navigate to the created site and register an account.
-1. Open Visual Studio 2013.
+1. Open Visual Studio 2015.
 1. Open the **GeekQuiz.sln** solution located under **source\begin**.
 1. Run the solution and register a new user in order to generate the SQL database.
 1. In Visual Studio, close all open files.

@@ -1,4 +1,4 @@
-﻿<a name="title" />
+<a name="title" />
 # Building a SPA interface using Ember.js #
 
 ---
@@ -27,7 +27,7 @@ In this demo, you will see how to:
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
-1. Open Visual Studio 2013.
+1. Open Visual Studio 2015.
 1. Open the **GeekQuiz.sln** solution located under **source\begin**.
 1. If you don't have one, create a user account for the application. To do that, press **F5**, click **Register** and provide the information required. After that, close the browser window.
 

@@ -1,4 +1,4 @@
-﻿﻿<html lang="en">
+?<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,7 +32,7 @@
             <td><a href='Presentation/Keynote/Keynote.pptx'>Presentation</a></td>
           </tr>
           <tr>
-            <td rowspan="3">Introduction to ASP.NET and Visual Studio 2013 Web Tooling</td>
+            <td rowspan="3">Introduction to ASP.NET and Visual Studio 2015 Web Tooling</td>
             <td rowspan="3">60</td>
             <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/ASPNET-and-VS-Web-Tooling.pptx'>Presentation</a></td>
           </tr>
@@ -119,7 +119,7 @@
             <td>This hands-on lab will show you the different topics you could encounter when deploying your site to production environments in Microsoft Azure.</td>
           </tr>
           <tr>
-            <td><a href='HOL/VSWebTooling/'>Visual Studio 2013 Web Tooling</a></td>
+            <td><a href='HOL/VSWebTooling/'>Visual Studio 2015 Web Tooling</a></td>
             <td>45</td>
             <td>This hands-on lab will show you how to use the new HTML, CSS and JavaScript editor features included in Web Essentials.</td>
           </tr>
@@ -131,7 +131,7 @@
           <tr>
             <td><a href='HOL/BringingTogetherOneAspNet/'>Bringing Together One ASP.NET</a></td>
             <td>60</td>
-            <td>Visual Studio 2013 introduces a new unified project system which lets you build an application and use all the ASP.NET technologies in one project. This feature eliminates the need to pick one technology at the start of a project and stick with it, and instead encourages the use of multiple ASP.NET frameworks within one project.</td>
+            <td>Visual Studio 2015 introduces a new unified project system which lets you build an application and use all the ASP.NET technologies in one project. This feature eliminates the need to pick one technology at the start of a project and stick with it, and instead encourages the use of multiple ASP.NET frameworks within one project.</td>
           </tr>
           <tr>
             <td><a href='HOL/AspNetWebApiSpa/'>ASP.NET Web API and Single-Page Applications (SPAs)</a></td>
@@ -154,13 +154,13 @@
           </tr>
           <tr>
             <td><a href='Presentation/Keynote/Keynote.pptx'>Keynote</a></td>
-            <td>This session will overview the Microsoft web platform and introduce fundamental building blocks like Visual Studio 2013 and NuGet. It will include an overview of Microsoft Azure and encourage attendees to sign up so they can "play along" with
+            <td>This session will overview the Microsoft web platform and introduce fundamental building blocks like Visual Studio 2015 and NuGet. It will include an overview of Microsoft Azure and encourage attendees to sign up so they can "play along" with
               demos throughout the day.</td>
             <td></td>
           </tr>
           <tr>
-            <td rowspan="2"><a href='Presentation/ASPNET-and-VS-Web-Tooling/ASPNET-and-VS-Web-Tooling.pptx'>Introduction to ASP.NET and Visual Studio 2013 Web Tooling</a></td>
-            <td rowspan="2">We'll start out by explaining the One ASP.NET experience in Visual Studio 2013, showing how to create hybrid web applications. Next, we'll introduce new features for web developers in Visual Studio 2013 and Web Essentials, explaining how Visual
+            <td rowspan="2"><a href='Presentation/ASPNET-and-VS-Web-Tooling/ASPNET-and-VS-Web-Tooling.pptx'>Introduction to ASP.NET and Visual Studio 2015 Web Tooling</a></td>
+            <td rowspan="2">We'll start out by explaining the One ASP.NET experience in Visual Studio 2015, showing how to create hybrid web applications. Next, we'll introduce new features for web developers in Visual Studio 2015 and Web Essentials, explaining how Visual
               Studio is the best editor for HTML, CSS and JavaScript as well as your back end code. We'll also look at some new features across the ASP.NET platform including new Bootstrap templates, the new scaffolding system, and the new membership
               and identity system.</td>
             <td><a href='Presentation/ASPNET-and-VS-Web-Tooling/One-ASP-NET/'>One ASP.NET</a></td>
@@ -176,7 +176,7 @@
           </tr>
           <tr>
             <td><a href='Presentation/Modern-Web-Front-Ends/Modern-web-front-ends.pptx'>Building web front ends for both desktop and mobile using the latest web standards</a></td>
-            <td>In this session, we'll dig into the latest web standards - HTML5, CSS3, JavaScript with jQuery, and responsive web design. We'll see how to apply some of the web dev features in Visual Studio 2013 shown earlier in the day with real world application.
+            <td>In this session, we'll dig into the latest web standards - HTML5, CSS3, JavaScript with jQuery, and responsive web design. We'll see how to apply some of the web dev features in Visual Studio 2015 shown earlier in the day with real world application.
               This session extends the GeekQuiz application by building in a single page application (SPA) interface using Ember.js and CSS3 transitions.</td>
             <td><a href='Presentation/Modern-Web-Front-Ends/GeekQuiz-SPA-Interface/'>Building a SPA Interface using EmberJS</a></td>
           </tr>

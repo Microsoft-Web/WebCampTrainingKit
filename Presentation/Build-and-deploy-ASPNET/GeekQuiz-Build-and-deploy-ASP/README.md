@@ -1,4 +1,4 @@
-ï»¿<a name="title" />
+<a name="title" />
 # Building and Deploying an ASP.NET Application #
 
 ---
@@ -19,7 +19,7 @@ In this demo, you will see how to:
 <a name="technologies" />
 ### Key Technologies ###
 
-- [Visual Studio 2013][1]
+- [Visual Studio 2015][1]
 - [ASP.NET MVC][2]
 - [Microsoft Azure][3]
 
@@ -31,11 +31,11 @@ In this demo, you will see how to:
 ### Setup and Configuration ###
 In order to execute this demo you need to set up your environment.
 
-1. Azure SDK for Visual Studio 2013 from [here](http://azure.microsoft.com/en-us/downloads/).
+1. Azure SDK for Visual Studio 2015 from [here](http://azure.microsoft.com/en-us/downloads/).
 
 1. Azure Subscription.
 
-1. Visual Studio 2013 running.
+1. Visual Studio 2015 running.
 
 <a name="Demo" />
 ## Demo ##
@@ -250,7 +250,7 @@ This demo is composed of the following segments:
 <a name="Segment4" />
 ### Deploying to Microsoft Azure Web Apps ###
 
-1. Right-click the **GeekQuiz** project and select **Publishâ€¦**
+1. Right-click the **GeekQuiz** project and select **Publish…**
 
 	![Publishing the Website](images/publishing-the-site.png?raw=true "Publishing the Website")
 
@@ -282,7 +282,7 @@ This demo is composed of the following segments:
 
 	> 	**Speaking Point:**
 	>
-	You can create a new Web App without a database, or a new Web App with a new database on an existing database server, or a new Web App with a new database on a new database server. Fill in all the required information and voilaâ€¦ your new Microsoft Azure Web App is ready and you can deploy your website project there.
+	You can create a new Web App without a database, or a new Web App with a new database on an existing database server, or a new Web App with a new database on a new database server. Fill in all the required information and voila… your new Microsoft Azure Web App is ready and you can deploy your website project there.
 
 1. Back in the **Publish Web** dialog, click **Next >**.
 

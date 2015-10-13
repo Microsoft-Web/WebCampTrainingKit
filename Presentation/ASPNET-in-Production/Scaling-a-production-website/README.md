@@ -1,4 +1,4 @@
-﻿<a name="title" />
+<a name="title" />
 # Scaling a production web site #
 
 ---
@@ -18,7 +18,7 @@ In this demo, you will see how to:
 <a name="technologies" />
 ### Key Technologies ###
 
-- [Visual Studio 2013][1]
+- [Visual Studio 2015][1]
 - [Microsoft Azure][2]
 
 [1]: https://www.visualstudio.com/

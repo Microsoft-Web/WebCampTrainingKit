@@ -1,4 +1,4 @@
-﻿<a name="title" />
+<a name="title" />
 # Azure Active Directory Authentication #
 
 ---
@@ -20,7 +20,7 @@ In this demo, you will see how to:
 ### Key Technologies ###
 
 - [Azure Active Directory](http://azure.microsoft.com/en-us/services/active-directory/)
-- [Visual Studio 2013](https://www.visualstudio.com/)
+- [Visual Studio 2015](https://www.visualstudio.com/)
 
 <a name="Setup" />
 ### Setup and Configuration ###
@@ -36,7 +36,7 @@ Follow these steps to setup your environment for the demo.
 
 	> **Important:** At the time of writing, you can only create one AD per subscription and it cannot be deleted.
 
-1. Open Visual Studio 2013.
+1. Open Visual Studio 2015.
 
 <a name="Demo" />
 ## Demo ##

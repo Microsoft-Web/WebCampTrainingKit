@@ -1,4 +1,4 @@
-ï»¿<a name="HOLTop" />
+<a name="HOLTop" />
 # Web Sites in Production #
 
 ---
@@ -34,7 +34,7 @@ In this hands-on lab, you will learn how to:
 The following is required to complete this hands-on lab:
 
 - [Visual Studio Community 2013][1] or greater
-- [Azure SDK for Visual Studio 2013][2] or later
+- [Azure SDK for Visual Studio 2015][2] or later
 - [GIT Version Control System][3]
 - A Microsoft Azure subscription
 	- Sign up for a [Free Trial][4]
@@ -63,7 +63,7 @@ In order to run the exercises in this hands-on lab, you will need to set up your
 <a name="CodeSnippets" />
 ### Using the Code Snippets ###
 
-Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2013 to avoid having to add it manually. 
+Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2015 to avoid having to add it manually. 
 
 >**Note**: Each exercise is accompanied by a starting solution located in the **Begin** folder of the exercise that allows you to follow each exercise independently of the others. Please be aware that the code snippets that are added during an exercise are missing from these starting solutions and may not work until you have completed the exercise. Inside the source code for an exercise, you will also find an **End** folder containing a Visual Studio solution with the code that results from completing the steps in the corresponding exercise. You can use these solutions as guidance if you need additional help as you work through this hands-on lab.
 
@@ -77,7 +77,7 @@ This hands-on lab includes the following exercises:
 1. [Deploying a Web Site to Staging](#Exercise2)
 1. [Performing Deployment Rollback in Production](#Exercise3)
 1. [Scaling Using Azure Storage](#Exercise4)
-1. [Using Autoscale for Web Sites](#Exercise5) (Optional for Visual Studio 2013 Ultimate edition)
+1. [Using Autoscale for Web Sites](#Exercise5) (Optional for Visual Studio 2015 Ultimate edition)
 
 Estimated time to complete this lab: **75 minutes**
 
@@ -93,7 +93,7 @@ To simplify the tracking of these changes in your model, **Entity Framework Code
 This exercise shows you how to enable **Migrations** for your application and how you can easily detect and generate changes to update your databases.
 
 <a name="Ex1Task1" />
-#### Task 1 â€“ Enabling Migrations ####
+#### Task 1 – Enabling Migrations ####
 
 In this task, you will go through the steps of enabling **Entity Framework Code First Migrations** to the **Geek Quiz** database, changing the model and understanding how those changes are reflected in the database. 
 
@@ -172,7 +172,7 @@ In this task, you will go through the steps of enabling **Entity Framework Code 
 	_Trivia Questions Columns_
 	
 <a name="Ex1Task2" />
-#### Task 2 â€“ Updating Database Schema Using Migrations ####
+#### Task 2 – Updating Database Schema Using Migrations ####
 	
 In this task, you will use **Entity Framework Code First Migrations** to detect a change in your model and generate the necessary code to update the database. You will update the **TriviaQuestions** entity by adding a new property to it. Then you will run commands to create a new Migration to include the new column in the table.
 
@@ -282,7 +282,7 @@ In this exercise, you will deploy the **Geek Quiz** application to the staging e
 > **Note:** To enable staged publishing, the Web App must be on one of the Standard plans. Note that additional charges will be incurred if you upgrade your Web App to a Standard plan. For more information about pricing, see [App Service Pricing](http://azure.microsoft.com/en-us/pricing/details/app-service/). 
 
 <a name="Ex2Task1" />
-#### Task 1 â€“ Creating a Microsoft Azure Web App ####
+#### Task 1 – Creating a Microsoft Azure Web App ####
 
 In this task, you will create a **Microsoft Azure Web App** from the management portal. You will also configure a **SQL Database** to persist the application data, and configure a local Git repository for source control.
 
@@ -324,7 +324,7 @@ In this task, you will create a **Microsoft Azure Web App** from the management 
 
 	> ![Web Apps Modes](Images/web-site-modes.png?raw=true "Web Apps Modes")
 
-	> If you are using **Shared** or **Standard**, you will be able to manage custom domains for your Web Apps by going to your Web Appâ€™s **Settings** blade and clicking **Custom domains and SSL**.
+	> If you are using **Shared** or **Standard**, you will be able to manage custom domains for your Web Apps by going to your Web App’s **Settings** blade and clicking **Custom domains and SSL**.
 
 	> ![Custom Domains and SLL](Images/manage-custom-domains.png?raw=true "Custom Domains and SSL")
 
@@ -339,7 +339,7 @@ In this task, you will create a **Microsoft Azure Web App** from the management 
 	_Web app running_
 
 <a name="Ex2Task2" />
-#### Task 2 â€“ Creating the Production SQL Database ####
+#### Task 2 – Creating the Production SQL Database ####
 
 In this task, you will use the **Entity Framework Code First Migrations** to create the database targeting the **Azure SQL Database** instance you created in the previous task.
 	
@@ -388,7 +388,7 @@ In this task, you will use the **Entity Framework Code First Migrations** to cre
 	_Update database targeting Azure SQL Database_
 
 <a name="Ex2Task3" />
-#### Task 3 â€“ Deploying Geek Quiz to Staging Using Git ####
+#### Task 3 – Deploying Geek Quiz to Staging Using Git ####
 
 In this task, you will create a staging deployment slot for your Web App. Then, you will use Git to publish the Geek Quiz application directly from your local computer to the staging environment of your Web App.
 
@@ -497,7 +497,7 @@ In this task, you will create a staging deployment slot for your Web App. Then, 
 	_Application ready to be used_
 
 <a name="Ex2Task4" />
-#### Task 4 â€“ Promoting the Web App to Production ####
+#### Task 4 – Promoting the Web App to Production ####
 
 Now that you have verified that the site is working correctly in the deployment slot, you are ready to promote it to production. In this task, you will swap the site in a staging slot with the production slot.
 
@@ -534,14 +534,14 @@ Now that you have verified that the site is working correctly in the deployment 
 <a name="Exercise3" />
 ### Exercise 3: Performing Deployment Rollback in Production ###
 
-There are scenarios where you do not have a staging slot to perform hot swap between staging and production, for example, if you are working with **Web Apps** running in **Free** or **Shared** mode. In those scenarios, you should test your application in a testing environment â€“ either locally or in a remote site â€“ before deploying to production. However, it is possible that an issue not detected during the testing phase may arise in the production site. In this case, it is important to have a mechanism to easily switch to a previous and more stable version of the application as quickly as possible.
+There are scenarios where you do not have a staging slot to perform hot swap between staging and production, for example, if you are working with **Web Apps** running in **Free** or **Shared** mode. In those scenarios, you should test your application in a testing environment – either locally or in a remote site – before deploying to production. However, it is possible that an issue not detected during the testing phase may arise in the production site. In this case, it is important to have a mechanism to easily switch to a previous and more stable version of the application as quickly as possible.
 
 In **Azure Web Apps**, continuous deployment from source control makes this possible thanks to the **Redeploy** action available in the Azure Preview Portal. Microsoft Azure keeps track of the deployments associated with the commits pushed to the repository and provides an option to redeploy your application using any of your previous deployments, at any time.
 
 In this exercise you will perform a change to the code in the **Geek Quiz** application that intentionally injects a _bug_. You will deploy the application to production to see the error, and then you will take advantage of the redeploy feature to go back to the previous state.
 
 <a name="Ex3Task1" />
-#### Task 1 â€“ Updating the Geek Quiz Application ####
+#### Task 1 – Updating the Geek Quiz Application ####
 
 In this task, you will refactor a small piece of code from the **TriviaController** class by extracting part of the logic that retrieves the selected quiz option from the database to a new method.
 
@@ -591,7 +591,7 @@ In this task, you will refactor a small piece of code from the **TriviaControlle
 1. Press **CTRL + S** to save the changes.
 
 <a name="Ex3Task2" />
-#### Task 2 â€“ Redeploying the Geek Quiz Application ####
+#### Task 2 – Redeploying the Geek Quiz Application ####
 
 You will now push the changes you made in the previous task to the repository, which will trigger a new deployment to the production environment. Then, you will troubleshoot an issue using the **F12 development tools** provided by Internet Explorer and then perform a rollback to the previous deployment from the Azure Preview Portal.
 
@@ -679,7 +679,7 @@ You will now push the changes you made in the previous task to the repository, w
 In this exercise, you will move the static content of your application to a Blob container. Then you will configure your application to add an **ASP.NET URL rewrite rule** in the **Web.config** to redirect your content to the Blob container.
 
 <a name="Ex4Task1" />
-#### Task 1 â€“ Creating a Azure Storage Account ####
+#### Task 1 – Creating a Azure Storage Account ####
 
 In this task you will learn how to create a new storage account using the management portal.
 
@@ -710,7 +710,7 @@ previous task and click
 	_Manage Access Key dialog box_
 
 <a name="Ex4Task2" />
-#### Task 2 â€“ Uploading an Asset to Azure Blob Storage ####
+#### Task 2 – Uploading an Asset to Azure Blob Storage ####
 
 In this task, you will use the Server Explorer window from Visual Studio to connect to your storage account. You will then create a blob container and upload a file with the Geek Quiz logo to the container.
 
@@ -789,7 +789,7 @@ In this task, you will use the Server Explorer window from Visual Studio to conn
 	_logo-big.png image from Azure Blob Storage_
 	
 <a name="Ex4Task3" />
-#### Task 3 â€“ Updating the Solution to Consume Static Content from Azure Blob Storage ####
+#### Task 3 – Updating the Solution to Consume Static Content from Azure Blob Storage ####
 
 In this task, you will configure the **GeekQuiz** solution to consume the image uploaded to Azure Blob Storage (instead of the image located in the web site) by adding an ASP.NET URL rewrite rule in the **web.config** file.
 
@@ -832,7 +832,7 @@ In this task, you will configure the **GeekQuiz** solution to consume the image 
 	_Deploying update to Microsoft Azure_
 
 <a name="Ex4Task4" />
-#### Task 4 â€“ Verification ####
+#### Task 4 – Verification ####
 
 In this task you will use **Internet Explorer** to browse the **Geek Quiz** application and check that the URL rewrite rule for images works and that you are redirected to the image hosted on **Azure Blob Storage**.
 
@@ -859,14 +859,14 @@ In this task you will use **Internet Explorer** to browse the **Geek Quiz** appl
 <a name="Exercise5" />
 ### Exercise 5: Using Autoscale for Web Sites ###
 
-> **Note:** This exercise is optional, since it requires support for Web Load & Performance Testing which is only available for **Visual Studio 2013 Ultimate Edition**. For more information on specific Visual Studio 2013 features, compare versions [here](http://www.microsoft.com/visualstudio/eng/products/compare).
+> **Note:** This exercise is optional, since it requires support for Web Load & Performance Testing which is only available for **Visual Studio 2015 Ultimate Edition**. For more information on specific Visual Studio 2015 features, compare versions [here](http://www.microsoft.com/visualstudio/eng/products/compare).
 
 **Azure Web Apps** provides the Autoscale feature for Web Apps running on a Standard plan. Autoscale lets Azure automatically scale the instance count of your Web App depending on the load. When Autoscale is enabled, Azure checks the CPU of your Web App once every five minutes and adds instances as needed at that point in time. If the CPU usage is low, Azure will remove instances once every two hours to ensure that the performance of your Web App is not degraded.
 
 In this exercise you will go through the steps required to configure the **Autoscale** feature for the **Geek Quiz** Web App. You will verify this feature by running a Visual Studio load test to generate enough CPU load on the application to trigger an instance upgrade.
 
 <a name="Ex5Task1" />
-#### Task 1 â€“ Configuring Autoscale Based on the CPU Metric ####
+#### Task 1 – Configuring Autoscale Based on the CPU Metric ####
 
 In this task you will use the Azure Preview Portal to enable the Autoscale feature for the Web App you created in Exercise 2.
 
@@ -891,7 +891,7 @@ In this task you will use the Azure Preview Portal to enable the Autoscale featu
 	_Changing the Target range to be between 5 and 25 percent_
 
 <a name="Ex5Task2" />
-#### Task 2 â€“ Load Testing with Visual Studio ####
+#### Task 2 – Load Testing with Visual Studio ####
 
 Now that **Autoscale** has been configured, you will create a **Web Performance and Load Test Project** in Visual Studio to generate some CPU load on your Web App.
 
@@ -1020,7 +1020,7 @@ Now that **Autoscale** has been configured, you will create a **Web Performance 
 	![Test settings](Images/test-settings.png?raw=true)
 
 <a name="Ex5Task3" />
-#### Task 3 â€“ Autoscale Verification ####
+#### Task 3 – Autoscale Verification ####
 
 You will now execute the load test you created in the previous task and see how your Web App behaves under load.
 

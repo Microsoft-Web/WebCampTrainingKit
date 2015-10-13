@@ -1,4 +1,4 @@
-﻿<a name="title" />
+<a name="title" />
 # One ASP.NET / Hybrid Site #
 
 ---
@@ -19,7 +19,7 @@ In this demo, you will see how to:
 <a name="technologies" />
 ### Key Technologies ###
 
-- [Visual Studio 2013][1]
+- [Visual Studio 2015][1]
 - [ASP.NET][2]
 
 [1]: http://www.visualstudio.com/
@@ -29,7 +29,7 @@ In this demo, you will see how to:
 ### Setup and Configuration ###
 In order to execute this demo you need to set up your environment.
 
-1. Open Visual Studio 2013.
+1. Open Visual Studio 2015.
 
 <a name="Demo" />
 ## Demo ##

@@ -1,4 +1,4 @@
-﻿<a name="title" />
+<a name="title" />
 # Building a Windows Store front end #
 
 ---
@@ -25,7 +25,7 @@ In this demo, you will see how to:
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
-1. Open Visual Studio 2013.
+1. Open Visual Studio 2015.
 1. Open the **GeekQuiz.sln** solution located under **source\end**.
 1. Collapse the **GeekQuiz.Web** project node in **Solution Explorer**.
 1. In Visual Studio, close all open files.

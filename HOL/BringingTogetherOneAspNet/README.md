@@ -1,4 +1,4 @@
-ï»¿<a name="HOLTop" />
+<a name="HOLTop" />
 # Bringing Together One ASP.NET #
 
 ---
@@ -8,7 +8,7 @@
 
 ASP.NET is a framework for building Web sites, apps and services using specialized technologies such as MVC, Web API and others. With the expansion ASP.NET has seen since its creation and the expressed need to have these technologies integrated, there have been recent efforts in working towards **One ASP.NET**.
 
-Visual Studio 2013 introduces a new unified project system which lets you build an application and use all the ASP.NET technologies in one project. This feature eliminates the need to pick one technology at the start of a project and stick with it, and instead encourages the use of multiple ASP.NET frameworks within one project.
+Visual Studio 2015 introduces a new unified project system which lets you build an application and use all the ASP.NET technologies in one project. This feature eliminates the need to pick one technology at the start of a project and stick with it, and instead encourages the use of multiple ASP.NET frameworks within one project.
 
 <a name="Objectives" />
 ### Objectives ###
@@ -42,7 +42,7 @@ In order to run the exercises in this hands-on lab, you will need to set up your
 <a name="CodeSnippets" />
 ### Using the Code Snippets ###
 
-Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2013 to avoid having to add it manually. 
+Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2015 to avoid having to add it manually. 
 
 >**Note**: Each exercise is accompanied by a starting solution located in the **Begin** folder of the exercise that allows you to follow each exercise independently of the others. Please be aware that the code snippets that are added during an exercise are missing from these starting solutions and may not work until you have completed the exercise. Inside the source code for an exercise, you will also find an **End** folder containing a Visual Studio solution with the code that results from completing the steps in the corresponding exercise. You can use these solutions as guidance if you need additional help as you work through this hands-on lab.
 
@@ -63,10 +63,10 @@ Estimated time to complete this lab: **60 minutes**
 <a name="Exercise1" />
 ### Exercise 1: Creating a New Web Forms Project ###
 
-In this exercise you will create a new Web Forms site in Visual Studio 2013 using the **One ASP.NET** unified project experience, which will allow you to easily integrate Web Forms, MVC and Web API components in the same application. You will then explore the generated solution and identify its parts, and finally you will see the Web site in action.
+In this exercise you will create a new Web Forms site in Visual Studio 2015 using the **One ASP.NET** unified project experience, which will allow you to easily integrate Web Forms, MVC and Web API components in the same application. You will then explore the generated solution and identify its parts, and finally you will see the Web site in action.
 
 <a name="Ex1Task1" />
-#### Task 1 â€“ Creating a New Site Using the One ASP.NET Experience ####
+#### Task 1 – Creating a New Site Using the One ASP.NET Experience ####
 
 In this task you will start creating a new Web site in Visual Studio based on the **One ASP.NET** project type. **One ASP.NET** unifies all ASP.NET technologies and gives you the option to mix and match them as desired. You will then recognize the different components of Web Forms, MVC and Web API that live side by side within your application.
 
@@ -152,7 +152,7 @@ In this task you will start creating a new Web site in Visual Studio based on th
 	````
 
 <a name="Ex1Task2" />
-#### Task 2 â€“ Running the Solution ####
+#### Task 2 – Running the Solution ####
 
 In this task you will run the generated solution, explore the app and some of its features, like URL rewriting and built-in authentication.
 
@@ -201,7 +201,7 @@ The Entity Framework Code First modeling workflow allows you to use your own dom
 > **Note:** You can learn more about Entity Framework [here](http://www.asp.net/entity-framework).
 
 <a name="Ex2Task1" />
-#### Task 1 â€“ Creating a New Model ####
+#### Task 1 – Creating a New Model ####
 
 You will now define a **Person** class, which will be the model used by the scaffolding process to create the MVC controller and the views. You will start by creating a **Person** model class, and the CRUD operations in the controller will be automatically created using scaffolding features.
 
@@ -240,7 +240,7 @@ You will now define a **Person** class, which will be the model used by the scaf
 1. In **Solution Explorer**, right-click the **MyHybridSite** project and select **Build**, or press **CTRL + SHIFT + B** to build the project.
 
 <a name="Ex2Task2" />
-#### Task 2 â€“ Creating an MVC Controller ####
+#### Task 2 – Creating an MVC Controller ####
 
 Now that the **Person** model is created, you will use ASP.NET MVC scaffolding with Entity Framework to create the CRUD controller actions and views for **Person**.
 
@@ -323,7 +323,7 @@ Now that the **Person** model is created, you will use ASP.NET MVC scaffolding w
 	> **Note:** By selecting the **Use async controller actions** check box from the scaffolding options in the previous steps, Visual Studio generates asynchronous action methods for all actions that involve access to the Person data context. It is recommended that you use asynchronous action methods for long-running, non-CPU bound requests to avoid blocking the Web server from performing work while the request is being processed.
 
 <a name="Ex2Task3" />
-#### Task 3 â€“ Running the Solution ####
+#### Task 3 – Running the Solution ####
 
 In this task, you will run the solution again to verify that the views for **Person** are working as expected. You will add a new person to verify that it is successfully saved to the database. 
 
@@ -365,7 +365,7 @@ The Web API framework is part of the ASP.NET Stack and designed to make implemen
 In this exercise, you will use ASP.NET Scaffolding again to generate a Web API controller. You will use the same **Person** and **PersonContext** classes from the previous exercise to provide the same person data in JSON format. You will see how you can expose the same resources in different ways within the same ASP.NET application.
 
 <a name="Ex3Task1" />
-#### Task 1 â€“ Creating a Web API Controller ####
+#### Task 1 – Creating a Web API Controller ####
 
 In this task you will create a new **Web API Controller** that will expose the person data in a machine-consumable format like JSON.
 
@@ -423,7 +423,7 @@ In this task you will create a new **Web API Controller** that will expose the p
 
 
 <a name="Ex3Task2" />
-#### Task 2 â€“ Running the Solution ####
+#### Task 2 – Running the Solution ####
 
 In this task you will use the Internet Explorer **F12 developer tools** to inspect the full response from the Web API controller. You will see how you can capture network traffic to get more insight into your application data.
 
@@ -458,7 +458,7 @@ In this task you will use the Internet Explorer **F12 developer tools** to inspe
 	_Viewing Web API Response Body_
 
 <a name="Ex3Task3" />
-#### Task 3 â€“ Adding Web API Help Pages ####
+#### Task 3 – Adding Web API Help Pages ####
 
 When you create a Web API, it is useful to create a help page so that other developers will know how to call your API. You could create and update the documentation pages manually, but it is better to auto-generate them to avoid having to do maintenance work. In this task you will use a Nuget package to automatically generate Web API help pages to the solution.
 
@@ -546,7 +546,7 @@ When you create a Web API, it is useful to create a help page so that other deve
 
 By completing this hands-on lab you have learned how to:
 
-- Create a new Web application using the One ASP.NET Experience in Visual Studio 2013
+- Create a new Web application using the One ASP.NET Experience in Visual Studio 2015
 - Integrate multiple ASP.NET technologies into one single project
 - Generate MVC controllers and views from your model classes using ASP.NET Scaffolding
 - Generate Web API controllers, which use features such as Async Programming and data access through Entity Framework

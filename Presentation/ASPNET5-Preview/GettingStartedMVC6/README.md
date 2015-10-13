@@ -1,4 +1,4 @@
-﻿<a name="title" />
+<a name="title" />
 # Getting Started With ASP.NET MVC 6 #
 
 ---

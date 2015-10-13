@@ -1,5 +1,5 @@
-﻿<a name="HOLTop" />
-# Visual Studio 2013 Web Tooling #
+<a name="HOLTop" />
+# Visual Studio 2015 Web Tooling #
 
 ---
 
@@ -48,7 +48,7 @@ In order to run the exercises in this hands-on lab, you will need to set up your
 <a name="CodeSnippets" />
 ### Using the Code Snippets ###
 
-Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2013 to avoid having to add it manually. 
+Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2015 to avoid having to add it manually. 
 
 >**Note**: Each exercise is accompanied by a starting solution located in the **Begin** folder of the exercise that allows you to follow each exercise independently of the others. Please be aware that the code snippets that are added during an exercise are missing from these starting solutions and may not work until you have completed the exercise. Inside the source code for an exercise, you will also find an **End** folder containing a Visual Studio solution with the code that results from completing the steps in the corresponding exercise. You can use these solutions as guidance if you need additional help as you work through this hands-on lab.
 
@@ -71,7 +71,7 @@ Estimated time to complete this lab: **45 minutes**
 
 **Web Essentials** is a Visual Studio extension that adds a variety of useful features for modern web development, mostly focused on making the web development experience much faster and more pleasant. You can install Web Essentials from the Extension Gallery in Visual Studio.
 
-**Browser Link** is a new feature included in Visual Studio 2013 that provides a channel between the Visual Studio IDE and any open browser to exchange data between your web application and Visual Studio. Web Essentials extends Browser Link with tools to manipulate the DOM object model and the CSS styles of your web pages directly from the browser.
+**Browser Link** is a new feature included in Visual Studio 2015 that provides a channel between the Visual Studio IDE and any open browser to exchange data between your web application and Visual Studio. Web Essentials extends Browser Link with tools to manipulate the DOM object model and the CSS styles of your web pages directly from the browser.
 
 In this exercise, you will explore some of the features supported by **Web Essentials** and **Browser Link** to enhance a simple quiz page. 
 
@@ -414,7 +414,7 @@ In this task, you will create a new HTML form element which contains a label and
 <a name="Ex2Task2" />
 #### Task 2 - Using HTML Code Snippets ####
 
-HTML5 introduced more than 25 new semantic tags. Visual Studio already had IntelliSense support for these tags, but Visual Studio 2013 makes it faster and easier to write markup by adding new code snippets. Though these tags are not complicated, they come with a few small subtleties, such as adding the correct codec fallbacks for the _audio_ tag. In this task, you will see the HTML code snippets for the audio tag.
+HTML5 introduced more than 25 new semantic tags. Visual Studio already had IntelliSense support for these tags, but Visual Studio 2015 makes it faster and easier to write markup by adding new code snippets. Though these tags are not complicated, they come with a few small subtleties, such as adding the correct codec fallbacks for the _audio_ tag. In this task, you will see the HTML code snippets for the audio tag.
 
 1. In the **Index.cshtml** file, type **\<aud** inside the **\<section>** element as shown in the following figure.
 

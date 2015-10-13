@@ -1,4 +1,4 @@
-ï»¿<a name="HOLTop" />
+<a name="HOLTop" />
 # ASP.NET Web API and Single-Page Applications (SPAs) #
 
 ---
@@ -6,7 +6,7 @@
 <a name="Overview" />
 ## Overview ##
 
-In traditional web applications, the client (browser) initiates the communication with the server by requesting a page. The server then processes the request and sends the HTML of the page to the client. In subsequent interactions with the page â€“e.g. the user navigates to a link or submits a form with dataâ€“ a new request is sent to the server, and the flow starts again: the server processes the request and sends a new page to the browser in response to the new action requested by the client.
+In traditional web applications, the client (browser) initiates the communication with the server by requesting a page. The server then processes the request and sends the HTML of the page to the client. In subsequent interactions with the page –e.g. the user navigates to a link or submits a form with data– a new request is sent to the server, and the flow starts again: the server processes the request and sends a new page to the browser in response to the new action requested by the client.
 
 In Single-Page Applications (SPAs) the entire page is loaded in the browser after the initial request, but subsequent interactions take place through Ajax requests. This means that the browser has to update only the portion of the page that has changed; there is no need to reload the entire page. The SPA approach reduces the time taken by the application to respond to user actions, resulting in a more fluid experience.
 
@@ -45,7 +45,7 @@ In order to run the exercises in this hands-on lab, you will need to set up your
 <a name="CodeSnippets" />
 ### Using the Code Snippets ###
 
-Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2013 to avoid having to add it manually. 
+Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2015 to avoid having to add it manually. 
 
 >**Note**: Each exercise is accompanied by a starting solution located in the **Begin** folder of the exercise that allows you to follow each exercise independently of the others. Please be aware that the code snippets that are added during an exercise are missing from these starting solutions and may not work until you have completed the exercise. Inside the source code for an exercise, you will also find an **End** folder containing a Visual Studio solution with the code that results from completing the steps in the corresponding exercise. You can use these solutions as guidance if you need additional help as you work through this hands-on lab.
 
@@ -70,7 +70,7 @@ One of the key parts of a SPA is the service layer. It is responsible for proces
 The Web API framework is part of the ASP.NET Stack and is designed to make it easy to implement HTTP services, generally sending and receiving JSON- or XML-formatted data through a RESTful API. In this exercise you will create the Web site to host the Geek Quiz application and then implement the back-end service to expose and persist the quiz data using ASP.NET Web API.
 
 <a name="Ex1Task1" />
-#### Task 1 â€“ Creating the Initial Project for Geek Quiz ####
+#### Task 1 – Creating the Initial Project for Geek Quiz ####
 
 In this task you will start creating a new ASP.NET MVC project with support for ASP.NET Web API based on the **One ASP.NET** project type that comes with Visual Studio. **One ASP.NET** unifies all ASP.NET technologies and gives you the option to mix and match them as desired. You will then add the Entity Framework's model classes and the database initializator to insert the quiz questions.
 
@@ -215,7 +215,7 @@ In this task you will start creating a new ASP.NET MVC project with support for 
 	````
 
 <a name="Ex1Task2" />
-#### Task 2 â€“ Creating the TriviaController Web API ####
+#### Task 2 – Creating the TriviaController Web API ####
 
 In the previous task, you created the initial structure of the Geek Quiz web application. You will now build a simple Web API service that interacts with the quiz data model and exposes the following actions:
 
@@ -273,7 +273,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 	_Selecting the Web API 2 Controller Empty template_
 
-	> **Note:** **ASP.NET Scaffolding** is a code generation framework for ASP.NET Web applications. Visual Studio 2013 includes pre-installed code generators for MVC and Web API projects. You should use scaffolding in your project when you want to quickly add code that interacts with data models in order to reduce the amount of time required to develop standard data operations.
+	> **Note:** **ASP.NET Scaffolding** is a code generation framework for ASP.NET Web applications. Visual Studio 2015 includes pre-installed code generators for MVC and Web API projects. You should use scaffolding in your project when you want to quickly add code that interacts with data models in order to reduce the amount of time required to develop standard data operations.
 
 	> The scaffolding process also ensures that all the required dependencies are installed in the project. For example, if you start with an empty ASP.NET project and then use scaffolding to add a Web API controller, the required Web API NuGet packages and references are added to your project automatically.
 
@@ -412,7 +412,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 	````
 
 <a name="Ex1Task3" />
-#### Task 3 â€“ Running the Solution ####
+#### Task 3 – Running the Solution ####
 
 In this task you will verify that the Web API service you built in the previous task is working as expected. You will use the Internet Explorer **F12 Developer Tools** to capture the network traffic and inspect the full response from the Web API service.
 
@@ -474,7 +474,7 @@ In this task you will verify that the Web API service you built in the previous 
 In this exercise you will first build the web front-end portion of Geek Quiz, focusing on the Single-Page Application interaction using **AngularJS**. You will then enhance the user experience with CSS3 to perform rich animations and provide a visual effect of context switching when transitioning from one question to the next.
 
 <a name="Ex2Task1" />
-#### Task 1 â€“ Creating the SPA Interface Using AngularJS ####
+#### Task 1 – Creating the SPA Interface Using AngularJS ####
 
 In this task you will use **AngularJS** to implement the client side of the Geek Quiz application. **AngularJS** is an open-source JavaScript framework that augments browser-based applications with _Model-View-Controller_ (MVC) capability, facilitating both development and testing.
 
@@ -580,7 +580,7 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
 	};
 	````
 
-	> **Note:** This function sends the  answer selected by the user to the **Trivia** Web API and stores the result â€“i.e. if the answer is correct or notâ€“ in the **$scope** object.
+	> **Note:** This function sends the  answer selected by the user to the **Trivia** Web API and stores the result –i.e. if the answer is correct or not– in the **$scope** object.
 	>
 	> The **nextQuestion** and **sendAnswer** functions from above use the AngularJS **$http** object to abstract the communication with the Web API via the XMLHttpRequest JavaScript object from the browser. AngularJS supports another service that brings a higher level of abstraction to perform CRUD operations against a resource through RESTful APIs. The AngularJS **$resource** object has action methods which provide high-level behaviors without the need to interact with the **$http** object. Consider using the **$resource** object in scenarios that requires the CRUD model (fore information, see the [$resource documentation](http://docs.angularjs.org/api/ngResource/service/$resource)).
 
@@ -679,7 +679,7 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
 	````
 
 <a name="Ex2Task2" />
-#### Task 2 â€“ Running the Solution ####
+#### Task 2 – Running the Solution ####
 
 In this task you will execute the solution using the new user interface you built with AngularJS to answer some of the quiz questions.
 
@@ -710,7 +710,7 @@ In this task you will execute the solution using the new user interface you buil
 1. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
 
 <a name="Ex2Task3" />
-#### Task 3 â€“ Creating a Flip Animation Using CSS3 ####
+#### Task 3 – Creating a Flip Animation Using CSS3 ####
 
 In this task you will use CSS3 properties to perform rich animations by adding a flip effect when a question is answered and when the next question is retrieved.
 

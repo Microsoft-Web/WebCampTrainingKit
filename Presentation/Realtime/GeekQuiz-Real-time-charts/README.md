@@ -1,4 +1,4 @@
-﻿<a name="title" />
+<a name="title" />
 # Real-time charts in the GeekQuiz application #
 
 ---
@@ -23,7 +23,7 @@ In this demo, you will see how:
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
-1. Open Visual Studio 2013.
+1. Open Visual Studio 2015.
 1. Open the **GeekQuiz.sln** solution located inside the **source\end** folder.
 1. Close all open files in Visual Studio.
 

@@ -1,4 +1,4 @@
-﻿<a name="title" />
+<a name="title" />
 # Tag Helpers #
 
 ---

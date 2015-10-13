@@ -1,4 +1,4 @@
-﻿<a name="title" />
+<a name="title" />
 # Visual Studio and Web Essentials - Web Tooling #
 
 ---
@@ -21,7 +21,7 @@ In this demo, you will see:
 ### Key Technologies ###
 
 * [Web Essentials](http://vswebessentials.com/)
-* [Visual Studio 2013](http://www.visualstudio.com/)
+* [Visual Studio 2015](http://www.visualstudio.com/)
 * [Browser Link](http://blogs.msdn.com/b/webdev/archive/2013/09/10/what-is-new-in-browser-link-with-visual-studio-2013-rc.aspx)
 
 <a name="setup" />
