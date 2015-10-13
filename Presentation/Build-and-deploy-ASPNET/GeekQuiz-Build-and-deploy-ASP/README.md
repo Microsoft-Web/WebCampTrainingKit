@@ -5,13 +5,13 @@
 <a name="Overview" />
 ## Overview ##
 
-In this demo you will create a new ASP.NET MVC application using the new One ASP.NET template, explain how routing works in MVC and show the default HomeController and Views. Then you will walk through the process of creating GeekQuiz object model (TriviaQuestion and TriviaOption) and leverage MVC scaffolding to create the controllers and views. Finally, you'll deploy the site to a new Microsoft Azure Web App created from within Visual Studio using the new tooling.
+In this demo you will create a new ASP.NET MVC application using the One ASP.NET template, explain how routing works in MVC and show the default HomeController and Views. Then you will walk through the process of creating GeekQuiz object model (TriviaQuestion and TriviaOption) and leverage MVC scaffolding to create the controllers and views. Finally, you'll deploy the site to a new Microsoft Azure Web App created from within Visual Studio using the new tooling.
 
 <a id="goals" />
 ### Goals ###
 In this demo, you will see how to:
 
-1. Create a new MVC application using the new One ASP.NET tooling
+1. Create a new MVC application using the One ASP.NET tooling
 1. Create GeekQuiz object model
 1. Use MVC Scaffolding to create controllers and views for your model
 1. Create a new Web App in Microsoft Azure and deploy
@@ -309,7 +309,7 @@ This demo is composed of the following segments:
 
 By completing this demo you should have:
 
-* Created a new MVC application using the new One ASP.NET template
+* Created a new MVC application using the One ASP.NET template
 * Learned how MVC routing, views and controllers work
 * Created GeekQuiz object model (TriviaQuestion and TriviaOption)
 * Scaffolded the views and controllers for your model

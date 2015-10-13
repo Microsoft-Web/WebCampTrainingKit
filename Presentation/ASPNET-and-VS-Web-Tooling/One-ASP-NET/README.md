@@ -5,13 +5,13 @@
 <a name="Overview" />
 ## Overview ##
 
-In this demo you will walk through the process of creating a new site using the new One ASP.NET tooling in Visual Sudio. You will start with a Web Forms application, create a simple model "Person" and use the new tooling to scaffold an MVC and a Web Api controller for it.
+In this demo you will walk through the process of creating a new site using the One ASP.NET tooling in Visual Sudio. You will start with a Web Forms application, create a simple model "Person" and use the new tooling to scaffold an MVC and a Web Api controller for it.
 
 <a id="goals" />
 ### Goals ###
 In this demo, you will see how to:
 
-1. Create a new site using the new One ASP.NET tooling
+1. Create a new site using the One ASP.NET tooling
 1. Create a simple model "Person"
 1. Scaffold an MVC controller for Person
 1. Scaffold a Web API controller for Person
@@ -242,7 +242,7 @@ This demo is composed of the following segments:
 
 By completing this demo you should have:
 
- * Created a new Web Forms site using the new One ASP.NET template.
+ * Created a new Web Forms site using the One ASP.NET template.
  * Created a simple model "Person"
  * Scaffolded a new MVC controller for Person
  * Scaffolded a new Web API controller for Person
