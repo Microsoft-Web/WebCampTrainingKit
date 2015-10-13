@@ -27,13 +27,13 @@ In this demo, you will see how to:
 
 [1]: http://www.asp.net/vnext
 [2]: http://www.asp.net/web-api
-[3]: https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx
+[3]: https://www.visualstudio.com/
 
 <a name="Setup" />
 ### Setup and Configuration ###
 Follow these steps to set up your environment for the demo.
 
-1. Install [Visual Studio 2015 RC](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx).
+1. Install [Visual Studio 2015](https://www.visualstudio.com/).
 1. Open Visual Studio 2015.
 
 
@@ -56,11 +56,11 @@ This demo is composed of the following segments:
 
 	_Creating a new ASP.NET Web Application_
 
-1. From the **ASP.NET 5 Preview Templates** list, select the **Web Site** template.
+1. From the **ASP.NET 5 Preview Templates** list, select the **Web Application** template.
 
-	![Selecting the Web Site template](images/selecting-web-site-template.png?raw=true "Selecting the Web Site template")
+	![Selecting the Web Application template](images/selecting-web-site-template.png?raw=true "Selecting the Web Application template")
 
-	_Selecting the ASP.NET 5 Web Site template_
+	_Selecting the ASP.NET 5 Web Application template_
 
 1. In the **Solution Explorer**, show the dependencies in the **project.json** file.
 
