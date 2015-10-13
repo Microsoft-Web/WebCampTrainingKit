@@ -88,15 +88,26 @@
           </tr>
           <tr>
             <td rowspan="2">Real-time Communications with SignalR</td>
-            <td rowspan="2">60</td>
+            <td rowspan="2">30</td>
             <td><a href='Presentation/Realtime/Realtime.pptx'>Presentation</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/Realtime/GeekQuiz-Real-time-charts/'>Demo -Real-time charts in the GeekQuiz application</a></td>
+            <td><a href='Presentation/Realtime/GeekQuiz-Real-time-charts/'>Demo - Real-time charts in the GeekQuiz application</a></td>
+          </tr>
+          <tr>
+            <td rowspan="3">ASP.NET 5 Preview</td>
+            <td rowspan="3">45</td>
+            <td><a href='Presentation/ASPNET5-Preview/ASPNET5-Preview.pptx"'>Presentation</a></td>
+          </tr>
+          <tr>
+            <td><a href='Presentation/ASPNET5-Preview/GettingStartedMVC6/'>Demo - Getting Started with ASP.NET MVC 6</a></td>
+          </tr>
+          <tr>
+            <td><a href='Presentation/ASPNET5-Preview/TagHelpers/'>Demo - Tag Helpers</a></td>
           </tr>
           <tr>
             <td>Wrap Up</td>
-            <td>30</td>
+            <td>15</td>
             <td><a href='Presentation/Conclusion/Conclusion.pptx'>Presentation</a></td>
           </tr>
         </table>
