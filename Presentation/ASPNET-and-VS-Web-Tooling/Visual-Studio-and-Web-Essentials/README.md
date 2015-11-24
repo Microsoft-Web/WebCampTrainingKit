@@ -1,4 +1,4 @@
-<a name="title" />
+﻿<a name="title" />
 # Visual Studio and Web Essentials - Web Tooling #
 
 ---
@@ -29,15 +29,11 @@ In this demo, you will see:
 
 Follow these steps to setup your environment for the demo.
 
-1. Install **Web Essentials 2013** (if it is not already installed).
+1. Install **[Web Extension Pack](https://visualstudiogallery.msdn.microsoft.com/f3b504c6-0095-42f1-a989-51d5fc2a8459)** (if it is not already installed).
 
 1. Open the **GeekQuiz.sln** solution located under **source/begin**.
 
-1. If you don't have a user account, launch the application and register one.
-
-1. Log-in in both Chrome and IE and select to be remembered. This will avoid having to enter the credentials during the demo.
-
-1. Dock Visual Studio to the right and set up the layout of IE and Chrome as shown in the following figure.
+1. Dock Visual Studio to the right and set up the layout of Microsoft Edge and Chrome as shown in the following figure.
 
 	![Layout](Images/layout.png?raw=true)
 
@@ -57,7 +53,7 @@ This demo is composed of the following segments:
 
 	![Browse With](Images/browse-with.png?raw=true)
 
-1. Hold down **CTRL** and select **Google Chrome and Internet Explorer**.
+1. Hold down **CTRL** and select **Google Chrome and Microsoft Edge**.
 
 	![Selecting multiple browsers](Images/multiple-browsers.png?raw=true "Selecting multiple browsers")
 
@@ -80,7 +76,7 @@ This demo is composed of the following segments:
 
 	_Refreshing Linked Browsers_
 
-1. Click **Internet Explorer** (to set focus on it) and press **CTRL + ALT + I**.
+1. Click **Microsoft Edge** (to set focus on it) and press **CTRL + ALT + I**.
 
 	> **Speaking point:** Let's change the color of the border around the question.
 
@@ -134,10 +130,17 @@ This demo is composed of the following segments:
 
 1. Update the original text with _What does it look like when I write a longer question?_.
 
+	![Updating the Question](Images/updated-question.png?raw=true "Updating the Question")
+
+	_Updating the Question_
+
 	> **Speaking point:** Explain that the VS editor is updated and changes are saved automatically.
 
 1. Back in Visual Studio, click the Browser Link **Refresh** button so IE is refreshed.
-<a name="segment1" />
+
+	![Refreshing Linked Browsers](Images/refresh-browser-link.png?raw=true "Refreshing Linked Browsers")
+
+	_Refreshing Linked Browsers_
 
 1. Expand the **Error List** window and double-click the SEO related warning.
 
@@ -145,12 +148,24 @@ This demo is composed of the following segments:
 
 	_Opening the SEO warning_
 
-1. When asked if you would like to insert a `<meta>` tag, click **Yes**. The editor for **\_Layout.cshtml** is opened an the following code is automatically added.
+1. When asked if you would like to insert a `<meta>` tag, click **Yes**. 
+
+	![Adding the description meta tag](Images/adding-description-meta-tag.png?raw=true "Adding the description meta tag")
+
+	_Adding the description meta tag_
+
+1. The editor for **\_Layout.cshtml** is opened an the following code is automatically added.
 
 	````HTML
 	<meta name="description" content="The description of my page" />
 	````
+
 1. Change the value of the `content` attribute to _GeekQuiz_ and save the file.
+
+
+	````HTML
+	<meta name="description" content="GeekQuiz" />
+	````
 
 <a name="segment2" />
 ### Snippets and Intellisense ###
@@ -202,17 +217,21 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 
 	````HTML
 	@section Scripts {
-		<script src="~/Scripts/init.js"></script>
+		<script src="~/js/init.js"></script>
 	}
 	````
 
-1. In **Solution Explorer**, right-click the **Scripts** folder, expand the **Add** menu and select **JavaScript File**.
+1. In **Solution Explorer**, right-click the **js** folder located in **wwwroot**, expand the **Add** menu and select **New Item...**.
 
 	![Adding a Javascript File](Images/adding-javascript-file.png?raw=true "Adding a Javascript File]")
 
 	_Adding a Javascript File_
 
-1. Name the file _init_ and click **OK**.
+1. In the **Add New Item** dialog box, select **JavaScript File** under the **DNX | Client-Side**, name the file _init.js_ and click **Add**.
+
+	![Adding the init.js file](Images/creating-the-init-js-file.png?raw=true "Adding the init.js file")
+
+	_Adding the init.js file_
 
 1. Add the following code to the new JS file.
 
@@ -257,6 +276,10 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 
 1. Click the Browser Link **Refresh** button. Once the pages are refreshed, audio will start playing.
 
+	![Refreshing Linked Browsers](Images/refresh-browser-link.png?raw=true "Refreshing Linked Browsers")
+
+	_Refreshing Linked Browsers_
+
 1. Close both browser windows.
 
 1. Delete the `<audio>` element and the `@section Scripts`.
@@ -269,10 +292,10 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 <a name="summary" />
 ## Summary ##
 
-By completing this demo you should have showcased the featuers included in the new version of Visual Studio and Web Essentials while updating GeekQuiz:
+By completing this demo you should have showcased the features included in the new version of Visual Studio and Web Essentials while updating GeekQuiz:
 
 1. Zen Coding for creating the buttons
-1. CSS Color Picke for updating the color of the container's border
+1. CSS Color Picker for updating the color of the container's border
 1. Browser Link to refresh changes done in Visual Studio automatically
 1. Browser Link Extensions to reflect changes done in the browser in the source code
 1. SEO warnings
