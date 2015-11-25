@@ -1,17 +1,17 @@
-<a name="title" />
+ï»¿<a name="title" />
 # Building and Deploying an ASP.NET Application #
 
 ---
 <a name="Overview" />
 ## Overview ##
 
-In this demo you will create a new ASP.NET MVC application using the One ASP.NET template, explain how routing works in MVC and show the default HomeController and Views. Then you will walk through the process of creating GeekQuiz object model (TriviaQuestion and TriviaOption) and leverage MVC scaffolding to create the controllers and views. Finally, you'll deploy the site to a new Microsoft Azure Web App created from within Visual Studio using the new tooling.
+In this demo you will create a new ASP.NET MVC application using the Web Application ASP.NET template, explain how routing works in MVC and show the default HomeController and Views. Then you will walk through the process of creating part of the GeekQuiz object model (TriviaQuestion) and leverage MVC scaffolding to create the controllers and views. Finally, you'll deploy the site to a new Microsoft Azure Web App created from within Visual Studio using the new tooling.
 
 <a id="goals" />
 ### Goals ###
 In this demo, you will see how to:
 
-1. Create a new MVC application using the One ASP.NET tooling
+1. Create a new MVC application using the ASP.NET tooling
 1. Create GeekQuiz object model
 1. Use MVC Scaffolding to create controllers and views for your model
 1. Create a new Web App in Microsoft Azure and deploy
@@ -63,21 +63,23 @@ This demo is composed of the following segments:
 
 1. Name the application _GeekQuiz_ and click **OK**.
 
-1. Select new MVC project and check the Web API option.
+1. Select Web Application project.
 
 	![New ASP.NET template options for other project types](images/new-aspnet-template-options-for-other-project-types.png?raw=true "New ASP.NET template options for other project types")
 
-	_New ASP.NET template options for other project types_
+	_New ASP.NET templates_
 
 	> 	**Speaking Point:**
 	>
-	Explain the options in the new ASP.NET Project dialog. There are still base templates, but you can include folders and core references for other project types.
+	Explain the templates in the new ASP.NET Project dialog.
 
 1. Click **OK** to create the project.
 
 	> 	**Speaking Point:**
 	>
-	As the project is loading, talk about changes to the project template, including Bootstrap, updates to user authentication, and decoupling the tooling from project types (so Web Forms applications can easily use ASP.NET MVC controllers, etc.)
+	As the project is loading, talk about changes to the project template, including the new application anatomy, services, prebuilt middlewares and client-side development.
+
+1. Click Cancel in the Choose Source Control dialog
 
 1. Explore the generated solution in the **Solution Explorer**.
 
@@ -99,7 +101,7 @@ This demo is composed of the following segments:
 
 1. Open the **Index.cshtml** file located in the **Views/Home** folder.
 
-1. Open the **App_Start/RouteConfig.cs** file and explain routing.
+1. Open the **Startup.cs** file, go to the Configure method and explain the [Middleware](https://docs.asp.net/en/latest/fundamentals/middleware.html) concept and talk about the built-in routing middleware.
 
 	> 	**Speaking Point:**
 	>
@@ -178,11 +180,11 @@ This demo is composed of the following segments:
 	>
 	Let's create the controllers and views using scaffolding for each model class.
 
-1. Select the **MVC 5 Controller with views, using Entity Framework** option in the **Add Scaffold** dialog and click **Add**.
+1. Select the **MVC 6 Controller with views, using Entity Framework** option in the **Add Scaffold** dialog and click **Add**.
 
 	![Selecting the MVC 5 Controller with views and Entity Framework](images/selecting-mvc5-controller.png?raw=true "Selecting the MVC 5 Controller with views and Entity Framework")
 
-	_Selecting the MVC 5 Controller with views and Entity Framework_
+	_Selecting the MVC 6 Controller with views and Entity Framework_
 
 1. Change the name of the controller to **QuestionController**.
 
@@ -239,24 +241,18 @@ This demo is composed of the following segments:
 
 	_Adding a new question_
 
-1. Navigate to **/option** and add a new option selecting the recently created question in the **QuestionId** field.
-
-	![Adding a new option](images/adding-new-option.png?raw=true "Adding a new option")
-
-	_Adding a new option_
-
 1. Close the browser to stop the solution.
 
 <a name="Segment4" />
 ### Deploying to Microsoft Azure Web Apps ###
 
-1. Right-click the **GeekQuiz** project and select **Publish…**
+1. Right-click the **GeekQuiz** project and select **Publish...**
 
 	![Publishing the Website](images/publishing-the-site.png?raw=true "Publishing the Website")
 
 	_Publishing the Website_
 
-1. In the **Publish Web** dialog, click **Microsoft Azure Web Apps**.
+1. In the **Publish Web** dialog, click **Microsoft Azure App Service**.
 
 	![Selecting Microsoft Azure Web Apps](images/selecting-web-apps.png?raw=true "Selecting Microsoft Azure Web Apps")
 
@@ -282,7 +278,7 @@ This demo is composed of the following segments:
 
 	> 	**Speaking Point:**
 	>
-	You can create a new Web App without a database, or a new Web App with a new database on an existing database server, or a new Web App with a new database on a new database server. Fill in all the required information and voila… your new Microsoft Azure Web App is ready and you can deploy your website project there.
+	You can create a new Web App without a database, or a new Web App with a new database on an existing database server, or a new Web App with a new database on a new database server. Fill in all the required information and voila... your new Microsoft Azure Web App is ready and you can deploy your website project there.
 
 1. Back in the **Publish Web** dialog, click **Next >**.
 
@@ -309,7 +305,7 @@ This demo is composed of the following segments:
 
 By completing this demo you should have:
 
-* Created a new MVC application using the One ASP.NET template
+* Created a new MVC application using the Web Application ASP.NET template
 * Learned how MVC routing, views and controllers work
 * Created GeekQuiz object model (TriviaQuestion and TriviaOption)
 * Scaffolded the views and controllers for your model
