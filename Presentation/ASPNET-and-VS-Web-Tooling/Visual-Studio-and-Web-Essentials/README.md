@@ -269,10 +269,10 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 <a name="summary" />
 ## Summary ##
 
-By completing this demo you should have showcased the featuers included in the new version of Visual Studio and Web Essentials while updating GeekQuiz:
+By completing this demo you should have showcased the features included in the new version of Visual Studio and Web Essentials while updating GeekQuiz:
 
 1. Zen Coding for creating the buttons
-1. CSS Color Picke for updating the color of the container's border
+1. CSS Color Picker for updating the color of the container's border
 1. Browser Link to refresh changes done in Visual Studio automatically
 1. Browser Link Extensions to reflect changes done in the browser in the source code
 1. SEO warnings
