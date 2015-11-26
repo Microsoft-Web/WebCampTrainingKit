@@ -10,10 +10,12 @@
     </div>
 </section>
 
-<script>
-    System.config({
-        packages: { 'js': { defaultExtension: 'js' } }
-    });
+@section Scripts {
+    <script>
+        System.config({
+            packages: { 'js': { defaultExtension: 'js' } }
+        });
 
-    System.import('js/app');
-</script>
+        System.import('js/app');
+    </script>
+}
