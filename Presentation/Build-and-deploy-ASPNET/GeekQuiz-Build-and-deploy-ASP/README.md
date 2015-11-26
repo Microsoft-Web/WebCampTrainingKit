@@ -5,7 +5,7 @@
 <a name="Overview" />
 ## Overview ##
 
-In this demo you will create a new ASP.NET MVC application using the Web Application ASP.NET template, explain how routing works in MVC and show the default HomeController and Views. Then you will walk through the process of creating part of the GeekQuiz object model (TriviaQuestion) and leverage MVC scaffolding to create the controllers and views. Finally, you'll deploy the site to a new Microsoft Azure Web App created from within Visual Studio using the new tooling.
+In this demo you will create a new ASP.NET MVC application using the Web Application ASP.NET template, explain how routing works in MVC and show the default HomeController and Views. Then you will walk through the process of creating part of the GeekQuiz object model (TriviaQuestion and TriviaOption) and leverage MVC scaffolding to create the controllers and views. Finally, you'll deploy the site to a new Microsoft Azure Web App created from within Visual Studio using the new tooling.
 
 <a id="goals" />
 ### Goals ###
@@ -51,17 +51,13 @@ This demo is composed of the following segments:
 
 1. Open the **File / New / Project** dialog and show the options in the **Visual C# / Web** section.
 
-	![Simplified File/New experience with a single ASP.NET Web application template](images/file-new-experience-single-aspnet-web-application-template.png?raw=true "Simplified File/New experience with a single ASP.NET Web application template")
+	![Creating a new ASP.NET Web application](images/creating-a-new-asp-net-web-app.png?raw=true "Creating a new ASP.NET Web application")
 
-	_Simplified File/New experience with a single ASP.NET Web application template_
-
-	> 	**Speaking Point:**
-	>
-	Explain that instead of having to select from many Web templates, now is only "ASP.NET Web Application". Compare this to the set of templates available in Visual Studio 2012.
-
-	> ![Old Visual Studio 2012 set of templates](images/old-visual-studio-2012-set-of-templates.png?raw=true "Old Visual Studio 2012 set of templates")
+	_Creating a new ASP.NET Web application_
 
 1. Name the application _GeekQuiz_ and click **OK**.
+
+	> 	**Note:** Make sure that the **Add to source control** checkbox is not selected.
 
 1. Select Web Application project.
 
@@ -78,8 +74,6 @@ This demo is composed of the following segments:
 	> 	**Speaking Point:**
 	>
 	As the project is loading, talk about changes to the project template, including the new application anatomy, services, prebuilt middlewares and client-side development.
-
-1. Click Cancel in the Choose Source Control dialog
 
 1. Explore the generated solution in the **Solution Explorer**.
 
@@ -125,6 +119,7 @@ This demo is composed of the following segments:
 	````C#
     public class TriviaQuestion
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -140,11 +135,15 @@ This demo is composed of the following segments:
 	using System.ComponentModel.DataAnnotations;
 ````
 
+	![Adding the missing using statement](images/adding-the-missing-using-statement.png?raw=true "Adding the missing using statement")
+
+	_Adding the missing using statement_
+
 1. Repeat steps 10 and 11 to add a new class named _TriviaOption_.
 
 1. Add the following code to the **TriviaOption** class.
 
-	<!-- mark:3-16 -->
+	<!-- mark:3-14 -->
 	````C#
     public class TriviaOption
     {
@@ -182,15 +181,9 @@ This demo is composed of the following segments:
 
 1. Select the **MVC 6 Controller with views, using Entity Framework** option in the **Add Scaffold** dialog and click **Add**.
 
-	![Selecting the MVC 5 Controller with views and Entity Framework](images/selecting-mvc5-controller.png?raw=true "Selecting the MVC 5 Controller with views and Entity Framework")
+	![Selecting the MVC 6 Controller with views and Entity Framework](images/selecting-mvc6-controller-with-views.png?raw=true "Selecting the MVC 6 Controller with views and Entity Framework")
 
 	_Selecting the MVC 6 Controller with views and Entity Framework_
-
-1. Change the name of the controller to **QuestionController**.
-
-	![Changing the controller name](images/changing-the-controller-name.png?raw=true "Changing the controller name")
-
-	_Changing the controller name_
 
 1. Select **TriviaQuestion** from the **Model class** list.
 
@@ -210,6 +203,12 @@ This demo is composed of the following segments:
 
 	_Checking the use async controller actions checkbox_
 
+1. Change the name of the controller to **QuestionController**.
+
+	![Changing the controller name](images/changing-the-controller-name.png?raw=true "Changing the controller name")
+
+	_Changing the controller name_
+
 1. Finally, click **Add** to create the views and the controller with the default actions.
 
 	![Creating the QuestionController](images/creating-the-questioncontroller.png?raw=true "Creating the QuestionController")
@@ -220,7 +219,15 @@ This demo is composed of the following segments:
 
 1. Open the **QuestionController.cs** file to show the generated content.
 
+	![Showing the QuestionController](images/showing-the-questioncontroller.png?raw=true "Showing the QuestionController")
+
+	_Showing the QuestionController_
+
 1. Expand the **Views** folder and show the new views under the **Question** folder.
+
+	![Showing the Question Views](images/showing-the-question-views.png?raw=true "Showing the Question Views")
+
+	_Showing the Question Views_
 
 1. Build the solution. Then, repeat steps 1 through 7 to create the **OptionController** for the **TriviaOption** class using the already existing **TriviaContext**.
 
@@ -254,27 +261,27 @@ This demo is composed of the following segments:
 
 1. In the **Publish Web** dialog, click **Microsoft Azure App Service**.
 
-	![Selecting Microsoft Azure Web Apps](images/selecting-web-apps.png?raw=true "Selecting Microsoft Azure Web Apps")
+	![Selecting Microsoft Azure App Service](images/selecting-azure-app-service.png?raw=true "Microsoft Azure App Service")
 
-	_Selecting Microsoft Azure Web Apps_
+	_Microsoft Azure App Service_
 
-1. Click **Sign in...**. to sign in to Visual Studio with your Azure account.
+1. Click **Add an account...**. to sign in to Visual Studio with your Azure account.
 
-	![Sign in to Azure](images/sign-in-to-azure.png?raw=true "Sign in to Azure")
+	![Adding an account](images/adding-an-account.png?raw=true "Adding an account")
 
-	_Sign in to Azure_
+	_Adding an account_
 
-1. Then, click **New...* to open the _Create Web App on Microsoft Azure_ dialog box.
+1. Then, click **New...** to open the _Create Web App on Microsoft Azure_ dialog box.
 
-	![Create new Web App](images/create-new-web-app.png?raw=true "Create new Web App")
+	![Creating a new Web App](images/create-new-web-app.png?raw=true "Creating a new Web App")
 
-	_Create new Web App_
+	_Creating a new Web App_
 
 1. The _Create Web App on Microsoft Azure_ dialog box will appear. Fill the Web App name field, the App Service plan and select **Create new server** in the **Database server** list, or use an existing one. Then, click **Create** and wait until the Web App is created.
 
-	![Create Web App on Microsoft Azure dialog](images/create-web-app-dialog-box.png?raw=true "Create Web App on Microsoft Azure dialog")
+	![Creating Web App on Microsoft Azure dialog](images/create-web-app-dialog-box.png?raw=true "Creating Web App on Microsoft Azure dialog")
 
-	_Create Web App on Microsoft Azure dialog_
+	_CreatE Web App on Microsoft Azure dialog_
 
 	> 	**Speaking Point:**
 	>
@@ -286,11 +293,11 @@ This demo is composed of the following segments:
 
 	_Reviewing the connection settings to deploy_
 
-1. In the settings tab, select the new connection string for each context.
+1. In the settings tab, show that you can select to target differents DNX versions.
 
-	![Updating the connection strings](images/updating-the-connection-strings.png?raw=true "Updating the connection strings")
+	![Showing the different DNX versions](images/showing-the-dnx-versions.png?raw=true "Showing the different DNX versions")
 
-	_Updating the connection strings_
+	_Showing the different DNX versions_
 
 1. Finally, click **Publish** to publish the site.
 
