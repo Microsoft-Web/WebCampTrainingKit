@@ -1,26 +1,25 @@
-<a name="title" />
-# Building a SPA interface using Ember.js #
+﻿<a name="title" />
+# Building a SPA interface using Angular 2 #
 
 ---
 <a name="Overview" />
 ## Overview ##
 
-In this demo you will go through the steps required to build the web front end portion of GeekQuiz, focusing on the single page application interaction using Ember.js and Handlebars, and the CSS3 flip animation. 
+In this demo you will go through the steps required to build the web front end portion of GeekQuiz, focusing on the single page application interaction using Angular 2, and the CSS3 flip animation. 
 
 <a id="goals" />
 ### Goals ###
 
 In this demo, you will see how to:
 
-1. Create a single page application using Ember and ASP.NET Web API
+1. Create a single page application using Angular 2 and ASP.NET Web API
 1. Use CSS3 to perform rich animations
-1. Use Handlebars to generate HTML based on predefined templates, and integrate that with your Ember controllers
 
 <a name="technologies" />
 ### Key Technologies ###
 
-- [Ember](http://emberjs.com/)
-- [Handlebars](http://handlebarsjs.com/)
+- [Angular 2](https://angular.io/)
+- [TypeScript](http://www.typescriptlang.org/)
 - [CSS3](http://www.w3schools.com/css/css3_intro.asp)
 
 <a name="setup" />
@@ -40,11 +39,11 @@ Follow these steps to setup your environment for the demo.
 ## Demo ##
 This demo is composed of the following segments:
 
-1. [Consuming data from a Web API in an Ember.js app](#segment1)
+1. [Consuming data from a Web API in an Angular 2 app](#segment1)
 1. [Creating a flip animation using CSS3](#segment2)
 
 <a name="segment1" />
-### Consuming data from a Web API in an Ember.js app ###
+### Consuming data from a Web API in an Angular 2 app ###
 
 1. Right-click the **GeekQuiz** project and select **Manage NuGet Packages...**.
 
@@ -58,6 +57,12 @@ This demo is composed of the following segments:
 1. Install the package with Id **EmberJS**.
 
 	![Install Ember](images/installember.png?raw=true)
+
+1. Install Angular 2 package
+
+	```
+	npm i angular2@2.0.0-alpha.46 systemjs@0.19.6 --save --save-exact
+	```
 
 1. Click **Close** to close the dialog.
 1. Press **CTRL + ,** and search for "index.cshtml" (without the quotes).
