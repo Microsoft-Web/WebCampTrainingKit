@@ -7,19 +7,18 @@ import {Http, HTTP_BINDINGS, Headers} from 'angular2/http';
 })
 @View({
     directives: [NgFor, NgClass],
-    styleUrls: ['/css/flip.css'],
     template: `
         <div class="flip-container text-center col-md-12">
             <div class="back" [ng-class]="{flip: answered, correct: correctAnswer, incorrect:!correctAnswer}">
                 <p class="lead">{{answer()}}</p>
                 <p>
-                    <button class="btn btn-info btn-lg next option" (click)="nextQuestion()" (disabled)="working">Next Question</button>
+                    <button class="btn btn-info btn-lg next option" (click)="nextQuestion()" [disabled]="working">Next Question</button>
                 </p>
             </div>
             <div class="front" [ng-class]="{flip: answered}">
                 <p class="lead">{{title}}</p>
                 <div class="row text-center">
-                    <button class="btn btn-info btn-lg option" *ng-for="#option of options" (click)="sendAnswer(option)" (disabled)="working">{{option.title}}</button>
+                    <button class="btn btn-info btn-lg option" *ng-for="#option of options" (click)="sendAnswer(option)" [disabled]="working">{{option.title}}</button>
                 </div>
             </div>
         </div>
