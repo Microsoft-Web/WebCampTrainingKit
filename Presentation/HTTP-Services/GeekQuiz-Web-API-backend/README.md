@@ -1,4 +1,4 @@
-<a name="title" />
+﻿<a name="title" />
 # Overview of Web API backend from GeekQuiz #
 
 ---
@@ -45,44 +45,43 @@ This demo is composed of the following segments:
 <a name="segment1" />
 ### Create the TriviaController ###
 
-1. Right-click the **Controllers** folder, expand the **Add** menu and click **Controller...** in order to create a new **TriviaController**.
+1. Right-click the **Controllers** folder, expand the **Add** menu and click **New Item...** in order to create a new **TriviaController**.
 
-	![Creating a new Controller](images/creating-a-new-controller.png?raw=true "Creating a new Controller")
+	![Creating a new item](images/creating-a-new-item.png?raw=true "Creating a new item")
 
-	_Creating a new Controller_
+	_Creating a new item_
 
-1. In the **Add Scaffold** dialog, select **Web API 2 Controller - Empty** from the list and click **Add**.
+1. In the **Add New Item** dialog box, select **Web API Controller Class** from the list, set the Controller's name to **TriviaController** and click **Add**.
 
-	![Selecting the Web API 2 Controller - Empty option](images/selecting-the-web-api-controller-scaffold.png?raw=true "Selecting the Web API 2 Controller - Empty option")
+	![Selecting the Web API Controller Class option](images/selecting-the-web-api-controller-class.png?raw=true "Selecting the Web API Controller Class option")
 
-	_Selecting the Web API 2 Controller - Empty option_
-
-1. In the **Add Controller** dialog, set the Controller's name to **TriviaController**.
-
-	![Setting the name to the TriviaController](images/setting-the-name-to-the-triviacontroller.png?raw=true "Setting the name to the TriviaController")
-
-	_Setting the name to the TriviaController_
+	_Selecting the Web API Controller Class option_
 
 1. Implement the controller using the following code.
 
-	<!-- mark:3-18 -->
+	<!-- mark:4-23 -->
 	````C#
-    public class TriviaController : ApiController
+    [Route("api/[controller]")]
+    public class TriviaController : Controller
     {
-        private TriviaContext db;
-        private QuestionsService questionsService;
-        private AnswersService answersService;
+        private TriviaDbContext context;
+        private IQuestionsService questionsService;
+        private IAnswersService answersService;
 
-        public TriviaController()
+        public TriviaController(TriviaDbContext context, IQuestionsService questionsService, IAnswersService answersService)
         {
-            this.db = new TriviaContext();
-            this.questionsService = new QuestionsService(db);
-            this.answersService = new AnswersService(db);
+            this.context = context;
+            this.questionsService = questionsService;
+            this.answersService = answersService;
         }
 
         protected override void Dispose(bool disposing)
         {
-            this.db.Dispose();
+            if (disposing)
+            {
+                context.Dispose();
+            }
+
             base.Dispose(disposing);
         }
     }
@@ -96,58 +95,79 @@ This demo is composed of the following segments:
 	using GeekQuiz.Services;
 	````
 
-1. Add the `Authorize` attribute to the TriviaController.
+1. Add the `Produces("application/json")` attribute to the TriviaController.
 
 	<!-- mark:3 -->
 	````C#
 	namespace GeekQuiz.Controllers
 	{
-		 [Authorize]
-		 public class TriviaController : ApiController
+		 [Produces("application/json")]
+		 [Route("api/[controller]")]
+		 public class TriviaController : Controller
 		 {
+	````
+
+1. Add the `Authorize` attribute to the TriviaController.
+
+	<!-- mark:5 -->
+	````C#
+	namespace GeekQuiz.Controllers
+	{
+		 [Produces("application/json")]
+		 [Route("api/[controller]")]
+		 [Authorize]
+		 public class TriviaController : Controller
+		 {
+	````
+
+1. Resolve the missing _using_ statements for the `Authorize` attribute.
+
+	<!-- mark:1 -->
+	````C#
+	using Microsoft.AspNet.Authorization;
 	````
 
 1. Add the following code to create a **Get** action in the **TriviaController**.
 
-	<!-- mark:1-14 -->
+	<!-- mark:1-16 -->
 	````C#
-	public async Task<TriviaQuestion> Get()
+	// GET: api/Trivia
+	[HttpGet]
+	public async Task<IActionResult> Get()
 	{
 		var userId = User.Identity.Name;
 
 		TriviaQuestion nextQuestion =
-			await this.questionsService.NextQuestionAsync(userId);
+			 await this.questionsService.NextQuestionAsync(userId);
 
 		if (nextQuestion == null)
 		{
-			throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+			 return HttpNotFound();
 		}
 
-		return nextQuestion;
+		return Ok(nextQuestion);
 	}
 ````
-
-1. Resolve the missing _using_ statements for **Task**.
 
 1. Add the **Post** method from the following code snippet just after the **Get** method.
 
 	<!-- mark:1-15 -->
 	````C#
-	public async Task<HttpResponseMessage> Post(TriviaAnswer answer)
-    {
-        if (ModelState.IsValid)
-        {
-            answer.UserId = User.Identity.Name;
+	// PUT: api/Trivia
+	[HttpPost]
+	public async Task<IActionResult> Post([FromBody] TriviaAnswer answer)
+	{
+		if (!ModelState.IsValid)
+		{
+			 return HttpBadRequest(ModelState);
+		}
 
-            var isCorrect = await this.answersService.StoreAsync(answer);
+		answer.UserId = User.Identity.Name;
 
-            return Request.CreateResponse(HttpStatusCode.Created, isCorrect);
-        }
-        else
-        {
-            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-        }
-    }
+		var isCorrect = await this.answersService.StoreAsync(answer);
+		
+		return this.CreatedAtAction("Get", new {}, isCorrect);
+	}
 ````
 
 1. Build the solution.

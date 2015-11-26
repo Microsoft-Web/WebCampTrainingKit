@@ -39,7 +39,7 @@ namespace GeekQuiz.Controllers
             return Ok(nextQuestion);
         }
 
-        // PUT: api/Trivia
+        // POST: api/Trivia
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] TriviaAnswer answer)
         {
