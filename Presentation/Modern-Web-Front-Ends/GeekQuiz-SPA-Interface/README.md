@@ -33,7 +33,7 @@ Follow these steps to setup your environment for the demo.
 	> **Note:** Remember the information you provided as you will be using it during the demo.
 
 1. In Visual Studio, close all open files.
-1. Make sure that you have an Internet connection, as this demo requires it to download the NuGet packages.
+1. Make sure that you have an Internet connection, as this demo requires it to download the npm packages.
 
 <a name="Demo" />
 ## Demo ##
@@ -45,169 +45,266 @@ This demo is composed of the following segments:
 <a name="segment1" />
 ### Consuming data from a Web API in an Angular 2 app ###
 
-1. Right-click the **GeekQuiz** project and select **Manage NuGet Packages...**.
+1. Right-click the **npm** folder located under **Dependencies** and select **Developer Command Prompt** under **Open Command Line**.
 
-	![Manage NuGet Packages](images/managenugetpackages.png?raw=true)
+	![Opening a Developer Command Prompt](images/opening-a-dev-command-prompt.png?raw=true "Opening a Developer Command Prompt")
 
-1. Select **Online** on the left panel.
-1. Search for "emberjs" (without the quotes). A list of results similar to the one shown below will be displayed.
+	_Opening a Developer Command Prompt_
 
-	![Search Ember](images/searchember.png?raw=true)
-
-1. Install the package with Id **EmberJS**.
-
-	![Install Ember](images/installember.png?raw=true)
-
-1. Install Angular 2 package
+1. Install **Angular 2** and **SystemJS** npm packages using the following command in the Developer Command Prompt you just opened.
 
 	```
 	npm i angular2@2.0.0-alpha.46 systemjs@0.19.6 --save --save-exact
 	```
 
-1. Click **Close** to close the dialog.
-1. Press **CTRL + ,** and search for "index.cshtml" (without the quotes).
+	![Installing Angular and SystemJS npm packages](images/installing-npm-packages.png?raw=true "Installing Angular and SystemJS npm packages")
 
-	![index.cshtml](images/indexcshtml.png?raw=true)
+	_Installing Angular and SystemJS npm packages_
+
+1. Close the Developer Command Prompt.
+
+1. Press **CTRL + ,** and search for "_Layout.cshtml" (without the quotes).
+
+	![Opening the layout file](images/opening-the-layout.png?raw=true "Opening the layout file")
+
+	_Opening the layout file_
+
+1. Press **Enter**. The "_Layout.cshtml" file is opened in the editor.
+
+1. Add the following code inside the `<environment names="Development">` tag located inside the `head` tag.
+
+	<!-- mark:1-3 -->
+	````HTML
+	<script src="~/node_modules/systemjs/dist/system.js"></script>
+	<script src="~/node_modules/angular2/bundles/angular2.min.js"></script>
+	<script src="~/node_modules/angular2/bundles/http.js"></script>
+	````
+
+1. Add the following code inside the `<environment names="Staging,Production">` tag located inside the `head` tag.
+
+	<!-- mark:1-3 -->
+	````HTML
+	<script src="~/node_modules/systemjs/dist/system.js"></script>
+	<script src="~/node_modules/angular2/bundles/angular2.min.js"></script>
+	<script src="~/node_modules/angular2/bundles/http.min.js"></script>
+	````
+
+	![Updating the layout file to include the new dependencies](images/updating-the-layout.png?raw=true "Updating the layout file to include the new dependencies")
+
+	_Updating the layout file to include the new dependencies_
+
+1. Now, press **CTRL + ,** again and search for "index.cshtml" (without the quotes).
+
+	![Opening the index view](images/opening-the-index-view.png?raw=true "Opening the index view")
+
+	_Opening the index view_
 
 1. Press **Enter**. The Index.cshtml file is opened in the editor.
+
 1. Add the following code at the bottom of the file. This code will be used as the root of the SPA application.
 
-	<!-- mark:1 -->
+	<!-- mark:1-7 -->
 	````HTML
-	<div id="bodyContainer"></div>
+	<section id="content">
+		 <div class="container">
+			  <div class="row">
+					<geekquiz-app>Loading...</geekquiz-app>
+			  </div>
+		 </div>
+	</section>
 	````
 
-1. Add the following code snippet at the bottom of the file:
+1. Add the following code snippet at the bottom of the file. This code will include the app.js file that will be created during the next steps.
 
-	> **Note:** When you add EmberJS and other script libraries to your Visual Studio project, the Package Manager might install a version of the library that is more recent than the version shown in this topic. Make sure that the script reference in your code matches the version of the script library installed in your project.
-
-	<!-- mark:1-41 -->
+	<!-- mark:1-9 -->
 	````JavaScript
 	@section Scripts {
-	    <script src="@Url.Content("~/Scripts/handlebars.js")"></script>
-	    <script src="@Url.Content("~/Scripts/ember-1.13.0/ember-template-compiler.js")"></script>
-	    <script src="@Url.Content("~/Scripts/ember-1.13.0/ember.js")"></script>
-	    <script>
-	        var App = Ember.Application.create({ rootElement: '#bodyContainer' });
+		 <script>
+			  System.config({
+					packages: { 'js': { defaultExtension: 'js' } }
+			  });
 
-	        App.Question = Ember.Object.extend({ title: "loading question...", options: [], answered: false });
-
-	        App.IndexController = Ember.Controller.extend({
-	            question: null,
-	            answer: null,
-
-	            init: function () {
-	                this._super();
-	                this.showNewQuestion();
-	            },
-
-	            showNewQuestion: function () {
-	                var controller = this;
-	                var question = App.Question.create();
-	                controller.set('question', question);
-
-	                jQuery.getJSON("/api/trivia", function (response) {
-	                    question.setProperties(response);
-	                }).fail(function () { question.set('title', "Oops... something went wrong") });
-	            },
-
-	            actions: {
-	                nextQuestion: function () {
-	                    var controller = this;
-	                    controller.showNewQuestion();
-	                },
-
-	                sendAnswer: function (question, option) {
-	                    var controller = this;
-
-	                    // prevent multiple posts for the same question
-	                    jQuery('.front button').attr('disabled', 'disabled');
-
-	                    jQuery.post('/api/trivia', { 'questionId': question.id, 'optionId': option.id }, function (response) {
-	                        controller.set('answer', response ? 'correct' : 'incorrect');
-	                        controller.set('question.answered', true);
-	                    });
-	                }
-	            }
-	        });
-	    </script>
+			  System.import('js/app');
+		 </script>
 	}
 	````
-	
-1. Add the following code snippet between the `<div id=bodyContainer"></div>` element and the `Scripts` section:
 
-	<!-- mark:1-20 -->
-	````HTML
-	<script type="text/x-handlebars" id="index">
-		 <section id="content">
-			  <div class="container">
-					<div class="row">
-						 <div class="flip-container text-center col-md-12">
-							  <div {{bindAttr class=":front question.answered:flip" }}>
-									<p class="lead">
-										 {{question.title}}
-									</p>
-									<div class="row text-center">
-										 {{#each option in question.options}}
-											  <button class="btn btn-info btn-lg option">{{option.title}}</button>
-										 {{/each}}
-									</div>
-							  </div>
+1. Right-click the **js** folder located under **wwwroot** and select **New Item...** under **Add**.
+
+	![Creating a new item](images/creating-a-new-item.png?raw=true "Creating a new item")
+
+	_Creating a new item_
+
+1.	Select **TypeScript File** under the **DNX | Client-Side** menu, change the name to **app.ts** and click **Add**.
+
+	![Adding a new TypeScript file](images/adding-a-new-typescript-file.png?raw=true "Adding a new TypeScript file")
+
+	_Adding a new TypeScript file_
+
+1. Add the following code in the **app.ts** file you just created.
+
+	<!-- mark:1-71 -->
+	````JavaScript
+	import {bootstrap, Component, View, NgFor, NgClass, AfterViewInit, Inject} from 'angular2/angular2';
+	import {Http, HTTP_BINDINGS, Headers} from 'angular2/http';
+
+	@Component({
+		 selector: 'geekquiz-app',
+		 viewBindings: [HTTP_BINDINGS]
+	})
+	class AppComponent implements AfterViewInit {
+		 public answered = false;
+		 public title = "loading question...";
+		 public options = [];
+		 public correctAnswer = false;
+		 public working = false;
+
+		 constructor(@Inject(Http) private http: Http) {
+		 }
+
+		 answer() {
+			  return this.correctAnswer ? 'correct' : 'incorrect';
+		 }
+
+		 nextQuestion() {
+			  this.working = true;
+
+			  this.answered = false;
+			  this.title = "loading question...";
+			  this.options = [];
+
+			  this.http.get("/api/trivia")
+					.map(res => res.json())
+					.subscribe(
+						 question => {
+							  this.options = question.options;
+							  this.title = question.title;
+							  this.answered = false;
+							  this.working = false;
+						 },
+						 err => {
+							  this.title = "Oops... something went wrong";
+							  this.working = false;
+						 });
+		 }
+
+		 sendAnswer(option) {
+			  this.working = true;
+			  this.answered = true;
+
+			  var answer = { 'questionId': option.questionId, 'optionId': option.id };
+
+			  var headers = new Headers();
+			  headers.append('Content-Type', 'application/json');
+
+			  this.http.post('/api/trivia', JSON.stringify(answer), { headers: headers })
+					.map(res => res.json())
+					.subscribe(
+						 answerIsCorrect => {
+							  this.correctAnswer = (answerIsCorrect === true);
+							  this.working = false;
+						 },
+						 err => {
+							  this.title = "Oops... something went wrong";
+							  this.working = false;
+						 });
+		 }
+
+		 afterViewInit() {
+			  this.nextQuestion();
+		 }
+	}
+
+	bootstrap(AppComponent);
+	````
+
+1. Add the following View decorator to the **AppComponent** class below the **Component** decorator.
+
+	<!-- mark:1-19 -->
+	````JavaScript
+	@View({
+		 directives: [NgFor, NgClass],
+		 template: `
+			  <div class="flip-container text-center col-md-12">
+					<div class="front" [ng-class]="{flip: answered}">
+						 <p class="lead">{{title}}</p>
+						 <div class="row text-center">
+							  <button class="btn btn-info btn-lg option" *ng-for="#option of options" [disabled]="working">{{option.title}}</button>
 						 </div>
 					</div>
 			  </div>
-		 </section>
-	</script>
+		 `
+	})
 	````
-	> **Important:** Visual Studio's autocorrect feature sometimes changes bindAttr to bind**a**ttr. If that happens, you will need to correct that manually.
+
+1. Save the changes and show that Visual Studio compiles the TypeScript files generating JavaScript code.
+
+
+	![Showing the generated code](images/showing-the-generated-code.png?raw=true "Showing the generated code")
+
+	_Showing the generated code_
 
 1. Press **F5**.
 
 	> **Note:** If the Log in page is displayed, provide the credentials you created during the setup steps.
 	
-	> ![Log in](images/login.png?raw=true)
+	> ![Logging in the site](images/logging-in-the-app.png?raw=true "Logging in the site")
 	
 1. As shown in the following figure, the buttons will be displayed. Click any of the buttons. Nothing will happen.
 
-	![question](images/question.png?raw=true)
+	![Showing the app running](images/showing-the-app-running.png?raw=true "Showing the app running")
 
+	_Showing the app running_
 
 <a name="segment2" />
 ### Creating a flip animation using CSS3###
 
 1. Dock the Visual Studio window to the left, and the browser window to the right.
 
-	![dock](images/dock.png?raw=true)
+	![Docking the windows](images/docking-the-windows.png?raw=true "Docking the windows")
 
-1. In Visual Studio, add the `{{action "sendAnswer" question option}}` to the `<button>` element inside the *each* loop. The resulting `<button>` element is the one from the following code snippet:
+	_Docking the windows_
+
+1. In Visual Studio, press **CTRL + ,** again and search for "flip.css" (without the quotes).
+
+	![Opening the flip.css file](images/opening-the-flip-css-file.png?raw=true "Opening the flip.css file")
+
+	_Opening the flip.css file_
+
+1. Press **Enter**. The flip.css file is opened in the editor.
+
+1. Show the flip.css file.
+
+1. Go back to the **app.ts** file, add the `(click)="sendAnswer(option)"` to the `<button>` element inside the *each* loop. The resulting `<button>` element is the one from the following code snippet.
 
 	<!-- mark:1 -->
 	````HTML
-	<button class="btn btn-info btn-lg option" {{action "sendAnswer" question option}}>{{option.title}}</button>
+	<button class="btn btn-info btn-lg option" *ng-for="#option of options" (click)="sendAnswer(option)" [disabled]="working">{{option.title}}</button>
 	````
 
-1. Add the following code snippet as the first child of `<div class="flip-container text-center col-md-12">`:
+1. Add the following code snippet as the first child of `<div class="flip-container text-center col-md-12">` and save the changes.
 
 	<!-- mark:1-8 -->
 	````HTML
-	<div {{bindAttr class=":back question.answered:flip answer" }}>
-		 <p class="lead">
-			  {{answer}}
-		 </p>
-		 <p>
-			  <button class="btn btn-info btn-lg next option" {{action "nextQuestion" option}}>Next Question</button>
-		 </p>
+	<div class="back" [ng-class]="{flip: answered, correct: correctAnswer, incorrect:!correctAnswer}">
+		<p class="lead">{{answer()}}</p>
+		<p>
+			  <button class="btn btn-info btn-lg next option" (click)="nextQuestion()" [disabled]="working">Next Question</button>
+		</p>
 	</div>
 ````
-	> **Important:** Visual Studio's autocorrect feature sometimes changes bindAttr to bind**a**ttr. If that happens, you will need to correct that manually.
 
 1. Click **Refresh Browser Link**.
 
-	![Refresh Browser](images/refreshbrowser.png?raw=true)
+	![Refreshing the Browser using Browser Link](images/refreshing-using-browser-link.png?raw=true "Refreshing the Browser using Browser Link")
+
+	_Refreshing the Browser using Browser Link_
 
 1. In the web browser, click any of the buttons. The flip animation will take place and the result (correct/incorrect) will be displayed.
 
-	![Result](images/result.png?raw=true)
+	![Showing the flip animation](images/showing-the-flip-animation.png?raw=true "Showing the flip animation")
+
+	_Showing the flip animation_
 
 ---
 
