@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GeekQuiz</title>
+
+    <!-- WinJS references -->
+    <link href="WinJS/css/ui-dark.css" rel="stylesheet" />
+    <script src="WinJS/js/base.js"></script>
+    <script src="WinJS/js/ui.js"></script>
+
+    <!-- GeekQuiz references -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/converters.js"></script>
+    <script src="/js/viewModel.js"></script>
+    <script src="/js/default.js"></script>
+</head>
+<body class="win-type-body">
+    <div class="fragment">
+        <header aria-label="Header content" role="banner">
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">GeekQuiz</span>
+            </h1>
+        </header>
+        <section aria-label="Main content" role="main">
+            <div id="root" class="grid">
+                <div id="question" class="layout" data-win-bind="style.display: state Converters.showingQuestionToVisibilityConverter">
+                    <div class="title col1 row1">
+                        <span data-win-bind="innerText: question.title"></span>
+                    </div>
+                    <div class="option col1 row2">
+                        <button data-win-bind="innerText: question.option1.title"></button>
+                    </div>
+                    <div class="option col2 row2">
+                        <button data-win-bind="innerText: question.option2.title"></button>
+                    </div>
+                    <div class="option col3 row2">
+                        <button data-win-bind="innerText: question.option3.title"></button>
+                    </div>
+                    <div class="option col4 row2">
+                        <button data-win-bind="innerText: question.option4.title"></button>
+                    </div>
+                </div>
+                <div id="answer" class="layout" data-win-bind="style.display: state Converters.showingAnswerToVisibilityConverter">
+                    <div class="title col1 row1" data-win-bind="style.display: question.correct Converters.boolToVisibilityConverter">
+                        <span>Correct</span>
+                    </div>
+                    <div class="title col1 row1" data-win-bind="style.display: question.correct Converters.inverseBoolToVisibilityConverter">
+                        <span>Incorrect</span>
+                    </div>
+                    <div class="next col1 row2">
+                        <button id="next">Next question</button>
+                    </div>
+                </div>
+                <div id="loading" class="layout" data-win-bind="style.display: state Converters.loadingToVisibilityConverter">
+                    <div class="title col1 row1">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="progress col1 row2">
+                        <progress></progress>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
