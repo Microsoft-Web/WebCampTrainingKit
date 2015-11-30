@@ -1,4 +1,4 @@
-<a name="title" />
+﻿<a name="title" />
 # Building an Excel front end (using apps for Office) #
 
 ---
@@ -30,7 +30,7 @@ In this demo, you will see how to:
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
-1. Install the [Office Developer Tools for Visual Studio 2015](http://aka.ms/officedevtoolsforvs2013)
+1. Install the [Office Developer Tools for Visual Studio 2015](http://aka.ms/officedevtoolsforvs2015)
 1. Open Visual Studio 2015.
 1. Open the **GeekQuiz.sln** solution located under **source\end**.
 1. Press **F5** to start the application.
@@ -53,7 +53,7 @@ Follow these steps to setup your environment for the demo.
 	_Setting Start Document_
 
 1. In Visual Studio, close all open files.
-1. Install **Microsoft Excel 2013** (if it is not already installed).
+1. Install **Microsoft Excel 2013** or higher (if it is not already installed).
 
 <a name="Demo" />
 ## Demo ##
