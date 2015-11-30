@@ -31,7 +31,7 @@ class AppComponent implements AfterViewInit {
     public correctAnswer = false;
     public working = false;
 
-    constructor(@Inject(Http) private http: Http) {
+    constructor( @Inject(Http) private http: Http) {
     }
 
     answer() {
@@ -45,7 +45,10 @@ class AppComponent implements AfterViewInit {
         this.title = "loading question...";
         this.options = [];
 
-        this.http.get("/api/trivia")
+        var headers = new Headers();
+        headers.append('If-Modified-Since', 'Mon, 27 Mar 1972 00:00:00 GMT');
+
+        this.http.get("/api/trivia", { headers: headers })
             .map(res => res.json())
             .subscribe(
                 question => {

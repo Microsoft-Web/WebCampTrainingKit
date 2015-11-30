@@ -29,7 +29,9 @@ var AppComponent = (function () {
         this.answered = false;
         this.title = "loading question...";
         this.options = [];
-        this.http.get("/api/trivia")
+        var headers = new http_1.Headers();
+        headers.append('If-Modified-Since', 'Mon, 27 Mar 1972 00:00:00 GMT');
+        this.http.get("/api/trivia", { headers: headers })
             .map(function (res) { return res.json(); })
             .subscribe(function (question) {
             _this.options = question.options;
