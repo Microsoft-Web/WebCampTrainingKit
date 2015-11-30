@@ -1,5 +1,5 @@
 ﻿<a name="title" />
-# Building a Universal Windows application frond end #
+# Building a Universal Windows application front end #
 
 ---
 <a name="Overview" />
