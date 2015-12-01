@@ -1,4 +1,4 @@
-<a name="title" />
+﻿<a name="title" />
 # Scaling a production web site #
 
 ---
@@ -28,19 +28,21 @@ In this demo, you will see how to:
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
-1. Create a _Azure Storage account_ (e.g. _geekquizstorage_), create a blob container named _images_ and upload the **logo-big.png** image located inside the **source\assets** folder.
+1. Create a _Azure Storage account_ (e.g. _geekquiz_), create a blob container named _images_ and upload the **logo-big.png** image located inside the **source\assets** folder.
 
-1. Open the **GeekQuiz.sln** solution located under the **source\end** folder. Find the '<system.webServer>' element in the **web.config** file and change the url of the **Redirect** action using the _Azure Storage account_ you have just created.
+1. Open the **GeekQuiz.sln** solution located under the **source\end** folder. Find the `<system.webServer>` element in the **web.config** file located in **wwwroot** and change the url of the **Redirect** action using the _Azure Storage account_ you have just created.
 
 	![Updating the Rewrite Rule](images/highlighting-rewrite-rule.png?raw=true "Updating the Rewrite Rule")
 
 	_Updating the Rewrite Rule_
 
-1. Open the **GeekQuiz.sln** solution located under the **source\end** folder in Visual Studio and publish it to a new (free) Azure Web App. In the **Create Web App on Microsoft Azure dialog**, select an existing Database server or create a new one.
+1. Open the **GeekQuiz.sln** solution located under the **source\end** folder in Visual Studio and publish it to a new (free) Azure Web App. In the **Create App Service** dialog box, select an existing Database server or create a new one.
 
-	![Create Web App on Microsoft Azure dialog](images/create-web-app-dialog-box.png?raw=true "Create Web App on Microsoft Azure dialog")
+	![Create App Service dialog box](images/create-app-service-dialog-box.png?raw=true "Create App Service dialog box")
 
-	_Create Web App on Microsoft Azure dialog_
+	_Create App Service dialog box_
+
+	> **Note:** Make sure to update the **ConnectionString** value located in the **appsettings.json** file with the connection string of your database before deploying.
 
 1. Register a new user account.
 
@@ -76,21 +78,31 @@ This demo is composed of the following segments:
 
 1. Open the [Azure Preview Portal](https://portal.azure.com/) and log in with your credentials.
 
-1. Select the **BROWSE ALL** tab and filter by **Web Apps**.
+1. Select the **App Services** tab and filter the list by your site name.
 
-	![filtering Web apps](images/web-apps.png?raw=true "filtering Web apps")
+	![filtering App Services](images/filtering-app-services.png?raw=true "filtering App Services")
 
-	_Filtering Web apps_
+	_Filtering App Services_
 
-1. Click the web app where you deployed GeekQuiz during the setup steps.
+1. Click the app service where you deployed GeekQuiz during the setup steps.
 
-1. Open the Pricing tier page.
+1. Open the **App Service Plan** blade.
 
-	![Opening the Pricing tier page](images/pricing-tier.png?raw=true "Opening the Pricing tier page")
+	![Opening the App Service Plan blade](images/app-service-plan.png?raw=true "Opening the App Service Plan blade")
 
-	_Opening the Pricing tier page_
+	_Opening the App Service Plan blade_
+
+1. Openning
+
+	![Opening the Pricing tier blade](images/pricing-tier.png?raw=true "Opening the Pricing tier blade")
+
+	_Opening the App Service Plan blade_
 
 1. Change the web app's pricing tier to **S1 Standard**.
+
+	![Changing the pricing tier](images/web-app-pricing-tier.png?raw=true "Changing the pricing tier")
+
+	_Changing the pricing tier_
 
 1. Show that there is only one instance.
 
@@ -226,7 +238,7 @@ This demo is composed of the following segments:
 
 1. In the **Network Mix** page, click **Next**.
 
-1. Select **Internet Explorer 11.0** as the browser type and click **Next**.
+1. Select **Microsoft Edge** as the browser type and click **Next**.
 
 	![Selecting the Browser Type](images/browser-type.png?raw=true "Selecting the Browser Type")
 
@@ -245,9 +257,9 @@ This demo is composed of the following segments:
 <a name="segment3" />
 ### Scaling GeekQuiz using Azure Storage ###
 
-1. Open _Internet Explorer_.
+1. Open _Microsoft Edge_.
 
-1. Navigate to the image that you uploaded to _Azure Storage_ during setup. For example, if the name of the storage account is _geekquizstorage_ the URL for the image will be _http://geekquizstorage.blob.core.windows.net/images/logo-big.png_.
+1. Navigate to the image that you uploaded to _Azure Storage_ during setup. For example, if the name of the storage account is _geekquiz_ the URL for the image will be _http://geekquiz.blob.core.windows.net/images/logo-big.png_.
 
 	![Showing the logo](images/logo-big.png?raw=true "Showing the logo")
 
@@ -255,7 +267,7 @@ This demo is composed of the following segments:
 
 1. Open the **GeekQuilz.sln** solution located under **source\end**.
 
-1. Open the site's **web.config** file for edition.
+1. Open the site's **web.config** file located at **wwwroot** for edition.
 
 1. Find the `<system.webServer>` element.
 
@@ -265,7 +277,7 @@ This demo is composed of the following segments:
 
 	_Highlighting the Rewrite Rule_
 
-1. Back in Internet Explorer, open the deployed GeekQuiz site (log in if necessary).
+1. Back in Microsoft Edge, open the deployed GeekQuiz site (log in if necessary).
 
 	![Showing the Geek Quiz website with the image](images/geek-quiz-with-image.png?raw=true "Showing the Geek Quiz website with the image")
 
