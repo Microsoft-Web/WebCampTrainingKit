@@ -1,4 +1,4 @@
-<a name="title" />
+﻿<a name="title" />
 # Azure Active Directory Authentication #
 
 ---
@@ -50,13 +50,13 @@ This demo is composed of the following segments:
 
 1. Open the **File / New / Project** dialog and select the **Visual C# / Web** templates.
 
-1. Name the application _GeekQuiz_ and click **OK**.
+1. Select the **ASP.NET Web Application** template, name the application _GeekQuiz_ and click **OK**.
 
 	![Creating a new project](images/creating-a-new-project.png?raw=true "Creating a new project")
 
 	_Creating a new project_
 
-1. Select the **MVC** template and enable **Web API**.
+1. Select the **Web Application** template under **ASP.NET 5 Templates**.
 
 1. Click **Change Authentication**.
 
@@ -66,23 +66,17 @@ This demo is composed of the following segments:
 
 	> **Speaking Point:** VS tooling allows you to enable AAD authentication easily. All you need is to provide your tenant domain name and administrator credentials, the two-way trust between your AAD tenant and your web application is automatically configured.
 
-1. In the **Change Authentication** dialog, select **Organizational Accounts**.
+1. In the **Change Authentication** dialog box, select **Work And School Accounts**.
 
-	![Selecting the Organizational Accounts option](images/selecting-organizational-accounts.png?raw=true "Selecting the Organizational Accounts option")
+	![Selecting the Work And School Accounts option](images/selecting-organizational-accounts.png?raw=true "Selecting the Work And School Accounts option")
 
-	_Selecting Organizational Accounts_
+	_Selecting Work And School Accounts_
 
 1. 	Expand the first combo box to show the different options.
 
 	![Showing the organization account types](images/showing-the-organization-types.png?raw=true "Showing the organization account types")
 
 	_Showing the organization account types_
-
-1. 	Expand the **Access Level** combo box to show the different options.
-
-	![Showing the access level posibilities](images/showing-the-access-level-options.png?raw=true "Showing the access level posibilities")
-
-	_Showing the access level posibilities_
 
 1. Enter your domain (e.g.: "mydomainname.onmicrosoft.com") as **Domain**.
 
@@ -108,7 +102,7 @@ This demo is composed of the following segments:
 
 	_Signing in with an organization admin account_
 
-1. Back in the **New ASP.Net Project** dialog, click **OK**.
+1. Back in the **New ASP.Net Project** dialog box, click **OK**.
 
 	![Completing the project creation](images/creating-the-project.png?raw=true "Completing the project creation")
 

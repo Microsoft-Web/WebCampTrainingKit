@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekQuiz", "GeekQuiz\GeekQuiz.csproj", "{73434FD8-0D75-4DB6-9919-ECE5DFCA2F6A}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "GeekQuiz", "GeekQuiz\GeekQuiz.xproj", "{73E981BB-0282-419A-9324-C88F27947BA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{73434FD8-0D75-4DB6-9919-ECE5DFCA2F6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{73434FD8-0D75-4DB6-9919-ECE5DFCA2F6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{73434FD8-0D75-4DB6-9919-ECE5DFCA2F6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{73434FD8-0D75-4DB6-9919-ECE5DFCA2F6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73E981BB-0282-419A-9324-C88F27947BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73E981BB-0282-419A-9324-C88F27947BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73E981BB-0282-419A-9324-C88F27947BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73E981BB-0282-419A-9324-C88F27947BA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
