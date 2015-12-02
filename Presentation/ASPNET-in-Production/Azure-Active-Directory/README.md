@@ -30,7 +30,7 @@ Follow these steps to setup your environment for the demo.
 
 1. Create a new Web App in Azure.
 
-1. Add a database as a **Linked Resource**.
+1. Create a new database and add the connection strings at Application Settings of the site you just created using **DefaultConnection** as name.
 
 1. Download the publish profile. This is required for segment #2.
 
@@ -133,8 +133,6 @@ This demo is composed of the following segments:
 
 1. Open the **GeekQuiz.sln** solution located under **source\end-segment2**.
 
-1. Update the federation configuration in the Web.config file with the AAD domain name used in segment one.
-
 1. Right-click the **GeekQuiz** project and select **Publish**.
 
 	![Publishing the Website](images/publishing-the-site.png?raw=true "Publishing the Website")
@@ -153,25 +151,29 @@ This demo is composed of the following segments:
 
 	_Selecting the publish profile file_
 
-1. Back in the **Publish Web** dialog, click **Next**.
+1. Back in the **Publish Web** dialog, click **Publish**.
 
 	![Reviewing the connection settings to deploy](images/reviewing-the-connection-settings-to-deploy.png?raw=true "Reviewing the connection settings to deploy")
 
 	_Reviewing the connection settings to deploy_
 
-1. In the settings tab, show the Organizational Authentication configuration.
+	> **Note:** If Visual Studio prompt you with the Sign in dialog box, just sign in using an admin account for your organization (e.g.: "admin@mydomainname.onmicrosoft.com")
 
-	![Showing the organizational authentication configuration](images/showing-the-organizational-auth-config.png?raw=true "Showing the organizational authentication configuration")
+	> ![Signing in with an organization admin account](images/signing-in-with-an-organization-admin-account.png?raw=true "Signing in with an organization admin account")
 
-	_Showing the organizational authentication configuration_
-
-1. Select the connection string for the **TenantDbContext** and click **Publish** to publish the site.
+	> _Signing in with an organization admin account_
 
 1. Once the deployment is completed and the browser is opened, sign in using an admin account for your organization (e.g.: "admin@mydomainname.onmicrosoft.com")
 
 	![Signing in with an organization admin account](images/signing-in-with-an-organization-admin-account-published-site.png?raw=true "Signing in with an organization admin account")
 
 	_Signing in with an organization admin account_
+
+1. In the Authorization page, click **Accept**.
+
+	![Accepting the application permisions](images/accepting-the-permissions.png?raw=true "Accepting the application permisions")
+
+	_Accepting the application permisions_
 
 1. Show that you are logged as the organization's user.
 
@@ -186,7 +188,6 @@ This demo is composed of the following segments:
 	![Selecting your active directory](images/selecting-your-active-directory.png?raw=true "Selecting your active directory")
 
 	_Selecting your active directory_
-
 
 1. Navigate to the **USERS** tab and show the users that you used for the demo.
 
