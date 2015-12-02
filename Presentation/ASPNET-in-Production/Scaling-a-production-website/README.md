@@ -238,7 +238,7 @@ This demo is composed of the following segments:
 
 1. In the **Network Mix** page, click **Next**.
 
-1. Select **Microsoft Edge** as the browser type and click **Next**.
+1. Select **Internet Explorer 11.0** as the browser type and click **Next**.
 
 	![Selecting the Browser Type](images/browser-type.png?raw=true "Selecting the Browser Type")
 
