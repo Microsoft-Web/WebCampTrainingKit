@@ -1,12 +1,12 @@
-﻿<script src="~/node_modules/systemjs/dist/system.js"></script>
-<script src="~/node_modules/angular2/bundles/angular2.min.js"></script>
-<script src="~/node_modules/angular2/bundles/http.js"></script>
+﻿<script src="https://code.angularjs.org/tools/system.js"></script>
+<script src="https://code.angularjs.org/2.0.0-alpha.46/angular2.dev.js"></script>
+<script src="https://code.angularjs.org/2.0.0-alpha.46/http.dev.js"></script>
 
 ------------------------
 
-<script src="~/node_modules/systemjs/dist/system.js"></script>
-<script src="~/node_modules/angular2/bundles/angular2.min.js"></script>
-<script src="~/node_modules/angular2/bundles/http.min.js"></script>
+<script src="https://code.angularjs.org/tools/system.js"></script>
+<script src="https://code.angularjs.org/2.0.0-alpha.46/angular2.min.js"></script>
+<script src="https://code.angularjs.org/2.0.0-alpha.46/http.min.js"></script>
 
 -----------------
 

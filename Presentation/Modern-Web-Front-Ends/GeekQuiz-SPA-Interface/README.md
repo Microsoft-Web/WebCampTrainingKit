@@ -45,24 +45,6 @@ This demo is composed of the following segments:
 <a name="segment1" />
 ### Consuming data from a Web API in an Angular 2 app ###
 
-1. Right-click the **npm** folder located under **Dependencies** and select **Developer Command Prompt** under **Open Command Line**.
-
-	![Opening a Developer Command Prompt](images/opening-a-dev-command-prompt.png?raw=true "Opening a Developer Command Prompt")
-
-	_Opening a Developer Command Prompt_
-
-1. Install **Angular 2** and **SystemJS** npm packages using the following command in the Developer Command Prompt you just opened.
-
-	```
-	npm i angular2@2.0.0-alpha.46 systemjs@0.19.6 --save --save-exact
-	```
-
-	![Installing Angular and SystemJS npm packages](images/installing-npm-packages.png?raw=true "Installing Angular and SystemJS npm packages")
-
-	_Installing Angular and SystemJS npm packages_
-
-1. Close the Developer Command Prompt.
-
 1. Press **CTRL + ,** and search for "_Layout.cshtml" (without the quotes).
 
 	![Opening the layout file](images/opening-the-layout.png?raw=true "Opening the layout file")
@@ -75,18 +57,18 @@ This demo is composed of the following segments:
 
 	<!-- mark:1-3 -->
 	````HTML
-	<script src="~/node_modules/systemjs/dist/system.js"></script>
-	<script src="~/node_modules/angular2/bundles/angular2.min.js"></script>
-	<script src="~/node_modules/angular2/bundles/http.js"></script>
+	<script src="https://code.angularjs.org/tools/system.js"></script>
+	<script src="https://code.angularjs.org/2.0.0-alpha.46/angular2.dev.js"></script>
+	<script src="https://code.angularjs.org/2.0.0-alpha.46/http.dev.js"></script>
 	````
 
 1. Add the following code inside the `<environment names="Staging,Production">` tag located inside the `head` tag.
 
 	<!-- mark:1-3 -->
 	````HTML
-	<script src="~/node_modules/systemjs/dist/system.js"></script>
-	<script src="~/node_modules/angular2/bundles/angular2.min.js"></script>
-	<script src="~/node_modules/angular2/bundles/http.min.js"></script>
+	<script src="https://code.angularjs.org/tools/system.js"></script>
+	<script src="https://code.angularjs.org/2.0.0-alpha.46/angular2.min.js"></script>
+	<script src="https://code.angularjs.org/2.0.0-alpha.46/http.min.js"></script>
 	````
 
 	![Updating the layout file to include the new dependencies](images/updating-the-layout.png?raw=true "Updating the layout file to include the new dependencies")
@@ -316,9 +298,7 @@ This demo is composed of the following segments:
 
 By completing this demo you should have:
 
-1. Included Ember.js and Handlebars.js via NuGet
-1. Added handlebars bindings to show question and run the application
-1. Added Ember code to call sendAnswer
+1. Create a single page application using Angular 2 and ASP.NET Web API
 1. Set up the CSS3 flip animation
 
 ---

@@ -108,12 +108,6 @@ namespace GeekQuiz
             app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
             app.UseStaticFiles();
-            
-            app.UseStaticFiles(new StaticFileOptions()
-            { 
-                FileProvider = new PhysicalFileProvider(Path.Combine(env.WebRootPath, @"..", @"node_modules")),
-                RequestPath = new PathString("/node_modules")
-            });
 
             app.UseIdentity();
 
