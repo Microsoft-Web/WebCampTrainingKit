@@ -14,7 +14,7 @@
 In this demo, you will see how to:
 
 1. Create an application in Visual Studio that is automatically integrated with an Azure Active Directory tenant.
-1. Deploy an existing application using Visual Studio to an Azure Web App and have it automaitically integrate with an Azure Active Directory tenant.
+1. Deploy an existing application using Visual Studio to an Azure Web App and have it automatically integrate with an Azure Active Directory tenant.
 
 <a name="technologies" />
 ### Key Technologies ###
