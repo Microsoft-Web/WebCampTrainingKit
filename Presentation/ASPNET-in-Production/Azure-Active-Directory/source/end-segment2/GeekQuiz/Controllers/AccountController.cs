@@ -1,39 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
-using System.IdentityModel.Services;
-using System.IdentityModel.Services.Configuration;
 using System.Linq;
-using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using GeekQuiz.Models;
+using Microsoft.AspNet.Authentication.Cookies;
+using Microsoft.AspNet.Authentication.OpenIdConnect;
+using Microsoft.AspNet.Http.Authentication;
+using Microsoft.AspNet.Mvc;
 
 namespace GeekQuiz.Controllers
 {
     public class AccountController : Controller
     {
-        public ActionResult SignOut()
+        public IActionResult SignIn()
         {
-            WsFederationConfiguration config = FederatedAuthentication.FederationConfiguration.WsFederationConfiguration;
-
-            // Redirect to SignOutCallback after signing out.
-            string callbackUrl = Url.Action("SignOutCallback", "Account", routeValues: null, protocol: Request.Url.Scheme);
-            SignOutRequestMessage signoutMessage = new SignOutRequestMessage(new Uri(config.Issuer), callbackUrl);
-            signoutMessage.SetParameter("wtrealm", IdentityConfig.Realm ?? config.Realm);
-            FederatedAuthentication.SessionAuthenticationModule.SignOut();
-
-            return new RedirectResult(signoutMessage.WriteQueryString());
+            return new ChallengeResult(
+                OpenIdConnectDefaults.AuthenticationScheme, new AuthenticationProperties { RedirectUri = "/" });
         }
 
-        public ActionResult SignOutCallback()
+        public async Task<IActionResult> SignOut()
         {
-            if (Request.IsAuthenticated)
+            var callbackUrl = Url.Action("SignOutCallback", "Account", values: null, protocol: Request.Scheme);
+            await HttpContext.Authentication.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.Authentication.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme,
+                new AuthenticationProperties { RedirectUri = callbackUrl });
+            return new EmptyResult();
+        }
+
+        public IActionResult SignOutCallback()
+        {
+            if (HttpContext.User.Identity.IsAuthenticated)
             {
                 // Redirect to home page if the user is authenticated.
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction(nameof(HomeController.Index), "Home");
             }
 
             return View();
