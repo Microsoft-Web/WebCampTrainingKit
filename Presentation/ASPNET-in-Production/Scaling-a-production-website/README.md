@@ -76,7 +76,7 @@ This demo is composed of the following segments:
 <a name="segment1" />
 ### Configuring auto-scaling ###
 
-1. Open the [Azure Preview Portal](https://portal.azure.com/) and log in with your credentials.
+1. Open the [Azure Portal](https://portal.azure.com/) and log in with your credentials.
 
 1. Select the **App Services** tab and filter the list by your site name.
 
