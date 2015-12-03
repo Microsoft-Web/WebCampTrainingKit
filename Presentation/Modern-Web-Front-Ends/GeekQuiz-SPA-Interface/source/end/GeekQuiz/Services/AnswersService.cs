@@ -15,24 +15,16 @@ namespace GeekQuiz.Services
 
         public async Task<bool> StoreAsync(TriviaAnswer answer)
         {
-            var selectedOption = await this.db.TriviaOptions.FirstOrDefaultAsync(o => o.Id == answer.OptionId
-                    && o.QuestionId == answer.QuestionId);
+            var selectedOption = await this.db.TriviaOptions.FirstOrDefaultAsync(o => 
+                o.Id == answer.OptionId
+                && o.QuestionId == answer.QuestionId);
 
             if (selectedOption != null)
             {
                 answer.TriviaOption = selectedOption;
                 this.db.TriviaAnswers.Add(answer);
 
-                try
-                {
-                    await this.db.SaveChangesAsync();
-                }
-                catch (System.Exception)
-                {
-
-                    throw;
-                }
-                
+                await this.db.SaveChangesAsync();
             }
 
             return selectedOption.IsCorrect;
