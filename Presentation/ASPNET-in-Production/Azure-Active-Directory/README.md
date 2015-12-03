@@ -171,9 +171,9 @@ This demo is composed of the following segments:
 
 1. In the Authorization page, click **Accept**.
 
-	![Accepting the application permisions](images/accepting-the-permissions.png?raw=true "Accepting the application permisions")
+	![Accepting the application permissions](images/accepting-the-permissions.png?raw=true "Accepting the application permissions")
 
-	_Accepting the application permisions_
+	_Accepting the application permissions_
 
 1. Show that you are logged as the organization's user.
 
@@ -181,7 +181,7 @@ This demo is composed of the following segments:
 
 	_Showing that you are logged as the organization's user_
 
-1. Switch to the _Azure Management Portal_.
+1. Switch to the _Azure Classic Portal_.
 
 1. Navigate to the **Active Directory** section and select the one used for this demo.
 
