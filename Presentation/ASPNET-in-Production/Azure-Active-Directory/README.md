@@ -30,7 +30,13 @@ Follow these steps to setup your environment for the demo.
 
 1. Create a new Web App in Azure.
 
-1. Create a new database and add the connection strings at Application Settings of the site you just created using **DefaultConnection** as name.
+1. Configure an Azure SQL Database following the steps provided in [this link](https://azure.microsoft.com/en-us/documentation/articles/sql-database-get-started/). Copy the ADO.NET connection string value.
+
+1. In the **Application settings** of your new Web App, update the connection string key for the DB to _DefaultConnection_ and value copied from previous step. Save the changes.
+
+	![Default Connection](images/default-connection.png?raw=true "Default Connection")
+
+	_Default connection_
 
 1. Download the publish profile. This is required for segment #2.
 
