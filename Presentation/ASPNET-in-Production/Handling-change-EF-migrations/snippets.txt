@@ -1,4 +1,8 @@
-Enable-Migrations -ContextTypeName GeekQuiz.Models.TriviaContext
+dnx ef migrations add InitialMigration --context TriviaDbContext
+
+============================
+
+dnx ef database update --context TriviaDbContext --verbose
 
 ============================
 
@@ -6,20 +10,32 @@ public string Hint { get; set; }
 
 ============================
 
-Add-Migration QuestionHint
+dnx ef migrations add QuestionHint --context TriviaDbContext
 
 ============================
 
-Update-Database -Verbose
+dnx ef database update --context TriviaDbContext --verbose
 
 ============================
 
-[StringLength(150)]
+public async Task<bool> StoreAsync(TriviaAnswer answer)
+{
+	var selectedOption = await this.db.TriviaOptions.FirstOrDefaultAsync(o =>
+		MatchesOption(answer, o));
 
-============================
+	if (selectedOption != null)
+	{
+		answer.TriviaOption = selectedOption;
+		this.db.TriviaAnswers.Add(answer);
 
-Add-Migration QuestionHintLength
+		await this.db.SaveChangesAsync();
+	}
 
-============================
+	return selectedOption.IsCorrect;
+}
 
-Update-Database -Verbose
+private static bool MatchesOption(TriviaAnswer answer, TriviaOption o)
+{
+	return o.Id == answer.OptionId
+							&& o.QuestionId == answer.QuestionId;
+}
