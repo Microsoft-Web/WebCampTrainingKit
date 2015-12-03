@@ -1,30 +1,30 @@
-﻿using GeekQuiz.Models;
-using GeekQuiz.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Http;
+using GeekQuiz.Models;
+using GeekQuiz.Services;
+using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Mvc;
 
 namespace GeekQuiz.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/Trivia")]
     [Authorize]
-    public class TriviaController : ApiController
+    public class TriviaController : Controller
     {
-        private TriviaContext db;
-        private QuestionsService questionsService;
-        private AnswersService answersService;
+        private TriviaDbContext context;
+        private IQuestionsService questionsService;
+        private IAnswersService answersService;
 
-        public TriviaController()
+        public TriviaController(TriviaDbContext context, IQuestionsService questionsService, IAnswersService answersService)
         {
-            this.db = new TriviaContext();
-            this.questionsService = new QuestionsService(db);
-            this.answersService = new AnswersService(db);
+            this.context = context;
+            this.questionsService = questionsService;
+            this.answersService = answersService;
         }
-
-        public async Task<TriviaQuestion> Get()
+        
+        // GET: api/Trivia
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
             var userId = User.Identity.Name;
 
@@ -33,31 +33,35 @@ namespace GeekQuiz.Controllers
 
             if (nextQuestion == null)
             {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+                return HttpNotFound();
             }
 
-            return nextQuestion;
+            return Ok(nextQuestion);
         }
 
-        public async Task<HttpResponseMessage> Post(TriviaAnswer answer)
+        // POST: api/Trivia
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] TriviaAnswer answer)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                answer.UserId = User.Identity.Name;
-
-                var isCorrect = await this.answersService.StoreAsync(answer);
-
-                return Request.CreateResponse(HttpStatusCode.Created, isCorrect);
+                return HttpBadRequest(ModelState);
             }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
+
+            answer.UserId = User.Identity.Name;
+
+            var isCorrect = await this.answersService.StoreAsync(answer);
+            
+            return this.CreatedAtAction("Get", new {}, isCorrect);
         }
 
         protected override void Dispose(bool disposing)
         {
-            this.db.Dispose();
+            if (disposing)
+            {
+                context.Dispose();
+            }
+
             base.Dispose(disposing);
         }
     }
