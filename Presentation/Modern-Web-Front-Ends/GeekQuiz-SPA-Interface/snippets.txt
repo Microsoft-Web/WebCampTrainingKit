@@ -40,66 +40,68 @@ import {Http, HTTP_BINDINGS, Headers} from 'angular2/http';
      viewBindings: [HTTP_BINDINGS]
 })
 class AppComponent implements AfterViewInit {
-     public answered = false;
-     public title = "loading question...";
-     public options = [];
-     public correctAnswer = false;
-     public working = false;
+    public answered = false;
+    public title = "loading question...";
+    public options = [];
+    public correctAnswer = false;
+    public working = false;
 
-     constructor(@Inject(Http) private http: Http) {
-     }
+    constructor( @Inject(Http) private http: Http) {
+    }
 
-     answer() {
-          return this.correctAnswer ? 'correct' : 'incorrect';
-     }
+    answer() {
+        return this.correctAnswer ? 'correct' : 'incorrect';
+    }
 
-     nextQuestion() {
-          this.working = true;
+    nextQuestion() {
+        this.working = true;
 
-          this.answered = false;
-          this.title = "loading question...";
-          this.options = [];
+        this.answered = false;
+        this.title = "loading question...";
+        this.options = [];
 
-          this.http.get("/api/trivia")
-                .map(res => res.json())
-                .subscribe(
-                     question => {
-                          this.options = question.options;
-                          this.title = question.title;
-                          this.answered = false;
-                          this.working = false;
-                     },
-                     err => {
-                          this.title = "Oops... something went wrong";
-                          this.working = false;
-                     });
-     }
+        var headers = new Headers();
+        headers.append('If-Modified-Since', 'Mon, 27 Mar 1972 00:00:00 GMT');
 
-     sendAnswer(option) {
-          this.working = true;
-          this.answered = true;
+        this.http.get("/api/trivia", { headers: headers })
+            .map(res => res.json())
+            .subscribe(
+                question => {
+                    this.options = question.options;
+                    this.title = question.title;
+                    this.answered = false;
+                    this.working = false;
+                },
+                err => {
+                    this.title = "Oops... something went wrong";
+                    this.working = false;
+                });
+    }
 
-          var answer = { 'questionId': option.questionId, 'optionId': option.id };
+    sendAnswer(option) {
+        this.working = true;
+        var answer = { 'questionId': option.questionId, 'optionId': option.id };
 
-          var headers = new Headers();
-          headers.append('Content-Type', 'application/json');
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
 
-          this.http.post('/api/trivia', JSON.stringify(answer), { headers: headers })
-                .map(res => res.json())
-                .subscribe(
-                     answerIsCorrect => {
-                          this.correctAnswer = (answerIsCorrect === true);
-                          this.working = false;
-                     },
-                     err => {
-                          this.title = "Oops... something went wrong";
-                          this.working = false;
-                     });
-     }
+        this.http.post('/api/trivia', JSON.stringify(answer), { headers: headers })
+            .map(res => res.json())
+            .subscribe(
+                answerIsCorrect => {
+                    this.answered = true;
+                    this.correctAnswer = (answerIsCorrect === true);
+                    this.working = false;
+                },
+                err => {
+                    this.title = "Oops... something went wrong";
+                    this.working = false;
+                });
+    }
 
-     afterViewInit() {
-          this.nextQuestion();
-     }
+    afterViewInit() {
+        this.nextQuestion();
+    }
 }
 
 bootstrap(AppComponent);

@@ -31,7 +31,7 @@ class AppComponent implements AfterViewInit {
     public correctAnswer = false;
     public working = false;
 
-    constructor(@Inject(Http) private http: Http) {
+    constructor( @Inject(Http) private http: Http) {
     }
 
     answer() {
@@ -51,22 +51,20 @@ class AppComponent implements AfterViewInit {
         this.http.get("/api/trivia", { headers: headers })
             .map(res => res.json())
             .subscribe(
-                question => {
-                    this.options = question.options;
-                    this.title = question.title;
-                    this.answered = false;
-                    this.working = false;
-                },
-                err => {
-                    this.title = "Oops... something went wrong";
-                    this.working = false;
-                });
+            question => {
+                this.options = question.options;
+                this.title = question.title;
+                this.answered = false;
+                this.working = false;
+            },
+            err => {
+                this.title = "Oops... something went wrong";
+                this.working = false;
+            });
     }
 
     sendAnswer(option) {
         this.working = true;
-        this.answered = true;
-
         var answer = { 'questionId': option.questionId, 'optionId': option.id };
 
         var headers = new Headers();
@@ -75,14 +73,15 @@ class AppComponent implements AfterViewInit {
         this.http.post('/api/trivia', JSON.stringify(answer), { headers: headers })
             .map(res => res.json())
             .subscribe(
-                answerIsCorrect => {
-                    this.correctAnswer = (answerIsCorrect === true);
-                    this.working = false;
-                },
-                err => {
-                    this.title = "Oops... something went wrong";
-                    this.working = false;
-                });
+            answerIsCorrect => {
+                this.answered = true;
+                this.correctAnswer = (answerIsCorrect === true);
+                this.working = false;
+            },
+            err => {
+                this.title = "Oops... something went wrong";
+                this.working = false;
+            });
     }
 
     afterViewInit() {

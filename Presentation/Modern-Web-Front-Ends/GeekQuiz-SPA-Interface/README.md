@@ -125,83 +125,82 @@ This demo is composed of the following segments:
 
 1. Add the following code in the **app.ts** file you just created.
 
-	<!-- mark:1-71 -->
+	<!-- mark:1-73 -->
 	````JavaScript
-	import {bootstrap, Component, View, NgFor, NgClass, AfterViewInit, Inject} from 'angular2/angular2';
-	import {Http, HTTP_BINDINGS, Headers} from 'angular2/http';
+    import {bootstrap, Component, View, NgFor, NgClass, AfterViewInit, Inject} from 'angular2/angular2';
+    import {Http, HTTP_BINDINGS, Headers} from 'angular2/http';
 
-	@Component({
-		 selector: 'geekquiz-app',
-		 viewBindings: [HTTP_BINDINGS]
-	})
-	class AppComponent implements AfterViewInit {
-		 public answered = false;
-		 public title = "loading question...";
-		 public options = [];
-		 public correctAnswer = false;
-		 public working = false;
+    @Component({
+        selector: 'geekquiz-app',
+        viewBindings: [HTTP_BINDINGS]
+    })
+    class AppComponent implements AfterViewInit {
+        public answered = false;
+        public title = "loading question...";
+        public options = [];
+        public correctAnswer = false;
+        public working = false;
 
-		 constructor(@Inject(Http) private http: Http) {
-		 }
+        constructor( @Inject(Http) private http: Http) {
+        }
 
-		 answer() {
-			  return this.correctAnswer ? 'correct' : 'incorrect';
-		 }
+        answer() {
+            return this.correctAnswer ? 'correct' : 'incorrect';
+        }
 
-		 nextQuestion() {
-			  this.working = true;
+        nextQuestion() {
+            this.working = true;
 
-			  this.answered = false;
-			  this.title = "loading question...";
-			  this.options = [];
+            this.answered = false;
+            this.title = "loading question...";
+            this.options = [];
 
-			  var headers = new Headers();
-			  headers.append('If-Modified-Since', 'Mon, 27 Mar 1972 00:00:00 GMT');
+            var headers = new Headers();
+            headers.append('If-Modified-Since', 'Mon, 27 Mar 1972 00:00:00 GMT');
 
-			  this.http.get("/api/trivia", { headers: headers })
-					.map(res => res.json())
-					.subscribe(
-						 question => {
-							  this.options = question.options;
-							  this.title = question.title;
-							  this.answered = false;
-							  this.working = false;
-						 },
-						 err => {
-							  this.title = "Oops... something went wrong";
-							  this.working = false;
-						 });
-		 }
+            this.http.get("/api/trivia", { headers: headers })
+                .map(res => res.json())
+                .subscribe(
+                    question => {
+                        this.options = question.options;
+                        this.title = question.title;
+                        this.answered = false;
+                        this.working = false;
+                    },
+                    err => {
+                        this.title = "Oops... something went wrong";
+                        this.working = false;
+                    });
+        }
 
-		 sendAnswer(option) {
-			  this.working = true;
-			  this.answered = true;
+        sendAnswer(option) {
+            this.working = true;
+            var answer = { 'questionId': option.questionId, 'optionId': option.id };
 
-			  var answer = { 'questionId': option.questionId, 'optionId': option.id };
+            var headers = new Headers();
+            headers.append('Content-Type', 'application/json');
 
-			  var headers = new Headers();
-			  headers.append('Content-Type', 'application/json');
+            this.http.post('/api/trivia', JSON.stringify(answer), { headers: headers })
+                .map(res => res.json())
+                .subscribe(
+                    answerIsCorrect => {
+                        this.answered = true;
+                        this.correctAnswer = (answerIsCorrect === true);
+                        this.working = false;
+                    },
+                    err => {
+                        this.title = "Oops... something went wrong";
+                        this.working = false;
+                    });
+        }
 
-			  this.http.post('/api/trivia', JSON.stringify(answer), { headers: headers })
-					.map(res => res.json())
-					.subscribe(
-						 answerIsCorrect => {
-							  this.correctAnswer = (answerIsCorrect === true);
-							  this.working = false;
-						 },
-						 err => {
-							  this.title = "Oops... something went wrong";
-							  this.working = false;
-						 });
-		 }
+        afterViewInit() {
+            this.nextQuestion();
+        }
+    }
 
-		 afterViewInit() {
-			  this.nextQuestion();
-		 }
-	}
-
-	bootstrap(AppComponent);
-	````
+    bootstrap(AppComponent);
+    ````
 
 1. Add the following View decorator to the **AppComponent** class below the **Component** decorator.
 
