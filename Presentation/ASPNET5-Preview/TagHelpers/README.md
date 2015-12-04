@@ -109,8 +109,6 @@ This demo is composed of the following segments:
 
 1. Replace the content of the RepeatTagHelper class with the following code snippet.
 
-	(Code Snippet - _TagHelperDemo-RepeatTagHelperClass_)
-
 	````C#
     public int Count { get; set; }
 
@@ -120,8 +118,6 @@ This demo is composed of the following segments:
 	````
 
 1. Add the following code to the body of the **ProcessAsync** method that repeats the content via the **output** parameter in a loop of **Count** iterations.
-
-	(Code Snippet - _TagHelperDemo-RepeatTagHelperProcessAsync_)
 
 	````C#
     for (int i = 0; i < Count; i++)
@@ -159,7 +155,7 @@ This demo is composed of the following segments:
 1. Open the **RepeatTagHelper** class, and at the end of the **ProcessAsync** method add a line to null the tag name.
 
 	````C#
-  output.TagName = null;
+	output.TagName = null;
 	````
 
 1. Run the application again and notice that the outer tag is no longer being rendered.
