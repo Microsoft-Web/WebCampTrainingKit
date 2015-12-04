@@ -170,7 +170,7 @@ This demo is composed of the following segments:
 
 1. Replace the StoreAsync method implementation with the following snippet.
 
-	<!-- mark:3-4,17-21 -->
+	<!-- mark:3-4,17-22 -->
 	````C#
     public async Task<bool> StoreAsync(TriviaAnswer answer)
     {
@@ -190,6 +190,7 @@ This demo is composed of the following segments:
 
     private static bool MatchesOption(TriviaAnswer answer, TriviaOption o)
     {
+        var a = answer.OptionId / 0;
         return o.Id == answer.OptionId
                                 && o.QuestionId == answer.QuestionId;
     }
@@ -211,13 +212,13 @@ This demo is composed of the following segments:
 
 1. Log-in using the previously created credentials.
 
-	![Log in](Images/log-in.png?raw=true "Log in")
+	![Logging in](Images/log-in.png?raw=true "Logging in")
 
-	_Log in_
+	_Logging in_
 
 1. Press **F12** to open the development tools.
 
-1. Select the network tab and start recording.
+1. Select the network tab, make sure that it is recording and clear the session. 
 
 	![Starting Network Recording](Images/network-recording.png?raw=true "Starting Network Recording")
 
@@ -231,19 +232,11 @@ This demo is composed of the following segments:
 
 	_Showing the 500 error_
 
-1. Select the console tab. An error will have been logged.
-
-	![Showing the logged error](Images/logged-error.png?raw=true "Showing the logged error")
-
-	_Showing the logged error_
-
-1. Highlight the  details part of the error: `Details: LINQ to Entities does not recognize the method 'Boolean MatchesOption`.
-
-	> **Speaking point:** This clearly point to the last refactoring. Let's rollback to the previous working version.
+	> **Speaking point:** This clearly point to the last change. Let's rollback to the previous working version.
 
 1. Do not close the GeekQuiz site, and switch to the browser window/tab that has the Azure Portal open.
 
-1. Open the web site and select **Active Deployment**. Both commits will be listed in the deployment history.
+1. Open the Web app and select **Continuous deployment** under **PUBLISHING** in the **Settings** blade. Both commits will be listed in the deployment history.
 
 	![Showing the existing deployments](Images/existing-deployment.png?raw=true "Showing the existing deployments")
 
