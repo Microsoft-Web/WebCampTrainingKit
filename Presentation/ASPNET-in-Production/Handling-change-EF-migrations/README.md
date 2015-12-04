@@ -19,7 +19,7 @@ In this demo, you will see how to:
 <a name="technologies" />
 ### Key Technologies ###
 
-1. [Entity Framework 6](http://www.asp.net/entity-framework).
+1. [Entity Framework 7](http://www.asp.net/entity-framework).
 1. [Git](http://git-scm.com/).
 
 <a name="setup" />
