@@ -1,4 +1,4 @@
-<a name="title" />
+﻿<a name="title" />
 # Tag Helpers #
 
 ---
@@ -28,10 +28,6 @@ In this demo, you will see how to:
 Follow these steps to set up your environment for the demo.
 
 1. Install [Visual Studio 2015](https://www.visualstudio.com/).
-1. Update to [ASP.NET beta7 (or later)](http://docs.asp.net/en/latest/getting-started/installing-on-windows.html)
-1. Open Windows Explorer and browse to the **source** folder.
-1. Right-click **Setup.cmd** and select **Run as administrator** to launch the setup process that will configure your environment and install the Visual Studio code snippets for this demo.
-1. If the User Account Control dialog box is shown, confirm the action to proceed.
 1. Open Visual Studio.
 
 <a name="CodeSnippets" />
@@ -59,7 +55,7 @@ This demo is composed of the following segments:
 
 	_Creating a web project_
 
-1. From the **ASP.NET 5 Preview Templates** list, select the **Web Application** template.
+1. From the **ASP.NET 5 Templates** list, select the **Web Application** template and click **OK**.
 
 	![Selecting the Web Site template](images/selecting-the-web-site-template.png?raw=true "Selecting the Web Site template")
 
@@ -73,7 +69,7 @@ This demo is composed of the following segments:
 
 	_Showing the Register view_
 
-1. Run the application and go to the **Register** page. Using the Internet Explorer development tools, look at the HTML output of the Tag Helpers.
+1. Run the application and go to the **Register** page. Using the Microsoft Edge development tools, look at the HTML output of the Tag Helpers.
 
 	![Showing the register view](images/register-view-html-output.png?raw=true "Showing the register view")
 
@@ -89,7 +85,7 @@ This demo is composed of the following segments:
 
 	_Showing Tag Helpers in the Layout_
 
-1. In Internet Explorer, look at the HTML output of the CSS files.
+1. In Microsoft Edge, look at the HTML output of the CSS files.
 
 	![Showing head helpers HTML output](images/head-helpers-html-output.png?raw=true "Showing head helpers html output")
 
@@ -98,31 +94,29 @@ This demo is composed of the following segments:
 <a name="segment2" />
 ### Create a custom Tag Helper ###
 
-1. Create a new **RepeatTagHelper** class in the root of the application you created in the previous segment.
+1. Create a new **RepeatTagHelper** class in the root of the application you created in the previous segment by adding a new item to the project and selecting **Razor Tag Helper**.
 
 	![Creating the Tag Helper class](images/creating-the-tag-helper-class.png?raw=true "Creating the Tag Helper class")
 
 	_Creating the Tag Helper class_
 
-1. Replace the content of the file with the following code snippet. This class will inherit from the TagHelper class. Add the **Count** property and override the **ProcessAsync** method.
+1. Show the content of the generated file and update the _HtmlTargetElement_
+ parameter to `repeat`.
+
+	![Showing the content of the generated file](images/showing-the-generated-tag-helper.png?raw=true "Showing the content of the generated file")
+
+	_Showing the content of the generated file_
+
+1. Replace the content of the RepeatTagHelper class with the following code snippet.
 
 	(Code Snippet - _TagHelperDemo-RepeatTagHelperClass_)
 
 	````C#
-    namespace TagHelpersDemo
-	{
-		 using System.Threading.Tasks;
-		 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
+    public int Count { get; set; }
 
-		 public class RepeatTagHelper : TagHelper
-		 {
-			  public int Count { get; set; }
-
-			  public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
-			  {
-			  }
-		 }
-	}
+    public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+    {
+    }
 	````
 
 1. Add the following code to the body of the **ProcessAsync** method that repeats the content via the **output** parameter in a loop of **Count** iterations.
@@ -130,10 +124,10 @@ This demo is composed of the following segments:
 	(Code Snippet - _TagHelperDemo-RepeatTagHelperProcessAsync_)
 
 	````C#
-   for (int i = 0; i < Count; i++)
-   {
-		output.Content.Append(await context.GetChildContentAsync());
-   }
+    for (int i = 0; i < Count; i++)
+    {
+        output.Content.Append(await output.GetChildContentAsync());
+    }
 	````
 
 1. Open the **Views/_ViewImports.cshtml** file and add a line at the end to register the assembly that contains your Tag Helper.
@@ -141,18 +135,6 @@ This demo is composed of the following segments:
 	````C#
 	@addTagHelper "*, TagHelpersDemo"
 	````
-
-	> **Note:** If your project targets **1.0.0-beta5** or greater, the Views/_GlobalImport.cshtml file will have been renamed Views/_ViewImports.cshtml. You can check this by looking at the SDK version in the **global.json** file.
-
-	> <!-- mark:4 -->
-	> ````JavaScript
-	> {
-	> 	 "projects": [ "src", "test" ],
-	> 	 "sdk": {
-	> 		  "version": "1.0.0-beta4"
-	> 	 }
-	> }
-	> ````
 
 1. Open the **Views/Home/Index.cshtml** file and use your Tag Helper by adding the following code directly above the `<div id="myCarousel" ...>` HTML element.
 
