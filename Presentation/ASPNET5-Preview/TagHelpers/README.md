@@ -30,13 +30,6 @@ Follow these steps to set up your environment for the demo.
 1. Install [Visual Studio 2015](https://www.visualstudio.com/).
 1. Open Visual Studio.
 
-<a name="CodeSnippets" />
-### Using the Code Snippets ###
-
-Throughout the demo document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2015 to avoid having to add it manually.
-
-> **Note:** Inside the source code you will also find an **End** folder containing a Visual Studio solution with the code that results from completing the steps in the demo. You can use this solutions as guidance if you need additional help as you work through this demo.
-
 <a name="Demo" />
 ## Demo ##
 This demo is composed of the following segments:
