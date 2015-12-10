@@ -25,9 +25,12 @@ In this hands-on lab, you will learn how to:
 
 The following is required to complete this hands-on lab:
 
-- [Visual Studio Community 2015][1] or greater
+- [Visual Studio Community 2015][1] or greater.
 
 [1]: https://www.visualstudio.com/products/visual-studio-community-vs
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription
+
 
 <a name="Setup" />
 ### Setup ###
