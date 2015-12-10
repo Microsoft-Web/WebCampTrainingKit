@@ -346,88 +346,102 @@ In this task, you will run the solution again to verify that the views for **Per
 1. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
 
 <a name="Exercise3" />
-### Exercise 3: Creating a Web API Controller Using Scaffolding ###
+### Exercise 3: Creating a API Controller Using Scaffolding ###
 
 HTTP is not just for serving up web pages. It’s also a powerful platform for building APIs that expose services and data. HTTP is simple, flexible, and ubiquitous. Almost any platform that you can think of has an HTTP library, so HTTP services can reach a broad range of clients, including browsers, mobile devices, and traditional desktop apps.
 
 Previous versions of ASP.NET included the Web API framework for creating web APIs. In ASP.NET 5, this functionality has been merged into the MVC 6 framework. Unifying the two frameworks makes it simpler to build apps that include both UI (HTML) and APIs, because now they share the same code base and pipeline.
 
-In this exercise, you will use ASP.NET Scaffolding again to generate a Web API controller. You will use the same **Person** and **PersonContext** classes from the previous exercise to provide the same person data in JSON format. You will see how you can expose the same resources in different ways within the same ASP.NET application.
+In this exercise, you will use ASP.NET Scaffolding again to generate a web API controller. You will use the same **Person** and **PersonContext** classes from the previous exercise to provide the same person data in JSON format. You will see how you can expose the same resources in different ways within the same ASP.NET application.
 
 <a name="Ex3Task1" />
-#### Task 1 - Creating a Web API Controller ####
+#### Task 1 - Creating a API Controller ####
 
-In this task you will create a new **Web API Controller** that will expose the person data in a machine-consumable format like JSON.
+In this task you will create a new **API Controller** that will expose the person data in a machine-consumable format like JSON.
 
-1. If not already opened, open **Visual Studio Community 2013** and open the **MyHybridSite.sln** solution located in the **Source/Ex3-WebAPI/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
+1. If not already opened, open **Visual Studio Community 2015** and open the **MyWebApplication.sln** solution located in the **Source/Ex3-WebAPI/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
 
 	>**Note:** If you start with the Begin solution from Exercise 3, press **CTRL + SHIFT + B** to build the solution.
 
-1. In **Solution Explorer**, right-click the **Controllers** folder of the **MyHybridSite** project and select **Add | New Scaffolded Item...**.
+1. In **Solution Explorer**, right-click the **Controllers** folder of the **MyWebApplication** project and select **Add | New Scaffolded Item...**.
 
 	![Creating a new scaffolded Controller](Images/creating-a-new-scaffolded-controller.png?raw=true)
 
 	_Creating a new scaffolded Controller_
 
-1. In the **Add Scaffold** dialog box, select **Web API** in the left pane, then **Web API 2 Controller with actions, using Entity Framework** in the middle pane and then click **Add.**
+1. In the **Add Scaffold** dialog box, select **Web API** in the left pane, then **API Controller with actions, using Entity Framework** in the middle pane and then click **Add.**
 
-	![Selecting Web API 2 Controller with actions and Entity Framework](Images/selecting-web-api-2-controller.png?raw=true "Selecting Web API 2 Controller with actions and Entity Framework")
+	![Selecting API Controller with actions and Entity Framework](Images/selecting-api-controller.png?raw=true "Selecting API Controller with actions and Entity Framework")
 
-	_Selecting Web API 2 Controller with actions and Entity Framework_
+	_Selecting API Controller with actions and Entity Framework_
 
-1. Set _ApiPersonController_ as the **Controller name**, select the **Use async controller actions** option and select **Person (MyHybridSite.Models)** and **PersonContext (MyHybridSite.Models)** as the **Model** and **Data context** classes respectively. Then click **Add**.
+1. Set _ApiPersonController_ as the **Controller name**, select the **Use async controller actions** option and select **Person (MyWebApplication.Models)** and **PersonContext (MyWebApplication.Models)** as the **Model** and **Data context** classes respectively. Then click **Add**.
 
-	![Adding a Web API Controller with scaffolding](Images/adding-a-web-api-controller-with-scaffolding.png?raw=true "Adding a Web API controller with scaffolding")
+	![Adding an API Controller with scaffolding](Images/adding-an-api-controller-with-scaffolding.png?raw=true "Adding an API controller with scaffolding")
 
-	_Adding a Web API controller with scaffolding_
+	_Adding an API controller with scaffolding_
 
 1. Visual Studio will then generate the **ApiPersonController** class with the four CRUD actions to work with your data.
 
-	![After creating the Web API controller with scaffolding](Images/after-creating-the-web-api-controller.png?raw=true "After creating the Web API controller with scaffolding")
+	![After creating the API controller with scaffolding](Images/after-creating-the-api-controller.png?raw=true "After creating the API controller with scaffolding")
 
-	_After creating the Web API controller with scaffolding_
+	_After creating the API controller with scaffolding_
 
-1. Open the **ApiPersonController.cs** file and inspect the _GetPeople_ action method. This method queries the db field of **PersonContext** type in order to get the people data.
+1. Open the **ApiPersonController.cs** file and inspect the _GetPerson_ action method. This method queries the db field of **PersonContext** type in order to get the people data.
 
-	<!--mark: 4-->
+	<!--mark: 5-->
 	````C#
-	// GET api/ApiPerson
-	public IQueryable<Person> GetPeople()
-	{
-		return db.People;
-	}
+    // GET: api/ApiPerson
+    [HttpGet]
+    public IEnumerable<Person> GetPerson()
+    {
+        return _context.Person;
+    }
 	````
 
 1. Now notice the comment above the method definition. It provides the URI that exposes this action which you will use in the next task.
 
 	<!--mark: 1-->
 	````C#
-	// GET api/ApiPerson
-	public IQueryable<Person> GetPeople()
-	{
-		return db.People;
-	}
+    // GET: api/ApiPerson
+    [HttpGet]
+    public IEnumerable<Person> GetPerson()
+    {
+        return _context.Person;
+    }
 	````
 
-	>**Note:** By default, Web API is configured to catch the queries to the _/api_ path to avoid collisions with MVC controllers. If you need to change this setting, refer to [Routing in ASP.NET Web API](http://www.asp.net/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api). 
+1. Notice the attributes of the **ApiPersonController** class. This attributes specify the output of the actions which in this case is `application/json`, as well as the base route; which in this case is `api/ApiPerson`
 
+	<!--mark: 3-4-->
+	````C#
+    namespace MyWebApplication.Controllers
+    {
+        [Produces("application/json")]
+        [Route("api/ApiPerson")]
+        public class ApiPersonController : Controller
+        { 
+            // ...
+	````
 
 <a name="Ex3Task2" />
 #### Task 2 - Running the Solution ####
 
-In this task you will use the Internet Explorer **F12 developer tools** to inspect the full response from the Web API controller. You will see how you can capture network traffic to get more insight into your application data.
+In this task you will use the Microsoft Edge **F12 developer tools** to inspect the full response from the API controller. You will see how you can capture network traffic to get more insight into your application data.
 
-> **Note:** Make sure that **Internet Explorer** is selected in the **Start** button located on the Visual Studio toolbar.
+> **Note:** Make sure that **Microsoft Edge** is selected in the **Start** button located on the Visual Studio toolbar.
 >
-> ![Internet Explorer option](Images/internet-explorer-option.png?raw=true)
+> ![Microsoft Edge option](Images/microsoft-edge-option.png?raw=true "Microsoft Edge option")
 >
->The **F12 developer tools** have a wide set of functionality that is not covered in this hands-on-lab. If you want to learn more about it, refer to [Using the F12 developer tools](http://msdn.microsoft.com/library/ie/bg182326\(v=vs.85\)).
+> _Microsoft Edge option_
+>
+>The **F12 developer tools** have a wide set of functionality that is not covered in this hands-on-lab. If you want to learn more about it, refer to [Using the F12 developer tools](https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/).
 
 1. Press **F5** to run the solution.
 
 	>**Note:** In order to follow this task correctly, your application needs to have data. If your database is empty, you can go back to Task 3 in Exercise 2 and follow the steps on how to create a new person using the MVC views. 
 
-1. In the browser, press **F12** to open the **Developer Tools** panel. Press **CTRL** + **4** or click the **Network** icon, and then click the green arrow button to begin capturing network traffic.
+1. In the browser, press **F12** to open the **Developer Tools** panel. Press **CTRL** + **4** or click the **Network** icon, and then click the **clean session** button to begin capturing network traffic.
 
 	![Initiating Web API network capture](Images/initiating-web-api-network-capture.png?raw=true "Initiating Web API network capture")
 
@@ -435,99 +449,15 @@ In this task you will use the Internet Explorer **F12 developer tools** to inspe
 
 1. Append **api/ApiPerson** to the URL in the browser's address bar. You will now inspect the details of the response from the **ApiPersonController**.
 
-	![Retrieving person data through Web API](Images/retrieving-person-data-through-web-api.png?raw=true "Retrieving person data through Web API")
+	![Retrieving person data through the API](Images/retrieving-person-data-through-web-api.png?raw=true "Retrieving person data through the API")
 
-	_Retrieving person data through Web API_
-
-	>**Note:** Once the download finishes, you will be prompted to make an action with the downloaded file. Leave the dialog box open in order to be able to watch the response content through the Developers Tool window.
+	_Retrieving person data through the API_
 
 1. Now you will inspect the body of the response. To do this, click the **Details** tab and then click **Response body**. You can check that the downloaded data is a list of objects with the properties **Id**, **Name** and **Age** that correspond to the **Person** class.
 
-	![Viewing Web API Response Body](Images/viewing-web-api-response-body.png?raw=true "Viewing Web API Response Body")
+	![Viewing the API Response Body](Images/viewing-web-api-response-body.png?raw=true "Viewing the API Response Body")
 
-	_Viewing Web API Response Body_
-
-<a name="Ex3Task3" />
-#### Task 3 - Adding Web API Help Pages ####
-
-When you create a Web API, it is useful to create a help page so that other developers will know how to call your API. You could create and update the documentation pages manually, but it is better to auto-generate them to avoid having to do maintenance work. In this task you will use a Nuget package to automatically generate Web API help pages to the solution.
-
-1. From the **Tools** menu in Visual Studio, select **Library Package Manager**, and then click **Package Manager Console**. 
-
-1. In the **Package Manager Console** window, execute the following command:
-
-	````NuGet
-	Install-Package Microsoft.AspNet.WebApi.HelpPage
-	````
-
-	>**Note:** The **Microsoft.AspNet.WebApi.HelpPage** package installs the necessary assemblies and adds MVC Views for the help pages under the **Areas/HelpPage** folder.
-
-	![HelpPage Area](Images/helppage-area.png?raw=true "HelpPage Area")
-
-	_HelpPage Area_
-
-1. By default, the help pages have placeholder strings for documentation. You can use XML documentation comments to create the documentation. To enable this feature, open the **HelpPageConfig.cs** file located in the **Areas/HelpPage/App_Start** folder and uncomment the following line:
-
-	````C#
-	config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
-	````
-1. In **Solution Explorer**, right-click the project **MyHybridSite**, select **Properties** and click the **Build** tab.
-
-	![Build tab](Images/build-section.png?raw=true "Build section")
-
-	_Build tab_
-
-1. Under **Output**, select **XML documentation file**. In the edit box, type **App_Data/XmlDocument.xml**.
-
-	![Output section in Build tab](Images/output-section-in-build-tab.png?raw=true "Output section in build tab")
-
-	_Output section in Build tab_
-
-1. Press **CTRL** + **S** to save the changes.
-
-1. Open the **ApiPersonController.cs** file from the **Controllers** folder.
-
-1. Enter a new line between the _GetPeople_ method signature and the _// GET api/ApiPerson_ comment, and then type three forward slashes.
-
-	>**Note:** Visual Studio automatically inserts the XML elements which define the method documentation.
-
-1. Add a summary text and the return value for the _GetPeople_ method. It should look like the following.
-
-	````C#
-	// GET api/ApiPerson
-	/// <summary>
-	/// Documentation for 'GET' method
-	/// </summary>
-	/// <returns>Returns a list of people in the requested format</returns>
-	public IQueryable<Person> GetPeople()
-	{
-		return db.People;
-	}
-	````
-
-1. Press **F5** to run the solution.
-
-1. Append **/help** to the URL in the address bar to browse to the help page.
-
-	![ASP.NET Web API Help Page](Images/aspnet-web-api-help-page.png?raw=true "ASP.NET Web API Help Page")
-	
-	_ASP.NET Web API Help Page_
-
-	>**Note:** The main content of the page is a table of APIs, grouped by controller. The table entries are generated dynamically, using the **IApiExplorer** interface. If you add or update an API controller, the table will be automatically updated the next time you build the application.
-	>
-	>The **API** column lists the HTTP method and relative URI. The **Description** column contains information that has been extracted from the method's documentation.
-
-1. Note that the description you added above the method definition is displayed in the description column.
-
-	![API method description](Images/api-method-description.png?raw=true "API method description")
-
-	_API method description_
-
-1. Click one of the API methods to navigate to a page with more detailed information, including sample response bodies.
-
-	![Detail Information page](Images/detail-information-page.png?raw=true "Detail Information page")
-
-	_Detailed information page_
+	_Viewing the API Response Body_
 
 ---
 
@@ -536,8 +466,6 @@ When you create a Web API, it is useful to create a help page so that other deve
 
 By completing this hands-on lab you have learned how to:
 
-- Create a new Web application using the One ASP.NET Experience in Visual Studio 2015
-- Integrate multiple ASP.NET technologies into one single project
+- Create a new Web application using ASP.NET 5 and ASP.NET MVC 6 in Visual Studio 2015
 - Generate MVC controllers and views from your model classes using ASP.NET Scaffolding
-- Generate Web API controllers, which use features such as Async Programming and data access through Entity Framework
-- Automatically generate Web API Help Pages for your controllers
+- Generate API controllers, which use features such as Async Programming and data access through Entity Framework
