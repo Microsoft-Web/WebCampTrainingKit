@@ -29,8 +29,7 @@ The following is required to complete this hands-on lab:
 
 [1]: https://www.visualstudio.com/products/visual-studio-community-vs
 
-> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription
-
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
 
 <a name="Setup" />
 ### Setup ###
@@ -472,3 +471,5 @@ By completing this hands-on lab you have learned how to:
 - Create a new Web application using ASP.NET 5 and ASP.NET MVC 6 in Visual Studio 2015
 - Generate MVC controllers and views from your model classes using ASP.NET Scaffolding
 - Generate API controllers, which use features such as Async Programming and data access through Entity Framework
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
