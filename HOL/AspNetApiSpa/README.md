@@ -10,9 +10,9 @@ In traditional web applications, the client (browser) initiates the communicatio
 
 In Single-Page Applications (SPAs) the entire page is loaded in the browser after the initial request, but subsequent interactions take place through Ajax requests. This means that the browser has to update only the portion of the page that has changed; there is no need to reload the entire page. The SPA approach reduces the time taken by the application to respond to user actions, resulting in a more fluid experience.
 
-The architecture of a SPA involves certain challenges that are not present in traditional web applications. However, emerging technologies like ASP.NET Web API, JavaScript frameworks like AngularJS and new styling features provided by CSS3 make it really easy to design and build SPAs.
+The architecture of a SPA involves certain challenges that are not present in traditional web applications. However, emerging technologies like ASP.NET 5, ASP.NET MVC 6, JavaScript frameworks like AngularJS and new styling features provided by CSS3 make it really easy to design and build SPAs.
 
-In this hand-on lab, you will take advantage of those technologies to implement Geek Quiz, a trivia website based on the SPA concept. You will first implement the service layer with ASP.NET Web API to expose the required endpoints to retrieve the quiz questions and store the answers. Then, you will build a rich and responsive UI using AngularJS and CSS3 transformation effects.
+In this hand-on lab, you will take advantage of those technologies to implement Geek Quiz, a trivia website based on the SPA concept. You will first implement the service layer with ASP.NET Web API to expose the required endpoints to retrieve the quiz questions and store the answers. Then, you will build a rich and responsive UI using AngularJS 2 and CSS3 transformation effects.
 
 
 <a name="Objectives" />
@@ -20,7 +20,7 @@ In this hand-on lab, you will take advantage of those technologies to implement 
 In this hands-on lab, you will learn how to:
 
 - Create an ASP.NET MVC 6 API service to send and receive JSON data
-- Create a responsive UI using AngularJS
+- Create a responsive UI using AngularJS 2
 - Enhance the UI experience with CSS3 transformations
 
 <a name="Prerequisites"></a>
@@ -76,23 +76,23 @@ The Web API framework is part of the ASP.NET Stack and is designed to make it ea
 
 In this task you will start creating a new ASP.NET MVC project with support for ASP.NET Web API based on the **One ASP.NET** project type that comes with Visual Studio. **One ASP.NET** unifies all ASP.NET technologies and gives you the option to mix and match them as desired. You will then add the Entity Framework's model classes and the database initializator to insert the quiz questions.
 
-1. Open **Visual Studio Community 2013** and select **File | New Project...** to start a new solution.
+1. Open **Visual Studio Community 2015** and select **File | New Project...** to start a new solution.
 
 	![Creating a New Project](Images/creating-a-new-project.png?raw=true "Creating a New Project")
 
 	_Creating a New Project_
 
-1. In the **New Project** dialog box, select **ASP.NET Web Application** under the **Visual C# | Web** tab. Make sure **.NET Framework 4.5** is selected, name it _GeekQuiz_, choose a **Location** and click **OK**.
+1. In the **New Project** dialog box, select **ASP.NET Web Application** under the **Visual C# | Web** tab. Make sure **.NET Framework 4.6** is selected, name it _GeekQuiz_, choose a **Location** and click **OK**.
 
 	![Creating a new ASP.NET Web Application project](Images/creating-new-aspnet-web-application-project.png?raw=true "Creating a new ASP.NET Web Application project")
 
 	_Creating a new ASP.NET Web Application project_
 
-1. In the **New ASP.NET Project** dialog box, select the **MVC** template and select the **Web API** option. Also, make sure that the **Authentication** option is set to **Individual User Accounts**. Click **OK** to continue.
+1. In the **New ASP.NET Project** dialog box, select the **Web Application** template under **ASP.NET 5 Templates**. Also, make sure that the **Authentication** option is set to **Individual User Accounts**. Click **OK** to continue.
 
-	![Creating a new project with the MVC template, including Web API components](Images/creating-a-new-project-with-mvc.png?raw=true)
+	![Creating a new project with the ASP.NET 5 Web Application template](Images/creating-a-new-aspnet5-project.png?raw=true "Creating a new project with the ASP.NET 5 Web Application template")
 
-	_Creating a new project with the MVC template, including Web API components_
+	_Creating a new project with the ASP.NET 5 Web Application template_
 
 1. In **Solution Explorer**, right-click the **Models** folder of the **GeekQuiz** project and select **Add | Existing Item...**.
 
@@ -115,105 +115,100 @@ In this task you will start creating a new ASP.NET MVC project with support for 
 	> - **TriviaOption:** represents a single option associated with a quiz question
 	> - **TriviaQuestion:** represents a quiz question and exposes the  associated options through the **Options** property
 	> - **TriviaAnswer:** represents the option selected by the user in response to a quiz question 
-	> - **TriviaContext:** represents the Entity Framework's database context of the Geek Quiz application. This class derives from **DContext** and exposes **DbSet** properties that represent collections of the entities described above.
-	> - **TriviaDatabaseInitializer:** the implementation of the Entity Framework initializer for the **TriviaContext** class which inherits from **CreateDatabaseIfNotExists**. The default behavior of this class is to create the database only if it does not exist, inserting the entities specified in the **Seed** method.
+	> - **TriviaDbContext:** represents the Entity Framework's database context of the Geek Quiz application. This class derives from **DbContext** and exposes **DbSet** properties that represent collections of the entities described above.
+	> - **SampleData:** a database initializer including sample data for this models.
 
-1. Open the **Global.asax.cs** file and add the following using statement.
+1. Open the **Startup.cs** file and add the following code at the beginning of the **ConfigureServices** method to configures the **TriviaDbContext**.
 
-	<!-- mark:1 -->
+	<!-- mark:8-9 -->
 	````C#
-	using GeekQuiz.Models;
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Add framework services.
+        services.AddEntityFramework()
+            .AddSqlServer()
+            .AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]))
+            .AddDbContext<TriviaDbContext>(options =>
+                options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+
+        // ...
 	````
 
-1. Add the following code at the beginning of the **Application_Start** method to set the **TriviaDatabaseInitializer** as the database initializer.
+1. Add the following code at the end of the **Configure** method to call to the sample data initializator.
 
-	<!-- mark:5 -->
+	<!-- mark:12 -->
 	````C#
-	public class MvcApplication : System.Web.HttpApplication
-	{
-		protected void Application_Start()
-		{
-			System.Data.Entity.Database.SetInitializer(new TriviaDatabaseInitializer()); 
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+    {
+        // ...
 
-			AreaRegistration.RegisterAllAreas();
-			GlobalConfiguration.Configure(WebApiConfig.Register);
-			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-			RouteConfig.RegisterRoutes(RouteTable.Routes);
-			BundleConfig.RegisterBundles(BundleTable.Bundles);
-		}
-	}
-	````
+        app.UseMvc(routes =>
+        {
+            routes.MapRoute(
+                name: "default",
+                template: "{controller=Home}/{action=Index}/{id?}");
+        });
+
+        SampleData.Initialize(app.ApplicationServices);
+    }
+    ````
 
 1. Modify the **Home** controller to restrict access to authenticated users. To do this, open the **HomeController.cs** file inside the **Controllers** folder and add the **Authorize** attribute to the **HomeController** class definition.
 
 	<!-- mark:3 -->
 	````C#
-	namespace GeekQuiz.Controllers
-	{
-		[Authorize]
-		public class HomeController : Controller
-		{
-			public ActionResult Index()
-			{
-				return View();
-			}
+    namespace GeekQuiz.Controllers
+    {
+        [Authorize]
+        public class HomeController : Controller
+        {
+            public IActionResult Index()
+            {
+                return View();
+            }
 
-			...
-		}
-	}
+            // ...
+        }
+    }
 	````
 
 	> **Note:** The **Authorize** filter checks to see if the user is authenticated. If the user is not authenticated, it returns HTTP status code 401 (Unauthorized) without invoking the action. You can apply the filter globally, at the controller level, or at the level of individual actions.
 
-1. You will now customize the layout of the web pages and the branding. To do this, open the **_Layout.cshtml** file inside the **Views | Shared** folder and update the content of the **\<title\>** element by replacing _My ASP.NET Application_ with _Geek Quiz_.
+1. Resolve the error with **Authorize** attribute by adding the missing using statements for `Microsoft.AspNet.Authorization`.
 
-	<!--mark:4-->
-	````HTML
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>@ViewBag.Title - Geek Quiz</title>
-		@Styles.Render("~/Content/css")
-		@Scripts.Render("~/bundles/modernizr")
+	<!-- mark:1 -->
+	````C#
+    using Microsoft.AspNet.Authorization;
 
-	</head>
+    namespace GeekQuiz.Controllers
+    {
+        // ...
 	````
 
-1. In the same file, update the navigation bar by removing the _About_ and _Contact_ links and renaming the _Home_ link to _Play_. Additionally, rename the _Application name_ link to _Geek Quiz_. The HTML for the navigation bar should look like the following code.
+1. You will now customize the layout of the web pages and the branding. To do this, open the **_Layout.cshtml** file inside the **Views | Shared** folder and update the navigation bar by removing the _About_ and _Contact_ links and renaming the _Home_ link to _Play_. The HTML for the navigation bar should look like the following code.
 
-	<!--mark:9,12-14-->
+	<!--mark:13-15-->
 	````HTML
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				@Html.ActionLink("Geek Quiz", "Index", "Home", null, new { @class = "navbar-brand" })
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li>@Html.ActionLink("Play", "Index", "Home")</li>
-				</ul>
-				@Html.Partial("_LoginPartial")
-			</div>
-		</div>
-	</div>
-	````
-
-1. Update the footer of the layout page by replacing _My ASP.NET Application_ with _Geek Quiz_. To do this, replace the content of the **\<footer\>** element with the following highlighted code.
-
-	<!--mark:5-->
-	````HTML
-	<div class="container body-content">
-		@RenderBody()
-		<hr />
-		<footer>
-			<p>&copy; @DateTime.Now.Year - Geek Quiz</p>
-		</footer>
-	</div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand">GeekQuiz</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-controller="Home" asp-action="Index">Play</a></li>
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </div>
 	````
 
 <a name="Ex1Task2" />
@@ -226,201 +221,225 @@ In the previous task, you created the initial structure of the Geek Quiz web app
 
 You will use the ASP.NET Scaffolding tools provided by Visual Studio to create the baseline for the API controller class.
 
-1. Open the **WebApiConfig.cs** file inside the **App_Start** folder. This file defines the configuration of the API service, like how routes are mapped to API controller actions.
-
-
-1. Add the following using statement at the beginning of the file.
+1. Open the **Startup.cs** file and add the following using statement at the beginning of the file.
 	
-	<!-- mark:1 -->
+	<!-- mark:1-2 -->
 	````C#
 	using Newtonsoft.Json.Serialization;
+	using Newtonsoft.Json;
 	````
 
-1. Add the following highlighted code to the **Register** method to globally configure the formatter for the JSON data retrieved by the API action methods.
+1. Add the following code at the end of the **ConfigureServices** method to globally configure the formatter for the JSON data retrieved by the API action methods.
 
-	<!-- mark:7-8 -->
+	(Code Snippet - _AspNetApiSpa - Ex1 - ConfigureJsonFormatter_)
+	<!-- mark:6-12 -->
 	````C#
-	public static class WebApiConfig
-	{
-		public static void Register(HttpConfiguration config)
-		{
-			// Web API configuration and services
+    public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // ...
 
-			// Use camel case for JSON data.
-			config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Ignore;
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            });
+        }
 
-			// Web API routes
-			config.MapHttpAttributeRoutes();
-
-			config.Routes.MapHttpRoute(
-				name: "DefaultApi",
-				routeTemplate: "api/{controller}/{id}",
-				defaults: new { id = RouteParameter.Optional }
-			);
-		}
-	}
+        // ...
 	````
 
 	> **Note:** The **CamelCasePropertyNamesContractResolver** automatically converts property names to _camel_ case, which is the general convention for property names in JavaScript.
 
-1. In **Solution Explorer**, right-click the **Controllers** folder of the **GeekQuiz** project and select **Add | New Scaffolded Item...**.
+1. In **Solution Explorer**, right-click the **Controllers** folder of the **GeekQuiz** project and select **Add | New Item...**.
 
-	![Creating a new scaffolded item](Images/creating-a-new-scaffolded-item.png?raw=true "Creating a new scaffolded item")
+	![Creating a new item](Images/creating-a-new-item.png?raw=true "Creating a new item")
 
-	_Creating a new scaffolded item_
+	_Creating a new item_
 
-1. In the **Add Scaffold** dialog box, make sure that the **Common** node is selected in the left pane. Then, select the **Web API 2 Controller - Empty** template in the center pane and click **Add**.
+1. In the **Add New Item** dialog box, make sure that the **DNX | Server-side** node is selected in the left pane. Then, select the **Web API Controller Class** template in the center pane, name it _TriviaController_ and click **Add**.
 
-	![Selecting the Web API 2 Controller Empty template](Images/selecting-the-web-api-2-controller-empty.png?raw=true "Selecting the Web API 2 Controller Empty template")
+	![Selecting the Web API Controller Class template](Images/selecting-the-web-api-controller-class.png?raw=true "Selecting the Web API Controller Class template")
 
-	_Selecting the Web API 2 Controller Empty template_
+	_Selecting the Web API Controller Class template_
 
-	> **Note:** **ASP.NET Scaffolding** is a code generation framework for ASP.NET Web applications. Visual Studio 2015 includes pre-installed code generators for MVC and Web API projects. You should use scaffolding in your project when you want to quickly add code that interacts with data models in order to reduce the amount of time required to develop standard data operations.
+	> **Note:** **ASP.NET Scaffolding** is a code generation framework for ASP.NET Web applications. Visual Studio 2015 includes pre-installed code generators for ASP.NET 5 projects. You should use scaffolding in your project when you want to quickly add code that interacts with data models in order to reduce the amount of time required to develop standard data operations.
 
-	> The scaffolding process also ensures that all the required dependencies are installed in the project. For example, if you start with an empty ASP.NET project and then use scaffolding to add a Web API controller, the required Web API NuGet packages and references are added to your project automatically.
+	> The scaffolding process also ensures that all the required dependencies are installed in the project. For example, if you start with an empty ASP.NET project and then use scaffolding to add a MVC 6 API controller, the required NuGet packages and references are added to your project automatically.
 
-1. In the **Add Controller** dialog box, type _TriviaController_ in the **Controller name** text box and click **Add**.
-
-	![Adding the Trivia Controller](Images/adding-the-trivia-controller.png?raw=true "Adding the Trivia Controller")
-
-	_Adding the Trivia Controller_
-
-1. The **TriviaController.cs** file is then added to the **Controllers** folder of the **GeekQuiz** project, containing an empty **TriviaController** class. Add the following using statements at the beginning of the file.
+1. The **TriviaController.cs** file is then added to the **Controllers** folder of the **GeekQuiz** project, containing an base **TriviaController** class. Remove all the content of the class and add the following using statements at the beginning of the file.
 
 	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerUsings_)
 	<!--mark: 1-5-->
 	````C#
-	using System.Data.Entity;
-	using System.Threading;
-	using System.Threading.Tasks;
-	using System.Web.Http.Description;
 	using GeekQuiz.Models;
+	using Microsoft.AspNet.Authorization;
+	using Microsoft.Data.Entity;
 	````
 
 1. Add the following code at the beginning of the **TriviaController** class to define, initialize and dispose the **TriviaContext** instance in the controller.
 
 	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerContext_)
-	<!-- mark:3-13 -->
+	<!-- mark:4-19 -->
 	````C#
-	public class TriviaController : ApiController
-	{
-		private TriviaContext db = new TriviaContext();
+    [Route("api/[controller]")]
+    public class TriviaController : Controller
+    {
+        private TriviaDbContext context;
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing)
-			{
-				this.db.Dispose();
-			}
+        public TriviaController(TriviaDbContext context)
+        {
+            this.context = context;
+        }
+        
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                context.Dispose();
+            }
 
-			base.Dispose(disposing);
-		}
-	}
+            base.Dispose(disposing);
+        }
+    }
 	````
 
-	> **Note:** The **Dispose** method of **TriviaController** invokes the **Dispose** method of the **TriviaContext** instance, which ensures that all the resources used by the context object are released when the **TriviaContext** instance is disposed or garbage-collected. This includes closing all database connections opened by Entity Framework.
+	> **Note 1:** The **Dispose** method of **TriviaController** invokes the **Dispose** method of the **TriviaContext** instance, which ensures that all the resources used by the context object are released when the **TriviaContext** instance is disposed or garbage-collected. This includes closing all database connections opened by Entity Framework.
+
+	> **Note 2:** The TriviaDbContext will be automatically injected by ASP.NET 5 thanks to the configuration in the **Startup** class.
 
 1. Add the following helper method at the end of the **TriviaController** class. This method retrieves the following quiz question from the database to be answered by the specified user.
 
 	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerNextQuestion_)
-	<!-- mark:1-15 -->
+	<!-- mark:1-16 -->
 	````C#
-	private async Task<TriviaQuestion> NextQuestionAsync(string userId)
-	{
-		var lastQuestionId = await this.db.TriviaAnswers
-			.Where(a => a.UserId == userId)
-			.GroupBy(a => a.QuestionId)
-			.Select(g => new { QuestionId = g.Key, Count = g.Count() })
-			.OrderByDescending(q => new { q.Count, QuestionId = q.QuestionId })
-			.Select(q => q.QuestionId)
-			.FirstOrDefaultAsync();
+    private async Task<TriviaQuestion> NextQuestionAsync(string userId)
+    {
+        var lastQuestionId = await this.context.TriviaAnswers
+            .Where(a => a.UserId == userId)
+            .GroupBy(a => a.QuestionId)
+            .Select(g => new { QuestionId = g.Key, Count = g.Count() })
+            .OrderByDescending(q => q.Count)
+            .ThenByDescending(q => q.QuestionId)
+            .Select(q => q.QuestionId)
+            .FirstOrDefaultAsync();
 
-		var questionsCount = await this.db.TriviaQuestions.CountAsync();
+        var questionsCount = await this.context.TriviaQuestions.CountAsync();
 
-		var nextQuestionId = (lastQuestionId % questionsCount) + 1;
-		return await this.db.TriviaQuestions.FindAsync(CancellationToken.None, nextQuestionId);
-	}
+        var nextQuestionId = (lastQuestionId % questionsCount) + 1;
+        return await this.context.TriviaQuestions.Include(q => q.Options).FirstOrDefaultAsync(q => q.Id == nextQuestionId);
+    }
 	````
 
 1. Add the following **Get** action method to the **TriviaController** class. This action method calls the **NextQuestionAsync** helper method defined in the previous step to retrieve the next question for the authenticated user.
 
 	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerGetAction_)
-	<!-- mark:1-15 -->
+	<!-- mark:1-16 -->
 	````C#
-	// GET api/Trivia
-	[ResponseType(typeof(TriviaQuestion))]
-	public async Task<IHttpActionResult> Get()
-	{
-		var userId = User.Identity.Name;
+    // GET: api/Trivia
+    [HttpGet]
+    public async Task<IActionResult> Get()
+    {
+        var userId = User.Identity.Name;
 
-		TriviaQuestion nextQuestion = await this.NextQuestionAsync(userId);
+        TriviaQuestion nextQuestion =
+            await this.NextQuestionAsync(userId);
 
-		if (nextQuestion == null)
-		{
-			return this.NotFound();
-		}
+        if (nextQuestion == null)
+        {
+            return HttpNotFound();
+        }
 
-		return this.Ok(nextQuestion);
-	}
+        return Ok(nextQuestion);
+    }
 	````
 
 1. Add the following helper method at the end of the **TriviaController** class. This method stores the specified answer in the database and returns a Boolean  value indicating whether or not the answer is correct.
 
 	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerStoreAsync_)
-	<!-- mark:1-10 -->
+	<!-- mark:1-16 -->
 	````C#
-	private async Task<bool> StoreAsync(TriviaAnswer answer)
-	{
-		this.db.TriviaAnswers.Add(answer);
+    private async Task<bool> StoreAsync(TriviaAnswer answer)
+    {
+        var selectedOption = await this.context.TriviaOptions.FirstOrDefaultAsync(o =>
+            o.Id == answer.OptionId
+            && o.QuestionId == answer.QuestionId);
 
-		await this.db.SaveChangesAsync();
-		var selectedOption = await this.db.TriviaOptions.FirstOrDefaultAsync(o => o.Id == answer.OptionId
-			&& o.QuestionId == answer.QuestionId);
+        if (selectedOption != null)
+        {
+            answer.TriviaOption = selectedOption;
+            this.context.TriviaAnswers.Add(answer);
 
-		return selectedOption.IsCorrect;
-	}
+            await this.context.SaveChangesAsync();
+        }
+
+        return selectedOption.IsCorrect;
+    }
 	````
 
 1. Add the following **Post** action method to the **TriviaController** class. This action method associates the answer to the authenticated user and calls the **StoreAsync** helper method. Then, it sends a response  with the Boolean value returned by the helper method.
 
 	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerPostAction_)
-	<!-- mark:1-14 -->
+	<!-- mark:1-15 -->
 	````C#
-	// POST api/Trivia
-	[ResponseType(typeof(TriviaAnswer))]
-	public async Task<IHttpActionResult> Post(TriviaAnswer answer)
-	{
-		if (!ModelState.IsValid)
-		{
-			return this.BadRequest(this.ModelState);
-		}
+    // POST: api/Trivia
+    [HttpPost]
+    public async Task<IActionResult> Post([FromBody] TriviaAnswer answer)
+    {
+        if (!ModelState.IsValid)
+        {
+            return HttpBadRequest(ModelState);
+        }
 
-		answer.UserId = User.Identity.Name;
+        answer.UserId = User.Identity.Name;
 
-		var isCorrect = await this.StoreAsync(answer);
-		return this.Ok<bool>(isCorrect);
-	}
+        var isCorrect = await this.StoreAsync(answer);
+
+        return this.CreatedAtAction("Get", new { }, isCorrect);
+    }
+	````
+
+1. Modify the API controller to produce json by adding the **Produces** attribute to the **TriviaController** class definition.
+
+	<!-- mark:3 -->
+	````C#
+    namespace GeekQuiz.Controllers
+    {
+        [Produces("application/json")]
+        [Route("api/[controller]")]
+        public class TriviaController : Controller
+        {
+            // ...
 	````
 
 1. Modify the API controller to restrict access to authenticated users by adding the **Authorize** attribute to the **TriviaController** class definition.
 
-	<!-- mark:1 -->
+	<!-- mark:5 -->
 	````C#
-	[Authorize]
-	public class TriviaController : ApiController
-	{
-		...
-	}
+    namespace GeekQuiz.Controllers
+    {
+        [Produces("application/json")]
+        [Route("api/[controller]")]
+        [Authorize]
+        public class TriviaController : Controller
+        {
+            // ...
 	````
 
 <a name="Ex1Task3" />
 #### Task 3 - Running the Solution ####
 
-In this task you will verify that the Web API service you built in the previous task is working as expected. You will use the Internet Explorer **F12 Developer Tools** to capture the network traffic and inspect the full response from the API service.
+In this task you will verify that the API service you built in the previous task is working as expected. You will use the Microsoft Edge **F12 Developer Tools** to capture the network traffic and inspect the full response from the API service.
 
-> **Note:** Make sure that **Internet Explorer** is selected in the **Start** button located on the Visual Studio toolbar.
+> **Note:** Make sure that **Microsoft Edge** is selected in the **Start** button located on the Visual Studio toolbar.
 >
-> ![Internet Explorer option](Images/internet-explorer-option.png?raw=true)
+> ![Microsoft Edge option](Images/microsoft-edge-option.png?raw=true "Microsoft Edge option")
+>
+> _Microsoft Edge option_
+>
+>The **F12 developer tools** have a wide set of functionality that is not covered in this hands-on-lab. If you want to learn more about it, refer to [Using the F12 developer tools](https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/).
 
 1. Press **F5** to run the solution. The **Log in** page should appear in the browser.
 
@@ -436,11 +455,17 @@ In this task you will verify that the Web API service you built in the previous 
 
 	_Registering a new user_
 
-1. In the **Register** page, enter a **User name** and **Password**, and then click **Register**.
+1. In the **Register** page, enter an **Email** and **Password**, and then click **Register**.
 
 	![Register page](Images/register-page.png?raw=true "Register page")
 
 	_Register page_
+
+1. You will be prompt with the following error page that indicates that applying the migrations may resolve the issue. Click **Apply Migrations** and refresh the page once this action is completed.
+
+	![Applying the migrations](Images/applying-the-migrations.png?raw=true "Applying the migrations")
+
+	_Applying the migrations_
 
 1. The application registers the new account and the user is authenticated and redirected back to the home page.
 
@@ -448,9 +473,9 @@ In this task you will verify that the Web API service you built in the previous 
 
 	_User is authenticated_
 
-1. In the browser, press **F12** to open the **Developer Tools** panel. Press **CTRL + 4** or click the **Network** icon, and then click the green arrow button to begin capturing network traffic.
+1. In the browser, press **F12** to open the **Developer Tools** panel. Press **CTRL** + **4** or click the **Network** icon, and then click the **clean session** button to begin capturing network traffic.
 
-	![Initiating API network capture](Images/initiating-web-api-network-capture.png?raw=true "Initiating API network capture")
+	![Initiating API network capture](Images/initiating-api-network-capture.png?raw=true "Initiating API network capture")
 
 	_Initiating API network capture_
 
@@ -460,9 +485,7 @@ In this task you will verify that the Web API service you built in the previous 
 
 	_Retrieving the next question data through API_
 
-	>**Note:** Once the download finishes, you will be prompted to make an action with the downloaded file. Leave the dialog box open in order to be able to watch the response content through the Developers Tool window.
-
-1. Now you will inspect the body of the response. To do this, click the  **Details** tab and then click **Response body**. You can check that the downloaded data is an object with the properties **options** (which is a list of **TriviaOption** objects), **id** and **title** that correspond to the **TriviaQuestion** class.
+1. Now you will inspect the body of the response. To do this, click the **body** tab and select **Response body**. You can check that the downloaded data is an object with the properties **options** (which is a list of **TriviaOption** objects), **id** and **title** that correspond to the **TriviaQuestion** class.
 
 	![Viewing the Web API Response Body](Images/viewing-the-web-api-response-body.png?raw=true "Viewing the Web API Response Body")
 
