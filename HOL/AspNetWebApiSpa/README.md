@@ -1,12 +1,12 @@
-<a name="HOLTop" />
-# ASP.NET Web API and Single-Page Applications (SPAs) #
+ï»¿<a name="HOLTop" />
+# ASP.NET MVC 6 and Single-Page Applications (SPAs) #
 
 ---
 
 <a name="Overview" />
 ## Overview ##
 
-In traditional web applications, the client (browser) initiates the communication with the server by requesting a page. The server then processes the request and sends the HTML of the page to the client. In subsequent interactions with the page –e.g. the user navigates to a link or submits a form with data– a new request is sent to the server, and the flow starts again: the server processes the request and sends a new page to the browser in response to the new action requested by the client.
+In traditional web applications, the client (browser) initiates the communication with the server by requesting a page. The server then processes the request and sends the HTML of the page to the client. In subsequent interactions with the page (e.g. the user navigates to a link or submits a form with data) a new request is sent to the server, and the flow starts again: the server processes the request and sends a new page to the browser in response to the new action requested by the client.
 
 In Single-Page Applications (SPAs) the entire page is loaded in the browser after the initial request, but subsequent interactions take place through Ajax requests. This means that the browser has to update only the portion of the page that has changed; there is no need to reload the entire page. The SPA approach reduces the time taken by the application to respond to user actions, resulting in a more fluid experience.
 
@@ -19,7 +19,7 @@ In this hand-on lab, you will take advantage of those technologies to implement 
 ### Objectives ###
 In this hands-on lab, you will learn how to:
 
-- Create an ASP.NET Web API service to send and receive JSON data
+- Create an ASP.NET MVC 6 API service to send and receive JSON data
 - Create a responsive UI using AngularJS
 - Enhance the UI experience with CSS3 transformations
 
@@ -28,9 +28,11 @@ In this hands-on lab, you will learn how to:
 
 The following is required to complete this hands-on lab:
 
-- [Visual Studio Community 2013][1] or greater
+- [Visual Studio Community 2015][1] or greater
 
 [1]: https://www.visualstudio.com/products/visual-studio-community-vs
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
 
 <a name="Setup" />
 ### Setup ###
@@ -55,7 +57,7 @@ Throughout the lab document, you will be instructed to insert code blocks. For y
 ## Exercises ##
 This hands-on lab includes the following exercises:
 
-1. [Creating a Web API](#Exercise1)
+1. [Creating an API](#Exercise1)
 1. [Creating a SPA Interface](#Exercise2)
 
 Estimated time to complete this lab: **60 minutes**
@@ -63,14 +65,14 @@ Estimated time to complete this lab: **60 minutes**
 >**Note:** When you first start Visual Studio, you must select one of the predefined settings collections. Each predefined collection is designed to match a particular development style and determines window layouts, editor behavior, IntelliSense code snippets, and dialog box options. The procedures in this lab describe the actions necessary to accomplish a given task in Visual Studio when using the **General Development Settings** collection. If you choose a different settings collection for your development environment, there may be differences in the steps that you should take into account.
 
 <a name="Exercise1" />
-### Exercise 1: Creating a Web API ###
+### Exercise 1: Creating an API ###
 
 One of the key parts of a SPA is the service layer. It is responsible for processing the Ajax calls sent by the UI and returning data in response to that call. The data retrieved should be presented in a machine-readable format in order to be parsed and consumed by the client.
 
 The Web API framework is part of the ASP.NET Stack and is designed to make it easy to implement HTTP services, generally sending and receiving JSON- or XML-formatted data through a RESTful API. In this exercise you will create the Web site to host the Geek Quiz application and then implement the back-end service to expose and persist the quiz data using ASP.NET Web API.
 
 <a name="Ex1Task1" />
-#### Task 1 – Creating the Initial Project for Geek Quiz ####
+#### Task 1 - Creating the Initial Project for Geek Quiz ####
 
 In this task you will start creating a new ASP.NET MVC project with support for ASP.NET Web API based on the **One ASP.NET** project type that comes with Visual Studio. **One ASP.NET** unifies all ASP.NET technologies and gives you the option to mix and match them as desired. You will then add the Entity Framework's model classes and the database initializator to insert the quiz questions.
 
@@ -215,16 +217,16 @@ In this task you will start creating a new ASP.NET MVC project with support for 
 	````
 
 <a name="Ex1Task2" />
-#### Task 2 – Creating the TriviaController Web API ####
+#### Task 2 - Creating the TriviaController API ####
 
-In the previous task, you created the initial structure of the Geek Quiz web application. You will now build a simple Web API service that interacts with the quiz data model and exposes the following actions:
+In the previous task, you created the initial structure of the Geek Quiz web application. You will now build a simple API service that interacts with the quiz data model and exposes the following actions:
 
 - **GET /api/trivia**: Retrieves the next question from the quiz list to be answered by the authenticated user.
 - **POST /api/trivia**: Stores the quiz answer specified by the authenticated user.
 
-You will use the ASP.NET Scaffolding tools provided by Visual Studio to create the baseline for the Web API controller class.
+You will use the ASP.NET Scaffolding tools provided by Visual Studio to create the baseline for the API controller class.
 
-1. Open the **WebApiConfig.cs** file inside the **App_Start** folder. This file defines the configuration of the Web API service, like how routes are mapped to Web API controller actions.
+1. Open the **WebApiConfig.cs** file inside the **App_Start** folder. This file defines the configuration of the API service, like how routes are mapped to API controller actions.
 
 
 1. Add the following using statement at the beginning of the file.
@@ -234,7 +236,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 	using Newtonsoft.Json.Serialization;
 	````
 
-1. Add the following highlighted code to the **Register** method to globally configure the formatter for the JSON data retrieved by the Web API action methods.
+1. Add the following highlighted code to the **Register** method to globally configure the formatter for the JSON data retrieved by the API action methods.
 
 	<!-- mark:7-8 -->
 	````C#
@@ -400,7 +402,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 	}
 	````
 
-1. Modify the Web API controller to restrict access to authenticated users by adding the **Authorize** attribute to the **TriviaController** class definition.
+1. Modify the API controller to restrict access to authenticated users by adding the **Authorize** attribute to the **TriviaController** class definition.
 
 	<!-- mark:1 -->
 	````C#
@@ -412,9 +414,9 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 	````
 
 <a name="Ex1Task3" />
-#### Task 3 – Running the Solution ####
+#### Task 3 - Running the Solution ####
 
-In this task you will verify that the Web API service you built in the previous task is working as expected. You will use the Internet Explorer **F12 Developer Tools** to capture the network traffic and inspect the full response from the Web API service.
+In this task you will verify that the Web API service you built in the previous task is working as expected. You will use the Internet Explorer **F12 Developer Tools** to capture the network traffic and inspect the full response from the API service.
 
 > **Note:** Make sure that **Internet Explorer** is selected in the **Start** button located on the Visual Studio toolbar.
 >
@@ -448,15 +450,15 @@ In this task you will verify that the Web API service you built in the previous 
 
 1. In the browser, press **F12** to open the **Developer Tools** panel. Press **CTRL + 4** or click the **Network** icon, and then click the green arrow button to begin capturing network traffic.
 
-	![Initiating Web API network capture](Images/initiating-web-api-network-capture.png?raw=true "Initiating Web API network capture")
+	![Initiating API network capture](Images/initiating-web-api-network-capture.png?raw=true "Initiating API network capture")
 
-	_Initiating Web API network capture_
+	_Initiating API network capture_
 
 1. Append **api/trivia** to the URL in the browser's address bar. You will now inspect the details of the response from the **Get** action method in **TriviaController**.
 
-	![Retrieving the next question data through Web API](Images/retrieving-the-next-question-data-through-web.png?raw=true "Retrieving the next question data through Web API")
+	![Retrieving the next question data through API](Images/retrieving-the-next-question-data-through-web.png?raw=true "Retrieving the next question data through API")
 
-	_Retrieving the next question data through Web API_
+	_Retrieving the next question data through API_
 
 	>**Note:** Once the download finishes, you will be prompted to make an action with the downloaded file. Leave the dialog box open in order to be able to watch the response content through the Developers Tool window.
 
@@ -474,7 +476,7 @@ In this task you will verify that the Web API service you built in the previous 
 In this exercise you will first build the web front-end portion of Geek Quiz, focusing on the Single-Page Application interaction using **AngularJS**. You will then enhance the user experience with CSS3 to perform rich animations and provide a visual effect of context switching when transitioning from one question to the next.
 
 <a name="Ex2Task1" />
-#### Task 1 – Creating the SPA Interface Using AngularJS ####
+#### Task 1 - Creating the SPA Interface Using AngularJS ####
 
 In this task you will use **AngularJS** to implement the client side of the Geek Quiz application. **AngularJS** is an open-source JavaScript framework that augments browser-based applications with _Model-View-Controller_ (MVC) capability, facilitating both development and testing.
 
@@ -482,7 +484,7 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
 
 > **Note:** For more information about AngularJS, refer to [http://angularjs.org/](http://angularjs.org/).
 
-1. Open **Visual Studio Community 2013** and open the **GeekQuiz.sln** solution located in the **Source/Ex2-CreatingASPAInterface/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
+1. Open **Visual Studio Community 2015** and open the **GeekQuiz.sln** solution located in the **Source/Ex2-CreatingASPAInterface/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
 
 1. Open the **Package Manager Console** from **Tools** | **NuGet Package Manager**. Type the following command to install the **AngularJS.Core** NuGet package.
 
@@ -580,7 +582,7 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
 	};
 	````
 
-	> **Note:** This function sends the  answer selected by the user to the **Trivia** Web API and stores the result –i.e. if the answer is correct or not– in the **$scope** object.
+	> **Note:** This function sends the  answer selected by the user to the **Trivia** Web API and stores the result (i.e. if the answer is correct or not) in the **$scope** object.
 	>
 	> The **nextQuestion** and **sendAnswer** functions from above use the AngularJS **$http** object to abstract the communication with the Web API via the XMLHttpRequest JavaScript object from the browser. AngularJS supports another service that brings a higher level of abstraction to perform CRUD operations against a resource through RESTful APIs. The AngularJS **$resource** object has action methods which provide high-level behaviors without the need to interact with the **$http** object. Consider using the **$resource** object in scenarios that requires the CRUD model (fore information, see the [$resource documentation](http://docs.angularjs.org/api/ngResource/service/$resource)).
 
@@ -679,7 +681,7 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
 	````
 
 <a name="Ex2Task2" />
-#### Task 2 – Running the Solution ####
+#### Task 2 - Running the Solution ####
 
 In this task you will execute the solution using the new user interface you built with AngularJS to answer some of the quiz questions.
 
@@ -710,7 +712,7 @@ In this task you will execute the solution using the new user interface you buil
 1. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
 
 <a name="Ex2Task3" />
-#### Task 3 – Creating a Flip Animation Using CSS3 ####
+#### Task 3 - Creating a Flip Animation Using CSS3 ####
 
 In this task you will use CSS3 properties to perform rich animations by adding a flip effect when a question is answered and when the next question is retrieved.
 
@@ -808,14 +810,16 @@ By completing this hands-on lab you have learned how to:
 
 
 
-- Create an ASP.NET Web API controller using ASP.NET Scaffolding
+- Create an ASP.NET MVC 6 API controller using ASP.NET Scaffolding
 
-- Implement a Web API Get action to retrieve the next quiz question
+- Implement a API Get action to retrieve the next quiz question
 
-- Implement a Web API Post action to store the quiz answers
+- Implement a API Post action to store the quiz answers
 
 - Install AngularJS from the Visual Studio Package Manager Console
 
 - Implement AngularJS templates and controllers
 
 - Use CSS3 transitions to perform animation effects
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
