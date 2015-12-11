@@ -1,4 +1,4 @@
-<a name="HOLTop" />
+ï»¿<a name="HOLTop" />
 # Web Sites in Production #
 
 ---
@@ -23,9 +23,9 @@ In this hands-on lab, you will learn how to:
 - Enable Entity Framework Migrations with an existing model
 - Update the object model and database accordingly using Entity Framework Migrations
 - Deploy to a Microsoft Azure Web App using Git
-- Rollback to a previous deployment using the Azure Preview Portal
+- Rollback to a previous deployment using the Azure Portal
 - Use Azure Storage to scale a Web App
-- Configure auto-scaling for a Web App using the Azure Preview Portal
+- Configure auto-scaling for a Web App using the Azure Portal
 - Create and configure a load test project in Visual Studio
 
 <a name="Prerequisites"></a>
@@ -93,7 +93,7 @@ To simplify the tracking of these changes in your model, **Entity Framework Code
 This exercise shows you how to enable **Migrations** for your application and how you can easily detect and generate changes to update your databases.
 
 <a name="Ex1Task1" />
-#### Task 1 – Enabling Migrations ####
+#### Task 1 - Enabling Migrations ####
 
 In this task, you will go through the steps of enabling **Entity Framework Code First Migrations** to the **Geek Quiz** database, changing the model and understanding how those changes are reflected in the database. 
 
@@ -172,7 +172,7 @@ In this task, you will go through the steps of enabling **Entity Framework Code 
 	_Trivia Questions Columns_
 	
 <a name="Ex1Task2" />
-#### Task 2 – Updating Database Schema Using Migrations ####
+#### Task 2 - Updating Database Schema Using Migrations ####
 	
 In this task, you will use **Entity Framework Code First Migrations** to detect a change in your model and generate the necessary code to update the database. You will update the **TriviaQuestions** entity by adding a new property to it. Then you will run commands to create a new Migration to include the new column in the table.
 
@@ -282,15 +282,15 @@ In this exercise, you will deploy the **Geek Quiz** application to the staging e
 > **Note:** To enable staged publishing, the Web App must be on one of the Standard plans. Note that additional charges will be incurred if you upgrade your Web App to a Standard plan. For more information about pricing, see [App Service Pricing](http://azure.microsoft.com/en-us/pricing/details/app-service/). 
 
 <a name="Ex2Task1" />
-#### Task 1 – Creating a Microsoft Azure Web App ####
+#### Task 1 - Creating a Microsoft Azure Web App ####
 
 In this task, you will create a **Microsoft Azure Web App** from the management portal. You will also configure a **SQL Database** to persist the application data, and configure a local Git repository for source control.
 
-1. Go to the [Azure Preview Portal](https://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
+1. Go to the [Azure Portal](https://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
 
-	![Sign in to the Azure Preview Portal](Images/sign-in-to-windows-azure-management-portal.png?raw=true)
+	![Sign in to the Azure Portal](Images/sign-in-to-windows-azure-management-portal.png?raw=true)
 
-	_Sign in to the Azure Preview Portal_
+	_Sign in to the Azure Portal_
 
 1. Click **New** in the left command bar and then **Web Apps | Azure Marketplace**.
 
@@ -318,13 +318,13 @@ In this task, you will create a **Microsoft Azure Web App** from the management 
 
 1. Finally, in the **Web App + SQL** blade, click **Create** and wait until the Web App is created.
 
-	> **Note:** By default, Microsoft Azure provides domains at _azurewebsites.net_ but also gives you the possibility to set custom domains using the Azure Preview Portal. However, you cannot use custom domains with a free Web App.
+	> **Note:** By default, Microsoft Azure provides domains at _azurewebsites.net_ but also gives you the possibility to set custom domains using the Azure Portal. However, you cannot use custom domains with a free Web App.
 	
 	> Microsoft Azure offers 5 plans for users to run their Web Apps - Free, Shared, Basic, Standard and Premium. In Free and Shared, all Web Apps run in a multi-tenant environment and have quotas for CPU, Memory, and Network usage. You can mix and match which sites are Free (strict quotas) vs. Shared (more flexible quotas). The maximum number of free Web Apps may vary with your plan. In Standard, you choose which Web Apps run on dedicated virtual machines that correspond to the standard Azure compute resources. You can change the mode of your Web App by clicking the **Pricing tier** tile in the **Usage** section.
 
 	> ![Web Apps Modes](Images/web-site-modes.png?raw=true "Web Apps Modes")
 
-	> If you are using **Shared** or **Standard**, you will be able to manage custom domains for your Web Apps by going to your Web App’s **Settings** blade and clicking **Custom domains and SSL**.
+	> If you are using **Shared** or **Standard**, you will be able to manage custom domains for your Web Apps by going to your Web App's **Settings** blade and clicking **Custom domains and SSL**.
 
 	> ![Custom Domains and SLL](Images/manage-custom-domains.png?raw=true "Custom Domains and SSL")
 
@@ -339,11 +339,11 @@ In this task, you will create a **Microsoft Azure Web App** from the management 
 	_Web app running_
 
 <a name="Ex2Task2" />
-#### Task 2 – Creating the Production SQL Database ####
+#### Task 2 - Creating the Production SQL Database ####
 
 In this task, you will use the **Entity Framework Code First Migrations** to create the database targeting the **Azure SQL Database** instance you created in the previous task.
 	
-1. In the Azure Preview Portal, navigate to the Web App you created in the previous task and click **Settings**.
+1. In the Azure Portal, navigate to the Web App you created in the previous task and click **Settings**.
 
 1. In the **Settings** blade, select **Application settings**. Then, in the **Web app settings** blade, drill down to the **Connection strings** section and click the **Show connection strings** button.
 
@@ -353,9 +353,9 @@ In this task, you will use the **Entity Framework Code First Migrations** to cre
 
 1. Copy the **connection string** value and close the dialog box.
 
-	![Connection String in Azure Preview Portal](Images/connection-string-in-windows-azure-management.png?raw=true "Connection String in Azure Preview Portal")
+	![Connection String in Azure Portal](Images/connection-string-in-windows-azure-management.png?raw=true "Connection String in Azure Portal")
 
-	_Connection strings in Azure Preview Portal_
+	_Connection strings in Azure Portal_
 
 1. Now, click the **BROWSE ALL** button in the left panel and then **SQL Databases** to see the list of the SQL databases in Microsoft Azure.
 
@@ -388,7 +388,7 @@ In this task, you will use the **Entity Framework Code First Migrations** to cre
 	_Update database targeting Azure SQL Database_
 
 <a name="Ex2Task3" />
-#### Task 3 – Deploying Geek Quiz to Staging Using Git ####
+#### Task 3 - Deploying Geek Quiz to Staging Using Git ####
 
 In this task, you will create a staging deployment slot for your Web App. Then, you will use Git to publish the Geek Quiz application directly from your local computer to the staging environment of your Web App.
 
@@ -453,9 +453,9 @@ In this task, you will create a staging deployment slot for your Web App. Then, 
 
 	_Git initialization and first commit_
 
-1. Run the following command to push your site to the remote **Git** repository. Replace the placeholder with the URL you obtained from the Azure Preview Portal.
+1. Run the following command to push your site to the remote **Git** repository. Replace the placeholder with the URL you obtained from the Azure Portal.
 
-	> **Note:** When you deploy content to the FTP host or GIT repository of a Microsoft Azure Web App you must authenticate using the **deployment credentials** that you configured in a previous step. If you do not know your deployment credentials you can easily reset them in the Azure Preview Portal by opening the Web App **Settings** and clicking **Deployment credentials**. These deployment credentials are valid for all the Web Apps associated with your subscription.
+	> **Note:** When you deploy content to the FTP host or GIT repository of a Microsoft Azure Web App you must authenticate using the **deployment credentials** that you configured in a previous step. If you do not know your deployment credentials you can easily reset them in the Azure Portal by opening the Web App **Settings** and clicking **Deployment credentials**. These deployment credentials are valid for all the Web Apps associated with your subscription.
 
 	````GitBash
 	git remote add azure [GIT-URL-STAGING-SLOT]
@@ -466,7 +466,7 @@ In this task, you will create a staging deployment slot for your Web App. Then, 
 
 	_Pushing to Microsoft Azure_
 
-1. In order to verify that the site was successfully deployed, go back to the Azure Preview Portal and select your Web App.
+1. In order to verify that the site was successfully deployed, go back to the Azure Portal and select your Web App.
 
 1. Navigate to the staging slot of this Web App by clicking the **Deployment slots** tile under the **Deployment** section and then selecting its row inside the **Deployments** blade.
 
@@ -497,11 +497,11 @@ In this task, you will create a staging deployment slot for your Web App. Then, 
 	_Application ready to be used_
 
 <a name="Ex2Task4" />
-#### Task 4 – Promoting the Web App to Production ####
+#### Task 4 - Promoting the Web App to Production ####
 
 Now that you have verified that the site is working correctly in the deployment slot, you are ready to promote it to production. In this task, you will swap the site in a staging slot with the production slot.
 
-1. Go back to the Azure Preview Portal and navigate to the *staging Web App*.
+1. Go back to the Azure Portal and navigate to the *staging Web App*.
 
 1. Click the **Swap** command at the top.
 
@@ -534,14 +534,14 @@ Now that you have verified that the site is working correctly in the deployment 
 <a name="Exercise3" />
 ### Exercise 3: Performing Deployment Rollback in Production ###
 
-There are scenarios where you do not have a staging slot to perform hot swap between staging and production, for example, if you are working with **Web Apps** running in **Free** or **Shared** mode. In those scenarios, you should test your application in a testing environment – either locally or in a remote site – before deploying to production. However, it is possible that an issue not detected during the testing phase may arise in the production site. In this case, it is important to have a mechanism to easily switch to a previous and more stable version of the application as quickly as possible.
+There are scenarios where you do not have a staging slot to perform hot swap between staging and production, for example, if you are working with **Web Apps** running in **Free** or **Shared** mode. In those scenarios, you should test your application in a testing environment (either locally or in a remote site) before deploying to production. However, it is possible that an issue not detected during the testing phase may arise in the production site. In this case, it is important to have a mechanism to easily switch to a previous and more stable version of the application as quickly as possible.
 
-In **Azure Web Apps**, continuous deployment from source control makes this possible thanks to the **Redeploy** action available in the Azure Preview Portal. Microsoft Azure keeps track of the deployments associated with the commits pushed to the repository and provides an option to redeploy your application using any of your previous deployments, at any time.
+In **Azure Web Apps**, continuous deployment from source control makes this possible thanks to the **Redeploy** action available in the Azure Portal. Microsoft Azure keeps track of the deployments associated with the commits pushed to the repository and provides an option to redeploy your application using any of your previous deployments, at any time.
 
 In this exercise you will perform a change to the code in the **Geek Quiz** application that intentionally injects a _bug_. You will deploy the application to production to see the error, and then you will take advantage of the redeploy feature to go back to the previous state.
 
 <a name="Ex3Task1" />
-#### Task 1 – Updating the Geek Quiz Application ####
+#### Task 1 - Updating the Geek Quiz Application ####
 
 In this task, you will refactor a small piece of code from the **TriviaController** class by extracting part of the logic that retrieves the selected quiz option from the database to a new method.
 
@@ -591,9 +591,9 @@ In this task, you will refactor a small piece of code from the **TriviaControlle
 1. Press **CTRL + S** to save the changes.
 
 <a name="Ex3Task2" />
-#### Task 2 – Redeploying the Geek Quiz Application ####
+#### Task 2 - Redeploying the Geek Quiz Application ####
 
-You will now push the changes you made in the previous task to the repository, which will trigger a new deployment to the production environment. Then, you will troubleshoot an issue using the **F12 development tools** provided by Internet Explorer and then perform a rollback to the previous deployment from the Azure Preview Portal.
+You will now push the changes you made in the previous task to the repository, which will trigger a new deployment to the production environment. Then, you will troubleshoot an issue using the **F12 development tools** provided by Internet Explorer and then perform a rollback to the previous deployment from the Azure Portal.
 
 1. Open a new **Git Bash** console to deploy the updated application to Azure Web Apps.
 
@@ -638,7 +638,7 @@ You will now push the changes you made in the previous task to the repository, w
 
 1. Do not close the browser.
 
-1. In a new browser instance, navigate to the [Azure Preview Portal](http://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
+1. In a new browser instance, navigate to the [Azure Portal](http://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
 
 1. Select **Browse All | Web Apps** and click the Web app you created in Exercise 2.
 
@@ -679,11 +679,11 @@ You will now push the changes you made in the previous task to the repository, w
 In this exercise, you will move the static content of your application to a Blob container. Then you will configure your application to add an **ASP.NET URL rewrite rule** in the **Web.config** to redirect your content to the Blob container.
 
 <a name="Ex4Task1" />
-#### Task 1 – Creating a Azure Storage Account ####
+#### Task 1 - Creating a Azure Storage Account ####
 
 In this task you will learn how to create a new storage account using the management portal.
 
-1. Navigate to the [Azure Preview Portal](http://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
+1. Navigate to the [Azure Portal](http://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
 
 1. Select **New | Data + Storage | Storage** to start creating a new storage account. Enter a unique name for the account and select a **Location** from the list. Click **Create** to continue.
 previous task and click 
@@ -710,7 +710,7 @@ previous task and click
 	_Manage Access Key dialog box_
 
 <a name="Ex4Task2" />
-#### Task 2 – Uploading an Asset to Azure Blob Storage ####
+#### Task 2 - Uploading an Asset to Azure Blob Storage ####
 
 In this task, you will use the Server Explorer window from Visual Studio to connect to your storage account. You will then create a blob container and upload a file with the Geek Quiz logo to the container.
 
@@ -789,7 +789,7 @@ In this task, you will use the Server Explorer window from Visual Studio to conn
 	_logo-big.png image from Azure Blob Storage_
 	
 <a name="Ex4Task3" />
-#### Task 3 – Updating the Solution to Consume Static Content from Azure Blob Storage ####
+#### Task 3 - Updating the Solution to Consume Static Content from Azure Blob Storage ####
 
 In this task, you will configure the **GeekQuiz** solution to consume the image uploaded to Azure Blob Storage (instead of the image located in the web site) by adding an ASP.NET URL rewrite rule in the **web.config** file.
 
@@ -818,7 +818,7 @@ In this task, you will configure the **GeekQuiz** solution to consume the image 
 
 1. Now you will deploy the updated application to Azure. Open a new **Git Bash** console and execute the following commands to push the changes into the repository and trigger a new deployment. Update the _[YOUR-APPLICATION-PATH]_ placeholder with the path to the **GeekQuiz** solution. 
 
-	> **Note:** When you deploy content to the FTP host or GIT repository of an Azure Web App you must authenticate using the **deployment credentials** associated with your subscription. If you do not know your deployment credentials you can easily reset them in the Azure Preview Portal by opening the Web App **Settings** and clicking **Deployment credentials**. 
+	> **Note:** When you deploy content to the FTP host or GIT repository of an Azure Web App you must authenticate using the **deployment credentials** associated with your subscription. If you do not know your deployment credentials you can easily reset them in the Azure Portal by opening the Web App **Settings** and clicking **Deployment credentials**. 
 
 	````GitBash
 	cd "[YOUR-APPLICATION-PATH]"
@@ -832,7 +832,7 @@ In this task, you will configure the **GeekQuiz** solution to consume the image 
 	_Deploying update to Microsoft Azure_
 
 <a name="Ex4Task4" />
-#### Task 4 – Verification ####
+#### Task 4 - Verification ####
 
 In this task you will use **Internet Explorer** to browse the **Geek Quiz** application and check that the URL rewrite rule for images works and that you are redirected to the image hosted on **Azure Blob Storage**.
 
@@ -866,11 +866,11 @@ In this task you will use **Internet Explorer** to browse the **Geek Quiz** appl
 In this exercise you will go through the steps required to configure the **Autoscale** feature for the **Geek Quiz** Web App. You will verify this feature by running a Visual Studio load test to generate enough CPU load on the application to trigger an instance upgrade.
 
 <a name="Ex5Task1" />
-#### Task 1 – Configuring Autoscale Based on the CPU Metric ####
+#### Task 1 - Configuring Autoscale Based on the CPU Metric ####
 
-In this task you will use the Azure Preview Portal to enable the Autoscale feature for the Web App you created in Exercise 2.
+In this task you will use the Azure Portal to enable the Autoscale feature for the Web App you created in Exercise 2.
 
-1. In the [Azure Preview Portal](https://portal.azure.com/), select **Browse All | Web Apps** and click the Web app you created in Exercise 2.
+1. In the [Azure Portal](https://portal.azure.com/), select **Browse All | Web Apps** and click the Web app you created in Exercise 2.
 
 1. Navigate to the **Scale** tile under the **Usage** section. In the **Scale setting** blade, select the **CPU Percentage** option for the **Scale by** configuration.
 
@@ -891,7 +891,7 @@ In this task you will use the Azure Preview Portal to enable the Autoscale featu
 	_Changing the Target range to be between 5 and 25 percent_
 
 <a name="Ex5Task2" />
-#### Task 2 – Load Testing with Visual Studio ####
+#### Task 2 - Load Testing with Visual Studio ####
 
 Now that **Autoscale** has been configured, you will create a **Web Performance and Load Test Project** in Visual Studio to generate some CPU load on your Web App.
 
@@ -1020,7 +1020,7 @@ Now that **Autoscale** has been configured, you will create a **Web Performance 
 	![Test settings](Images/test-settings.png?raw=true)
 
 <a name="Ex5Task3" />
-#### Task 3 – Autoscale Verification ####
+#### Task 3 - Autoscale Verification ####
 
 You will now execute the load test you created in the previous task and see how your Web App behaves under load.
 
@@ -1056,7 +1056,7 @@ You will now execute the load test you created in the previous task and see how 
 
 	_Load test running_
 
-1. Once the test completes, go back to the Azure Preview Portal and navigate to your Web App. In the **Scale** tile under the **Usage** section, you should see that the number of instances has increased.
+1. Once the test completes, go back to the Azure Portal and navigate to your Web App. In the **Scale** tile under the **Usage** section, you should see that the number of instances has increased.
 
 	![New instance automatically deployed](Images/new-instance-automatically-deployed.png?raw=true)
 
