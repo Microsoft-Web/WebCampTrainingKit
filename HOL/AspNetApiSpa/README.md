@@ -271,7 +271,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 1. The **TriviaController.cs** file is then added to the **Controllers** folder of the **GeekQuiz** project, containing an base **TriviaController** class. Remove all the content of the class and add the following using statements at the beginning of the file.
 
-	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerUsings_)
+	(Code Snippet - _AspNetApiSpa - Ex1 - TriviaControllerUsings_)
 	<!--mark: 1-5-->
 	````C#
 	using GeekQuiz.Models;
@@ -281,7 +281,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 1. Add the following code at the beginning of the **TriviaController** class to define, initialize and dispose the **TriviaContext** instance in the controller.
 
-	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerContext_)
+	(Code Snippet - _AspNetApiSpa - Ex1 - TriviaControllerContext_)
 	<!-- mark:4-19 -->
 	````C#
     [Route("api/[controller]")]
@@ -312,7 +312,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 1. Add the following helper method at the end of the **TriviaController** class. This method retrieves the following quiz question from the database to be answered by the specified user.
 
-	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerNextQuestion_)
+	(Code Snippet - _AspNetApiSpa - Ex1 - TriviaControllerNextQuestion_)
 	<!-- mark:1-16 -->
 	````C#
     private async Task<TriviaQuestion> NextQuestionAsync(string userId)
@@ -335,7 +335,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 1. Add the following **Get** action method to the **TriviaController** class. This action method calls the **NextQuestionAsync** helper method defined in the previous step to retrieve the next question for the authenticated user.
 
-	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerGetAction_)
+	(Code Snippet - _AspNetApiSpa - Ex1 - TriviaControllerGetAction_)
 	<!-- mark:1-16 -->
 	````C#
     // GET: api/Trivia
@@ -358,7 +358,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 1. Add the following helper method at the end of the **TriviaController** class. This method stores the specified answer in the database and returns a Boolean  value indicating whether or not the answer is correct.
 
-	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerStoreAsync_)
+	(Code Snippet - _AspNetApiSpa - Ex1 - TriviaControllerStoreAsync_)
 	<!-- mark:1-16 -->
 	````C#
     private async Task<bool> StoreAsync(TriviaAnswer answer)
@@ -381,7 +381,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 1. Add the following **Post** action method to the **TriviaController** class. This action method associates the answer to the authenticated user and calls the **StoreAsync** helper method. Then, it sends a response  with the Boolean value returned by the helper method.
 
-	(Code Snippet - _AspNetWebApiSpa - Ex1 - TriviaControllerPostAction_)
+	(Code Snippet - _AspNetApiSpa - Ex1 - TriviaControllerPostAction_)
 	<!-- mark:1-15 -->
 	````C#
     // POST: api/Trivia
@@ -496,217 +496,301 @@ In this task you will verify that the API service you built in the previous task
 <a name="Exercise2" />
 ### Exercise 2: Creating the SPA Interface ###
 
-In this exercise you will first build the web front-end portion of Geek Quiz, focusing on the Single-Page Application interaction using **AngularJS**. You will then enhance the user experience with CSS3 to perform rich animations and provide a visual effect of context switching when transitioning from one question to the next.
+In this exercise you will first build the web front-end portion of Geek Quiz, focusing on the Single-Page Application interaction using **AngularJS 2**. You will then enhance the user experience with CSS3 to perform rich animations and provide a visual effect of context switching when transitioning from one question to the next.
 
 <a name="Ex2Task1" />
-#### Task 1 - Creating the SPA Interface Using AngularJS ####
+#### Task 1 - Creating the SPA Interface Using AngularJS 2 ####
 
-In this task you will use **AngularJS** to implement the client side of the Geek Quiz application. **AngularJS** is an open-source JavaScript framework that augments browser-based applications with _Model-View-Controller_ (MVC) capability, facilitating both development and testing.
+In this task you will use **AngularJS 2** to implement the client side of the Geek Quiz application. **AngularJS 2** is an open-source JavaScript framework that augments browser-based applications with _Model-View-Controller_ (MVC) capability, facilitating both development and testing.
 
-You will start by installing AngularJS from Visual Studio's Package Manager Console. Then, you will create the controller to provide the behavior of the Geek Quiz app and the view to render the quiz questions and answers using the AngularJS template engine.
+You will start by adding AngularJS 2 references. Then, you will create the controller to provide the behavior of the Geek Quiz app and the view to render the quiz questions and answers using the AngularJS template engine.
 
-> **Note:** For more information about AngularJS, refer to [http://angularjs.org/](http://angularjs.org/).
+> **Note:** For more information about AngularJS 2, refer to [https://angular.io/](https://angular.io/).
 
 1. Open **Visual Studio Community 2015** and open the **GeekQuiz.sln** solution located in the **Source/Ex2-CreatingASPAInterface/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
 
-1. Open the **Package Manager Console** from **Tools** | **NuGet Package Manager**. Type the following command to install the **AngularJS.Core** NuGet package.
+1. In **Solution Explorer**, open the **_Layout.cshtml** file located inside of the **Views | Shared** folder and add the following code inside the `<environment names="Development">` tag located inside the `head` tag.
 
-	<!--mark:1-->
-	````PowerShell
-	Install-Package AngularJS.Core
+	<!-- mark:1-3 -->
+	````HTML
+	<script src="https://code.angularjs.org/tools/system.js"></script>
+	<script src="https://code.angularjs.org/2.0.0-alpha.46/angular2.dev.js"></script>
+	<script src="https://code.angularjs.org/2.0.0-alpha.46/http.dev.js"></script>
 	````
 
-1. In **Solution Explorer**, right-click the **Scripts** folder of the **GeekQuiz** project and select **Add | New Folder**. Name the folder **app** and press **Enter**.
+1. Add the following code inside the `<environment names="Staging,Production">` tag located inside the `head` tag.
 
-1. Right-click the **app** folder you just created and select **Add | JavaScript File**.
+	<!-- mark:1-3 -->
+	````HTML
+	<script src="https://code.angularjs.org/tools/system.js"></script>
+	<script src="https://code.angularjs.org/2.0.0-alpha.46/angular2.min.js"></script>
+	<script src="https://code.angularjs.org/2.0.0-alpha.46/http.min.js"></script>
+	````
 
-	![Creating a new JavaScript file](Images/creating-a-new-javascript-file.png?raw=true)
+	![Updating the layout file to include the new dependencies](images/updating-the-layout.png?raw=true "Updating the layout file to include the new dependencies")
 
-	_Creating a new JavaScript file_
+	_Updating the layout file to include the new dependencies_
 
-1. In the **Specify Name for Item** dialog box, type _quiz-controller_ in the **Item name** text box and click **OK**.
+1. In **Solution Explorer**, right-click the **js** folder located under **wwwroot** and select **Add | New Item...**.
 
-	![Naming the new JavaScript file](Images/naming-the-javascript-file.png?raw=true)
+	![Creating a new TypeScript item](images/creating-a-new-typescript-item.png?raw=true "Creating a new TypeScript item")
 
-	_Naming the new JavaScript file_
+	_Creating a new TypeScript item_
 
-1. In the **quiz-controller.js** file, add the following code to declare and initialize the AngularJS **QuizCtrl** controller.
+1.	Select **TypeScript File** under the **DNX | Client-Side** menu, change the name to **app.ts** and click **Add**.
 
-	(Code Snippet - _AspNetWebApiSpa - Ex2 - AngularQuizController_)
-	<!--mark:1-12-->
+	![Adding a new TypeScript file](images/adding-a-new-typescript-file.png?raw=true "Adding a new TypeScript file")
+
+	_Adding a new TypeScript file_
+
+1. In the **app.ts** file, add the following code to declare and initialize the AngularJS **AppComponent** component.
+
+	(Code Snippet - _AspNetApiSpa - Ex2 - AngularAppComponent_)
+	<!--mark:1-23-->
 	````JavaScript
-	angular.module('QuizApp', [])
-		.controller('QuizCtrl', function ($scope, $http) {
-			$scope.answered = false;
-			$scope.title = "loading question...";
-			$scope.options = [];
-			$scope.correctAnswer = false;
-			$scope.working = false;
+    import {bootstrap, Component, View, NgFor, NgClass, AfterViewInit, Inject} from 'angular2/angular2';
+    import {Http, HTTP_BINDINGS, Headers} from 'angular2/http';
 
-			$scope.answer = function () {
-				return $scope.correctAnswer ? 'correct' : 'incorrect';
-			};
-		});
+    @Component({
+        selector: 'geekquiz-app',
+        viewBindings: [HTTP_BINDINGS]
+    })
+    class AppComponent {
+        public answered = false;
+        public title = "loading question...";
+        public options = [];
+        public correctAnswer = false;
+        public working = false;
+
+        constructor( @Inject(Http) private http: Http) {
+        }
+
+        answer() {
+            return this.correctAnswer ? 'correct' : 'incorrect';
+        }
+    }
+
+    bootstrap(AppComponent);
 	````
 
-	> **Note:** The constructor function of the **QuizCtrl** controller expects an injectable parameter named **$scope**. The initial state of the scope  should be set up in the constructor function by attaching properties to the **$scope** object. The properties contain the **view model**, and will be accessible to the template when the controller is registered.
+	> **Note:** The constructor function of the **AppComponent** component expects an injectable parameter named **Http**. The properties contain the **view model**, and will be accessible to the template when the controller is registered.
 	>
-	> The **QuizCtrl** controller is defined inside a module named **QuizApp**. Modules are units of work that let you break your application into separate components. The main advantages of using modules is that the code is easier to understand and facilitates unit testing, reusability and maintainability.
+	> The **AppComponent** component will be consumable from the view using the **selector** value which in this case is `geekquiz-app`.
 
-1. You will now add behavior to the scope in order to react to events triggered from the view. Add the following code at the end of the **QuizCtrl** controller to define the **nextQuestion** function in the **$scope** object.
+1. You will now add behavior to the scope in order to react to events triggered from the view. Add the following code at the end of the **AppComponent** component to define the **nextQuestion** function.
 
-	(Code Snippet - _AspNetWebApiSpa - Ex2 - AngularQuizControllerNextQuestion_)
-	<!--mark:4-19-->
+	(Code Snippet - _AspNetApiSpa - Ex2 - AngularAppComponentNextQuestion_)
+	<!--mark:4-27-->
 	````JavaScript
-	.controller('QuizCtrl', function ($scope, $http) { 
-		...
+    class AppComponent {
+        ...
 
-		$scope.nextQuestion = function () {
-			$scope.working = true;
-			$scope.answered = false;
-			$scope.title = "loading question...";
-			$scope.options = [];
+        nextQuestion() {
+            this.working = true;
 
-			$http.get("/api/trivia").success(function (data, status, headers, config) {
-				$scope.options = data.options;
-				$scope.title = data.title;
-				$scope.answered = false;
-				$scope.working = false;
-			}).error(function (data, status, headers, config) {
-				$scope.title = "Oops... something went wrong";
-				$scope.working = false;
-			});
-		};
-	};
+            this.answered = false;
+            this.title = "loading question...";
+            this.options = [];
+
+            var headers = new Headers();
+            headers.append('If-Modified-Since', 'Mon, 27 Mar 1972 00:00:00 GMT');
+
+            this.http.get("/api/trivia", { headers: headers })
+                .map(res => res.json())
+                .subscribe(
+                question => {
+                    this.options = question.options;
+                    this.title = question.title;
+                    this.answered = false;
+                    this.working = false;
+                },
+                err => {
+                    this.title = "Oops... something went wrong";
+                    this.working = false;
+                });
+        }
+    };
 	````
 
-	> **Note:** This function retrieves the next question from the **Trivia** Web API created in the previous exercise and attaches the question data to the **$scope** object.
+	> **Note:** This function retrieves the next question from the **Trivia** Web API created in the previous exercise and update properties with the question data.
 
-1. Insert the following code at the end of the **QuizCtrl** controller to define the **sendAnswer** function in the **$scope** object.
+1. Insert the following code at the end of the **AppComponent** component to define the **sendAnswer** function.
 
-	(Code Snippet - _AspNetWebApiSpa - Ex2 - AngularQuizControllerSendAnswer_)
-	<!--mark:4-15-->
+	(Code Snippet - _AspNetApiSpa - Ex2 - AngularAppComponentSendAnswer_)
+	<!--mark:4-23-->
 	````JavaScript
-	.controller('QuizCtrl', function ($scope, $http) { 
-		...
+    class AppComponent {
+        ...
 
-		$scope.sendAnswer = function (option) {
-			$scope.working = true;
-			$scope.answered = true;
+        sendAnswer(option) {
+            this.working = true;
+            var answer = { 'questionId': option.questionId, 'optionId': option.id };
 
-			$http.post('/api/trivia', { 'questionId': option.questionId, 'optionId': option.id }).success(function (data, status, headers, config) {
-				$scope.correctAnswer = (data === true);
-				$scope.working = false;
-			}).error(function (data, status, headers, config) {
-				$scope.title = "Oops... something went wrong";
-				$scope.working = false;
-			});
-		};
-	};
+            var headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+
+            this.http.post('/api/trivia', JSON.stringify(answer), { headers: headers })
+                .map(res => res.json())
+                .subscribe(
+                answerIsCorrect => {
+                    this.answered = true;
+                    this.correctAnswer = (answerIsCorrect === true);
+                    this.working = false;
+                },
+                err => {
+                    this.title = "Oops... something went wrong";
+                    this.working = false;
+                });
+        }
+    };
 	````
 
-	> **Note:** This function sends the  answer selected by the user to the **Trivia** Web API and stores the result (i.e. if the answer is correct or not) in the **$scope** object.
+	> **Note:** This function sends the answer selected by the user to the **Trivia** Web API and stores the result (i.e. if the answer is correct or not) in the  object properties.
 	>
-	> The **nextQuestion** and **sendAnswer** functions from above use the AngularJS **$http** object to abstract the communication with the Web API via the XMLHttpRequest JavaScript object from the browser. AngularJS supports another service that brings a higher level of abstraction to perform CRUD operations against a resource through RESTful APIs. The AngularJS **$resource** object has action methods which provide high-level behaviors without the need to interact with the **$http** object. Consider using the **$resource** object in scenarios that requires the CRUD model (fore information, see the [$resource documentation](http://docs.angularjs.org/api/ngResource/service/$resource)).
+	> The **nextQuestion** and **sendAnswer** functions from above use the AngularJS 2 **http** object to abstract the communication with the Web API via the XMLHttpRequest JavaScript object from the browser.
 
-1. The next step is to create the AngularJS template that defines the view for the quiz. To do this, open the **Index.cshtml** file inside the **Views | Home** folder and replace the content with the following code.
+1. Implement the **AfterViewInit** interface in the **AppComponent** class by updating the class definition and inserting the following code at the end of the **AppComponent** component.
 
-	(Code Snippet - _AspNetWebApiSpa - Ex2 - GeekQuizView_)
+	(Code Snippet - _AspNetApiSpa - Ex2 - AngularAppComponentAfterViewInit_)
+	<!--mark:4-6-->
+	````JavaScript
+    class AppComponent implements AfterViewInit {
+        ...
+
+        afterViewInit() {
+            this.nextQuestion();
+        }
+    };
+	````
+
+	> **Note:** This will call the nextQuestion method once the view is initialized.
+
+1. The next step is to create the AngularJS template that defines the view for the quiz. To do this, add the following **View** decorator to the **AppComponent** class below the **Component** decorator.
+
+	(Code Snippet - _AspNetApiSpa - Ex2 - GeekQuizAngularView_)
+	<!--mark:1-19-->
+	````HTML
+    @View({
+        directives: [NgFor, NgClass],
+        template: `
+            <div class="flip-container text-center col-md-12">
+                <div class="back" [ng-class]="{flip: answered, correct: correctAnswer, incorrect:!correctAnswer}">
+                    <p class="lead">{{answer()}}</p>
+                    <p>
+                        <button class="btn btn-info btn-lg next option" (click)="nextQuestion()" [disabled]="working">Next Question</button>
+                    </p>
+                </div>
+                <div class="front" [ng-class]="{flip: answered}">
+                    <p class="lead">{{title}}</p>
+                    <div class="row text-center">
+                        <button class="btn btn-info btn-lg option" *ng-for="#option of options" (click)="sendAnswer(option)" [disabled]="working">{{option.title}}</button>
+                    </div>
+                </div>
+            </div>
+        `
+    })
+    ````
+
+	> **Note:** The AngularJS 2 template is a declarative specification that uses information from the model and the component to transform static markup into the dynamic view that the user sees in the browser. The following are examples of AngularJS 2 elements and element attributes that can be used in a template:
+	>
+	> - The curly brace notation **{{ }}** denotes bindings to the component properties defined in the component class definition.
+	> - The **(click)** attribute is used to invoke the functions defined in the component in response to user clicks.
+	> - The **[ng-class]** directive is used to add CSS classes to the element based on the value of the object passed as parameter.
+
+1. The next step is to hook the **AppComponent** component in the page. To do this, open the **Index.cshtml** file inside the **Views | Home** folder and replace the content with the following code.
+
+	(Code Snippet - _AspNetApiSpa - Ex2 - GeekQuizView_)
 	<!--mark:1-31-->
 	````HTML
-	@{
-		ViewBag.Title = "Play";
-	}
+    @{
+        ViewData["Title"] = "Play";
+    }
 
-	<div id="bodyContainer" ng-app="QuizApp">
-		<section id="content">
-			<div class="container" >
-				<div class="row">
-					<div class="flip-container text-center col-md-12" ng-controller="QuizCtrl" ng-init="nextQuestion()">
-						<div class="back" ng-class="{flip: answered, correct: correctAnswer, incorrect:!correctAnswer}">
-							<p class="lead">{{answer()}}</p>
-							<p>
-								<button class="btn btn-info btn-lg next option" ng-click="nextQuestion()" ng-disabled="working">Next Question</button>
-							</p>
-						</div>
-						<div class="front" ng-class="{flip: answered}">
-							<p class="lead">{{title}}</p>
-							<div class="row text-center">
-								<button class="btn btn-info btn-lg option" ng-repeat="option in options" ng-click="sendAnswer(option)" ng-disabled="working">{{option.title}}</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
-
-	@section scripts {
-		@Scripts.Render("~/Scripts/angular.js")
-		@Scripts.Render("~/Scripts/app/quiz-controller.js")
-	}
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <geekquiz-app>Loading...</geekquiz-app>
+            </div>
+        </div>
+    </section>
 	````
 
-	> **Note:** The AngularJS template is a declarative specification that uses information from the model and the controller to transform static markup into the dynamic view that the user sees in the browser. The following are examples of AngularJS elements and element attributes that can be used in a template:
-	>
-	> - The **ng-app** directive tells AngularJS the DOM element that represents the root element of the application. 
-	> - The **ng-controller** directive attaches  a controller to the DOM at the point where the directive is declared.
-	> - The curly brace notation **{{ }}** denotes bindings to the scope properties defined in the controller.
-	> - The **ng-click** directive is used to invoke the functions defined in the scope in response to user clicks.
+	> **Note:** An element with the component's selector is used to include the component in the page, in this case `geekquiz-app`.
 
-1. Open the **Site.css** file inside the **Content** folder and add the following highlighted styles at the end of the file to provide a look and feel for the quiz view.
+1. Insert the following code at the end of the **Index.cshtml** file to add the logic to import the **app.js** file.
 
-	(Code Snippet - _AspNetWebApiSpa - Ex2 - GeekQuizStyles_)
-	<!--mark:5-42-->
+	(Code Snippet - _AspNetApiSpa - Ex2 - GeekQuizViewScript_)
+	<!--mark:1-31-->
+	````HTML
+    @section Scripts {
+        <script>
+            System.config({
+                packages: { 'js': { defaultExtension: 'js' } }
+            });
+
+            System.import('js/app');
+        </script>
+    }
+	````
+
+1. Open the **Site.css** file inside the **wwwroot | css** folder and add the following highlighted styles at the end of the file to provide a look and feel for the quiz view.
+
+	(Code Snippet - _AspNetApiSpa - Ex2 - GeekQuizStyles_)
+	<!--mark:7-47-->
 	````CSS
-	.validation-summary-valid {
-		 display: none;
-	}
+    @media (min-width: 768px) {
+        .carousel-caption {
+            z-index: 10 !important;
+        }
+    }
 
-	/* Geek Quiz styles */
-	.flip-container .back,
-	.flip-container .front {
-		 border: 5px solid #00bcf2;
-		 padding-bottom: 30px;
-		 padding-top: 30px;
-	}
+    /* Geek Quiz styles */
+    .flip-container {
+        padding: 0;
+    }
 
-	#content {
-		position:relative;
-		background:#fff;
-		padding:50px 0 0 0;
-	}
+    .flip-container .back,
+    .flip-container .front {
+        border: 5px solid #00bcf2;
+        padding: 30px 0;
+    }
 
-	.option {
-		 width:140px;
-		 margin: 5px;
-	}
+    #content {
+        position: relative;
+        background: #fff;
+        padding: 50px 0 0 0;
+    }
 
-	div.correct p {
-		 color: green;
-	}
+    .option {
+        width: 140px;
+        margin: 5px;
+    }
 
-	div.incorrect p {
-		 color: red;
-	}
+    div.correct p {
+        color: green;
+    }
 
-	.btn {
-		 border-radius: 0;
-	}
+    div.incorrect p {
+        color: red;
+    }
 
-	.flip-container div.front, .flip-container div.back.flip {
-		display: block;
-	}
+    .btn {
+        border-radius: 0;
+    }
 
-	.flip-container div.front.flip, .flip-container div.back {
-		display: none;
-	}
+    .flip-container div.front, .flip-container div.back.flip {
+        display: block;
+    }
+
+        .flip-container div.front.flip, .flip-container div.back {
+            display: none;
+        }
 	````
 
 <a name="Ex2Task2" />
 #### Task 2 - Running the Solution ####
 
-In this task you will execute the solution using the new user interface you built with AngularJS to answer some of the quiz questions.
+In this task you will execute the solution using the new user interface you built with AngularJS 2 to answer some of the quiz questions.
 
 1. Press **F5** to run the solution. 
 
@@ -739,11 +823,11 @@ In this task you will execute the solution using the new user interface you buil
 
 In this task you will use CSS3 properties to perform rich animations by adding a flip effect when a question is answered and when the next question is retrieved.
 
-1. In **Solution Explorer**, right-click the **Content** folder of the **GeekQuiz** project and select **Add | Existing Item...**.
+1. In **Solution Explorer**, right-click the **wwwroot | css** folder of the **GeekQuiz** project and select **Add | Existing Item...**.
 
-	![Adding an existing item to the Content folder](Images/adding-an-existing-item-to-the-content-folder.png?raw=true "Adding an existing item to the Content folder")
+	![Adding an existing item to the css folder](Images/adding-an-existing-item-to-the-css-folder.png?raw=true "Adding an existing item to the css folder")
 
-	_Adding an existing item to the Content folder_
+	_Adding an existing item to the css folder_
 
 1. In the **Add Existing Item** dialog box, navigate to the **Source/Assets** folder and select **Flip.css**. Click **Add**.
 
@@ -800,14 +884,36 @@ In this task you will use CSS3 properties to perform rich animations by adding a
 	````
 
 
-1. Open the **BundleConfig.cs** file inside the **App_Start** folder and add the reference to the **Flip.css** file in the **"~/Content/css"** style bundle
+1. Open the **_Layout.cshtml** file inside the **Views | Shared** folder and add the references to the **Flip.css** file inside the head element.
 
-	<!--mark:4-->
-	````C#
-	bundles.Add(new StyleBundle("~/Content/css").Include(
-		"~/Content/bootstrap.css",
-		"~/Content/site.css",
-		"~/Content/Flip.css"));
+	<!--mark:9,20-->
+	````HTML
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - GeekQuiz</title>
+
+        <environment names="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+            <link rel="stylesheet" href="~/css/Flip.css" />
+
+            <script src="https://code.angularjs.org/tools/system.js"></script>
+            <script src="https://code.angularjs.org/2.0.0-alpha.46/angular2.dev.js"></script>
+            <script src="https://code.angularjs.org/2.0.0-alpha.46/http.dev.js"></script>
+        </environment>
+        <environment names="Staging,Production">
+            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+            <link rel="stylesheet" href="~/css/Flip.css" asp-append-version="true" />
+
+            <script src="https://code.angularjs.org/tools/system.js"></script>
+            <script src="https://code.angularjs.org/2.0.0-alpha.46/angular2.min.js"></script>
+            <script src="https://code.angularjs.org/2.0.0-alpha.46/http.min.js"></script>
+        </environment>
+    </head>
 	````
 
 1. Press **F5** to run the solution and log in with your credentials.
@@ -831,17 +937,13 @@ In this task you will use CSS3 properties to perform rich animations by adding a
 
 By completing this hands-on lab you have learned how to:
 
-
-
 - Create an ASP.NET MVC 6 API controller using ASP.NET Scaffolding
 
 - Implement a API Get action to retrieve the next quiz question
 
 - Implement a API Post action to store the quiz answers
 
-- Install AngularJS from the Visual Studio Package Manager Console
-
-- Implement AngularJS templates and controllers
+- Implement AngularJS 2 templates and components
 
 - Use CSS3 transitions to perform animation effects
 
