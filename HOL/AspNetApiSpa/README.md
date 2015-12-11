@@ -527,19 +527,19 @@ You will start by adding AngularJS 2 references. Then, you will create the contr
 	<script src="https://code.angularjs.org/2.0.0-alpha.46/http.min.js"></script>
 	````
 
-	![Updating the layout file to include the new dependencies](images/updating-the-layout.png?raw=true "Updating the layout file to include the new dependencies")
+	![Updating the layout file to include the new dependencies](Images/updating-the-layout.png?raw=true "Updating the layout file to include the new dependencies")
 
 	_Updating the layout file to include the new dependencies_
 
 1. In **Solution Explorer**, right-click the **js** folder located under **wwwroot** and select **Add | New Item...**.
 
-	![Creating a new TypeScript item](images/creating-a-new-typescript-item.png?raw=true "Creating a new TypeScript item")
+	![Creating a new TypeScript item](Images/creating-a-new-typescript-item.png?raw=true "Creating a new TypeScript item")
 
 	_Creating a new TypeScript item_
 
 1.	Select **TypeScript File** under the **DNX | Client-Side** menu, change the name to **app.ts** and click **Add**.
 
-	![Adding a new TypeScript file](images/adding-a-new-typescript-file.png?raw=true "Adding a new TypeScript file")
+	![Adding a new TypeScript file](Images/adding-a-new-typescript-file.png?raw=true "Adding a new TypeScript file")
 
 	_Adding a new TypeScript file_
 
