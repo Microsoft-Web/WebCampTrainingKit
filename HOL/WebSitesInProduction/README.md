@@ -50,6 +50,9 @@ The following is required to complete this hands-on lab:
 [6]: http://aka.ms/watk-bizspark
 [7]: http://azure.microsoft.com/en-us/offers/ms-azr-0025p/
 
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
+
 <a name="Setup" />
 ### Setup ###
 In order to run the exercises in this hands-on lab, you will need to set up your environment first.
@@ -1075,3 +1078,6 @@ You will now execute the load test you created in the previous task and see how 
 ## Summary ##
 
 In this hands-on lab, you have learned how to set up and deploy your application to a production Web App in Microsoft Azure. You started by detecting and updating your databases using **Entity Framework Code First Migrations**, then continued by deploying new versions of your site to different deployment slots using **Git** and performing rollbacks to the latest stable version of your site. Additionally, you learned how to scale your Web App using Storage to move your static content to a Blob container. 
+
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.

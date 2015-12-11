@@ -1,4 +1,4 @@
-<a name="HOLTop" />
+﻿<a name="HOLTop" />
 # Visual Studio 2015 Web Tooling #
 
 ---
@@ -34,6 +34,9 @@ The following is required to complete this hands-on lab:
 [1]: https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx
 [2]: http://vswebessentials.com/
 [3]: http://www.google.com/chrome/
+
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
 
 <a name="Setup" />
 ### Setup ###
@@ -635,3 +638,6 @@ By completing this hands-on lab you have learned how to:
 - Use new CSS editor features included in Web Essentials such as the Color picker and Browser matrix tooltip 
 - Use new JavaScript editor features included in Web Essentials such as Extract to File and IntelliSense for all HTML elements 
 - Exchange data between your browser and Visual Studio using Browser Link
+
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
