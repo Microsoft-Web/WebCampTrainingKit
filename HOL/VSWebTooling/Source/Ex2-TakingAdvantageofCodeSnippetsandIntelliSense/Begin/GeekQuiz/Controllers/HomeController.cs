@@ -1,26 +1,35 @@
-﻿namespace GeekQuiz.Controllers
-{
-    using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Mvc;
 
+namespace GeekQuiz.Controllers
+{
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            return this.View();
+            return View();
         }
 
-        public ActionResult About()
+        public IActionResult About()
         {
-            this.ViewBag.Message = "Your application description page.";
+            ViewData["Message"] = "Your application description page.";
 
-            return this.View();
+            return View();
         }
 
-        public ActionResult Contact()
+        public IActionResult Contact()
         {
-            this.ViewBag.Message = "Your contact page.";
+            ViewData["Message"] = "Your contact page.";
 
-            return this.View();
+            return View();
+        }
+
+        public IActionResult Error()
+        {
+            return View();
         }
     }
 }
