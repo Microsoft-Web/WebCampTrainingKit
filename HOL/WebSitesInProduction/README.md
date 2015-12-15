@@ -150,17 +150,11 @@ In this task, you will go through the steps of enabling **Entity Framework Code 
 	
 	_Open in SQL Server Object Explorer_
 
-1. In the **SQL Server Object Explorer** window, connect to your LocalDB instance by right-clicking the **SQL Server** node and selecting **Add SQL Server...**.
+1. In the **SQL Server Object Explorer** window, verify that you have the **(localdb)\MSSQLLocalDB** database in the list. If the database is not in the list, connect to your LocalDB instance by right-clicking the **SQL Server** node and selecting **Add SQL Server...**.
 
 	![Adding a SQL Server Instance](Images/adding-sql-server-instance.png?raw=true "Adding a SQL Server Instance")
 
 	_Adding a SQL Server instance to SQL Server Object Explorer_
-	
-1. Set the **Server name** to **(localdb)\MSSQLLocalDB** and leave **Windows Authentication** as your authentication mode. Click **Connect** to continue.
-
-	![Connecting to LocalDB](Images/connecting-to-localdb.png?raw=true "Connecting to LocalDB")
-	
-	_Connecting to LocalDB_
 	
 1. Open the **GeekQuizProd** database and expand the **Tables** node. As you can see, the `dnx ef database update` command generated all the tables defined in the **TriviaDbContext** class. Locate the **dbo.TriviaQuestion** table and open the columns node. In the next task, you will add a new column to this table and update the database using **Migrations**. 
 
@@ -177,19 +171,20 @@ In this task, you will use **Entity Framework Code First Migrations** to detect 
 
 1. Add a new property named **Hint**, as shown in the following code snippet.
 	
-	<!-- mark:10 -->
+	<!-- mark:11 -->
 	````C#
-	public class TriviaQuestion
-	{
-		 public int Id { get; set; }
+    public class TriviaQuestion
+    {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
-		 [Required]
-		 public string Title { get; set; }
+        [Required]
+        public string Title { get; set; }
 
-		 public virtual List<TriviaOption> Options { get; set; }
+        public virtual List<TriviaOption> Options { get; set; }
 
-		 public string Hint { get; set; }
-	}
+        public string Hint { get; set; }
+    }
 	````
 
 1. Switch back to the **Command Prompt**, enter the following command and then press **Enter**. A new migration will be created reflecting the change in our model.
@@ -198,6 +193,10 @@ In this task, you will use **Entity Framework Code First Migrations** to detect 
 	````PowerShell
 	dnx ef migrations add QuestionHint --context TriviaDbContext
 	````
+
+	![Adding the QuestionHint migration](Images/adding-questionhint-migration.png?raw=true "Adding the QuestionHint migration")
+
+	_Adding the QuestionHint migration_
 	
 	> **Note:** A Migration file is composed of two methods, **Up** and **Down**. 
 	
@@ -212,6 +211,10 @@ In this task, you will use **Entity Framework Code First Migrations** to detect 
 	````PowerShell
 	dnx ef database update --context TriviaDbContext
 	````
+
+	![Applying the QuestionHint migration](Images/applying-questionhint-migration.png?raw=true "Applying the QuestionHint migration")
+
+	_Applying the QuestionHint migration_
 
 1. In **SQL Server Object Explorer**, refresh the **dbo.TriviaQuestion** table and check that the new **Hint** column is displayed.
 
