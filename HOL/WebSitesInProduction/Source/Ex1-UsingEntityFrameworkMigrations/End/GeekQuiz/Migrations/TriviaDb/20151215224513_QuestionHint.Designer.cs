@@ -8,8 +8,8 @@ using GeekQuiz.Models;
 namespace GeekQuiz.Migrations.TriviaDb
 {
     [DbContext(typeof(TriviaDbContext))]
-    [Migration("20151203191750_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20151215224513_QuestionHint")]
+    partial class QuestionHint
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,6 +50,8 @@ namespace GeekQuiz.Migrations.TriviaDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Hint");
 
                     b.Property<string>("Title")
                         .IsRequired();

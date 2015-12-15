@@ -13,7 +13,7 @@ namespace GeekQuiz.Models
         public string Title { get; set; }
 
         public virtual List<TriviaOption> Options { get; set; }
-        
+
         public string Hint { get; set; }
     }
 }
