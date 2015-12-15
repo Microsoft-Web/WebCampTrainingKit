@@ -33,9 +33,15 @@ In this hands-on lab, you will learn how to:
 
 The following is required to complete this hands-on lab:
 
-- [Visual Studio Community 2013][1] or greater
+- [Visual Studio Community 2015][1] or greater
 - [Azure SDK for Visual Studio 2015][2] or later
 - [GIT Version Control System][3]
+- Enable the ASP.NET 5 command-line tools. Open a command-prompt and run:
+
+	````
+	dnvm upgrade
+	````
+
 - A Microsoft Azure subscription
 	- Sign up for a [Free Trial][4]
 	- If you are a Visual Studio Professional, Test Professional, Premium or Ultimate with MSDN or MSDN Platforms subscriber, activate your [MSDN benefit][5] now to start developing and testing on Microsoft Azure
@@ -104,51 +110,39 @@ In this task, you will go through the steps of enabling **Entity Framework Code 
 
 1. Build the solution in order to download and install the **NuGet** package dependencies. To do this, right-click the solution and click **Build Solution** or press **Ctrl + Shift + B**.
 
-1. From the **Tools** menu in Visual Studio, select **NuGet Package Manager**, and then **Package Manager Console**.
+1. In the **Solution Explorer**, select the GeekQuiz project and press **Shift + Alt + ,** to open a Command Prompt in the folder where the project is located.
 
-1. In the **Package Manager Console**, enter the following command and then press **Enter**. An initial migration based on the existing model will be created.
-	
-	>**Note:** This command adds a **Migrations** folder to the Geek Quiz project that contains a file called **Configuration.cs**. The **Configuration** class allows you to configure how Migrations behaves for your context. 
+1. In the **Command Prompt** you just opened, enter the following command and then press **Enter**. An initial migration based on the existing model will be created.
 
+	<!-- mark:1 -->
 	````PowerShell
-	Enable-Migrations -ContextTypeName GeekQuiz.Models.TriviaContext 
+	dnx ef migrations add InitialMigration --context TriviaDbContext
 	````
 	
-	![Enabling Migrations](Images/enabling-migrations.png?raw=true "Enabling Migrations")
-	
-	_Enabling Migrations_
-	
-1. With Migrations enabled, you need to update the **Configuration** class to populate the database with the initial data that **Geek Quiz** requires. Replace the **Configuration.cs** file located in the **Migrations** folder with the one located in the **Source\Assets** folder of this lab.
+	![Creating the initial migration](Images/creating-the-initial-migration.png?raw=true "Creating the initial migration")
 
-	> **Note:** Since **Migrations** will call the **Seed** method with every database update, you need to be sure that records are not duplicated in the database. The **AddOrUpdate** method will help to prevent duplicate data.
-	
-1. To add an initial migration, enter the following command and then press **Enter**.
+	_Creating the initial migration_
 
 	>**Note:** Make sure that there is no database named "GeekQuizProd" in your LocalDB instance.
+	>
+	>**Note:** `dnx ef migrations add` will scaffold the next migration based on changes you have made to your model since the last migration was created. In this case, being the first migration of the project, it will add the scripts to create all the tables defined in the **TriviaDbContext** class.	
 
-	<div> </div>
+1. Back in Visual Studio, verify that the new migration was created inside the **TriviaDb** folder located under the **Migrations** folder.
 
-	>**Note:** **Add-Migration** will scaffold the next migration based on changes you have made to your model since the last migration was created. In this case, being the first migration of the project, it will add the scripts to create all the tables defined in the **TriviaContext** class.	
+	![Verifying the initial migration](Images/verifying-the-initial-migration.png?raw=true "Verifying the initial migration")
 
+	_Verifying the initial migration_
+
+1. Execute the migration to update the database by running the following command in the **Command Prompt**.
+
+	>**Note:** `dnx ef database update` will apply any pending migrations to the database. In this case, it will create the database using the connection string defined in your appsettings.json file.
+
+	<!-- mark:1 -->
 	````PowerShell
-	Add-Migration InitialSchema
+	dnx ef database update --context TriviaDbContext
 	````
-	
-	![Adding base schema migration](Images/adding-base-schema-migration.png?raw=true "Adding base schema migration")
-	
-	_Adding base schema migration_
-	
-1. Execute the migration to update the database by running the following command. For this command you will specify the **Verbose** flag to view the SQL statements being applied to the target database.
 
-	>**Note:** **Update-Database** will apply any pending migrations to the database. In this case, it will create the database using the connection string defined in your web.config file.
-
-	````PowerShell
-	Update-Database -Verbose
-	````
-	
-	![Creating initial database](Images/creating-initial-database.png?raw=true "Creating initial database")
-	
-	_Creating initial database_
+	![Applying the initial migration](Images/applying-the-initial-migration.png?raw=true "Applying the initial migration")
 	
 1. Go to the **View** menu and open **SQL Server Object Explorer**.
 
@@ -162,13 +156,13 @@ In this task, you will go through the steps of enabling **Entity Framework Code 
 
 	_Adding a SQL Server instance to SQL Server Object Explorer_
 	
-1. Set the **Server name** to **(LocalDb)\v11.0** and leave **Windows Authentication** as your authentication mode. Click **Connect** to continue.
+1. Set the **Server name** to **(localdb)\MSSQLLocalDB** and leave **Windows Authentication** as your authentication mode. Click **Connect** to continue.
 
 	![Connecting to LocalDB](Images/connecting-to-localdb.png?raw=true "Connecting to LocalDB")
 	
 	_Connecting to LocalDB_
 	
-1. Open the **GeekQuizProd** database and expand the **Tables** node. As you can see, the **Update-Database** command generated all the tables defined in the **TriviaContext** class. Locate the **dbo.TriviaQuestions** table and open the columns node. In the next task, you will add a new column to this table and update the database using **Migrations**. 
+1. Open the **GeekQuizProd** database and expand the **Tables** node. As you can see, the `dnx ef database update` command generated all the tables defined in the **TriviaDbContext** class. Locate the **dbo.TriviaQuestion** table and open the columns node. In the next task, you will add a new column to this table and update the database using **Migrations**. 
 
 	![Trivia Questions Columns](Images/trivia-questions-columns.png?raw=true "Trivia Questions Columns")
 
@@ -177,7 +171,7 @@ In this task, you will go through the steps of enabling **Entity Framework Code 
 <a name="Ex1Task2" />
 #### Task 2 - Updating Database Schema Using Migrations ####
 	
-In this task, you will use **Entity Framework Code First Migrations** to detect a change in your model and generate the necessary code to update the database. You will update the **TriviaQuestions** entity by adding a new property to it. Then you will run commands to create a new Migration to include the new column in the table.
+In this task, you will use **Entity Framework Code First Migrations** to detect a change in your model and generate the necessary code to update the database. You will update the **TriviaQuestion** entity by adding a new property to it. Then you will run commands to create a new Migration to include the new column in the table.
 
 1. In **Solution Explorer**, double-click the **TriviaQuestion.cs** file located in the **Models** folder.
 
@@ -198,82 +192,32 @@ In this task, you will use **Entity Framework Code First Migrations** to detect 
 	}
 	````
 
-1. In the **Package Manager Console**, enter the following command and then press **Enter**. A new migration will be created reflecting the change in our model.
+1. Switch back to the **Command Prompt**, enter the following command and then press **Enter**. A new migration will be created reflecting the change in our model.
 
 	<!-- mark:1 -->
 	````PowerShell
-	Add-Migration QuestionHint
+	dnx ef migrations add QuestionHint --context TriviaDbContext
 	````
-	
-	![Add-Migration](Images/add-migration.png?raw=true "Add-Migration")
-	
-	_Add-Migration_
 	
 	> **Note:** A Migration file is composed of two methods, **Up** and **Down**. 
 	
-	>* The **Up** method will be used to specify the changes the current version of our application needs to apply to the database. 
-	>* The **Down** method is used to reverse the changes we have added to the **Up** method. 
+	> * The **Up** method will be used to specify the changes the current version of our application needs to apply to the database. 
+	> * The **Down** method is used to reverse the changes we have added to the **Up** method. 
 	
-	>When the Database Migration updates the database, it will run all migrations that have not been used since the last update in the timestamp (The _MigrationHistory table keeps track of which migrations have been applied). The **Up** method of all migrations will be called and will make the changes we have specified to the database. If we decide to go back to a previous migration, the **Down** method will be called to redo the changes in reverse order.
+	> When the Database Migration updates the database, it will run all migrations that have not been used since the last update in the timestamp (The _EFMigrationsHistory table keeps track of which migrations have been applied). The **Up** method of all migrations will be called and will make the changes we have specified to the database. If we decide to go back to a previous migration, the **Down** method will be called to redo the changes in reverse order.
 
-1. In the **Package Manager Console**, enter the following command and then press **Enter**.
-	
+1. In the **Command Prompt**, enter the following command and then press **Enter**.
+
+	<!-- mark:1 -->
 	````PowerShell
-	Update-Database -Verbose
+	dnx ef database update --context TriviaDbContext
 	````
 
-	The output of the **Update-Database** command shows an **Alter Table** SQL statement to add a new column to the **TriviaQuestions** table, as shown in the image below.
+1. In **SQL Server Object Explorer**, refresh the **dbo.TriviaQuestion** table and check that the new **Hint** column is displayed.
 
-	![Add column SQL statement generated](Images/add-column-sql-statement-generated.png?raw=true "Add column SQL statement generated")
-	
-	_Add column SQL statement generated_
+	![Checking the new Hint Column](Images/checking-the-new-hint-column.png?raw=true "Checking the new Hint Column")
 
-1. In **SQL Server Object Explorer**, refresh the **dbo.TriviaQuestions** table and check that the new **Hint** column is displayed.
-
-	![Showing the new Hint Column](Images/showing-the-new-hint-column.png?raw=true "Showing the new Hint Column")
-
-	_Showing the new Hint Column_
-
-1. Back in the **TriviaQuestion.cs** editor, add a **StringLength** constraint to the _Hint_ property, as shown in the following code snippet.
-
-	<!-- mark:10 -->
-	````C#
-	public class TriviaQuestion
-	{
-		 public int Id { get; set; }
-
-		 [Required]
-		 public string Title { get; set; }
-
-		 public virtual List<TriviaOption> Options { get; set; }
-
-		 [StringLength(150)]
-		 public string Hint { get; set; }
-	}
-	````
-
-1. In the **Package Manager Console**, enter the following command and then press **Enter**.
-	
-	````PowerShell
-	Add-Migration QuestionHintLength
-	````
-1. In the **Package Manager Console**, enter the following command and then press **Enter**.
-
-	````PowerShell
-	Update-Database -Verbose
-	````
-
-	The output of the **Update-Database** command generated an **Alter Table** SQL statement to update the _hint_ column type of the **TriviaQuestions** table, as shown in the image below.
-
-	![Alter column SQL statement generated](Images/alter-column-sql-statement-generated.png?raw=true "Alter column SQL statement generated")
-	
-	_Alter column SQL statement generated_
-
-1. In **SQL Server Object Explorer**, refresh the **dbo.TriviaQuestions** table and check that the **Hint** column type is **nvarchar(150)**.
-
-	![Showing the new constraint](Images/showing-the-new-constraint.png?raw=true "Showing the new constraint")
-
-	_Showing the new constraint_
+	_Checking the new Hint Column_
 
 <a name="Exercise2" />
 ### Exercise 2: Deploying a Web Site to Staging ###
@@ -898,7 +842,7 @@ In this task you will use the Azure Portal to enable the Autoscale feature for t
 
 Now that **Autoscale** has been configured, you will create a **Web Performance and Load Test Project** in Visual Studio to generate some CPU load on your Web App.
 
-1. Open **Visual Studio Ultimate 2013** and select **File | New | Project...** to start a new solution.
+1. Open **Visual Studio Ultimate 2015** and select **File | New | Project...** to start a new solution.
 
 	![Creating a new project](Images/creating-a-new-project.png?raw=true "Creating a new project")
 
