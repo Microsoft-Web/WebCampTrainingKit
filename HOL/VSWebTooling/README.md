@@ -381,13 +381,13 @@ The first new feature you will see in this task is called **Dynamic IntelliSense
 
 In this task, you will create a new HTML form element which contains a label and an input field. Then you will add a **for** attribute to the label to bind it to the input, and you will see IntelliSense suggestions based on the ids of the inputs in scope.
 
-1. Open **Visual Studio** and the **Begin.sln** solution located in the **Source/Ex2-TakingAdvantageofCodeSnippetsandIntelliSense/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
+1. Open **Visual Studio** and the **GeekQuiz.sln** solution located in the **Source/Ex2-TakingAdvantageofCodeSnippetsandIntelliSense/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
 
 1. In **Solution Explorer**, open the **Index.cshtml** file located in the **Views** | **Home** folder.
 
 1. Add the following form inside the **div element with container as class value**.
 
-	(Code Snippet - _VisualStudio2013WebTooling_ - _Ex2_ - _Form_)
+	(Code Snippet - _VSWebTooling_ - _Ex2_ - _Form_)
 
 	<!-- mark:1-3 -->
 	````HTML
@@ -454,9 +454,9 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 
 1. Notice that an audio player was added to the application.
 
-	![Audio player in Internet Explorer](Images/audio-player-in-internet-explorer.png?raw=true "Audio player in Internet Explorer")
+	![Audio player in Microsoft Edge](Images/audio-player-in-microsoft-edge.png?raw=true "Audio player in Microsoft Edge")
 	
-	_Audio player in Internet Explorer_
+	_Audio player in Microsoft Edge_
 
 	![Audio player in Google Chrome](Images/audio-player-in-google-chrome.png?raw=true "Audio player in Google Chrome")
 
@@ -467,7 +467,7 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 <a name="Ex2Task3" />
 #### Task 3 - Using IntelliSense in JavaScript Documents ####
 
-With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and class names. In this task, you will learn how those lists improve JavaScript IntelliSense support in Web Essentials 2013. 
+With Web Essentials, style sheets and HTML pages produce a list of IDs and class names. In this task, you will learn how those lists improve JavaScript IntelliSense support in Web Essentials. 
 
 1. In the **Index.cshtml** file, add the following code to define a **script** tag for JavaScript code.
 
@@ -484,7 +484,7 @@ With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and 
 
 1. Add the following code inside the **script** tag to define the ready callback function.
 	
-	(Code Snippet - _VisualStudio2013WebTooling_ - _Ex2_ - _ReadyFunction_)
+	(Code Snippet - _VSWebTooling_ - _Ex2_ - _ReadyFunction_)
 
 	<!-- mark:1-5 -->
 	````JavaScript
@@ -503,7 +503,7 @@ With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and 
 
 	_JavaScript extract to file suggestion_
 
-1. In the **Save As** window, select the **Scripts** folder, name the file **init.js** and click **Save**.
+1. In the **Save As** window, select the **wwwroot | js** folder, name the file **init.js** and click **Save**.
 
 	![Save As window](Images/save-as-window.png?raw=true "Save As window")
 
@@ -515,7 +515,7 @@ With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and 
 	>
 	>	_Init.js file created with the content included_
 
-1. Open the **Index.cshtml** file and check that the script tag was replaced with a reference to the **init.js** file.
+1. Open the **Index.cshtml** file and check that the script tag was replaced with a reference to the **init.js** file. Remove the **wwwroot** section from the source url.
 
 	![Init.js html reference](Images/initjs-html-reference.png?raw=true "Init.js html reference")
 
@@ -571,17 +571,11 @@ With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and 
 
 	_Retrieving Audio Elements_
 
-1. In **Solution Explorer**, right-click the **init.js** file in the **Scripts** folder and select **Minify JavaScript file(s)** from the **Web Essentials** menu.
+1. In **Solution Explorer**, right-click the **init.js** file in the **wwwroot | js** folder and select **Minify File** from the menu.
 
 	![Minify JavaScript file(s)](Images/minify-javascript-files.png?raw=true "Minify JavaScript files")
 
 	_Minify JavaScript file(s)_
-
-1. When prompted to enable automatic minification when the source file changes click **Yes**.
-
-	![Enabling automatic minification warning](Images/enabling-automatic-minification-warning.png?raw=true "Enabling automatic minification warning")
-
-	_Enabling automatic minification warning_
 
 	>**Note:** The **init.min.js** is created and is added as a dependency of the **init.js** file.
 	>
@@ -597,7 +591,7 @@ With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and 
 
 1. In the **init.js** file, add the following code below the **getElementsByTagName** function call to play all the audio elements.
 	
-	(Code Snippet - _VisualStudio2013WebTooling_ - _Ex2_ - _PlayAudioElements_)
+	(Code Snippet - _VSWebTooling_ - _Ex2_ - _PlayAudioElements_)
 
 	<!-- mark:1-4 -->
 	````JavaScript
