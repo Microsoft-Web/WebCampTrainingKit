@@ -242,25 +242,31 @@ In this task, you will create a **Microsoft Azure Web App** from the management 
 
 	_Sign in to the Azure Portal_
 
-1. Click **New** in the left command bar and then **Web Apps | Azure Marketplace**.
+1. Click **New** in the left command bar and then search for **Web App + SQL**.
 
-	![Creating a new Web App](Images/creating-a-new-web-site.png?raw=true "Creating a new Web App")
+	![Searching for Web App + SQL](Images/searching-for-webapp-sql.png?raw=true "Searching for Web App + SQL")
 
-	_Creating a new Web App_
+	_Searching for Web App + SQL_
 
-1. Select **Web App + SQL** and then click **Create**.
+1. Select **Web App + SQL** from the list.
 
-	![Creating a new Web App using Marketplace](Images/creating-a-new-web-site-using-custom-create.png?raw=true "Creating a new Web App using Custom Create")
+	![Selecting Web App + SQL](Images/selecting-webapp-sql.png?raw=true "Selecting Web App + SQL")
 
-	_Creating a new Web App using Marketplace_
+	_Selecting Web App + SQL_
 
-1. In the **Web App + SQL** blade, select a **Resource Group** or create a new one. Then, click **WEB APP**, provide an available **URL** (e.g. _geek-quiz_), select an **APPSERVICE PLAN** or create a new one, then choose the pricing tier and location. Finally, click **OK**.
+1. In the **Web App + SQL** blade, click **Create** in order to continue to the configuration of the site.
+
+	![Creating the Web App + SQL](Images/creating-webapp-sql.png?raw=true "Creating the Web App + SQL")
+
+	_Creating the Web App + SQL_
+
+1. In the new **Web App + SQL** blade, select a **Resource Group** or create a new one. Then, click **App Service Name**, provide an available **URL** (e.g. _geekquiz-site_), create a new **AppService Plan**, then choose the pricing tier and location. Finally, click **OK**.
 
 	![Configure the new Web App](Images/configure-the-new-web-app.png?raw=true)
 
 	_Configure the new Web App_
 
-1. Next, select **DATABASE** and create a new database, specifying the required information for the new server. Then, click **OK** in both **New server** and **New database** blades.
+1. Next, select **Database** and create a new database, specifying the required information for the new server. Then, click **OK** in both **New server** and **New database** blades.
 
 	![Configure a new SQL Database](Images/configure-the-new-sql-database.png?raw=true)
 
@@ -270,7 +276,7 @@ In this task, you will create a **Microsoft Azure Web App** from the management 
 
 	> **Note:** By default, Microsoft Azure provides domains at _azurewebsites.net_ but also gives you the possibility to set custom domains using the Azure Portal. However, you cannot use custom domains with a free Web App.
 	
-	> Microsoft Azure offers 5 plans for users to run their Web Apps - Free, Shared, Basic, Standard and Premium. In Free and Shared, all Web Apps run in a multi-tenant environment and have quotas for CPU, Memory, and Network usage. You can mix and match which sites are Free (strict quotas) vs. Shared (more flexible quotas). The maximum number of free Web Apps may vary with your plan. In Standard, you choose which Web Apps run on dedicated virtual machines that correspond to the standard Azure compute resources. You can change the mode of your Web App by clicking the **Pricing tier** tile in the **Usage** section.
+	> Microsoft Azure offers 5 plans for users to run their Web Apps - Free, Shared, Basic, Standard and Premium. In Free and Shared, all Web Apps run in a multi-tenant environment and have quotas for CPU, Memory, and Network usage. You can mix and match which sites are Free (strict quotas) vs. Shared (more flexible quotas). The maximum number of free Web Apps may vary with your plan. In Standard, you choose which Web Apps run on dedicated virtual machines that correspond to the standard Azure compute resources. You can change the mode of your Web App by clicking the **Pricing tier** tile in the **Usage** section of the corresponding App Service plan blade.
 
 	> ![Web Apps Modes](Images/web-site-modes.png?raw=true "Web Apps Modes")
 
@@ -278,7 +284,7 @@ In this task, you will create a **Microsoft Azure Web App** from the management 
 
 	> ![Custom Domains and SLL](Images/manage-custom-domains.png?raw=true "Custom Domains and SSL")
 
-1. Once the Web app is created, select it and click the **URL** link to validate that the new Web app is running.
+1. Once the Web app is created, select it and click the **Browse** button to validate that the new Web app is running.
 
 	![Browsing to the new Web app](Images/browsing-to-the-new-web-site.png?raw=true)
 
