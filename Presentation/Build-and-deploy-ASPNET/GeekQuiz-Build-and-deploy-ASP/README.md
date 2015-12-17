@@ -313,6 +313,10 @@ This demo is composed of the following segments:
 
 1. In the **Create App Service** dialog box, click **Create** and wait until the Web App is created.
 
+	![Creating the app Service](images/creating-the-app-service.png?raw=true "Creating the app Service")
+
+	_Creating the app Service_
+
 1. Back in the **Publish Web** dialog, click **Next >**.
 
 	![Reviewing the connection settings to deploy](images/reviewing-the-connection-settings-to-deploy.png?raw=true "Reviewing the connection settings to deploy")
