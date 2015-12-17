@@ -271,21 +271,47 @@ This demo is composed of the following segments:
 
 	_Adding an account_
 
-1. Then, click **New...** to open the _Create Web App on Microsoft Azure_ dialog box.
+1. Then, click **New...** to open the _Create App Service_ dialog box.
 
-	![Creating a new Web App](images/create-new-web-app.png?raw=true "Creating a new Web App")
+	![Creating a new App Service](images/create-new-web-app.png?raw=true "Creating a new App Service")
 
-	_Creating a new Web App_
+	_Creating a new App Service_
 
-1. The _Create Web App on Microsoft Azure_ dialog box will appear. Fill the Web App name field, the App Service plan and select **Create new server** in the **Database server** list, or use an existing one. Then, click **Create** and wait until the Web App is created.
+1. The _Create App Service_ dialog box will appear. Fill the Web App name field, the Resource Group and the App Service plan. Then, click **Services** to add the SQL Database.
 
-	![Creating Web App on Microsoft Azure dialog](images/create-web-app-dialog-box.png?raw=true "Creating Web App on Microsoft Azure dialog")
+	![Creating Web App on Microsoft Azure dialog](images/create-app-service-dialog-box.png?raw=true "Creating Web App on Microsoft Azure dialog")
 
-	_CreatE Web App on Microsoft Azure dialog_
+	_Creating Web App on Microsoft Azure dialog_
 
 	> 	**Speaking Point:**
 	>
 	You can create a new Web App without a database, or a new Web App with a new database on an existing database server, or a new Web App with a new database on a new database server. Fill in all the required information and voila... your new Microsoft Azure Web App is ready and you can deploy your website project there.
+
+1. In the **Services** tab, click the add buton next to **SQL Database** in **Resource Type** list.
+
+	![Adding a new SQL Database](images/adding-a-new-sql-database.png?raw=true "Adding a new SQL Database")
+
+	_Adding a new SQL Database_
+
+1. In the **Configure SQL Database** dialog box, create a new SQL Server by clicking the **New...** button.
+
+	![Creating a new SQL Server](images/creating-a-new-sql-server.png?raw=true "Creating a new SQL Server")
+
+	_Creating a new SQL Server_
+
+1. In the **Configure SQL Server** dialog box, fill the server name, the administrator username and password and then click **OK**.
+
+	![Configuring the SQL Server](images/configuring-the-sql-server.png?raw=true "Configuring the SQL Server")
+
+	_Configuring the SQL Server_
+
+1. Back in the **Configure SQL Database** dialog box, click **OK**.
+
+	![Configuring the SQL Database](images/configuring-the-sql-database.png?raw=true "Configuring the SQL Database")
+
+	_Configuring the SQL Database_
+
+1. In the **Create App Service** dialog box, click **Create** and wait until the Web App is created.
 
 1. Back in the **Publish Web** dialog, click **Next >**.
 
