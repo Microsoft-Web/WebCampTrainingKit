@@ -785,9 +785,9 @@ In this exercise you will go through the steps required to configure the **Autos
 
 In this task you will use the Azure Portal to enable the Autoscale feature for the Web App you created in Exercise 2.
 
-1. In the [Azure Portal](https://portal.azure.com/), select **Browse All | Web Apps** and click the Web app you created in Exercise 2.
+1. In the [Azure Portal](https://portal.azure.com/), select **App Services** and click the Web app you created in Exercise 2.
 
-1. Navigate to the **Scale** tile under the **Usage** section. In the **Scale setting** blade, select the **CPU Percentage** option for the **Scale by** configuration.
+1. Navigate to the **Scale Out (App Service Plan)** option in the **Settings** blade. In the **Scale setting** blade, select the **CPU Percentage** option for the **Scale by** configuration.
 
 	> **Note:** When scaling by CPU, Azure dynamically adjusts the number of instances that the Web app uses if the CPU usage changes.
 
@@ -971,7 +971,7 @@ You will now execute the load test you created in the previous task and see how 
 
 	_Load test running_
 
-1. Once the test completes, go back to the Azure Portal and navigate to your Web App. In the **Scale** tile under the **Usage** section, you should see that the number of instances has increased.
+1. Once the test completes, go back to the Azure Portal and navigate to the App Service Plan in which your web app was created. In the **Scale** tile under the **Usage** section, you should see that the number of instances has increased.
 
 	![New instance automatically deployed](Images/new-instance-automatically-deployed.png?raw=true)
 
