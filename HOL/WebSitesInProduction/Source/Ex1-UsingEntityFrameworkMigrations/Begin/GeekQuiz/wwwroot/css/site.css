@@ -34,6 +34,11 @@ textarea {
 }
 
 /* Geek Quiz styles */
+.row.header {
+    background-color: #00bcf2;
+    text-align:center;
+}
+
 .flip-container {
     padding: 0;
 }
