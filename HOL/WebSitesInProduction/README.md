@@ -700,7 +700,7 @@ In this task, you will use the Server Explorer window from Visual Studio to conn
 
 In this task, you will configure the **GeekQuiz** solution to consume the image uploaded to Azure Blob Storage (instead of the image located in the web site) by adding an ASP.NET URL rewrite rule in the **web.config** file.
 
-1. In Visual Studio, open the **Web.config** file in the **GeekQuiz** project and locate the **\<system.webServer>** element.
+1. In Visual Studio, open the **web.config** file located in the **wwwroot** folder in the **GeekQuiz** project and locate the **\<system.webServer>** element.
 
 1. Add the following code to add a URL rewrite rule, updating the placeholder with your storage account name.
 
@@ -722,6 +722,18 @@ In this task, you will configure the **GeekQuiz** solution to consume the image 
 	> **Note:** URL rewriting is the process of intercepting an incoming Web request and redirecting the request to a different resource. The URL rewriting rules tells the rewriting engine when and where a request needs to be redirected. A rewriting rule is composed of two strings: the pattern to look for in the requested URL (usually, using regular expressions), and the string to replace the pattern with, if found. For more information, see [URL Rewriting in ASP.NET](http://msdn.microsoft.com/en-us/library/ms972974.aspx).
 
 1. Press **CTRL + S** to save the changes.
+
+1. Open the **Index.cshtml** file located at **Views | Home**. and add the following header row inside the div element with the **container** class.
+
+    ````HTML
+    <div class="row header">
+        <img src="@Url.Content("~/img/logo-big.png")" alt="" />
+    </div>
+    ````
+
+	![Updated index view](Images/updated-index-view.png?raw=true "Updated index view")
+	
+	_Updated index view_
 
 1. Now you will deploy the updated application to Azure. Open a new **Git Bash** console and execute the following commands to push the changes into the repository and trigger a new deployment. Update the _[YOUR-APPLICATION-PATH]_ placeholder with the path to the **GeekQuiz** solution. 
 
@@ -747,7 +759,7 @@ In this task you will use **Microsoft Edge** to browse the **Geek Quiz** applica
 
 1. Press **F12** to launch the development tools, select the **Network** tab and start recording.
 
-	![Starting network recording](Images/starting-the-network-recording.png?raw=true "Starting network recording")
+	![Starting network recording](Images/starting-the-network-recording-2.png?raw=true "Starting network recording")
 
 	_Starting network recording_
 
