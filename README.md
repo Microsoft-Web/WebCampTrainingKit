@@ -61,7 +61,7 @@
             <td><a href='Presentation/Modern-Web-Front-Ends/Modern-web-front-ends.pptx'>Presentation</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/Modern-Web-Front-Ends/GeekQuiz-SPA-Interface/'>Demo - Building a SPA Interface using EmberJS</a></td>
+            <td><a href='Presentation/Modern-Web-Front-Ends/GeekQuiz-SPA-Interface/'>Demo - Building a SPA interface using Angular 2</a></td>
           </tr>
           <tr>
             <td rowspan="3">API Services for both web and devices</td>
@@ -125,7 +125,7 @@
           <tr>
             <td><a href='HOL/AspNetApiSpa/'>ASP.NET MVC 6 and Single-Page Applications (SPAs)</a></td>
             <td>60</td>
-            <td>This hands-on lab will show you how to create an Single-Page Application (SPA) by implementing the service layer with ASP.NET Web API to expose the required endpoints to retrieve the application data. Then, you will build a rich and responsive UI using AngularJS 2 and CSS3 transformation effects.</td>
+            <td>This hands-on lab will show you how to create a Single-Page Application (SPA) by implementing the service layer with ASP.NET Web API to expose the required endpoints to retrieve the application data. Then, you will build a rich and responsive UI using AngularJS 2 and CSS3 transformation effects.</td>
           </tr>
         </table>
       </div>
@@ -169,8 +169,8 @@
           <tr>
             <td><a href='Presentation/Modern-Web-Front-Ends/Modern-web-front-ends.pptx'>Building web front ends for both desktop and mobile using the latest web standards</a></td>
             <td>In this session, we'll dig into the latest web standards - HTML5, CSS3, JavaScript with jQuery, and responsive web design. We'll see how to apply some of the web dev features in Visual Studio 2015 shown earlier in the day with real world application.
-              This session extends the GeekQuiz application by building in a single page application (SPA) interface using Ember.js and CSS3 transitions.</td>
-            <td><a href='Presentation/Modern-Web-Front-Ends/GeekQuiz-SPA-Interface/'>Building a SPA Interface using EmberJS</a></td>
+              This session extends the GeekQuiz application by building in a single page application (SPA) interface using Angular 2 and CSS3 transitions.</td>
+            <td><a href='Presentation/Modern-Web-Front-Ends/GeekQuiz-SPA-Interface/'>Building a SPA interface using Angular 2</a></td>
           </tr>
           <tr>
             <td rowspan="2"><a href='Presentation/HTTP-Services/HTTP-Services.pptx'>API Services for both web and devices</a></td>

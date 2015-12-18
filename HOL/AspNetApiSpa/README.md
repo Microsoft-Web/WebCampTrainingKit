@@ -118,7 +118,7 @@ In this task you will start creating a new ASP.NET MVC project with support for 
 	> - **TriviaDbContext:** represents the Entity Framework's database context of the Geek Quiz application. This class derives from **DbContext** and exposes **DbSet** properties that represent collections of the entities described above.
 	> - **SampleData:** a database initializer including sample data for this models.
 
-1. Open the **Startup.cs** file and add the following code at the beginning of the **ConfigureServices** method to configures the **TriviaDbContext**.
+1. Open the **Startup.cs** file and add the following code at the beginning of the **ConfigureServices** method to configure the **TriviaDbContext**.
 
 	<!-- mark:8-9 -->
 	````C#
@@ -269,7 +269,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 	> The scaffolding process also ensures that all the required dependencies are installed in the project. For example, if you start with an empty ASP.NET project and then use scaffolding to add a MVC 6 API controller, the required NuGet packages and references are added to your project automatically.
 
-1. The **TriviaController.cs** file is then added to the **Controllers** folder of the **GeekQuiz** project, containing an base **TriviaController** class. Remove all the content of the class and add the following using statements at the beginning of the file.
+1. The **TriviaController.cs** file is then added to the **Controllers** folder of the **GeekQuiz** project, containing a base **TriviaController** class. Remove all the content of the class and add the following using statements at the beginning of the file.
 
 	(Code Snippet - _AspNetApiSpa - Ex1 - TriviaControllerUsings_)
 	<!--mark: 1-5-->

@@ -307,7 +307,7 @@ In this task, you will create a staging deployment slot for your Web App. Then, 
 
 	_Scaling up the App Service Plan_
 
-1. If your Web App is not on an **Standard** plan, select one by clicking the **Pricing tier** tile. For instance, select the **S1 Standard** plan.
+1. If your Web App is not on a **Standard** plan, select one by clicking the **Pricing tier** tile. For instance, select the **S1 Standard** plan.
 
 	![Upgrading the Web App to Standard Instance ](Images/upgrading-the-web-site-to-standard-mode.png?raw=true "Upgrading the Web App to Standard Instance")
 
@@ -373,7 +373,7 @@ In this task, you will create a staging deployment slot for your Web App. Then, 
 
 1. In order to verify that the site was successfully deployed, go back to the Azure Portal and select your Web App.
 
-1. Navigate to the staging slot of this Web App by clicking **Deployment slots**in the **Settings** blade and then selecting its row inside the **Deployments** blade.
+1. Navigate to the staging slot of this Web App by clicking **Deployment slots** in the **Settings** blade and then selecting its row inside the **Deployments** blade.
 
 1. In the *staging Web App*, verify that there is an **Active** deployment with your _"initial commit"_ in the **Continuous deployment** blade.
 
@@ -566,7 +566,7 @@ You will now push the changes you made in the previous task to the repository, w
 In this exercise, you will move the static content of your application to a Blob container. Then you will configure your application to add an **ASP.NET URL rewrite rule** in the **Web.config** to redirect your content to the Blob container.
 
 <a name="Ex4Task1" />
-#### Task 1 - Creating a Azure Storage Account ####
+#### Task 1 - Creating an Azure Storage Account ####
 
 In this task you will learn how to create a new storage account using the management portal.
 
@@ -723,7 +723,7 @@ In this task, you will configure the **GeekQuiz** solution to consume the image 
 
 1. Press **CTRL + S** to save the changes.
 
-1. Open the **Index.cshtml** file located at **Views | Home**. and add the following header row inside the div element with the **container** class.
+1. Open the **Index.cshtml** file located at **Views | Home** and add the following header row inside the div element with the **container** class.
 
     ````HTML
     <div class="row header">

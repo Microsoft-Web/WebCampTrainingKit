@@ -348,7 +348,7 @@ In this task, you will run the solution again to verify that the views for **Per
 1. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
 
 <a name="Exercise3" />
-### Exercise 3: Creating a API Controller Using Scaffolding ###
+### Exercise 3: Creating an API Controller Using Scaffolding ###
 
 HTTP is not just for serving up web pages. It’s also a powerful platform for building APIs that expose services and data. HTTP is simple, flexible, and ubiquitous. Almost any platform that you can think of has an HTTP library, so HTTP services can reach a broad range of clients, including browsers, mobile devices, and traditional desktop apps.
 
@@ -357,7 +357,7 @@ Previous versions of ASP.NET included the Web API framework for creating web API
 In this exercise, you will use ASP.NET Scaffolding again to generate a web API controller. You will use the same **Person** and **PersonContext** classes from the previous exercise to provide the same person data in JSON format. You will see how you can expose the same resources in different ways within the same ASP.NET application.
 
 <a name="Ex3Task1" />
-#### Task 1 - Creating a API Controller ####
+#### Task 1 - Creating an API Controller ####
 
 In this task you will create a new **API Controller** that will expose the person data in a machine-consumable format like JSON.
 
