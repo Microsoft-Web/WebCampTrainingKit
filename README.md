@@ -125,7 +125,7 @@
           <tr>
             <td><a href='HOL/AspNetApiSpa/'>ASP.NET MVC 6 and Single-Page Applications (SPAs)</a></td>
             <td>60</td>
-            <td>This hands-on lab will show you how to create an Single-Page Application (SPA) by implementing the service layer with ASP.NET Web API to expose the required endpoints to retrieve the application data. Then, you will build a rich and responsive UI using AngularJS and CSS3 transformation effects.</td>
+            <td>This hands-on lab will show you how to create an Single-Page Application (SPA) by implementing the service layer with ASP.NET Web API to expose the required endpoints to retrieve the application data. Then, you will build a rich and responsive UI using AngularJS 2 and CSS3 transformation effects.</td>
           </tr>
         </table>
       </div>
