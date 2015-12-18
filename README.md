@@ -179,7 +179,7 @@
             <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-backend/'>Overview of Web API backend from GeekQuiz</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-Windows-Store/'>Building a Windows Store front end</a></td>
+            <td><a href='Presentation/HTTP-Services/GeekQuiz-Web-API-Universal-Windows/'>Building a Universal Windows application front end</a></td>
           </tr>
           <tr>
             <td rowspan="3"><a href='Presentation/ASPNET-in-Production/ASPNET-in-Production.pptx'>Running, improving and maintaining a site in the real world</a></td>
