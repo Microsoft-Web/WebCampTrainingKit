@@ -1,4 +1,4 @@
-<a name="HOLTop" />
+ï»¿<a name="HOLTop" />
 # Web Sites in Production #
 
 ---
@@ -23,9 +23,9 @@ In this hands-on lab, you will learn how to:
 - Enable Entity Framework Migrations with an existing model
 - Update the object model and database accordingly using Entity Framework Migrations
 - Deploy to a Microsoft Azure Web App using Git
-- Rollback to a previous deployment using the Azure Preview Portal
+- Rollback to a previous deployment using the Azure Portal
 - Use Azure Storage to scale a Web App
-- Configure auto-scaling for a Web App using the Azure Preview Portal
+- Configure auto-scaling for a Web App using the Azure Portal
 - Create and configure a load test project in Visual Studio
 
 <a name="Prerequisites"></a>
@@ -33,9 +33,15 @@ In this hands-on lab, you will learn how to:
 
 The following is required to complete this hands-on lab:
 
-- [Visual Studio Community 2013][1] or greater
+- [Visual Studio Community 2015][1] or greater
 - [Azure SDK for Visual Studio 2015][2] or later
 - [GIT Version Control System][3]
+- Enable the ASP.NET 5 command-line tools. Open a command-prompt and run:
+
+	````
+	dnvm upgrade
+	````
+
 - A Microsoft Azure subscription
 	- Sign up for a [Free Trial][4]
 	- If you are a Visual Studio Professional, Test Professional, Premium or Ultimate with MSDN or MSDN Platforms subscriber, activate your [MSDN benefit][5] now to start developing and testing on Microsoft Azure
@@ -49,6 +55,9 @@ The following is required to complete this hands-on lab:
 [5]: http://aka.ms/watk-msdn
 [6]: http://aka.ms/watk-bizspark
 [7]: http://azure.microsoft.com/en-us/offers/ms-azr-0025p/
+
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
 
 <a name="Setup" />
 ### Setup ###
@@ -93,7 +102,7 @@ To simplify the tracking of these changes in your model, **Entity Framework Code
 This exercise shows you how to enable **Migrations** for your application and how you can easily detect and generate changes to update your databases.
 
 <a name="Ex1Task1" />
-#### Task 1 – Enabling Migrations ####
+#### Task 1 - Enabling Migrations ####
 
 In this task, you will go through the steps of enabling **Entity Framework Code First Migrations** to the **Geek Quiz** database, changing the model and understanding how those changes are reflected in the database. 
 
@@ -101,51 +110,39 @@ In this task, you will go through the steps of enabling **Entity Framework Code 
 
 1. Build the solution in order to download and install the **NuGet** package dependencies. To do this, right-click the solution and click **Build Solution** or press **Ctrl + Shift + B**.
 
-1. From the **Tools** menu in Visual Studio, select **NuGet Package Manager**, and then **Package Manager Console**.
+1. In the **Solution Explorer**, select the GeekQuiz project and press **Shift + Alt + ,** to open a Command Prompt in the folder where the project is located.
 
-1. In the **Package Manager Console**, enter the following command and then press **Enter**. An initial migration based on the existing model will be created.
-	
-	>**Note:** This command adds a **Migrations** folder to the Geek Quiz project that contains a file called **Configuration.cs**. The **Configuration** class allows you to configure how Migrations behaves for your context. 
+1. In the **Command Prompt** you just opened, enter the following command and then press **Enter**. An initial migration based on the existing model will be created.
 
+	<!-- mark:1 -->
 	````PowerShell
-	Enable-Migrations -ContextTypeName GeekQuiz.Models.TriviaContext 
+	dnx ef migrations add InitialMigration --context TriviaDbContext
 	````
 	
-	![Enabling Migrations](Images/enabling-migrations.png?raw=true "Enabling Migrations")
-	
-	_Enabling Migrations_
-	
-1. With Migrations enabled, you need to update the **Configuration** class to populate the database with the initial data that **Geek Quiz** requires. Replace the **Configuration.cs** file located in the **Migrations** folder with the one located in the **Source\Assets** folder of this lab.
+	![Creating the initial migration](Images/creating-the-initial-migration.png?raw=true "Creating the initial migration")
 
-	> **Note:** Since **Migrations** will call the **Seed** method with every database update, you need to be sure that records are not duplicated in the database. The **AddOrUpdate** method will help to prevent duplicate data.
-	
-1. To add an initial migration, enter the following command and then press **Enter**.
+	_Creating the initial migration_
 
 	>**Note:** Make sure that there is no database named "GeekQuizProd" in your LocalDB instance.
+	>
+	>**Note:** `dnx ef migrations add` will scaffold the next migration based on changes you have made to your model since the last migration was created. In this case, being the first migration of the project, it will add the scripts to create all the tables defined in the **TriviaDbContext** class.	
 
-	<div> </div>
+1. Back in Visual Studio, verify that the new migration was created inside the **TriviaDb** folder located under the **Migrations** folder.
 
-	>**Note:** **Add-Migration** will scaffold the next migration based on changes you have made to your model since the last migration was created. In this case, being the first migration of the project, it will add the scripts to create all the tables defined in the **TriviaContext** class.	
+	![Verifying the initial migration](Images/verifying-the-initial-migration.png?raw=true "Verifying the initial migration")
 
+	_Verifying the initial migration_
+
+1. Execute the migration to update the database by running the following command in the **Command Prompt**.
+
+	>**Note:** `dnx ef database update` will apply any pending migrations to the database. In this case, it will create the database using the connection string defined in your appsettings.json file.
+
+	<!-- mark:1 -->
 	````PowerShell
-	Add-Migration InitialSchema
+	dnx ef database update --context TriviaDbContext
 	````
-	
-	![Adding base schema migration](Images/adding-base-schema-migration.png?raw=true "Adding base schema migration")
-	
-	_Adding base schema migration_
-	
-1. Execute the migration to update the database by running the following command. For this command you will specify the **Verbose** flag to view the SQL statements being applied to the target database.
 
-	>**Note:** **Update-Database** will apply any pending migrations to the database. In this case, it will create the database using the connection string defined in your web.config file.
-
-	````PowerShell
-	Update-Database -Verbose
-	````
-	
-	![Creating initial database](Images/creating-initial-database.png?raw=true "Creating initial database")
-	
-	_Creating initial database_
+	![Applying the initial migration](Images/applying-the-initial-migration.png?raw=true "Applying the initial migration")
 	
 1. Go to the **View** menu and open **SQL Server Object Explorer**.
 
@@ -153,124 +150,77 @@ In this task, you will go through the steps of enabling **Entity Framework Code 
 	
 	_Open in SQL Server Object Explorer_
 
-1. In the **SQL Server Object Explorer** window, connect to your LocalDB instance by right-clicking the **SQL Server** node and selecting **Add SQL Server...**.
+1. In the **SQL Server Object Explorer** window, verify that you have the **(localdb)\MSSQLLocalDB** database in the list. If the database is not in the list, connect to your LocalDB instance by right-clicking the **SQL Server** node and selecting **Add SQL Server...**.
 
 	![Adding a SQL Server Instance](Images/adding-sql-server-instance.png?raw=true "Adding a SQL Server Instance")
 
 	_Adding a SQL Server instance to SQL Server Object Explorer_
 	
-1. Set the **Server name** to **(LocalDb)\v11.0** and leave **Windows Authentication** as your authentication mode. Click **Connect** to continue.
-
-	![Connecting to LocalDB](Images/connecting-to-localdb.png?raw=true "Connecting to LocalDB")
-	
-	_Connecting to LocalDB_
-	
-1. Open the **GeekQuizProd** database and expand the **Tables** node. As you can see, the **Update-Database** command generated all the tables defined in the **TriviaContext** class. Locate the **dbo.TriviaQuestions** table and open the columns node. In the next task, you will add a new column to this table and update the database using **Migrations**. 
+1. Open the **GeekQuizProd** database and expand the **Tables** node. As you can see, the `dnx ef database update` command generated all the tables defined in the **TriviaDbContext** class. Locate the **dbo.TriviaQuestion** table and open the columns node. In the next task, you will add a new column to this table and update the database using **Migrations**. 
 
 	![Trivia Questions Columns](Images/trivia-questions-columns.png?raw=true "Trivia Questions Columns")
 
 	_Trivia Questions Columns_
 	
 <a name="Ex1Task2" />
-#### Task 2 – Updating Database Schema Using Migrations ####
+#### Task 2 - Updating Database Schema Using Migrations ####
 	
-In this task, you will use **Entity Framework Code First Migrations** to detect a change in your model and generate the necessary code to update the database. You will update the **TriviaQuestions** entity by adding a new property to it. Then you will run commands to create a new Migration to include the new column in the table.
+In this task, you will use **Entity Framework Code First Migrations** to detect a change in your model and generate the necessary code to update the database. You will update the **TriviaQuestion** entity by adding a new property to it. Then you will run commands to create a new Migration to include the new column in the table.
 
 1. In **Solution Explorer**, double-click the **TriviaQuestion.cs** file located in the **Models** folder.
 
 1. Add a new property named **Hint**, as shown in the following code snippet.
 	
-	<!-- mark:10 -->
+	<!-- mark:11 -->
 	````C#
-	public class TriviaQuestion
-	{
-		 public int Id { get; set; }
+    public class TriviaQuestion
+    {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
-		 [Required]
-		 public string Title { get; set; }
+        [Required]
+        public string Title { get; set; }
 
-		 public virtual List<TriviaOption> Options { get; set; }
+        public virtual List<TriviaOption> Options { get; set; }
 
-		 public string Hint { get; set; }
-	}
+        public string Hint { get; set; }
+    }
 	````
 
-1. In the **Package Manager Console**, enter the following command and then press **Enter**. A new migration will be created reflecting the change in our model.
+1. Switch back to the **Command Prompt**, enter the following command and then press **Enter**. A new migration will be created reflecting the change in our model.
 
 	<!-- mark:1 -->
 	````PowerShell
-	Add-Migration QuestionHint
+	dnx ef migrations add QuestionHint --context TriviaDbContext
 	````
-	
-	![Add-Migration](Images/add-migration.png?raw=true "Add-Migration")
-	
-	_Add-Migration_
+
+	![Adding the QuestionHint migration](Images/adding-questionhint-migration.png?raw=true "Adding the QuestionHint migration")
+
+	_Adding the QuestionHint migration_
 	
 	> **Note:** A Migration file is composed of two methods, **Up** and **Down**. 
 	
-	>* The **Up** method will be used to specify the changes the current version of our application needs to apply to the database. 
-	>* The **Down** method is used to reverse the changes we have added to the **Up** method. 
+	> * The **Up** method will be used to specify the changes the current version of our application needs to apply to the database. 
+	> * The **Down** method is used to reverse the changes we have added to the **Up** method. 
 	
-	>When the Database Migration updates the database, it will run all migrations that have not been used since the last update in the timestamp (The _MigrationHistory table keeps track of which migrations have been applied). The **Up** method of all migrations will be called and will make the changes we have specified to the database. If we decide to go back to a previous migration, the **Down** method will be called to redo the changes in reverse order.
+	> When the Database Migration updates the database, it will run all migrations that have not been used since the last update in the timestamp (The _EFMigrationsHistory table keeps track of which migrations have been applied). The **Up** method of all migrations will be called and will make the changes we have specified to the database. If we decide to go back to a previous migration, the **Down** method will be called to redo the changes in reverse order.
 
-1. In the **Package Manager Console**, enter the following command and then press **Enter**.
-	
+1. In the **Command Prompt**, enter the following command and then press **Enter**.
+
+	<!-- mark:1 -->
 	````PowerShell
-	Update-Database -Verbose
+	dnx ef database update --context TriviaDbContext
 	````
 
-	The output of the **Update-Database** command shows an **Alter Table** SQL statement to add a new column to the **TriviaQuestions** table, as shown in the image below.
+	![Applying the QuestionHint migration](Images/applying-questionhint-migration.png?raw=true "Applying the QuestionHint migration")
 
-	![Add column SQL statement generated](Images/add-column-sql-statement-generated.png?raw=true "Add column SQL statement generated")
-	
-	_Add column SQL statement generated_
+	_Applying the QuestionHint migration_
 
-1. In **SQL Server Object Explorer**, refresh the **dbo.TriviaQuestions** table and check that the new **Hint** column is displayed.
+1. In **SQL Server Object Explorer**, refresh the **dbo.TriviaQuestion** table and check that the new **Hint** column is displayed.
 
-	![Showing the new Hint Column](Images/showing-the-new-hint-column.png?raw=true "Showing the new Hint Column")
+	![Checking the new Hint Column](Images/checking-the-new-hint-column.png?raw=true "Checking the new Hint Column")
 
-	_Showing the new Hint Column_
-
-1. Back in the **TriviaQuestion.cs** editor, add a **StringLength** constraint to the _Hint_ property, as shown in the following code snippet.
-
-	<!-- mark:10 -->
-	````C#
-	public class TriviaQuestion
-	{
-		 public int Id { get; set; }
-
-		 [Required]
-		 public string Title { get; set; }
-
-		 public virtual List<TriviaOption> Options { get; set; }
-
-		 [StringLength(150)]
-		 public string Hint { get; set; }
-	}
-	````
-
-1. In the **Package Manager Console**, enter the following command and then press **Enter**.
-	
-	````PowerShell
-	Add-Migration QuestionHintLength
-	````
-1. In the **Package Manager Console**, enter the following command and then press **Enter**.
-
-	````PowerShell
-	Update-Database -Verbose
-	````
-
-	The output of the **Update-Database** command generated an **Alter Table** SQL statement to update the _hint_ column type of the **TriviaQuestions** table, as shown in the image below.
-
-	![Alter column SQL statement generated](Images/alter-column-sql-statement-generated.png?raw=true "Alter column SQL statement generated")
-	
-	_Alter column SQL statement generated_
-
-1. In **SQL Server Object Explorer**, refresh the **dbo.TriviaQuestions** table and check that the **Hint** column type is **nvarchar(150)**.
-
-	![Showing the new constraint](Images/showing-the-new-constraint.png?raw=true "Showing the new constraint")
-
-	_Showing the new constraint_
+	_Checking the new Hint Column_
 
 <a name="Exercise2" />
 ### Exercise 2: Deploying a Web Site to Staging ###
@@ -282,35 +232,41 @@ In this exercise, you will deploy the **Geek Quiz** application to the staging e
 > **Note:** To enable staged publishing, the Web App must be on one of the Standard plans. Note that additional charges will be incurred if you upgrade your Web App to a Standard plan. For more information about pricing, see [App Service Pricing](http://azure.microsoft.com/en-us/pricing/details/app-service/). 
 
 <a name="Ex2Task1" />
-#### Task 1 – Creating a Microsoft Azure Web App ####
+#### Task 1 - Creating a Microsoft Azure Web App ####
 
 In this task, you will create a **Microsoft Azure Web App** from the management portal. You will also configure a **SQL Database** to persist the application data, and configure a local Git repository for source control.
 
-1. Go to the [Azure Preview Portal](https://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
+1. Go to the [Azure Portal](https://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
 
-	![Sign in to the Azure Preview Portal](Images/sign-in-to-windows-azure-management-portal.png?raw=true)
+	![Sign in to the Azure Portal](Images/sign-in-to-windows-azure-management-portal.png?raw=true)
 
-	_Sign in to the Azure Preview Portal_
+	_Sign in to the Azure Portal_
 
-1. Click **New** in the left command bar and then **Web Apps | Azure Marketplace**.
+1. Click **New** in the left command bar and then search for **Web App + SQL**.
 
-	![Creating a new Web App](Images/creating-a-new-web-site.png?raw=true "Creating a new Web App")
+	![Searching for Web App + SQL](Images/searching-for-webapp-sql.png?raw=true "Searching for Web App + SQL")
 
-	_Creating a new Web App_
+	_Searching for Web App + SQL_
 
-1. Select **Web App + SQL** and then click **Create**.
+1. Select **Web App + SQL** from the list.
 
-	![Creating a new Web App using Marketplace](Images/creating-a-new-web-site-using-custom-create.png?raw=true "Creating a new Web App using Custom Create")
+	![Selecting Web App + SQL](Images/selecting-webapp-sql.png?raw=true "Selecting Web App + SQL")
 
-	_Creating a new Web App using Marketplace_
+	_Selecting Web App + SQL_
 
-1. In the **Web App + SQL** blade, select a **Resource Group** or create a new one. Then, click **WEB APP**, provide an available **URL** (e.g. _geek-quiz_), select an **APPSERVICE PLAN** or create a new one, then choose the pricing tier and location. Finally, click **OK**.
+1. In the **Web App + SQL** blade, click **Create** in order to continue to the configuration of the site.
+
+	![Creating the Web App + SQL](Images/creating-webapp-sql.png?raw=true "Creating the Web App + SQL")
+
+	_Creating the Web App + SQL_
+
+1. In the new **Web App + SQL** blade, select a **Resource Group** or create a new one. Then, click **App Service Name**, provide an available **URL** (e.g. _geekquiz-site_), create a new **AppService Plan**, then choose the pricing tier and location. Finally, click **OK**.
 
 	![Configure the new Web App](Images/configure-the-new-web-app.png?raw=true)
 
 	_Configure the new Web App_
 
-1. Next, select **DATABASE** and create a new database, specifying the required information for the new server. Then, click **OK** in both **New server** and **New database** blades.
+1. Next, select **Database** and create a new database, specifying the required information for the new server. Then, click **OK** in both **New server** and **New database** blades.
 
 	![Configure a new SQL Database](Images/configure-the-new-sql-database.png?raw=true)
 
@@ -318,17 +274,17 @@ In this task, you will create a **Microsoft Azure Web App** from the management 
 
 1. Finally, in the **Web App + SQL** blade, click **Create** and wait until the Web App is created.
 
-	> **Note:** By default, Microsoft Azure provides domains at _azurewebsites.net_ but also gives you the possibility to set custom domains using the Azure Preview Portal. However, you cannot use custom domains with a free Web App.
+	> **Note:** By default, Microsoft Azure provides domains at _azurewebsites.net_ but also gives you the possibility to set custom domains using the Azure Portal. However, you cannot use custom domains with a free Web App.
 	
-	> Microsoft Azure offers 5 plans for users to run their Web Apps - Free, Shared, Basic, Standard and Premium. In Free and Shared, all Web Apps run in a multi-tenant environment and have quotas for CPU, Memory, and Network usage. You can mix and match which sites are Free (strict quotas) vs. Shared (more flexible quotas). The maximum number of free Web Apps may vary with your plan. In Standard, you choose which Web Apps run on dedicated virtual machines that correspond to the standard Azure compute resources. You can change the mode of your Web App by clicking the **Pricing tier** tile in the **Usage** section.
+	> Microsoft Azure offers 5 plans for users to run their Web Apps - Free, Shared, Basic, Standard and Premium. In Free and Shared, all Web Apps run in a multi-tenant environment and have quotas for CPU, Memory, and Network usage. You can mix and match which sites are Free (strict quotas) vs. Shared (more flexible quotas). The maximum number of free Web Apps may vary with your plan. In Standard, you choose which Web Apps run on dedicated virtual machines that correspond to the standard Azure compute resources. You can change the mode of your Web App by clicking the **Pricing tier** tile in the **Usage** section of the corresponding App Service plan blade.
 
 	> ![Web Apps Modes](Images/web-site-modes.png?raw=true "Web Apps Modes")
 
-	> If you are using **Shared** or **Standard**, you will be able to manage custom domains for your Web Apps by going to your Web App’s **Settings** blade and clicking **Custom domains and SSL**.
+	> If you are using **Shared** or **Standard**, you will be able to manage custom domains for your Web Apps by going to your Web App's **Settings** blade and clicking **Custom domains and SSL**.
 
 	> ![Custom Domains and SLL](Images/manage-custom-domains.png?raw=true "Custom Domains and SSL")
 
-1. Once the Web app is created, select it and click the **URL** link to validate that the new Web app is running.
+1. Once the Web app is created, select it and click the **Browse** button to validate that the new Web app is running.
 
 	![Browsing to the new Web app](Images/browsing-to-the-new-web-site.png?raw=true)
 
@@ -339,80 +295,37 @@ In this task, you will create a **Microsoft Azure Web App** from the management 
 	_Web app running_
 
 <a name="Ex2Task2" />
-#### Task 2 – Creating the Production SQL Database ####
-
-In this task, you will use the **Entity Framework Code First Migrations** to create the database targeting the **Azure SQL Database** instance you created in the previous task.
-	
-1. In the Azure Preview Portal, navigate to the Web App you created in the previous task and click **Settings**.
-
-1. In the **Settings** blade, select **Application settings**. Then, in the **Web app settings** blade, drill down to the **Connection strings** section and click the **Show connection strings** button.
-
-	![Show connection strings](Images/view-connection-strings.png?raw=true "Show connection strings")
-
-	_Show connection strings_
-
-1. Copy the **connection string** value and close the dialog box.
-
-	![Connection String in Azure Preview Portal](Images/connection-string-in-windows-azure-management.png?raw=true "Connection String in Azure Preview Portal")
-
-	_Connection strings in Azure Preview Portal_
-
-1. Now, click the **BROWSE ALL** button in the left panel and then **SQL Databases** to see the list of the SQL databases in Microsoft Azure.
-
-	![SQL Database menu](Images/sql-database-menu.png?raw=true "SQL Database menu")
-	
-	_SQL Database menu_
-
-1. Select the database you created in the previous step.
-
-	![SQL Databases](Images/sql-databases.png?raw=true "SQL Databases")
-	
-	_SQL Databases_
-
-1. In the **SQL Database** blade, click the **Server name** value. Then, in the **SQL Server** blade, click **Show firewall settings**. Finally, in the **Firewall Setting** blade, click **Add Client IP** to add a rule in the server to allow connections from your IP address.
-
-	![Allowed IP addresses](Images/allowed-ip-addresses.png?raw=true "Allowed IP addresses")
-	
-	_Allowed IP addresses_
-
-1. Click the **Save** command at the top of the page to complete the step.
-	
-1. Switch back to Visual Studio. In the **Package Manager Console**, execute the following command replacing _[YOUR-CONNECTION-STRING]_ placeholder with the connection string you copied from the Azure Web App.
-
-	````PowerShell
-	Update-Database -Verbose -ConnectionString "[YOUR-CONNECTION-STRING]" -ConnectionProviderName "System.Data.SqlClient"
-	````
-
-	![Update database targeting Azure SQL Database](Images/update-database-targeting-windows-azure-sql-d.png?raw=true "Update database targeting Azure SQL Database")
-	
-	_Update database targeting Azure SQL Database_
-
-<a name="Ex2Task3" />
-#### Task 3 – Deploying Geek Quiz to Staging Using Git ####
+#### Task 2 - Deploying Geek Quiz to Staging Using Git ####
 
 In this task, you will create a staging deployment slot for your Web App. Then, you will use Git to publish the Geek Quiz application directly from your local computer to the staging environment of your Web App.
 
 1. Go back to the portal and open your Web App.
 	
-1. If your Web App is on an **Standard** plan, select one by clicking the **Pricing tier** tile. For instance, select the **S1 Standard** plan.
+1. Select **Scale Up (App Service Plan)** in the **Settings** blade of your web app.
+
+	![Scaling up the App Service Plan ](Images/scaling-up-the-app-service-plan.png?raw=true "Scaling up the App Service Plan")
+
+	_Scaling up the App Service Plan_
+
+1. If your Web App is not on a **Standard** plan, select one by clicking the **Pricing tier** tile. For instance, select the **S1 Standard** plan.
 
 	![Upgrading the Web App to Standard Instance ](Images/upgrading-the-web-site-to-standard-mode.png?raw=true "Upgrading the Web App to Standard Instance")
 
 	_Upgrading the Web app to a Standard plan_
 
-1. Click the **Set up continuous deployment** tile under the **Deployment** section and then choose **Local Git Repository** as source. Then, click **OK** to save the changes.
+1. Click **Continuous deployment** in the **Settings** blade of your web app and then choose **Local Git Repository** as source. Then, click **OK** to save the changes.
 
 	![Configuring the Git Deployment](Images/configuring-the-git-deployment.png?raw=true "Configuring the Git Deployment")
 
 	_Configuring the Git Deployment in staging Web App_
 
-1. Now, click the **Set deployment credentials** to configure the user that will perform the deployments. Fill in the credentials and then click **Save** at the top.
+1. Now, click **Deployment credentials** in the Settings blade of your web app to configure the user that will perform the deployments. Fill in the credentials and then click **Save** at the top.
 
 	![Setting deployment credentials](Images/setting-deployment-credentials.png?raw=true "Setting deployment credentials")
 
 	_Setting deployment credentials_
 
-1. Back in the **Web App** blade, select the **Deployment slots** tile in the **Deployment** section.
+1. Back in the **Settings** blade, select **Deployment slots**.
 
 	![Opening deploymet slots](Images/enabling-staged-publishing.png?raw=true "Opening deployment slots")
 
@@ -430,9 +343,9 @@ In this task, you will create a staging deployment slot for your Web App. Then, 
 
 	_Navigating to the staging Web App_
 
-1. Repeat Step 3 to configure continuous deployment in the *staging Web App* using **Local Git Repository** as source.
+1. Repeat Step 4 to configure continuous deployment in the *staging Web App* using **Local Git Repository** as source.
 
-1. Now, click the *staging Web App* **Settings** command, select **Properties** and then copy the **GIT URL** value. You will use it later in this exercise.
+1. Now, click the _staging Web App_ **Settings** command, select **Properties** and then copy the **GIT URL** value. You will use it later in this exercise.
 
 	![Copying the Git URL value](Images/coping-the-git-url-value.png?raw=true)
 
@@ -449,28 +362,20 @@ In this task, you will create a staging deployment slot for your Web App. Then, 
 	git commit -m "Initial commit"
 	````
 
-	![Git initialization and first commit](Images/git-initialization-and-first-commit.png?raw=true)
+1. Run the following command to push your site to the remote **Git** repository. Replace the placeholder with the URL you obtained from the Azure Portal.
 
-	_Git initialization and first commit_
-
-1. Run the following command to push your site to the remote **Git** repository. Replace the placeholder with the URL you obtained from the Azure Preview Portal.
-
-	> **Note:** When you deploy content to the FTP host or GIT repository of a Microsoft Azure Web App you must authenticate using the **deployment credentials** that you configured in a previous step. If you do not know your deployment credentials you can easily reset them in the Azure Preview Portal by opening the Web App **Settings** and clicking **Deployment credentials**. These deployment credentials are valid for all the Web Apps associated with your subscription.
+	> **Note:** When you deploy content to the FTP host or GIT repository of a Microsoft Azure Web App you must authenticate using the **deployment credentials** that you configured in a previous step. If you do not know your deployment credentials you can easily reset them in the Azure Portal by opening the Web App **Settings** and clicking **Deployment credentials**. These deployment credentials are valid for all the Web Apps associated with your subscription.
 
 	````GitBash
 	git remote add azure [GIT-URL-STAGING-SLOT]
 	git push azure master
 	````
 
-	![Pushing to Microsoft Azure](Images/pushing-to-windows-azure.png?raw=true)
+1. In order to verify that the site was successfully deployed, go back to the Azure Portal and select your Web App.
 
-	_Pushing to Microsoft Azure_
+1. Navigate to the staging slot of this Web App by clicking **Deployment slots** in the **Settings** blade and then selecting its row inside the **Deployments** blade.
 
-1. In order to verify that the site was successfully deployed, go back to the Azure Preview Portal and select your Web App.
-
-1. Navigate to the staging slot of this Web App by clicking the **Deployment slots** tile under the **Deployment** section and then selecting its row inside the **Deployments** blade.
-
-1. In the *staging Web App*, verify that there is an **Active Deployment** with your _"initial commit"_.
+1. In the *staging Web App*, verify that there is an **Active** deployment with your _"initial commit"_ in the **Continuous deployment** blade.
 
 	![Active deployment](Images/active-deployment.png?raw=true)
 
@@ -496,12 +401,12 @@ In this task, you will create a staging deployment slot for your Web App. Then, 
 
 	_Application ready to be used_
 
-<a name="Ex2Task4" />
-#### Task 4 – Promoting the Web App to Production ####
+<a name="Ex2Task3" />
+#### Task 3 - Promoting the Web App to Production ####
 
 Now that you have verified that the site is working correctly in the deployment slot, you are ready to promote it to production. In this task, you will swap the site in a staging slot with the production slot.
 
-1. Go back to the Azure Preview Portal and navigate to the *staging Web App*.
+1. Go back to the Azure Portal and navigate to the *staging Web App*.
 
 1. Click the **Swap** command at the top.
 
@@ -517,9 +422,9 @@ Now that you have verified that the site is working correctly in the deployment 
 
 	_Confirming swap operation_
 	
-1. Once the swap is complete, browse to your Web App (notice that the URL in the address bar targets the production site).
+1. Once the swap is complete, browse to your Web App in both slots. You can verify that the production site is now the one with the GeekQuiz site.
 
-	> **Note:** You might need to refresh your browser to clear the cache. In Internet Explorer, you can do this by pressing **CTRL+F5**.
+	> **Note:** You might need to refresh your browser to clear the cache. In Microsoft Edge, you can do this by pressing **CTRL+F5**.
 
 	![Web App running in the production environment](Images/web-site-running-in-the-production-environmen.png?raw=true)
 
@@ -534,66 +439,56 @@ Now that you have verified that the site is working correctly in the deployment 
 <a name="Exercise3" />
 ### Exercise 3: Performing Deployment Rollback in Production ###
 
-There are scenarios where you do not have a staging slot to perform hot swap between staging and production, for example, if you are working with **Web Apps** running in **Free** or **Shared** mode. In those scenarios, you should test your application in a testing environment – either locally or in a remote site – before deploying to production. However, it is possible that an issue not detected during the testing phase may arise in the production site. In this case, it is important to have a mechanism to easily switch to a previous and more stable version of the application as quickly as possible.
+There are scenarios where you do not have a staging slot to perform hot swap between staging and production, for example, if you are working with **Web Apps** running in **Free** or **Shared** mode. In those scenarios, you should test your application in a testing environment (either locally or in a remote site) before deploying to production. However, it is possible that an issue not detected during the testing phase may arise in the production site. In this case, it is important to have a mechanism to easily switch to a previous and more stable version of the application as quickly as possible.
 
-In **Azure Web Apps**, continuous deployment from source control makes this possible thanks to the **Redeploy** action available in the Azure Preview Portal. Microsoft Azure keeps track of the deployments associated with the commits pushed to the repository and provides an option to redeploy your application using any of your previous deployments, at any time.
+In **Azure Web Apps**, continuous deployment from source control makes this possible thanks to the **Redeploy** action available in the Azure Portal. Microsoft Azure keeps track of the deployments associated with the commits pushed to the repository and provides an option to redeploy your application using any of your previous deployments, at any time.
 
 In this exercise you will perform a change to the code in the **Geek Quiz** application that intentionally injects a _bug_. You will deploy the application to production to see the error, and then you will take advantage of the redeploy feature to go back to the previous state.
 
 <a name="Ex3Task1" />
-#### Task 1 – Updating the Geek Quiz Application ####
+#### Task 1 - Updating the Geek Quiz Application ####
 
 In this task, you will refactor a small piece of code from the **TriviaController** class by extracting part of the logic that retrieves the selected quiz option from the database to a new method.
 
 1. Switch to the Visual Studio instance with the **GeekQuiz** solution from the previous exercise.
 
-1. In **Solution Explorer**, open the **TriviaController.cs** file in the **Controllers** folder.
+1. In **Solution Explorer**, open the **AnswersService.cs** file in the **Services** folder.
 
-1. Locate the **StoreAsync** method and select the code highlighted in the following figure.
+1. Replace the **StoreAsync** method implementation with the following code snippet.
 
-	![Selecting the code](Images/selecting-the-code.png?raw=true)
-
-	_Selecting the code_
-
-1. Right-click the selected code, expand the **Refactor** menu and select **Extract Method...**. 
-
-	![Extracting the code as a new method](Images/extracting-the-code-as-a-new-method.png?raw=true)
-	
-	_Selecting Extract Method_
-
-1. In the **Extract Method** dialog box, name the new method _MatchesOption_ and click **OK**.
-
-	![Specifying the method name](Images/specifying-the-method-name.png?raw=true)
-
-	_Specifying the name for the extracted method_
-
-1. The selected code is then extracted to the **MatchesOption** method. The resulting code is shown in the following snippet.
-
-	<!-- mark:6,11-15 -->
+	(Code Snippet - _WebSitesInProduction - Ex3 - StoreAsync_)
+	<!-- mark:3-4,17-22 -->
 	````C#
-	private async Task<bool> StoreAsync(TriviaAnswer answer)
-	{
-		this.db.TriviaAnswers.Add(answer);
+    public async Task<bool> StoreAsync(TriviaAnswer answer)
+    {
+        var selectedOption = await this.db.TriviaOptions.FirstOrDefaultAsync(o =>
+            MatchesOption(answer, o));
 
-		await this.db.SaveChangesAsync();
-		var selectedOption = await this.db.TriviaOptions.FirstOrDefaultAsync(o => MatchesOption(answer, o));
+        if (selectedOption != null)
+        {
+            answer.TriviaOption = selectedOption;
+            this.db.TriviaAnswers.Add(answer);
 
-		return selectedOption.IsCorrect;
-	}
+            await this.db.SaveChangesAsync();
+        }
 
-	private static bool MatchesOption(TriviaAnswer answer, TriviaOption o)
-	{
-		return o.Id == answer.OptionId
-				&& o.QuestionId == answer.QuestionId;
-	}
+        return selectedOption.IsCorrect;
+    }
+
+    private static bool MatchesOption(TriviaAnswer answer, TriviaOption o)
+    {
+        var a = answer.OptionId / 0;
+        return o.Id == answer.OptionId
+                                && o.QuestionId == answer.QuestionId;
+    }
 	````
 
 1. Press **CTRL + S** to save the changes.
 
 <a name="Ex3Task2" />
-#### Task 2 – Redeploying the Geek Quiz Application ####
+#### Task 2 - Redeploying the Geek Quiz Application ####
 
-You will now push the changes you made in the previous task to the repository, which will trigger a new deployment to the production environment. Then, you will troubleshoot an issue using the **F12 development tools** provided by Internet Explorer and then perform a rollback to the previous deployment from the Azure Preview Portal.
+You will now push the changes you made in the previous task to the repository, which will trigger a new deployment to the production environment. Then, you will troubleshoot an issue using the **F12 development tools** provided by Microsoft Edge and then perform a rollback to the previous deployment from the Azure Portal.
 
 1. Open a new **Git Bash** console to deploy the updated application to Azure Web Apps.
 
@@ -606,13 +501,9 @@ You will now push the changes you made in the previous task to the repository, w
 	git push azure master
 	````
 
-	![Pushing refactored code to Microsoft Azure](Images/pushing-refactored-code-to-windows-azure.png?raw=true)
+1. Open Microsoft Edge and navigate to your site (e.g. _http://geek-quiz-site.azurewebsites.net/_). Log in with your user credentials.
 
-	_Pushing refactored code to Microsoft Azure_
-
-1. Open Internet Explorer and navigate to your site (e.g. _http://geek-quiz.azurewebsites.net_). Log in with your user credentials.
-
-1. Press **F12** to launch the development tools, select the **Network** tab and click the **Play** button to start recording.
+1. Press **F12** to launch the development tools, select the **Network** tab and click the **Clear Session** button.
 
 	![Starting network recording](Images/starting-the-network-recording.png?raw=true "Starting network recording")
 
@@ -622,27 +513,23 @@ You will now push the changes you made in the previous task to the repository, w
 
 1. In the **F12** window, the entry corresponding to the POST HTTP request shows an HTTP **500** result.
 
-	![HTTP 500 error](Images/showing-the-http-500-error.png?raw=true)
+	![HTTP 500 error](Images/http-500-error.png?raw=true "HTTP 500 error")
 
 	_HTTP 500 error_
 
-1. Select the **Console** tab. An error is logged with the details of the cause.
+1. Select the **Console** tab. An error is logged with the details of the cause. This error is caused by the code refactoring you committed in the previous steps
 
-	![Logged error](Images/logged-error.png?raw=true)
+	![Logged error](Images/logged-error.png?raw=true "Logged error")
 
 	_Logged error_
 
-1. Locate the details part of the error. Clearly, this error is caused by the code refactoring you committed in the previous steps.
-
-	`Details: LINQ to Entities does not recognize the method 'Boolean MatchesOption ...`.
-
 1. Do not close the browser.
 
-1. In a new browser instance, navigate to the [Azure Preview Portal](http://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
+1. In a new browser instance, navigate to the [Azure Portal](http://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
 
-1. Select **Browse All | Web Apps** and click the Web app you created in Exercise 2.
+1. Select **App Services** and click the Web app you created in Exercise 2.
 
-1. Open the **Deployments** blade by clicking the **Active Deployment** tile under the **Deployment** section. Notice that all the commits performed are listed in the deployment history.
+1. Open the **Deployments** blade by clicking the **Continuous deployment** option in the **Settings** blade. Notice that all the commits performed are listed in the deployment history.
 
 	![List of existing deployments](Images/list-of-existing-deployments.png?raw=true)
 
@@ -679,19 +566,31 @@ You will now push the changes you made in the previous task to the repository, w
 In this exercise, you will move the static content of your application to a Blob container. Then you will configure your application to add an **ASP.NET URL rewrite rule** in the **Web.config** to redirect your content to the Blob container.
 
 <a name="Ex4Task1" />
-#### Task 1 – Creating a Azure Storage Account ####
+#### Task 1 - Creating an Azure Storage Account ####
 
 In this task you will learn how to create a new storage account using the management portal.
 
-1. Navigate to the [Azure Preview Portal](http://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
+1. Navigate to the [Azure Portal](http://portal.azure.com) and sign in using the Microsoft account associated with your subscription.
 
-1. Select **New | Data + Storage | Storage** to start creating a new storage account. Enter a unique name for the account and select a **Location** from the list. Click **Create** to continue.
-previous task and click 
+1. Select **New | Data + Storage | Storage account** to start creating a new storage account. 
+
 	![Creating a new Storage Account](Images/creating-a-new-storage-account.png?raw=true "Creating a new Storage Account")
 
 	_Creating a new storage account_
 
-1.  Once the storage account is created it will open automatically. The **Storage** blade provides you with information about the status of the account and the service endpoints that can be used within your applications
+1. In the Storage account blade, click **Create**.
+
+	![Creating the Storage Account](Images/creating-the-storage-account.png?raw=true "Creating the Storage Account")
+
+	_Creating the storage account_
+
+1. Enter a unique name for the account and select a **Location** from the list. Click **Create** to continue.
+
+	![Configuring the new Storage Account](Images/configuring-the-new-storage-account.png?raw=true "Configuring the new Storage Account")
+
+	_Configuring the new storage account_
+
+1. Once the storage account is created it will open automatically. Click **Properties** in the **Settings** blade to see the information about the service endpoints that can be used within your applications.
 
 	![Storage Account created](Images/storage-account-created.png?raw=true "Storage Account created")
 
@@ -705,12 +604,12 @@ previous task and click
 	
 1. Take note of the **Storage Account Name** and **Primary Access Key** in the **Manage Keys** dialog box, as you will need them in the following exercise. Then, close the dialog box.
 
-	![Manage Access Key dialog box](Images/manage-access-key-dialog-box.png?raw=true "Manage Access Key dialog box")
+	![Manage Keys blade](Images/manage-key-blade.png?raw=true "Manage Keys blade")
 	
-	_Manage Access Key dialog box_
+	_Manage Keys blade_
 
 <a name="Ex4Task2" />
-#### Task 2 – Uploading an Asset to Azure Blob Storage ####
+#### Task 2 - Uploading an Asset to Azure Blob Storage ####
 
 In this task, you will use the Server Explorer window from Visual Studio to connect to your storage account. You will then create a blob container and upload a file with the Geek Quiz logo to the container.
 
@@ -720,11 +619,15 @@ In this task, you will use the Server Explorer window from Visual Studio to conn
 
 1. In **Server Explorer**, right-click the **Azure** node and select **Connect to Microsoft Azure Subscription...**. Then, sign in using the Microsoft account associated with your subscription.
 
-	![Connect to Microsoft Azure](Images/connect-to-windows-azure.png?raw=true)
+	![Connect to Microsoft Azure](Images/connect-to-microsoft-azure.png?raw=true)
 
 	_Connect to Microsoft Azure_
 
 1. Expand the **Azure** node, right-click **Storage** and select **Attach External Storage...**.
+
+	![Attaching an external storage](Images/attaching-an-external-storage.png?raw=true "Attaching an external storage")
+	
+	_Attaching an external storage_
 
 1. In the **Add New Storage Account** dialog box, enter the **Account name** and **Account key** you obtained in the previous task and click **OK**.
 
@@ -738,7 +641,7 @@ In this task, you will use the Server Explorer window from Visual Studio to conn
 	
 	_Create Blob Container_
 
-1. In the **Create Blob Container** dialog box, enter a name for the blob container and click **OK**.
+1. In the **Create Blob Container** dialog box, enter _images_ as the name for the blob container and click **OK**.
 
 	![Create Blob Container dialog box](Images/create-blob-container-dialog-box.png?raw=true "Create Blob Container dialog box")
 	
@@ -776,24 +679,28 @@ In this task, you will use the Server Explorer window from Visual Studio to conn
 	
 1. Upload the **logo-big.png** file located in the **Assets** folder of this lab. Leave the **Folder (optional)** field empty.
 
+	![Uploading the asset](Images/uploading-the-asset.png?raw=true "Uploading the asset")
+	
+	_Uploading the asset_
+
 1. When the upload completes, the file should be listed in the images container. Right-click the file entry and select **Copy URL**.
 
-	![Copy blob URL](Images/copy-blob-file-url.png?raw=true "Copy blob file URL")
+	![Copy blob file URL](Images/copy-blob-file-url.png?raw=true "Copy blob file URL")
 	
-	_Copy blob URL_
+	_Copy blob file URL_
 	
-1. Open Internet Explorer and paste the URL. The following image should be shown in the browser.
+1. Open Microsoft Edge and paste the URL. The following image should be shown in the browser.
 
 	![logo-big.png image from Azure Blob Storage](Images/logo-bigpng-image-from-storage.png?raw=true "logo-big.png image from storage")
 	
 	_logo-big.png image from Azure Blob Storage_
 	
 <a name="Ex4Task3" />
-#### Task 3 – Updating the Solution to Consume Static Content from Azure Blob Storage ####
+#### Task 3 - Updating the Solution to Consume Static Content from Azure Blob Storage ####
 
 In this task, you will configure the **GeekQuiz** solution to consume the image uploaded to Azure Blob Storage (instead of the image located in the web site) by adding an ASP.NET URL rewrite rule in the **web.config** file.
 
-1. In Visual Studio, open the **Web.config** file in the **GeekQuiz** project and locate the **\<system.webServer>** element.
+1. In Visual Studio, open the **web.config** file located in the **wwwroot** folder in the **GeekQuiz** project and locate the **\<system.webServer>** element.
 
 1. Add the following code to add a URL rewrite rule, updating the placeholder with your storage account name.
 
@@ -816,9 +723,21 @@ In this task, you will configure the **GeekQuiz** solution to consume the image 
 
 1. Press **CTRL + S** to save the changes.
 
+1. Open the **Index.cshtml** file located at **Views | Home** and add the following header row inside the div element with the **container** class.
+
+    ````HTML
+    <div class="row header">
+        <img src="@Url.Content("~/img/logo-big.png")" alt="" />
+    </div>
+    ````
+
+	![Updated index view](Images/updated-index-view.png?raw=true "Updated index view")
+	
+	_Updated index view_
+
 1. Now you will deploy the updated application to Azure. Open a new **Git Bash** console and execute the following commands to push the changes into the repository and trigger a new deployment. Update the _[YOUR-APPLICATION-PATH]_ placeholder with the path to the **GeekQuiz** solution. 
 
-	> **Note:** When you deploy content to the FTP host or GIT repository of an Azure Web App you must authenticate using the **deployment credentials** associated with your subscription. If you do not know your deployment credentials you can easily reset them in the Azure Preview Portal by opening the Web App **Settings** and clicking **Deployment credentials**. 
+	> **Note:** When you deploy content to the FTP host or GIT repository of an Azure Web App you must authenticate using the **deployment credentials** associated with your subscription. If you do not know your deployment credentials you can easily reset them in the Azure Portal by opening the Web App **Settings** and clicking **Deployment credentials**. 
 
 	````GitBash
 	cd "[YOUR-APPLICATION-PATH]"
@@ -826,17 +745,13 @@ In this task, you will configure the **GeekQuiz** solution to consume the image 
 	git commit -m "Added URL rewrite rule in web.config file"
 	git push azure master
 	````
-	
-	![Deploying update to Microsoft Azure](Images/deploying-update-to-windows-azure.png?raw=true)
-	
-	_Deploying update to Microsoft Azure_
 
 <a name="Ex4Task4" />
-#### Task 4 – Verification ####
+#### Task 4 - Verification ####
 
-In this task you will use **Internet Explorer** to browse the **Geek Quiz** application and check that the URL rewrite rule for images works and that you are redirected to the image hosted on **Azure Blob Storage**.
+In this task you will use **Microsoft Edge** to browse the **Geek Quiz** application and check that the URL rewrite rule for images works and that you are redirected to the image hosted on **Azure Blob Storage**.
 
-1. Open Internet Explorer and navigate to your site (e.g. _http://geek-quiz.azurewebsites.net_). Log in using the credentials you created previously.
+1. Open Microsoft Edge and navigate to your site (e.g. _http://geek-quiz-site.azurewebsites.net/_). Log in using the credentials you created previously.
 
 	![Showing the Geek Quiz website with the image](Images/showing-the-geek-quiz-website-with-the-image.png?raw=true "Showing the Geek Quiz website with the image")
 
@@ -844,7 +759,7 @@ In this task you will use **Internet Explorer** to browse the **Geek Quiz** appl
 
 1. Press **F12** to launch the development tools, select the **Network** tab and start recording.
 
-	![Starting network recording](Images/starting-the-network-recording.png?raw=true "Starting network recording")
+	![Starting network recording](Images/starting-the-network-recording-2.png?raw=true "Starting network recording")
 
 	_Starting network recording_
 
@@ -866,13 +781,13 @@ In this task you will use **Internet Explorer** to browse the **Geek Quiz** appl
 In this exercise you will go through the steps required to configure the **Autoscale** feature for the **Geek Quiz** Web App. You will verify this feature by running a Visual Studio load test to generate enough CPU load on the application to trigger an instance upgrade.
 
 <a name="Ex5Task1" />
-#### Task 1 – Configuring Autoscale Based on the CPU Metric ####
+#### Task 1 - Configuring Autoscale Based on the CPU Metric ####
 
-In this task you will use the Azure Preview Portal to enable the Autoscale feature for the Web App you created in Exercise 2.
+In this task you will use the Azure Portal to enable the Autoscale feature for the Web App you created in Exercise 2.
 
-1. In the [Azure Preview Portal](https://portal.azure.com/), select **Browse All | Web Apps** and click the Web app you created in Exercise 2.
+1. In the [Azure Portal](https://portal.azure.com/), select **App Services** and click the Web app you created in Exercise 2.
 
-1. Navigate to the **Scale** tile under the **Usage** section. In the **Scale setting** blade, select the **CPU Percentage** option for the **Scale by** configuration.
+1. Navigate to the **Scale Out (App Service Plan)** option in the **Settings** blade. In the **Scale setting** blade, select the **CPU Percentage** option for the **Scale by** configuration.
 
 	> **Note:** When scaling by CPU, Azure dynamically adjusts the number of instances that the Web app uses if the CPU usage changes.
 
@@ -891,11 +806,11 @@ In this task you will use the Azure Preview Portal to enable the Autoscale featu
 	_Changing the Target range to be between 5 and 25 percent_
 
 <a name="Ex5Task2" />
-#### Task 2 – Load Testing with Visual Studio ####
+#### Task 2 - Load Testing with Visual Studio ####
 
 Now that **Autoscale** has been configured, you will create a **Web Performance and Load Test Project** in Visual Studio to generate some CPU load on your Web App.
 
-1. Open **Visual Studio Ultimate 2013** and select **File | New | Project...** to start a new solution.
+1. Open **Visual Studio Ultimate 2015** and select **File | New | Project...** to start a new solution.
 
 	![Creating a new project](Images/creating-a-new-project.png?raw=true "Creating a new project")
 
@@ -1020,7 +935,7 @@ Now that **Autoscale** has been configured, you will create a **Web Performance 
 	![Test settings](Images/test-settings.png?raw=true)
 
 <a name="Ex5Task3" />
-#### Task 3 – Autoscale Verification ####
+#### Task 3 - Autoscale Verification ####
 
 You will now execute the load test you created in the previous task and see how your Web App behaves under load.
 
@@ -1056,7 +971,7 @@ You will now execute the load test you created in the previous task and see how 
 
 	_Load test running_
 
-1. Once the test completes, go back to the Azure Preview Portal and navigate to your Web App. In the **Scale** tile under the **Usage** section, you should see that the number of instances has increased.
+1. Once the test completes, go back to the Azure Portal and navigate to the App Service Plan in which your web app was created. In the **Scale** tile under the **Usage** section, you should see that the number of instances has increased.
 
 	![New instance automatically deployed](Images/new-instance-automatically-deployed.png?raw=true)
 
@@ -1075,3 +990,6 @@ You will now execute the load test you created in the previous task and see how 
 ## Summary ##
 
 In this hands-on lab, you have learned how to set up and deploy your application to a production Web App in Microsoft Azure. You started by detecting and updating your databases using **Entity Framework Code First Migrations**, then continued by deploying new versions of your site to different deployment slots using **Git** and performing rollbacks to the latest stable version of your site. Additionally, you learned how to scale your Web App using Storage to move your static content to a Blob container. 
+
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.

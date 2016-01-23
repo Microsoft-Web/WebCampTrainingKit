@@ -1,25 +1,31 @@
-﻿using GeekQuiz.Models;
-using System.Data.Entity;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using GeekQuiz.Models;
+using Microsoft.Data.Entity;
 
 namespace GeekQuiz.Services
 {
-    public class AnswersService
+    public class AnswersService : IAnswersService
     {
-        private TriviaContext db;
+        private TriviaDbContext db;
 
-        public AnswersService(TriviaContext db)
+        public AnswersService(TriviaDbContext db)
         {
             this.db = db;
         }
 
         public async Task<bool> StoreAsync(TriviaAnswer answer)
         {
-            this.db.TriviaAnswers.Add(answer);
-
-            await this.db.SaveChangesAsync();
-            var selectedOption = await this.db.TriviaOptions.FirstOrDefaultAsync(o => o.Id == answer.OptionId
+            var selectedOption = await this.db.TriviaOptions.FirstOrDefaultAsync(o => 
+                o.Id == answer.OptionId
                 && o.QuestionId == answer.QuestionId);
+
+            if (selectedOption != null)
+            {
+                answer.TriviaOption = selectedOption;
+                this.db.TriviaAnswers.Add(answer);
+
+                await this.db.SaveChangesAsync();
+            }
 
             return selectedOption.IsCorrect;
         }

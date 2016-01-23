@@ -1,4 +1,4 @@
-<a name="title" />
+﻿<a name="title" />
 # Azure Active Directory Authentication #
 
 ---
@@ -14,7 +14,7 @@
 In this demo, you will see how to:
 
 1. Create an application in Visual Studio that is automatically integrated with an Azure Active Directory tenant.
-1. Deploy an existing application using Visual Studio to an Azure Web App and have it automaitically integrate with an Azure Active Directory tenant.
+1. Deploy an existing application using Visual Studio to an Azure Web App and have it automatically integrate with an Azure Active Directory tenant.
 
 <a name="technologies" />
 ### Key Technologies ###
@@ -30,7 +30,13 @@ Follow these steps to setup your environment for the demo.
 
 1. Create a new Web App in Azure.
 
-1. Add a database as a **Linked Resource**.
+1. Configure an Azure SQL Database following the steps provided in [this link](https://azure.microsoft.com/en-us/documentation/articles/sql-database-get-started/). Copy the ADO.NET connection string value.
+
+1. In the **Application settings** of your new Web App, update the connection string key for the DB to _DefaultConnection_ and value copied from previous step. Save the changes.
+
+	![Default Connection](images/default-connection.png?raw=true "Default Connection")
+
+	_Default connection_
 
 1. Download the publish profile. This is required for segment #2.
 
@@ -50,13 +56,13 @@ This demo is composed of the following segments:
 
 1. Open the **File / New / Project** dialog and select the **Visual C# / Web** templates.
 
-1. Name the application _GeekQuiz_ and click **OK**.
+1. Select the **ASP.NET Web Application** template, name the application _GeekQuiz_ and click **OK**.
 
 	![Creating a new project](images/creating-a-new-project.png?raw=true "Creating a new project")
 
 	_Creating a new project_
 
-1. Select the **MVC** template and enable **Web API**.
+1. Select the **Web Application** template under **ASP.NET 5 Templates**.
 
 1. Click **Change Authentication**.
 
@@ -66,23 +72,17 @@ This demo is composed of the following segments:
 
 	> **Speaking Point:** VS tooling allows you to enable AAD authentication easily. All you need is to provide your tenant domain name and administrator credentials, the two-way trust between your AAD tenant and your web application is automatically configured.
 
-1. In the **Change Authentication** dialog, select **Organizational Accounts**.
+1. In the **Change Authentication** dialog box, select **Work And School Accounts**.
 
-	![Selecting the Organizational Accounts option](images/selecting-organizational-accounts.png?raw=true "Selecting the Organizational Accounts option")
+	![Selecting the Work And School Accounts option](images/selecting-organizational-accounts.png?raw=true "Selecting the Work And School Accounts option")
 
-	_Selecting Organizational Accounts_
+	_Selecting Work And School Accounts_
 
 1. 	Expand the first combo box to show the different options.
 
 	![Showing the organization account types](images/showing-the-organization-types.png?raw=true "Showing the organization account types")
 
 	_Showing the organization account types_
-
-1. 	Expand the **Access Level** combo box to show the different options.
-
-	![Showing the access level posibilities](images/showing-the-access-level-options.png?raw=true "Showing the access level posibilities")
-
-	_Showing the access level posibilities_
 
 1. Enter your domain (e.g.: "mydomainname.onmicrosoft.com") as **Domain**.
 
@@ -108,7 +108,7 @@ This demo is composed of the following segments:
 
 	_Signing in with an organization admin account_
 
-1. Back in the **New ASP.Net Project** dialog, click **OK**.
+1. Back in the **New ASP.Net Project** dialog box, click **OK**.
 
 	![Completing the project creation](images/creating-the-project.png?raw=true "Completing the project creation")
 
@@ -139,8 +139,6 @@ This demo is composed of the following segments:
 
 1. Open the **GeekQuiz.sln** solution located under **source\end-segment2**.
 
-1. Update the federation configuration in the Web.config file with the AAD domain name used in segment one.
-
 1. Right-click the **GeekQuiz** project and select **Publish**.
 
 	![Publishing the Website](images/publishing-the-site.png?raw=true "Publishing the Website")
@@ -159,19 +157,17 @@ This demo is composed of the following segments:
 
 	_Selecting the publish profile file_
 
-1. Back in the **Publish Web** dialog, click **Next**.
+1. Back in the **Publish Web** dialog, click **Publish**.
 
 	![Reviewing the connection settings to deploy](images/reviewing-the-connection-settings-to-deploy.png?raw=true "Reviewing the connection settings to deploy")
 
 	_Reviewing the connection settings to deploy_
 
-1. In the settings tab, show the Organizational Authentication configuration.
+	> **Note:** If Visual Studio prompt you with the Sign in dialog box, just sign in using an admin account for your organization (e.g.: "admin@mydomainname.onmicrosoft.com")
 
-	![Showing the organizational authentication configuration](images/showing-the-organizational-auth-config.png?raw=true "Showing the organizational authentication configuration")
+	> ![Signing in with an organization admin account](images/signing-in-with-an-organization-admin-account.png?raw=true "Signing in with an organization admin account")
 
-	_Showing the organizational authentication configuration_
-
-1. Select the connection string for the **TenantDbContext** and click **Publish** to publish the site.
+	> _Signing in with an organization admin account_
 
 1. Once the deployment is completed and the browser is opened, sign in using an admin account for your organization (e.g.: "admin@mydomainname.onmicrosoft.com")
 
@@ -179,20 +175,25 @@ This demo is composed of the following segments:
 
 	_Signing in with an organization admin account_
 
+1. In the Authorization page, click **Accept**.
+
+	![Accepting the application permissions](images/accepting-the-permissions.png?raw=true "Accepting the application permissions")
+
+	_Accepting the application permissions_
+
 1. Show that you are logged as the organization's user.
 
 	![Showing that you are logged as the organization's user](images/showing-the-geekquiz-with-ad.png?raw=true "Showing that you are logged as the organization's user")
 
 	_Showing that you are logged as the organization's user_
 
-1. Switch to the _Azure Management Portal_.
+1. Switch to the _Azure Classic Portal_.
 
 1. Navigate to the **Active Directory** section and select the one used for this demo.
 
 	![Selecting your active directory](images/selecting-your-active-directory.png?raw=true "Selecting your active directory")
 
 	_Selecting your active directory_
-
 
 1. Navigate to the **USERS** tab and show the users that you used for the demo.
 

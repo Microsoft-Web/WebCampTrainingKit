@@ -1,30 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Mvc;
 
 namespace GeekQuiz.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public IActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewData["Message"] = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public IActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewData["Message"] = "Your contact page.";
 
+            return View();
+        }
+
+        public IActionResult Error()
+        {
             return View();
         }
     }

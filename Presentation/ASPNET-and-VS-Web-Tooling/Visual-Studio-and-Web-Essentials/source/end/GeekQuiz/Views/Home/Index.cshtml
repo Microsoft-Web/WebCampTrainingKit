@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Geek Quiz";
+    ViewData["Title"] = "Geek Quiz";
 }
 
 <section id="content">
@@ -7,16 +7,22 @@
         <div class="row">
             <div class="flip-container text-center col-md-12">
                 <div class="front">
-                    <p class="lead">What does it look like when a write a longer question?</p>
+                    <p class="lead">
+                        What does it look like when I write a longer question?
+                    </p>
                     <div class="row text-center">
-                        <!-- TODO: add options here-->
-                        <button class="btn btn-info btn-lg option">Answer 1</button>
-                        <button class="btn btn-info btn-lg option">Answer 2</button>
-                        <button class="btn btn-info btn-lg option">Answer 3</button>
-                        <button class="btn btn-info btn-lg option">Answer 4</button>
+                        <button class="btn btn-info btn-lg option">Answer 1</button><button class="btn btn-info btn-lg option">Answer 2</button><button class="btn btn-info btn-lg option">Answer 3</button><button class="btn btn-info btn-lg option">Answer 4</button>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <audio controls="controls">
+        <source src="http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.mp3" type="audio/mp3" />
+    </audio>
 </section>
+
+@section Scripts {
+    <script src="~/js/init.js"></script>
+}

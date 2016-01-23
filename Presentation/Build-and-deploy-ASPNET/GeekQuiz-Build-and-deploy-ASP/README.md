@@ -1,17 +1,17 @@
-<a name="title" />
+ï»¿<a name="title" />
 # Building and Deploying an ASP.NET Application #
 
 ---
 <a name="Overview" />
 ## Overview ##
 
-In this demo you will create a new ASP.NET MVC application using the One ASP.NET template, explain how routing works in MVC and show the default HomeController and Views. Then you will walk through the process of creating GeekQuiz object model (TriviaQuestion and TriviaOption) and leverage MVC scaffolding to create the controllers and views. Finally, you'll deploy the site to a new Microsoft Azure Web App created from within Visual Studio using the new tooling.
+In this demo you will create a new ASP.NET MVC application using the Web Application ASP.NET template, explain how routing works in MVC and show the default HomeController and Views. Then you will walk through the process of creating part of the GeekQuiz object model (TriviaQuestion and TriviaOption) and leverage MVC scaffolding to create the controllers and views. Finally, you'll deploy the site to a new Microsoft Azure Web App created from within Visual Studio using the new tooling.
 
 <a id="goals" />
 ### Goals ###
 In this demo, you will see how to:
 
-1. Create a new MVC application using the One ASP.NET tooling
+1. Create a new MVC application using the ASP.NET tooling
 1. Create GeekQuiz object model
 1. Use MVC Scaffolding to create controllers and views for your model
 1. Create a new Web App in Microsoft Azure and deploy
@@ -51,33 +51,29 @@ This demo is composed of the following segments:
 
 1. Open the **File / New / Project** dialog and show the options in the **Visual C# / Web** section.
 
-	![Simplified File/New experience with a single ASP.NET Web application template](images/file-new-experience-single-aspnet-web-application-template.png?raw=true "Simplified File/New experience with a single ASP.NET Web application template")
+	![Creating a new ASP.NET Web application](images/creating-a-new-asp-net-web-app.png?raw=true "Creating a new ASP.NET Web application")
 
-	_Simplified File/New experience with a single ASP.NET Web application template_
-
-	> 	**Speaking Point:**
-	>
-	Explain that instead of having to select from many Web templates, now is only "ASP.NET Web Application". Compare this to the set of templates available in Visual Studio 2012.
-
-	> ![Old Visual Studio 2012 set of templates](images/old-visual-studio-2012-set-of-templates.png?raw=true "Old Visual Studio 2012 set of templates")
+	_Creating a new ASP.NET Web application_
 
 1. Name the application _GeekQuiz_ and click **OK**.
 
-1. Select new MVC project and check the Web API option.
+	> 	**Note:** Make sure that the **Add to source control** checkbox is not selected.
+
+1. Select Web Application project.
 
 	![New ASP.NET template options for other project types](images/new-aspnet-template-options-for-other-project-types.png?raw=true "New ASP.NET template options for other project types")
 
-	_New ASP.NET template options for other project types_
+	_New ASP.NET templates_
 
 	> 	**Speaking Point:**
 	>
-	Explain the options in the new ASP.NET Project dialog. There are still base templates, but you can include folders and core references for other project types.
+	Explain the templates in the new ASP.NET Project dialog.
 
 1. Click **OK** to create the project.
 
 	> 	**Speaking Point:**
 	>
-	As the project is loading, talk about changes to the project template, including Bootstrap, updates to user authentication, and decoupling the tooling from project types (so Web Forms applications can easily use ASP.NET MVC controllers, etc.)
+	As the project is loading, talk about changes to the project template, including the new application anatomy, services, prebuilt middlewares and client-side development.
 
 1. Explore the generated solution in the **Solution Explorer**.
 
@@ -99,7 +95,7 @@ This demo is composed of the following segments:
 
 1. Open the **Index.cshtml** file located in the **Views/Home** folder.
 
-1. Open the **App_Start/RouteConfig.cs** file and explain routing.
+1. Open the **Startup.cs** file, go to the Configure method and explain the [Middleware](https://docs.asp.net/en/latest/fundamentals/middleware.html) concept and talk about the built-in routing middleware.
 
 	> 	**Speaking Point:**
 	>
@@ -123,6 +119,7 @@ This demo is composed of the following segments:
 	````C#
     public class TriviaQuestion
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -138,11 +135,15 @@ This demo is composed of the following segments:
 	using System.ComponentModel.DataAnnotations;
 ````
 
+	![Adding the missing using statement](images/adding-the-missing-using-statement.png?raw=true "Adding the missing using statement")
+
+	_Adding the missing using statement_
+
 1. Repeat steps 10 and 11 to add a new class named _TriviaOption_.
 
 1. Add the following code to the **TriviaOption** class.
 
-	<!-- mark:3-16 -->
+	<!-- mark:3-14 -->
 	````C#
     public class TriviaOption
     {
@@ -178,17 +179,11 @@ This demo is composed of the following segments:
 	>
 	Let's create the controllers and views using scaffolding for each model class.
 
-1. Select the **MVC 5 Controller with views, using Entity Framework** option in the **Add Scaffold** dialog and click **Add**.
+1. Select the **MVC 6 Controller with views, using Entity Framework** option in the **Add Scaffold** dialog and click **Add**.
 
-	![Selecting the MVC 5 Controller with views and Entity Framework](images/selecting-mvc5-controller.png?raw=true "Selecting the MVC 5 Controller with views and Entity Framework")
+	![Selecting the MVC 6 Controller with views and Entity Framework](images/selecting-mvc6-controller-with-views.png?raw=true "Selecting the MVC 6 Controller with views and Entity Framework")
 
-	_Selecting the MVC 5 Controller with views and Entity Framework_
-
-1. Change the name of the controller to **QuestionController**.
-
-	![Changing the controller name](images/changing-the-controller-name.png?raw=true "Changing the controller name")
-
-	_Changing the controller name_
+	_Selecting the MVC 6 Controller with views and Entity Framework_
 
 1. Select **TriviaQuestion** from the **Model class** list.
 
@@ -208,6 +203,12 @@ This demo is composed of the following segments:
 
 	_Checking the use async controller actions checkbox_
 
+1. Change the name of the controller to **QuestionController**.
+
+	![Changing the controller name](images/changing-the-controller-name.png?raw=true "Changing the controller name")
+
+	_Changing the controller name_
+
 1. Finally, click **Add** to create the views and the controller with the default actions.
 
 	![Creating the QuestionController](images/creating-the-questioncontroller.png?raw=true "Creating the QuestionController")
@@ -218,7 +219,15 @@ This demo is composed of the following segments:
 
 1. Open the **QuestionController.cs** file to show the generated content.
 
+	![Showing the QuestionController](images/showing-the-questioncontroller.png?raw=true "Showing the QuestionController")
+
+	_Showing the QuestionController_
+
 1. Expand the **Views** folder and show the new views under the **Question** folder.
+
+	![Showing the Question Views](images/showing-the-question-views.png?raw=true "Showing the Question Views")
+
+	_Showing the Question Views_
 
 1. Build the solution. Then, repeat steps 1 through 7 to create the **OptionController** for the **TriviaOption** class using the already existing **TriviaContext**.
 
@@ -239,50 +248,74 @@ This demo is composed of the following segments:
 
 	_Adding a new question_
 
-1. Navigate to **/option** and add a new option selecting the recently created question in the **QuestionId** field.
-
-	![Adding a new option](images/adding-new-option.png?raw=true "Adding a new option")
-
-	_Adding a new option_
-
 1. Close the browser to stop the solution.
 
 <a name="Segment4" />
 ### Deploying to Microsoft Azure Web Apps ###
 
-1. Right-click the **GeekQuiz** project and select **Publish…**
+1. Right-click the **GeekQuiz** project and select **Publish...**
 
 	![Publishing the Website](images/publishing-the-site.png?raw=true "Publishing the Website")
 
 	_Publishing the Website_
 
-1. In the **Publish Web** dialog, click **Microsoft Azure Web Apps**.
+1. In the **Publish Web** dialog, click **Microsoft Azure App Service**.
 
-	![Selecting Microsoft Azure Web Apps](images/selecting-web-apps.png?raw=true "Selecting Microsoft Azure Web Apps")
+	![Selecting Microsoft Azure App Service](images/selecting-azure-app-service.png?raw=true "Microsoft Azure App Service")
 
-	_Selecting Microsoft Azure Web Apps_
+	_Microsoft Azure App Service_
 
-1. Click **Sign in...**. to sign in to Visual Studio with your Azure account.
+1. Click **Add an account...**. to sign in to Visual Studio with your Azure account.
 
-	![Sign in to Azure](images/sign-in-to-azure.png?raw=true "Sign in to Azure")
+	![Adding an account](images/adding-an-account.png?raw=true "Adding an account")
 
-	_Sign in to Azure_
+	_Adding an account_
 
-1. Then, click **New...* to open the _Create Web App on Microsoft Azure_ dialog box.
+1. Then, click **New...** to open the _Create App Service_ dialog box.
 
-	![Create new Web App](images/create-new-web-app.png?raw=true "Create new Web App")
+	![Creating a new App Service](images/create-new-web-app.png?raw=true "Creating a new App Service")
 
-	_Create new Web App_
+	_Creating a new App Service_
 
-1. The _Create Web App on Microsoft Azure_ dialog box will appear. Fill the Web App name field, the App Service plan and select **Create new server** in the **Database server** list, or use an existing one. Then, click **Create** and wait until the Web App is created.
+1. The _Create App Service_ dialog box will appear. Fill the Web App name field, the Resource Group and the App Service plan. Then, click **Services** to add the SQL Database.
 
-	![Create Web App on Microsoft Azure dialog](images/create-web-app-dialog-box.png?raw=true "Create Web App on Microsoft Azure dialog")
+	![Creating Web App on Microsoft Azure dialog](images/create-app-service-dialog-box.png?raw=true "Creating Web App on Microsoft Azure dialog")
 
-	_Create Web App on Microsoft Azure dialog_
+	_Creating Web App on Microsoft Azure dialog_
 
 	> 	**Speaking Point:**
 	>
-	You can create a new Web App without a database, or a new Web App with a new database on an existing database server, or a new Web App with a new database on a new database server. Fill in all the required information and voila… your new Microsoft Azure Web App is ready and you can deploy your website project there.
+	You can create a new Web App without a database, or a new Web App with a new database on an existing database server, or a new Web App with a new database on a new database server. Fill in all the required information and voila... your new Microsoft Azure Web App is ready and you can deploy your website project there.
+
+1. In the **Services** tab, click the add buton next to **SQL Database** in **Resource Type** list.
+
+	![Adding a new SQL Database](images/adding-a-new-sql-database.png?raw=true "Adding a new SQL Database")
+
+	_Adding a new SQL Database_
+
+1. In the **Configure SQL Database** dialog box, create a new SQL Server by clicking the **New...** button.
+
+	![Creating a new SQL Server](images/creating-a-new-sql-server.png?raw=true "Creating a new SQL Server")
+
+	_Creating a new SQL Server_
+
+1. In the **Configure SQL Server** dialog box, fill the server name, the administrator username and password and then click **OK**.
+
+	![Configuring the SQL Server](images/configuring-the-sql-server.png?raw=true "Configuring the SQL Server")
+
+	_Configuring the SQL Server_
+
+1. Back in the **Configure SQL Database** dialog box, click **OK**.
+
+	![Configuring the SQL Database](images/configuring-the-sql-database.png?raw=true "Configuring the SQL Database")
+
+	_Configuring the SQL Database_
+
+1. In the **Create App Service** dialog box, click **Create** and wait until the Web App is created.
+
+	![Creating the app Service](images/creating-the-app-service.png?raw=true "Creating the app Service")
+
+	_Creating the app Service_
 
 1. Back in the **Publish Web** dialog, click **Next >**.
 
@@ -290,11 +323,11 @@ This demo is composed of the following segments:
 
 	_Reviewing the connection settings to deploy_
 
-1. In the settings tab, select the new connection string for each context.
+1. In the settings tab, show that you can select to target differents DNX versions.
 
-	![Updating the connection strings](images/updating-the-connection-strings.png?raw=true "Updating the connection strings")
+	![Showing the different DNX versions](images/showing-the-dnx-versions.png?raw=true "Showing the different DNX versions")
 
-	_Updating the connection strings_
+	_Showing the different DNX versions_
 
 1. Finally, click **Publish** to publish the site.
 
@@ -309,7 +342,7 @@ This demo is composed of the following segments:
 
 By completing this demo you should have:
 
-* Created a new MVC application using the One ASP.NET template
+* Created a new MVC application using the Web Application ASP.NET template
 * Learned how MVC routing, views and controllers work
 * Created GeekQuiz object model (TriviaQuestion and TriviaOption)
 * Scaffolded the views and controllers for your model

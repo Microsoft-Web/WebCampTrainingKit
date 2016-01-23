@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Play";
+}
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <geekquiz-app>Loading...</geekquiz-app>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        System.config({
+            packages: { 'js': { defaultExtension: 'js' } }
+        });
+
+        System.import('js/app');
+    </script>
+}

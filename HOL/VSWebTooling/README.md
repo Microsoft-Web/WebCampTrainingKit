@@ -1,4 +1,4 @@
-<a name="HOLTop" />
+﻿<a name="HOLTop" />
 # Visual Studio 2015 Web Tooling #
 
 ---
@@ -27,13 +27,16 @@ In this hands-on lab, you will learn how to:
 
 The following is required to complete this hands-on lab:
 
-- [Visual Studio Community 2013 or greater][1]
-- [Web Essentials 2013][2]
+- [Visual Studio Community 2015 or greater][1]
+- [Web Extension Pack][2]
 - [Google Chrome][3]
 
 [1]: https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx
-[2]: http://vswebessentials.com/
+[2]: https://visualstudiogallery.msdn.microsoft.com/f3b504c6-0095-42f1-a989-51d5fc2a8459
 [3]: http://www.google.com/chrome/
+
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
 
 <a name="Setup" />
 ### Setup ###
@@ -71,7 +74,7 @@ Estimated time to complete this lab: **45 minutes**
 
 **Web Essentials** is a Visual Studio extension that adds a variety of useful features for modern web development, mostly focused on making the web development experience much faster and more pleasant. You can install Web Essentials from the Extension Gallery in Visual Studio.
 
-**Browser Link** is a new feature included in Visual Studio 2015 that provides a channel between the Visual Studio IDE and any open browser to exchange data between your web application and Visual Studio. Web Essentials extends Browser Link with tools to manipulate the DOM object model and the CSS styles of your web pages directly from the browser.
+**Browser Link** is a new feature included in Visual Studio 2013 and 2015 that provides a channel between the Visual Studio IDE and any open browser to exchange data between your web application and Visual Studio. Web Essentials extends Browser Link with tools to manipulate the DOM object model and the CSS styles of your web pages directly from the browser.
 
 In this exercise, you will explore some of the features supported by **Web Essentials** and **Browser Link** to enhance a simple quiz page. 
 
@@ -82,29 +85,31 @@ In this task, you will configure your web application to run in multiple browser
 
 1. Open **Microsoft Visual Studio**. 
 
-1. In the **File** menu, select **Open | Project/Solution...** and browse to **Ex1-WorkingwithBrowserLinkandWebEssentials\Begin** in the **Source** folder of the lab. Select **Begin.sln** and click **Open**.
+1. In the **File** menu, select **Open | Project/Solution...** and browse to **Ex1-WorkingwithBrowserLinkandWebEssentials\Begin** in the **Source** folder of the lab. Select **GeekQuiz.sln** and click **Open**.
 
 1. In the Visual Studio toolbar, expand the browser menu and select **Browse With...**.
 
-	![Browse With menu option](Images/browse-with-in-browser-menu.png?raw=true "Browse with... in browser menu")
+	![Browse With menu option](Images/browse-with-in-browser-menu.png?raw=true "Browse with in browser menu")
 
 	_Browse With menu option_
 
-1. In the **Browse With** dialog box, select both **Google Chrome** and **Internet Explorer** by holding down the **CTRL** key and click **Set as Default**.
+1. In the **Browse With** dialog box, select both **Google Chrome** and **Microsoft Edge** by holding down the **CTRL** key and click **Set as Default**.
 
 	![Browse with dialog box](Images/browse-with-dialog-box.png?raw=true "Browse with dialog box")
 
 	_Selecting multiple default browsers_
 
-1. Both Google Chrome and Internet Explorer should now appear as the default browsers. Click **Cancel** to close the dialog box.
+1. Both Google Chrome and Microsoft Edge should now appear as the default browsers. Click **Cancel** to close the dialog box.
 
-	![Google Chrome and Internet Explorer as default browsers](Images/google-chrome-and-internet-explorer-default-b.png?raw=true "Google Chrome and Internet Explorer default browsers")
+	![Google Chrome and Microsoft Edge as default browsers](Images/default-browsers.png?raw=true "Google Chrome and Microsoft Edge default browsers")
 
-	_Google Chrome and Internet Explorer as default browsers_
+	_Google Chrome and Microsoft Edge as default browsers_
 
 	>**Note:** After configuring the default browsers, the **Multiple Browsers** option is selected in the browser menu.
 	>
 	> ![Multiple browsers](Images/multiple-browsers.png?raw=true "Multiple browsers")
+	>
+	> _Multiple browsers_
 
 1. Press **CTRL** + **F5** to run the application without debugging.
 
@@ -148,9 +153,9 @@ In this exercise, you will use the Zen Coding feature provided by Web Essentials
 
 	_Refresh linked browsers_
 
-	![Internet Explorer - Page updated with four buttons](Images/internet-explorer-updated-with-4-buttons.png?raw=true "Internet Explorer - Page updated with four buttons")
+	![Microsoft Edge - Page updated with four buttons](Images/microsoft-edge-updated-with-4-buttons.png?raw=true "Microsoft Edge - Page updated with four buttons")
 
-	_Internet Explorer - Page updated with four buttons_
+	_Microsoft Edge - Page updated with four buttons_
 
 	![Google Chrome - Page updated with four buttons](Images/google-chrome-updated-with-4-buttons.png?raw=true "Google Chrome - Page updated with four buttons")
 	
@@ -190,11 +195,11 @@ In this exercise, you will use the Zen Coding feature provided by Web Essentials
 
 1. Click the **Refresh linked browsers** button to update both browsers.
 
-	![Internet Explorer - Autogenerated image and text](Images/internet-explorer---autogenerated-image-and-t.png?raw=true "Internet Explorer - Autogenerated image and text")
+	![Microsoft Edge - Autogenerated image and text](Images/microsoft-edge-autogenerated-image-and-text.png?raw=true "Microsoft Edge - Autogenerated image and text")
 
-	_Internet Explorer - Autogenerated image and text_
+	_Microsoft Edge - Autogenerated image and text_
 
-	![Google Chrome - Autogenerated image and text](Images/google-chrome---autogenerated-image-and-text.png?raw=true "Google Chrome - Autogenerated image and text")
+	![Google Chrome - Autogenerated image and text](Images/google-chrome-autogenerated-image-and-text.png?raw=true "Google Chrome - Autogenerated image and text")
 
 	_Google Chrome - Autogenerated image and text_
 
@@ -243,11 +248,11 @@ In this task, you will use the Browser Link's **Inspect Mode** feature to detect
 
 1. Press **CTRL** + **ALT** + **ENTER** to refresh linked browsers. 
 
-1. Switch to Internet Explorer and notice how the color of the border has changed.
+1. Switch to Microsoft Edge and notice how the color of the border has changed.
 
-	![Internet Explorer - Border color updated](Images/internet-explorer-border-color-updated.png?raw=true "Internet Explorer - Border color updated")
+	![Microsoft Edge - Border color updated](Images/microsoft-edge-border-color-updated.png?raw=true "Microsoft Edge - Border color updated")
 
-	_Internet Explorer - Border color updated_
+	_Microsoft Edge - Border color updated_
 
 1. Switch to Google Chrome and notice how the color of the border has changed.
 
@@ -267,7 +272,7 @@ In this task, you will use the Browser Link's **Inspect Mode** feature to detect
 
 1. Place the caret in the **-webkit-border-radius** property. A blue line should appear under the first letter of the first word of the property. This is the **smart tag**.
 
-1. Press **CTRL** + **.** to open the suggestions menu and click **Add missing standard property (border-radius)**.
+1. Open the suggestions menu and click **Add missing standard property (border-radius)**.
 
 	![Add missing standard property suggestion](Images/add-missing-standard-properties-suggestion.png?raw=true "Add missing standard property suggestion")
 
@@ -292,8 +297,6 @@ In this task, you will use the Browser Link's **Inspect Mode** feature to detect
 	_Border-radius property value warning_
 
 1. Remove the unit of the **border-radius** property value as suggested by the tooltip.
-
-1. As **border-radius** is the standard property for defining how rounded border corners are, you can remove the **-webkit-border-radius** property and value from the CSS rule.
 
 1. Place the caret in the **word-wrap** property and notice that the smart tag also appears below.
 
@@ -378,13 +381,13 @@ The first new feature you will see in this task is called **Dynamic IntelliSense
 
 In this task, you will create a new HTML form element which contains a label and an input field. Then you will add a **for** attribute to the label to bind it to the input, and you will see IntelliSense suggestions based on the ids of the inputs in scope.
 
-1. Open **Visual Studio** and the **Begin.sln** solution located in the **Source/Ex2-TakingAdvantageofCodeSnippetsandIntelliSense/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
+1. Open **Visual Studio** and the **GeekQuiz.sln** solution located in the **Source/Ex2-TakingAdvantageofCodeSnippetsandIntelliSense/Begin** folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
 
 1. In **Solution Explorer**, open the **Index.cshtml** file located in the **Views** | **Home** folder.
 
 1. Add the following form inside the **div element with container as class value**.
 
-	(Code Snippet - _VisualStudio2013WebTooling_ - _Ex2_ - _Form_)
+	(Code Snippet - _VSWebTooling_ - _Ex2_ - _Form_)
 
 	<!-- mark:1-3 -->
 	````HTML
@@ -451,9 +454,9 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 
 1. Notice that an audio player was added to the application.
 
-	![Audio player in Internet Explorer](Images/audio-player-in-internet-explorer.png?raw=true "Audio player in Internet Explorer")
+	![Audio player in Microsoft Edge](Images/audio-player-in-microsoft-edge.png?raw=true "Audio player in Microsoft Edge")
 	
-	_Audio player in Internet Explorer_
+	_Audio player in Microsoft Edge_
 
 	![Audio player in Google Chrome](Images/audio-player-in-google-chrome.png?raw=true "Audio player in Google Chrome")
 
@@ -464,7 +467,7 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 <a name="Ex2Task3" />
 #### Task 3 - Using IntelliSense in JavaScript Documents ####
 
-With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and class names. In this task, you will learn how those lists improve JavaScript IntelliSense support in Web Essentials 2013. 
+With Web Essentials, style sheets and HTML pages produce a list of IDs and class names. In this task, you will learn how those lists improve JavaScript IntelliSense support in Web Essentials. 
 
 1. In the **Index.cshtml** file, add the following code to define a **script** tag for JavaScript code.
 
@@ -481,7 +484,7 @@ With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and 
 
 1. Add the following code inside the **script** tag to define the ready callback function.
 	
-	(Code Snippet - _VisualStudio2013WebTooling_ - _Ex2_ - _ReadyFunction_)
+	(Code Snippet - _VSWebTooling_ - _Ex2_ - _ReadyFunction_)
 
 	<!-- mark:1-5 -->
 	````JavaScript
@@ -500,7 +503,7 @@ With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and 
 
 	_JavaScript extract to file suggestion_
 
-1. In the **Save As** window, select the **Scripts** folder, name the file **init.js** and click **Save**.
+1. In the **Save As** window, select the **wwwroot | js** folder, name the file **init.js** and click **Save**.
 
 	![Save As window](Images/save-as-window.png?raw=true "Save As window")
 
@@ -512,7 +515,7 @@ With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and 
 	>
 	>	_Init.js file created with the content included_
 
-1. Open the **Index.cshtml** file and check that the script tag was replaced with a reference to the **init.js** file.
+1. Open the **Index.cshtml** file and check that the script tag was replaced with a reference to the **init.js** file. Remove the **wwwroot** section from the source url.
 
 	![Init.js html reference](Images/initjs-html-reference.png?raw=true "Init.js html reference")
 
@@ -568,17 +571,11 @@ With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and 
 
 	_Retrieving Audio Elements_
 
-1. In **Solution Explorer**, right-click the **init.js** file in the **Scripts** folder and select **Minify JavaScript file(s)** from the **Web Essentials** menu.
+1. In **Solution Explorer**, right-click the **init.js** file in the **wwwroot | js** folder and select **Minify File** from the menu.
 
 	![Minify JavaScript file(s)](Images/minify-javascript-files.png?raw=true "Minify JavaScript files")
 
 	_Minify JavaScript file(s)_
-
-1. When prompted to enable automatic minification when the source file changes click **Yes**.
-
-	![Enabling automatic minification warning](Images/enabling-automatic-minification-warning.png?raw=true "Enabling automatic minification warning")
-
-	_Enabling automatic minification warning_
 
 	>**Note:** The **init.min.js** is created and is added as a dependency of the **init.js** file.
 	>
@@ -594,7 +591,7 @@ With Web Essentials 2013, style sheets and HTML pages produce a list of IDs and 
 
 1. In the **init.js** file, add the following code below the **getElementsByTagName** function call to play all the audio elements.
 	
-	(Code Snippet - _VisualStudio2013WebTooling_ - _Ex2_ - _PlayAudioElements_)
+	(Code Snippet - _VSWebTooling_ - _Ex2_ - _PlayAudioElements_)
 
 	<!-- mark:1-4 -->
 	````JavaScript
@@ -635,3 +632,6 @@ By completing this hands-on lab you have learned how to:
 - Use new CSS editor features included in Web Essentials such as the Color picker and Browser matrix tooltip 
 - Use new JavaScript editor features included in Web Essentials such as Extract to File and IntelliSense for all HTML elements 
 - Exchange data between your browser and Visual Studio using Browser Link
+
+
+> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.

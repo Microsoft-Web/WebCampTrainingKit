@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/css/flip.css",
+    "inputFiles": [
+      "wwwroot/css/flip.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/site.css",
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ]
+  }
+]

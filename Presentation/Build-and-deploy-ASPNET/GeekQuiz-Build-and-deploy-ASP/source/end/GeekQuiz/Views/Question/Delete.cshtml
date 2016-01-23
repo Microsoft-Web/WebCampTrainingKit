@@ -1,7 +1,7 @@
-﻿@model GeekQuiz.Models.TriviaQuestion
+@model GeekQuiz.Models.TriviaQuestion
 
 @{
-    ViewBag.Title = "Delete";
+    ViewData["Title"] = "Delete";
 }
 
 <h2>Delete</h2>
@@ -14,19 +14,15 @@
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Title)
         </dd>
-
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
+    
+    <form asp-action="Delete">
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <a asp-action="Index">Back to List</a>
         </div>
-    }
+    </form>
 </div>

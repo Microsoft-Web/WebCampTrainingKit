@@ -1,0 +1,26 @@
+public int Count { get; set; }
+
+public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+{
+}
+
+============================
+
+for (int i = 0; i < Count; i++)
+{
+	output.Content.Append(await output.GetChildContentAsync());
+}
+
+============================
+
+@addTagHelper "*, TagHelpersDemo"
+
+============================
+
+<repeat count="5">
+	<h3>I'll be repeated!!</h3>
+</repeat>
+
+============================
+
+output.TagName = null;
