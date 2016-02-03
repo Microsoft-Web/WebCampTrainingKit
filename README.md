@@ -39,7 +39,7 @@
             <td><a href='Presentation/02-ASPNET-and-VS-Web-Tooling/ASPNET-and-VS-Web-Tooling.pptx'>Presentation</a></td>
           </tr>
           <tr>
-            <td><a href='Presentation/02-ASPNET-and-VS-Web-Tooling/GettingStartedASPNET5/'>Demo - Getting started with ASP.NET 5 & ASP.NET MVC 6</a></td>
+            <td><a href='Presentation/02-ASPNET-and-VS-Web-Tooling/GettingStartedASPNETCore/'>Demo - Getting started with ASP.NET Core</a></td>
           </tr>
           <tr>
             <td><a href='Presentation/02-ASPNET-and-VS-Web-Tooling/Visual-Studio-and-Web-Essentials/'>Demo - Visual Studio and Web Essentials</a></td>
@@ -152,7 +152,7 @@
             <td rowspan="3">We'll start out by explaining the One ASP.NET experience in Visual Studio 2015. We'll continue with an introduction to ASP.NET 5. Next, we'll introduce new features for web developers in Visual Studio 2015 and Web Essentials, explaining how Visual
               Studio is the best editor for HTML, CSS and JavaScript as well as your back end code. We'll also look at some new features across the ASP.NET platform including new Bootstrap templates, the new scaffolding system, and the new membership
               and identity system.</td>
-            <td><a href='Presentation/02-ASPNET-and-VS-Web-Tooling/GettingStartedASPNET5/'>Getting started with ASP.NET 5 & ASP.NET MVC 6</a></td>
+            <td><a href='Presentation/02-ASPNET-and-VS-Web-Tooling/GettingStartedASPNETCore/'>Demo - Getting started with ASP.NET Core</a></td>
           </tr>
           <tr>
             <td><a href='Presentation/02-ASPNET-and-VS-Web-Tooling/TagHelpers/'>Tag Helpers</a></td>
@@ -162,7 +162,7 @@
           </tr>
           <tr>
             <td><a href='Presentation/03-Build-and-deploy-ASPNET/Build-and-deploy-ASPNET.pptx'>Building Web Applications using the latest ASP.NET technologies</a></td>
-            <td>This session will include a quick introduction to the MVC pattern, then build and deploy a website using ASP.NET MVC, Entity Framework Code First, and Microsoft Azure Web Apps. We'll continue building this demo scenario (the GeekQuiz app
+            <td>This session will include a quick introduction to the MVC pattern, then build and deploy an ASP.NET Core website using MVC, Entity Framework Code First, and Microsoft Azure Web Apps. We'll continue building this demo scenario (the GeekQuiz app
               from the BUILD 2013 keynote) throughout the day.</td>
             <td><a href='Presentation/03-Build-and-deploy-ASPNET/GeekQuiz-Build-and-deploy-ASP/'>Building and deploying an ASP.NET application</a></td>
           </tr>
