@@ -10,7 +10,7 @@
   <div class="container">
     <div class="jumbotron">
       <h1>Web Camp</h1>
-      <p>January 2016 release. Source: <a href="http://aka.ms/webcamps-training-kit">http://aka.ms/webcamps-training-kit</a></p>
+      <p>February 2016 release. Source: <a href="http://aka.ms/webcamps-training-kit">http://aka.ms/webcamps-training-kit</a></p>
       <p>
         <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
         <a href="http://visualstudio.com" class="btn btn-success">Get Visual Studio 2015</a>
