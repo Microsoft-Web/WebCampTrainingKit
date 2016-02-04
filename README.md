@@ -118,7 +118,7 @@
             <td>This hands-on lab will show you how to use the new HTML, CSS and JavaScript editor features included in Web Essentials.</td>
           </tr>
           <tr>
-            <td><a href='HOL/IntroToASPNET5/'>Introduction to ASP.NET Core 1.0</a></td>
+            <td><a href='HOL/IntroToASPNETCore/'>Introduction to ASP.NET Core 1.0</a></td>
             <td>60</td>
             <td>This hands-on lab will introduce you to ASP.NET Core 1.0, a new open-source and cross-platform framework for building modern cloud-based Web applications using .NET.</td>
           </tr>
