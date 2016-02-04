@@ -1,31 +1,31 @@
 ﻿<a name="title" />
-# Getting started with ASP.NET 5 & ASP.NET MVC 6 #
+# Getting started with ASP.NET Core #
 
 ---
 <a name="Overview" />
 ## Overview ##
 
-This demo demonstrates how to create a simple ASP.NET MVC 6 project using Visual Studio 2015.
+This demo demonstrates how to create a simple ASP.NET Core project using Visual Studio 2015.
 
-ASP.NET 5 is an open source web framework for building modern web applications that can be developed and run on Windows, Linux and Mac. It includes the MVC 6 framework, which now combines the features of MVC and Web API into a single web programming framework.
+ASP.NET Core is an open source web framework for building modern web applications that can be developed and run on Windows, Linux and Mac. It includes the MVC 6 framework, which now combines the features of MVC and Web API into a single web programming framework.
 
 
 <a id="goals" />
 ### Goals ###
 In this demo, you will see how to:
 
-1. Create and run a simple website in ASP.NET MVC 6.
+1. Create and run a simple website using ASP.NET Core.
 
 1. Take advantage of Visual Studio's support for NPM and Bower.
 
 <a name="technologies" />
 ### Key Technologies ###
 
-- [ASP.NET 5][1]
+- [ASP.NET Core][1]
 - [ASP.NET Web API][2]
 - [Visual Studio 2015][3]
 
-[1]: http://www.asp.net/vnext
+[1]: http://docs.asp.net
 [2]: http://www.asp.net/web-api
 [3]: https://www.visualstudio.com/
 
@@ -64,7 +64,7 @@ This demo is composed of the following segments:
 
 1. In the **Solution Explorer**, show the dependencies in the **project.json** file.
 
-	>	**Speaking Point:** In ASP.NET 5, Visual Studio uses the **project.json** file for reference and package dependencies, version definitions, framework configurations, compile options, build events, package creation metadata, and run commands, as well as other details. The advantage of this is that the project can be edited and run in Linux and Mac machines that do not have Visual Studio.
+	>	**Speaking Point:** In ASP.NET Core, Visual Studio uses the **project.json** file for reference and package dependencies, version definitions, framework configurations, compile options, build events, package creation metadata, and run commands, as well as other details. The advantage of this is that the project can be edited and run in Linux and Mac machines that do not have Visual Studio.
 
 	![Showing the project.json file](images/project-json-file.png?raw=true "Showing the project.json")
 
@@ -72,7 +72,7 @@ This demo is composed of the following segments:
 
 1. Show the **package.json** and **bower.json** files.
 
-	>	**Speaking Point:** Both NPM and Bower are now integrated in Visual Studio, as well as the Grunt and Gulp task runners. The Solution Explorer for ASP.NET 5 Web Applications has a Dependencies node showing Bower and NPM dependencies. The Bower dependencies are from **bower.json** in the project folder. The NPM dependencies are from **package.json** in the project folder.
+	>	**Speaking Point:** Both NPM and Bower are now integrated in Visual Studio, as well as the Grunt and Gulp task runners. The Solution Explorer for ASP.NET Core Web Applications has a Dependencies node showing Bower and NPM dependencies. The Bower dependencies are from **bower.json** in the project folder. The NPM dependencies are from **package.json** in the project folder.
 
 	![Showing integrated NPM and Bower](images/Showing-NPM-and-Bower-integrated.png?raw=true "Showing NPM and Bower integrated")
 
@@ -92,7 +92,7 @@ This demo is composed of the following segments:
 
 1. Show the **ConfigureServices** method in the **Startup.cs** class.
 
-	>	**Speaking Point:** ASP.NET 5 supports Dependency Injection natively, and as such this method is adding services to the DI container.
+	>	**Speaking Point:** ASP.NET Core supports Dependency Injection natively, and as such this method is adding services to the DI container.
 
 	![Showing ConfigureServices method](images/configureservices-method.png?raw=true "Showing ConfigureServices method")
 
@@ -100,7 +100,7 @@ This demo is composed of the following segments:
 
 1. Show the **Configure** method in **Startup.cs** class.
 
-	>	**Speaking Point:** ASP.NET 5 assumes that no frameworks are being used unless you explicitly tell it that they are, and that is why the **Configure** method exists. You use this method to tell ASP.NET what frameworks you would like to use for this app. This enables you to have full control over the HTTP pipeline.
+	>	**Speaking Point:** ASP.NET Core assumes that no frameworks are being used unless you explicitly tell it that they are, and that is why the **Configure** method exists. You use this method to tell ASP.NET what frameworks you would like to use for this app. This enables you to have full control over the HTTP pipeline.
 
 	![Showing Configure method](images/configure-method.png?raw=true "Showing Configure method")
 
@@ -108,7 +108,7 @@ This demo is composed of the following segments:
 
 1. Show the **HomeController.cs** file in the **Controllers** folder.
 
-	>	**Speaking Point:** ASP.NET MVC 6 supports regular controllers (inheriting from the **Controller** base type) and POCO controllers.
+	>	**Speaking Point:** ASP.NET Core supports regular controllers (inheriting from the **Controller** base type) and POCO controllers.
 
 	![Showing the HomeController](images/homecontroller.png?raw=true "Showing the HomeController")
 
@@ -131,6 +131,6 @@ This demo is composed of the following segments:
 <a name="summary" />
 ## Summary ##
 
-By completing this demo, you have walked through Visual Studio 2015 and ASP.NET 5 MVC 6. You have seen the overall structure of the solution and the use of the **project.json**, **bower.json** and **package.json** files to manage the project dependencies. You have also seen how ASP.NET 5 added support for native dependency injection.
+By completing this demo, you have walked through Visual Studio 2015 and ASP.NET Core. You have seen the overall structure of the solution and the use of the **project.json**, **bower.json** and **package.json** files to manage the project dependencies. You have also seen how ASP.NET Core added support for native dependency injection.
 
 ---

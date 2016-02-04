@@ -1,14 +1,17 @@
 ﻿<a name="HOLTop" />
-# Introduction to ASP.NET 5 & ASP.NET MVC 6 #
+# Introduction to ASP.NET Core 1.0 #
 
 ---
 
 <a name="Overview" />
 ## Overview ##
 
-ASP.NET 5 is a new open-source and cross-platform framework for building modern cloud-based Web applications using .NET. It was built from the ground up to provide an optimized development framework for apps that are either deployed to the cloud or run on-premises. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET 5 applications cross-platform on Windows, Mac and Linux. ASP.NET 5 is fully open source on [GitHub](https://github.com/aspnet/home).
+ASP.NET Core 1.0 is a new open-source and cross-platform framework for building modern cloud-based Web applications using .NET. It was built from the ground up to provide an optimized development framework for apps that are either deployed to the cloud or run on-premises. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET Core applications cross-platform on Windows, Mac and Linux. ASP.NET Core is fully open source on [GitHub](https://github.com/aspnet/home).
 
-ASP.NET 5 is built with the needs of modern Web applications in mind, including a unified story for building Web UI and Web APIs that integrate with today’s modern client-side frameworks and development workflows. ASP.NET 5 is also built to be cloud-ready by introducing environment-based configuration and by providing built-in dependency injection support.
+ASP.NET Core is built with the needs of modern Web applications in mind, including a unified story for building Web UI and Web APIs that integrate with today’s modern client-side frameworks and development workflows. ASP.NET Core is also built to be cloud-ready by introducing environment-based configuration and by providing built-in dependency injection support.
+
+>**Note:** ASP.NET Core 1.0 was previously called ASP.NET 5. The product rename occurred on January 19, 2016; additional details explaining why this was done are in [this blog post](http://www.hanselman.com/blog/ASPNET5IsDeadIntroducingASPNETCore10AndNETCore10.aspx) by Scott Hanselman with additional detail in [this post](https://blogs.msdn.microsoft.com/webdev/2016/02/01/an-update-on-asp-net-core-and-net-core/) on the Web Dev team blog.
+>This change will be reflected in the Visual Studio 2015 project templates in the RC2 release. Until then, you'll still see reference to "ASP.NET 5" in the Visual Studio dialogs, new project readme content, and home page content.
 
 <a name="Objectives" />
 ### Objectives ###
@@ -16,7 +19,7 @@ In this hands-on lab, you will learn how to:
 
 - Create a Web site based on the **ASP.NET 5** template
 - Build Web UI and Web APIs in the same project
-- Identify the main components of an **ASP.NET 5** application
+- Identify the main components of an **ASP.NET Core** application
 - Take advantage of the **ASP.NET Scaffolding** framework to automatically create Controllers and Views to perform CRUD operations based on your model classes
 - Expose the same set of information in machine- and human-readable formats using the right tool for each job
 
@@ -54,7 +57,7 @@ Throughout the lab document, you will be instructed to insert code blocks. For y
 ## Exercises ##
 This hands-on lab includes the following exercises:
 
-1. [Creating a New ASP.NET 5 Web Application Project](#Exercise1)
+1. [Creating a New ASP.NET Core Web Application Project](#Exercise1)
 1. [Creating an MVC Controller Using Scaffolding](#Exercise2)
 1. [Creating a Web API Controller Using Scaffolding](#Exercise3)
 
@@ -63,9 +66,9 @@ Estimated time to complete this lab: **60 minutes**
 >**Note:** When you first start Visual Studio, you must select one of the predefined settings collections. Each predefined collection is designed to match a particular development style and determines window layouts, editor behavior, IntelliSense code snippets, and dialog box options. The procedures in this lab describe the actions necessary to accomplish a given task in Visual Studio when using the **General Development Settings** collection. If you choose a different settings collection for your development environment, there may be differences in the steps that you should take into account.
 
 <a name="Exercise1" />
-### Exercise 1: Creating a New ASP.NET 5 Web Application Project ###
+### Exercise 1: Creating a New ASP.NET Core Web Application Project ###
 
-In this exercise you will create a new ASP.NET 5 Web Application project in Visual Studio 2015. You will then explore the generated solution and identify its parts, and finally you will see the Web site in action.
+In this exercise you will create a new ASP.NET Core Web Application project in Visual Studio 2015. You will then explore the generated solution and identify its parts, and finally you will see the Web site in action.
 
 <a name="Ex1Task1" />
 #### Task 1 - Creating a New Site Using the One ASP.NET Experience ####
@@ -352,7 +355,7 @@ In this task, you will run the solution again to verify that the views for **Per
 
 HTTP is not just for serving up web pages. It’s also a powerful platform for building APIs that expose services and data. HTTP is simple, flexible, and ubiquitous. Almost any platform that you can think of has an HTTP library, so HTTP services can reach a broad range of clients, including browsers, mobile devices, and traditional desktop apps.
 
-Previous versions of ASP.NET included the Web API framework for creating web APIs. In ASP.NET 5, this functionality has been merged into the MVC 6 framework. Unifying the two frameworks makes it simpler to build apps that include both UI (HTML) and APIs, because now they share the same code base and pipeline.
+Previous versions of ASP.NET included the Web API framework for creating web APIs. In ASP.NET Core, this functionality has been merged into the MVC 6 framework. Unifying the two frameworks makes it simpler to build apps that include both UI (HTML) and APIs, because now they share the same code base and pipeline.
 
 In this exercise, you will use ASP.NET Scaffolding again to generate a web API controller. You will use the same **Person** and **PersonContext** classes from the previous exercise to provide the same person data in JSON format. You will see how you can expose the same resources in different ways within the same ASP.NET application.
 
@@ -468,7 +471,7 @@ In this task you will use the Microsoft Edge **F12 developer tools** to inspect 
 
 By completing this hands-on lab you have learned how to:
 
-- Create a new Web application using ASP.NET 5 and ASP.NET MVC 6 in Visual Studio 2015
+- Create a new Web application using ASP.NET Core in Visual Studio 2015
 - Generate MVC controllers and views from your model classes using ASP.NET Scaffolding
 - Generate API controllers, which use features such as Async Programming and data access through Entity Framework
 

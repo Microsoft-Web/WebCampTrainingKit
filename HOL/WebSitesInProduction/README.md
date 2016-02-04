@@ -36,7 +36,7 @@ The following is required to complete this hands-on lab:
 - [Visual Studio Community 2015][1] or greater
 - [Azure SDK for Visual Studio 2015][2] or later
 - [GIT Version Control System][3]
-- Enable the ASP.NET 5 command-line tools. Open a command-prompt and run:
+- Enable the ASP.NET Core command-line tools. Open a command-prompt and run:
 
 	````
 	dnvm upgrade

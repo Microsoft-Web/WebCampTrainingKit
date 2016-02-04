@@ -10,7 +10,7 @@ In traditional web applications, the client (browser) initiates the communicatio
 
 In Single-Page Applications (SPAs) the entire page is loaded in the browser after the initial request, but subsequent interactions take place through Ajax requests. This means that the browser has to update only the portion of the page that has changed; there is no need to reload the entire page. The SPA approach reduces the time taken by the application to respond to user actions, resulting in a more fluid experience.
 
-The architecture of a SPA involves certain challenges that are not present in traditional web applications. However, emerging technologies like ASP.NET 5, ASP.NET MVC 6, JavaScript frameworks like AngularJS and new styling features provided by CSS3 make it really easy to design and build SPAs.
+The architecture of a SPA involves certain challenges that are not present in traditional web applications. However, emerging technologies like ASP.NET Core, JavaScript frameworks like AngularJS and new styling features provided by CSS3 make it really easy to design and build SPAs.
 
 In this hand-on lab, you will take advantage of those technologies to implement Geek Quiz, a trivia website based on the SPA concept. You will first implement the service layer with ASP.NET Web API to expose the required endpoints to retrieve the quiz questions and store the answers. Then, you will build a rich and responsive UI using AngularJS 2 and CSS3 transformation effects.
 
@@ -63,6 +63,9 @@ This hands-on lab includes the following exercises:
 Estimated time to complete this lab: **60 minutes**
 
 >**Note:** When you first start Visual Studio, you must select one of the predefined settings collections. Each predefined collection is designed to match a particular development style and determines window layouts, editor behavior, IntelliSense code snippets, and dialog box options. The procedures in this lab describe the actions necessary to accomplish a given task in Visual Studio when using the **General Development Settings** collection. If you choose a different settings collection for your development environment, there may be differences in the steps that you should take into account.
+
+>**Note:** ASP.NET Core 1.0 was previously called ASP.NET 5. The product rename occurred on January 19, 2016; additional details explaining why this was done are in [this blog post](http://www.hanselman.com/blog/ASPNET5IsDeadIntroducingASPNETCore10AndNETCore10.aspx) by Scott Hanselman with additional detail in [this post](https://blogs.msdn.microsoft.com/webdev/2016/02/01/an-update-on-asp-net-core-and-net-core/) on the Web Dev team blog.
+>This change will be reflected in the Visual Studio 2015 project templates in the RC2 release. Until then, you'll still see reference to "ASP.NET 5" in the Visual Studio dialogs, new project readme content, and home page content.
 
 <a name="Exercise1" />
 ### Exercise 1: Creating an API ###
@@ -265,7 +268,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 	_Selecting the Web API Controller Class template_
 
-	> **Note:** **ASP.NET Scaffolding** is a code generation framework for ASP.NET Web applications. Visual Studio 2015 includes pre-installed code generators for ASP.NET 5 projects. You should use scaffolding in your project when you want to quickly add code that interacts with data models in order to reduce the amount of time required to develop standard data operations.
+	> **Note:** **ASP.NET Scaffolding** is a code generation framework for ASP.NET Web applications. Visual Studio 2015 includes pre-installed code generators for ASP.NET Core projects. You should use scaffolding in your project when you want to quickly add code that interacts with data models in order to reduce the amount of time required to develop standard data operations.
 
 	> The scaffolding process also ensures that all the required dependencies are installed in the project. For example, if you start with an empty ASP.NET project and then use scaffolding to add a MVC 6 API controller, the required NuGet packages and references are added to your project automatically.
 
@@ -308,7 +311,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 	> **Note 1:** The **Dispose** method of **TriviaController** invokes the **Dispose** method of the **TriviaContext** instance, which ensures that all the resources used by the context object are released when the **TriviaContext** instance is disposed or garbage-collected. This includes closing all database connections opened by Entity Framework.
 
-	> **Note 2:** The TriviaDbContext will be automatically injected by ASP.NET 5 thanks to the configuration in the **Startup** class.
+	> **Note 2:** The TriviaDbContext will be automatically injected by ASP.NET Core thanks to the configuration in the **Startup** class.
 
 1. Add the following helper method at the end of the **TriviaController** class. This method retrieves the following quiz question from the database to be answered by the specified user.
 

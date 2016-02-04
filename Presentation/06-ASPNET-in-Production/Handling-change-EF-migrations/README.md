@@ -46,7 +46,7 @@ Follow these steps to setup your environment for the demo.
 
 1. Navigate to the created site and register an account.
 
-1. Enable the ASP.NET 5 command-line tools. Open a command-prompt and run:
+1. Enable the ASP.NET Core command-line tools. Open a command-prompt and run:
 
 	````
 	dnvm upgrade

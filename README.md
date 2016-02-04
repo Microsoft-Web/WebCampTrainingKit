@@ -14,7 +14,7 @@
       <p>
         <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
         <a href="http://visualstudio.com" class="btn btn-success">Get Visual Studio 2015</a>
-        <a href="http://docs.asp.net/en/latest/getting-started/installing-on-windows.html" class="btn btn-success">Install ASP.NET 5</a>        
+        <a href="http://get.asp.net" class="btn btn-success">Install ASP.NET Core</a>        
       </p>
     </div>
     <div class="panel panel-default">
@@ -118,9 +118,9 @@
             <td>This hands-on lab will show you how to use the new HTML, CSS and JavaScript editor features included in Web Essentials.</td>
           </tr>
           <tr>
-            <td><a href='HOL/IntroToASPNET5/'>Introduction to ASP.NET 5 & ASP.NET MVC 6</a></td>
+            <td><a href='HOL/IntroToASPNET5/'>Introduction to ASP.NET Core 1.0</a></td>
             <td>60</td>
-            <td>This hands-on lab will introduce you to ASP.NET 5, a new open-source and cross-platform framework for building modern cloud-based Web applications using .NET.</td>
+            <td>This hands-on lab will introduce you to ASP.NET Core 1.0, a new open-source and cross-platform framework for building modern cloud-based Web applications using .NET.</td>
           </tr>
           <tr>
             <td><a href='HOL/AspNetApiSpa/'>ASP.NET MVC 6 and Single-Page Applications (SPAs)</a></td>
@@ -149,7 +149,7 @@
           </tr>
           <tr>
             <td rowspan="3"><a href='Presentation/02-ASPNET-and-VS-Web-Tooling/ASPNET-and-VS-Web-Tooling.pptx'>Introduction to ASP.NET and Visual Studio 2015 Web Tooling</a></td>
-            <td rowspan="3">We'll start out by explaining the One ASP.NET experience in Visual Studio 2015. We'll continue with an introduction to ASP.NET 5. Next, we'll introduce new features for web developers in Visual Studio 2015 and Web Essentials, explaining how Visual
+            <td rowspan="3">We'll start out by explaining the One ASP.NET experience in Visual Studio 2015. We'll continue with an introduction to ASP.NET Core. Next, we'll introduce new features for web developers in Visual Studio 2015 and Web Essentials, explaining how Visual
               Studio is the best editor for HTML, CSS and JavaScript as well as your back end code. We'll also look at some new features across the ASP.NET platform including new Bootstrap templates, the new scaffolding system, and the new membership
               and identity system.</td>
             <td><a href='Presentation/02-ASPNET-and-VS-Web-Tooling/GettingStartedASPNETCore/'>Demo - Getting started with ASP.NET Core</a></td>

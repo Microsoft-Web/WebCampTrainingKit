@@ -18,7 +18,7 @@ In this demo, you will see how to:
 
 - [HTML](http://www.w3schools.com/html/)
 - [WinJS](http://msdn.microsoft.com/en-us/library/windows/apps/br229773.aspx)
-- [ASP.NET 5](http://www.asp.net/vnext)
+- [ASP.NET Core](http://docs.asp.net)
 
 
 <a name="setup" />
@@ -321,6 +321,6 @@ This demo is composed of the following segments:
 <a name="summary" />
 ## Summary ##
 
-By completing this demo you should have understood how you can leverage a ASP.NET 5 API from a Universal Windows application to quickly build a front end for an existing web application.
+By completing this demo you should have understood how you can leverage a ASP.NET Core API from a Universal Windows application to quickly build a front end for an existing web application.
 
 ---

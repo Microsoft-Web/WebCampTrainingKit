@@ -7,7 +7,7 @@
 
 This demo introduces Tag Helpers and how they can be used as an alternative to HTML Helpers. Additionally, it shows how to create custom Tag Helpers.
 
-Tag Helpers are a new feature introduced in ASP.NET 5. They combine the power of the Razor view engine and the expressiveness of HTML by allowing you to write HTML tags in your views rather than inline C# - all this with IntelliSense support.
+Tag Helpers are a new feature introduced in ASP.NET Core 1.0. They combine the power of the Razor view engine and the expressiveness of HTML by allowing you to write HTML tags in your views rather than inline C# - all this with IntelliSense support.
 
 <a id="goals" />
 ### Goals ###
@@ -19,9 +19,9 @@ In this demo, you will see how to:
 <a name="technologies" />
 ### Key Technologies ###
 
-- [ASP.NET 5][1]
+- [ASP.NET Core][1]
 
-[1]: http://www.asp.net/vnext
+[1]: http://docs.asp.net
 
 <a name="Setup" />
 ### Setup and Configuration ###
@@ -162,6 +162,6 @@ This demo is composed of the following segments:
 <a name="summary" />
 ## Summary ##
 
-In this demo you have walked through the use and creation of ASP.NET 5 Tag Helpers and seen how IntelliSense provides support for them.
+In this demo you have walked through the use and creation of ASP.NET Core Tag Helpers and seen how IntelliSense provides support for them.
 
 ---
