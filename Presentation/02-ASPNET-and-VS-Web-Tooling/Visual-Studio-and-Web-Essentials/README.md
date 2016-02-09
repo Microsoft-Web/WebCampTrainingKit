@@ -1,7 +1,7 @@
 ﻿<a name="title" />
 # Visual Studio and Web Essentials - Web Tooling #
 
-> **Note:** Many of the features in this lab (e.g. Browser Link) **do not work in the ASP.NET 5 RC1 release**. Support is being adding in Visual Studio web tools for ASP.NET Core, but is not available yet. **You can demonstrate this lab using a new ASP.NET MVC 5 application (File / New / ASP.NET 5) until they are supported in ASP.NET Core**.
+> **Note:** Many of the features in this demo (e.g. Browser Link) **do not work in the ASP.NET 5 RC1 release**. Support is being adding in Visual Studio web tools for ASP.NET Core, but is not available yet. **You can complete this demo using a new ASP.NET MVC 5 application (File / New / ASP.NET 5) until they are supported in ASP.NET Core**.
 
 ---
 <a name="Overview" />
