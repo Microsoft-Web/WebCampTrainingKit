@@ -1,13 +1,13 @@
-﻿<a name="title" />
+<a name="title"></a>
 # Handling change (EF migrations, Deployment rollback) #
 
 ---
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 
 In this demo you go through the steps of enabling Entity Framework migrations to GeekQuiz database, changing the model and understanding how those changes are reflected in the database. Additionally, you will deploy to Azure using Git and perform a rollback to the previous deployment from Azure Portal.
 
-<a id="goals" />
+<a id="goals"></a>
 ### Goals ###
 
 In this demo, you will see how to:
@@ -16,13 +16,13 @@ In this demo, you will see how to:
 1. Deploy to Microsoft Azure using Git
 1. Rollback to a previous deployment using the Azure Portal
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Key Technologies ###
 
 1. [Entity Framework 7](http://www.asp.net/entity-framework).
 1. [Git](http://git-scm.com/).
 
-<a name="setup" />
+<a name="setup"></a>
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
@@ -66,14 +66,14 @@ Follow these steps to setup your environment for the demo.
 
 1. Open the **Solution Explorer** and dock it in the right panel.
 
-<a name="Demo" />
+<a name="Demo"></a>
 ## Demo ##
 This demo is composed of the following segments:
 
 1. [Migrations](#segment1)
 1. [Deployment rollback](#segment2)
 
-<a name="segment1" />
+<a name="segment1"></a>
 ### Migrations ###
 
 1. In the **Solution Explorer**, select the GeekQuiz project and press **Shift + Alt + ,** to open a Command Prompt in the folder where the project is located.
@@ -161,7 +161,7 @@ This demo is composed of the following segments:
 
 	_Showing the new Hint Column_
 
-<a name="segment2" />
+<a name="segment2"></a>
 ### Deployment Rollback ###
 
 1. Open the **GeekQuiz.sln** solution that you copied to a separate folder during the setup phase.
@@ -256,7 +256,7 @@ This demo is composed of the following segments:
 
 ---
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 By completing this demo you should have:

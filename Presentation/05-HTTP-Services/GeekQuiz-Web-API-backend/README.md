@@ -1,13 +1,13 @@
-﻿<a name="title" />
+<a name="title"></a>
 # Overview of Web API backend from GeekQuiz #
 
 ---
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 
 In this demo you will walk through the process of building GeekQuiz backend. It'll be implemented using ASP.NET Web API to create a controller with two operations; Get, which returns the next question relying on the QuestionService for data access and Post to store the given answer using the AnswerService for data access.
 
-<a id="goals" />
+<a id="goals"></a>
 ### Goals ###
 
 In this demo, you will see how to:
@@ -16,12 +16,12 @@ In this demo, you will see how to:
 1. Implement a Get operation in the Web API controller
 1. Implement a Post operation in the Web API controller
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Key Technologies ###
 
 - [ASP.NET Web API](http://www.asp.net/web-api)
 
-<a name="Setup" />
+<a name="Setup"></a>
 ### Setup and Configuration ###
 
 In order to execute this demo you need to set up your environment.
@@ -34,7 +34,7 @@ In order to execute this demo you need to set up your environment.
 
 1. In Visual Studio, close all open files.
 
-<a name="Demo" />
+<a name="Demo"></a>
 ## Demo ##
 
 This demo is composed of the following segments:
@@ -42,7 +42,7 @@ This demo is composed of the following segments:
 1. [Create the TriviaController](#segment1).
 1. [Run the solution](#segment2).
 
-<a name="segment1" />
+<a name="segment1"></a>
 ### Create the TriviaController ###
 
 1. Right-click the **Controllers** folder, expand the **Add** menu and click **New Item...** in order to create a new **TriviaController**.
@@ -172,7 +172,7 @@ This demo is composed of the following segments:
 
 1. Build the solution.
 
-<a name="segment2" />
+<a name="segment2"></a>
 ### Run the solution ###
 
 1. Set breakpoints on the first line of the **Get** and **Post** methods.
@@ -209,7 +209,7 @@ This demo is composed of the following segments:
 
 ---
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 By completing this demo you should have:

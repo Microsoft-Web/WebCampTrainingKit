@@ -1,11 +1,11 @@
-﻿<a name="HOLTop" />
+<a name="HOLTop"></a>
 # Visual Studio 2015 Web Tooling #
 
 ---
 
 > **Note:** Many of the features in this lab (e.g. Browser Link) **do not work in the ASP.NET 5 RC1 release**. Support is being adding in Visual Studio web tools for ASP.NET Core, but is not available yet. **You can complete this lab using a new ASP.NET MVC 5 application (File / New / ASP.NET 5) until they are supported in ASP.NET Core**.
 
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 
 Visual Studio is an excellent development environment for .NET-based Windows and web projects. It includes a powerful text editor that can easily be used to edit standalone files without a project.
@@ -14,7 +14,7 @@ Visual Studio maintains a full-featured parse tree as you edit each file. This a
 
 All of this power is also available for extensions, making it simple to extend the editors with powerful new features to suit your needs. Web Essentials is a collection of (mostly) web-related enhancements to Visual Studio. It includes lots of new IntelliSense completions (especially for CSS), new Browser Link features, automatic JSHint for JavaScript files, new warnings for HTML and CSS, and many other features that are essential to modern web development.
 
-<a name="Objectives" />
+<a name="Objectives"></a>
 ### Objectives ###
 In this hands-on lab, you will learn how to:
 
@@ -40,7 +40,7 @@ The following is required to complete this hands-on lab:
 
 > **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
 
-<a name="Setup" />
+<a name="Setup"></a>
 ### Setup ###
 In order to run the exercises in this hands-on lab, you will need to set up your environment first.
 
@@ -50,7 +50,7 @@ In order to run the exercises in this hands-on lab, you will need to set up your
 
 > **Note:** Make sure you have checked all the dependencies for this lab before running the setup.
 
-<a name="CodeSnippets" />
+<a name="CodeSnippets"></a>
 ### Using the Code Snippets ###
 
 Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2015 to avoid having to add it manually. 
@@ -59,7 +59,7 @@ Throughout the lab document, you will be instructed to insert code blocks. For y
 
 ---
 
-<a name="Exercises" />
+<a name="Exercises"></a>
 ## Exercises ##
 This hands-on lab includes the following exercises:
 
@@ -71,7 +71,7 @@ Estimated time to complete this lab: **45 minutes**
 
 >**Note:** When you first start Visual Studio, you must select one of the predefined settings collections. Each predefined collection is designed to match a particular development style and determines window layouts, editor behavior, IntelliSense code snippets, and dialog box options. The procedures in this lab describe the actions necessary to accomplish a given task in Visual Studio when using the **General Development Settings** collection. If you choose a different settings collection for your development environment, there may be differences in the steps that you should take into account.
 
-<a name="Exercise1" />
+<a name="Exercise1"></a>
 ### Exercise 1: Working with Browser Link and Web Essentials ###
 
 **Web Essentials** is a Visual Studio extension that adds a variety of useful features for modern web development, mostly focused on making the web development experience much faster and more pleasant. You can install Web Essentials from the Extension Gallery in Visual Studio.
@@ -80,7 +80,7 @@ Estimated time to complete this lab: **45 minutes**
 
 In this exercise, you will explore some of the features supported by **Web Essentials** and **Browser Link** to enhance a simple quiz page. 
 
-<a name="Ex1Task1" />
+<a name="Ex1Task1"></a>
 #### Task 1 - Running the Project in Multiple Browsers ####
 
 In this task, you will configure your web application to run in multiple browsers at once, which is useful for cross-browser testing.
@@ -123,7 +123,7 @@ In this task, you will configure your web application to run in multiple browser
 
 1. Do not close the browsers. You will use them in the next task. 
 
-<a name="Ex1Task2" />
+<a name="Ex1Task2"></a>
 #### Task 2 - Using Zen Coding to Create HTML Elements ####
 
 **Zen Coding** is an editor plugin for high-speed HTML, XML, XSL (or any other structured code format) coding and editing. The core of this plugin is a powerful abbreviation engine which allows you to expand expressions -similar to CSS selectors- into HTML code. Zen Coding is a fast way to write HTML using a CSS style selector syntax.
@@ -209,7 +209,7 @@ In this exercise, you will use the Zen Coding feature provided by Web Essentials
 
 1. Do not close the browsers. You will use them in the next task.
 
-<a name="Ex1Task3" />
+<a name="Ex1Task3"></a>
 #### Task 3 - Updating a Style Property ####
 
 In this task, you will use the Browser Link's **Inspect Mode** feature to detect the exact location where the specific DOM element is generated and then update the color property of that element using a color picker provided by Web Essentials.
@@ -315,7 +315,7 @@ In this task, you will use the Browser Link's **Inspect Mode** feature to detect
 	_Vendor specific property added_
 
 
-<a name="Ex1Task4" />
+<a name="Ex1Task4"></a>
 #### Task 4 - Updating the HTML Code from the Browser ####
 
 In this task, you will use the Browser Link's **Design Mode** feature to edit the DOM object from the browser and transfer the changes to the HTML source file in Visual Studio.
@@ -340,7 +340,7 @@ In this task, you will use the Browser Link's **Design Mode** feature to edit th
 
 	_Updated question in the HTML page_
 
-<a name="Ex1Task5" />
+<a name="Ex1Task5"></a>
 #### Task 5 - Reviewing SEO Related Warnings ####
 
 **Search Engine Optimization** (SEO) is the process of making a website rank higher on a search engine's list of results. The higher the site ranks and the more consistently it is listed, the more visitors the site will get from that search engine. Web Essentials incorporates an analytical tool that examines HTML, reports the issues found and provides assistance to fix them.
@@ -371,12 +371,12 @@ In this task, you will use the Browser Link's **Design Mode** feature to edit th
 
 1. Change the value of the **content** attribute to _GeekQuiz_ and save the file.
 
-<a name="Exercise2" />
+<a name="Exercise2"></a>
 ### Exercise 2: Taking Advantage of Code Snippets and IntelliSense ###
 
 With Web Essentials, the HTML editor has been extended with extra functionality. In this exercise, you will see some new features that are helpful when developing web applications.
 
-<a name="Ex2Task1" />
+<a name="Ex2Task1"></a>
 #### Task 1 - Using IntelliSense in HTML Documents ####
 
 The first new feature you will see in this task is called **Dynamic IntelliSense**. Dynamic IntelliSense reads other tags and attributes to infer the possible ids you will use. 
@@ -416,7 +416,7 @@ In this task, you will create a new HTML form element which contains a label and
 
 1. Delete the recently added **\<form\>** element and its content.
 
-<a name="Ex2Task2" />
+<a name="Ex2Task2"></a>
 #### Task 2 - Using HTML Code Snippets ####
 
 HTML5 introduced more than 25 new semantic tags. Visual Studio already had IntelliSense support for these tags, but Visual Studio 2015 makes it faster and easier to write markup by adding new code snippets. Though these tags are not complicated, they come with a few small subtleties, such as adding the correct codec fallbacks for the _audio_ tag. In this task, you will see the HTML code snippets for the audio tag.
@@ -466,7 +466,7 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 
 1. Do not close the browsers. You will use them in the next task.
 
-<a name="Ex2Task3" />
+<a name="Ex2Task3"></a>
 #### Task 3 - Using IntelliSense in JavaScript Documents ####
 
 With Web Essentials, style sheets and HTML pages produce a list of IDs and class names. In this task, you will learn how those lists improve JavaScript IntelliSense support in Web Essentials. 
@@ -625,7 +625,7 @@ With Web Essentials, style sheets and HTML pages produce a list of IDs and class
 
 ---
 
-<a name="Summary" />
+<a name="Summary"></a>
 ## Summary ##
 
 By completing this hands-on lab you have learned how to:

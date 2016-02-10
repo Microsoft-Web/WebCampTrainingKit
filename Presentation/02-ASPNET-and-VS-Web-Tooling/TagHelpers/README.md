@@ -1,43 +1,43 @@
-﻿<a name="title" />
+<a name="title"></a>
 # Tag Helpers #
 
 ---
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 
 This demo introduces Tag Helpers and how they can be used as an alternative to HTML Helpers. Additionally, it shows how to create custom Tag Helpers.
 
 Tag Helpers are a new feature introduced in ASP.NET Core 1.0. They combine the power of the Razor view engine and the expressiveness of HTML by allowing you to write HTML tags in your views rather than inline C# - all this with IntelliSense support.
 
-<a id="goals" />
+<a id="goals"></a>
 ### Goals ###
 In this demo, you will see how to:
 
 1. Identify Tag Helpers
 1. Create custom Tag Helpers
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Key Technologies ###
 
 - [ASP.NET Core][1]
 
 [1]: http://docs.asp.net
 
-<a name="Setup" />
+<a name="Setup"></a>
 ### Setup and Configuration ###
 Follow these steps to set up your environment for the demo.
 
 1. Install [Visual Studio 2015](https://www.visualstudio.com/).
 1. Open Visual Studio.
 
-<a name="Demo" />
+<a name="Demo"></a>
 ## Demo ##
 This demo is composed of the following segments:
 
 1. [Tag Helpers in the project template](#segment1)
 1. [Create a custom Tag Helper](#segment2)
 
-<a name="segment1" />
+<a name="segment1"></a>
 ### Tag Helpers in the project template ###
 
 1. In Visual Studio, go to **File | New | Project**.
@@ -84,7 +84,7 @@ This demo is composed of the following segments:
 
 	_Showing the HTML output of the Layout_
 
-<a name="segment2" />
+<a name="segment2"></a>
 ### Create a custom Tag Helper ###
 
 1. Create a new **RepeatTagHelper** class in the root of the application you created in the previous segment by adding a new item to the project and selecting **Razor Tag Helper**.
@@ -159,7 +159,7 @@ This demo is composed of the following segments:
 
 ---
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 In this demo you have walked through the use and creation of ASP.NET Core Tag Helpers and seen how IntelliSense provides support for them.

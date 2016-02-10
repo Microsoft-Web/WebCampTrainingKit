@@ -1,19 +1,19 @@
-ï»¿<a name="HOLTop" />
+<a name="HOLTop"></a>
 # Introduction to ASP.NET Core 1.0 #
 
 ---
 
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 
 ASP.NET Core 1.0 is a new open-source and cross-platform framework for building modern cloud-based Web applications using .NET. It was built from the ground up to provide an optimized development framework for apps that are either deployed to the cloud or run on-premises. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET Core applications cross-platform on Windows, Mac and Linux. ASP.NET Core is fully open source on [GitHub](https://github.com/aspnet/home).
 
-ASP.NET Core is built with the needs of modern Web applications in mind, including a unified story for building Web UI and Web APIs that integrate with todayâ€™s modern client-side frameworks and development workflows. ASP.NET Core is also built to be cloud-ready by introducing environment-based configuration and by providing built-in dependency injection support.
+ASP.NET Core is built with the needs of modern Web applications in mind, including a unified story for building Web UI and Web APIs that integrate with today’s modern client-side frameworks and development workflows. ASP.NET Core is also built to be cloud-ready by introducing environment-based configuration and by providing built-in dependency injection support.
 
 >**Note:** ASP.NET Core 1.0 was previously called ASP.NET 5. The product rename occurred on January 19, 2016; additional details explaining why this was done are in [this blog post](http://www.hanselman.com/blog/ASPNET5IsDeadIntroducingASPNETCore10AndNETCore10.aspx) by Scott Hanselman with additional detail in [this post](https://blogs.msdn.microsoft.com/webdev/2016/02/01/an-update-on-asp-net-core-and-net-core/) on the Web Dev team blog.
 >This change will be reflected in the Visual Studio 2015 project templates in the RC2 release. Until then, you'll still see reference to "ASP.NET 5" in the Visual Studio dialogs, new project readme content, and home page content.
 
-<a name="Objectives" />
+<a name="Objectives"></a>
 ### Objectives ###
 In this hands-on lab, you will learn how to:
 
@@ -34,7 +34,7 @@ The following is required to complete this hands-on lab:
 
 > **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
 
-<a name="Setup" />
+<a name="Setup"></a>
 ### Setup ###
 In order to run the exercises in this hands-on lab, you will need to set up your environment first.
 
@@ -44,7 +44,7 @@ In order to run the exercises in this hands-on lab, you will need to set up your
 
 > **Note:** Make sure you have checked all the dependencies for this lab before running the setup.
 
-<a name="CodeSnippets" />
+<a name="CodeSnippets"></a>
 ### Using the Code Snippets ###
 
 Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of this code is provided as Visual Studio Code Snippets, which you can access from within Visual Studio 2015 to avoid having to add it manually. 
@@ -53,7 +53,7 @@ Throughout the lab document, you will be instructed to insert code blocks. For y
 
 ---
 
-<a name="Exercises" />
+<a name="Exercises"></a>
 ## Exercises ##
 This hands-on lab includes the following exercises:
 
@@ -65,12 +65,12 @@ Estimated time to complete this lab: **60 minutes**
 
 >**Note:** When you first start Visual Studio, you must select one of the predefined settings collections. Each predefined collection is designed to match a particular development style and determines window layouts, editor behavior, IntelliSense code snippets, and dialog box options. The procedures in this lab describe the actions necessary to accomplish a given task in Visual Studio when using the **General Development Settings** collection. If you choose a different settings collection for your development environment, there may be differences in the steps that you should take into account.
 
-<a name="Exercise1" />
+<a name="Exercise1"></a>
 ### Exercise 1: Creating a New ASP.NET Core Web Application Project ###
 
 In this exercise you will create a new ASP.NET Core Web Application project in Visual Studio 2015. You will then explore the generated solution and identify its parts, and finally you will see the Web site in action.
 
-<a name="Ex1Task1" />
+<a name="Ex1Task1"></a>
 #### Task 1 - Creating a New Site Using the One ASP.NET Experience ####
 
 In this task you will start creating a new Web site in Visual Studio based on the **ASP.NET 5 Web Application** project template.
@@ -102,13 +102,13 @@ In this task you will start creating a new Web site in Visual Studio based on th
 	1. **global.json:** This file is used to configure the solution as a whole. It includes just two sections, projects and sdk by default.
 	1. **References**: This folder details the server-side references for the project which might be assemblies, NuGet packages, or projects.
 	1. **wwwroot:** This special folder represents the actual root of the web app when running on a web server. Resources like images, script files and stylesheets are located inside this folder.
-	1. **Dependencies:** This section contains two subfolders: **Bower** and **NPM**. These folders correspond to two package managers by the same names, and theyâ€™re used to pull in client-side dependencies and tool.
+	1. **Dependencies:** This section contains two subfolders: **Bower** and **NPM**. These folders correspond to two package managers by the same names, and they’re used to pull in client-side dependencies and tool.
 	1. **Migrations:** This folder contains the Entity Frameworks migrations. This folder is added when the **Individual User Accounts** authentication option is selected during the configuration of the project template.
 	1. **Models:** This folder will contain the classes that represent your application data.
 	1. **Controllers**, **ViewModels**, **Views** and **Services**: These folders are related with **ASP.NET MVC** components. Except for the Controllers folder, these folders are added when the **Individual User Accounts** authentication option is selected during the configuration of the project template. You will explore the MVC and Web API technologies in the next exercises.
 	1. **appsettings.json:** This file contains the configurations like connection strings and logging levels.
 	1. **gulpfile.js:** This file contains the Gulp tasks for the project.
-	1. **project.json:** This file is used to define the projectâ€™s server side dependencies, as well as other project-specific information.
+	1. **project.json:** This file is used to define the project’s server side dependencies, as well as other project-specific information.
 	1. **Startup.cs:** class file wires up configuration, MVC, EF, Identity services, logging, routes, and more. It provides a good example for how to configure the services used by your ASP.NET app.
 
 1. Double-click the **Index.cshtml** file located inside the _Views/Home_ folder, to explore the content of the page.
@@ -140,7 +140,7 @@ In this task you will start creating a new Web site in Visual Studio based on th
     }
 	````
 
-<a name="Ex1Task2" />
+<a name="Ex1Task2"></a>
 #### Task 2 - Running the Solution ####
 
 In this task you will run the generated solution, explore the app and some of its features, like URL rewriting and built-in authentication.
@@ -183,7 +183,7 @@ In this task you will run the generated solution, explore the app and some of it
 
 1. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
 
-<a name="Exercise2" />
+<a name="Exercise2"></a>
 ### Exercise 2: Creating an MVC Controller Using Scaffolding ###
 In this exercise you will take advantage of the ASP.NET Scaffolding framework provided by Visual Studio to create an ASP.NET MVC 6 controller with actions and Razor views to perform CRUD operations, without writing a single line of code. The scaffolding process will use Entity Framework Code First to generate the data context and the database schema in the SQL database.
 
@@ -195,7 +195,7 @@ The Entity Framework Code First modeling workflow allows you to use your own dom
 
 > **Note:** You can learn more about Entity Framework [here](http://www.asp.net/entity-framework).
 
-<a name="Ex2Task1" />
+<a name="Ex2Task1"></a>
 #### Task 1 - Creating a New Model ####
 
 You will now define a **Person** class, which will be the model used by the scaffolding process to create the MVC controller and the views. You will start by creating a **Person** model class, and the CRUD operations in the controller will be automatically created using scaffolding features.
@@ -234,7 +234,7 @@ You will now define a **Person** class, which will be the model used by the scaf
 
 1. In **Solution Explorer**, right-click the **MyWebApplication** project and select **Build**, or press **CTRL + SHIFT + B** to build the project.
 
-<a name="Ex2Task2" />
+<a name="Ex2Task2"></a>
 #### Task 2 - Creating an MVC Controller ####
 
 Now that the **Person** model is created, you will use ASP.NET MVC scaffolding with Entity Framework to create the CRUD controller actions and views for **Person**.
@@ -315,7 +315,7 @@ Now that the **Person** model is created, you will use ASP.NET MVC scaffolding w
 
 	> **Note:** By selecting the **Use async controller actions** check box from the scaffolding options in the previous steps, Visual Studio generates asynchronous action methods for all actions that involve access to the Person data context. It is recommended that you use asynchronous action methods for long-running, non-CPU bound requests to avoid blocking the Web server from performing work while the request is being processed.
 
-<a name="Ex2Task3" />
+<a name="Ex2Task3"></a>
 #### Task 3 - Running the Solution ####
 
 In this task, you will run the solution again to verify that the views for **Person** are working as expected. You will add a new person to verify that it is successfully saved to the database. 
@@ -350,16 +350,16 @@ In this task, you will run the solution again to verify that the views for **Per
 
 1. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
 
-<a name="Exercise3" />
+<a name="Exercise3"></a>
 ### Exercise 3: Creating an API Controller Using Scaffolding ###
 
-HTTP is not just for serving up web pages. Itâ€™s also a powerful platform for building APIs that expose services and data. HTTP is simple, flexible, and ubiquitous. Almost any platform that you can think of has an HTTP library, so HTTP services can reach a broad range of clients, including browsers, mobile devices, and traditional desktop apps.
+HTTP is not just for serving up web pages. It’s also a powerful platform for building APIs that expose services and data. HTTP is simple, flexible, and ubiquitous. Almost any platform that you can think of has an HTTP library, so HTTP services can reach a broad range of clients, including browsers, mobile devices, and traditional desktop apps.
 
 Previous versions of ASP.NET included the Web API framework for creating web APIs. In ASP.NET Core, this functionality has been merged into the MVC 6 framework. Unifying the two frameworks makes it simpler to build apps that include both UI (HTML) and APIs, because now they share the same code base and pipeline.
 
 In this exercise, you will use ASP.NET Scaffolding again to generate a web API controller. You will use the same **Person** and **PersonContext** classes from the previous exercise to provide the same person data in JSON format. You will see how you can expose the same resources in different ways within the same ASP.NET application.
 
-<a name="Ex3Task1" />
+<a name="Ex3Task1"></a>
 #### Task 1 - Creating an API Controller ####
 
 In this task you will create a new **API Controller** that will expose the person data in a machine-consumable format like JSON.
@@ -429,7 +429,7 @@ In this task you will create a new **API Controller** that will expose the perso
             // ...
 	````
 
-<a name="Ex3Task2" />
+<a name="Ex3Task2"></a>
 #### Task 2 - Running the Solution ####
 
 In this task you will use the Microsoft Edge **F12 developer tools** to inspect the full response from the API controller. You will see how you can capture network traffic to get more insight into your application data.
@@ -466,7 +466,7 @@ In this task you will use the Microsoft Edge **F12 developer tools** to inspect 
 
 ---
 
-<a name="Summary" />
+<a name="Summary"></a>
 ## Summary ##
 
 By completing this hands-on lab you have learned how to:

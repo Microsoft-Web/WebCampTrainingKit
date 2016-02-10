@@ -1,4 +1,4 @@
-﻿<a name="title" />
+<a name="title"></a>
 # Scaling a production web site #
 
 ---
@@ -6,7 +6,7 @@
 
 In this demo you will go through the steps required to configure auto-scaling in a _Microsoft Azure Web App_ and demostrate this feature using a Visual Studio Load test. Additionally, you will see how to scale a site using _Azure Storage_.
 
-<a id="goals" />
+<a id="goals"></a>
 ### Goals ###
 
 In this demo, you will see how to:
@@ -15,7 +15,7 @@ In this demo, you will see how to:
 1. Create and configure a load test project in _Visual Studio_
 1. Use _Azure Storage_ to scale a web app
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Key Technologies ###
 
 - [Visual Studio 2015][1]
@@ -24,7 +24,7 @@ In this demo, you will see how to:
 [1]: https://www.visualstudio.com/
 [2]: http://azure.microsoft.com/
 
-<a name="setup" />
+<a name="setup"></a>
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
@@ -64,7 +64,7 @@ Follow these steps to setup your environment for the demo.
 
 1. Save all files and close the solution.
 
-<a name="Demo" />
+<a name="Demo"></a>
 ## Demo ##
 This demo is composed of the following segments:
 
@@ -73,7 +73,7 @@ This demo is composed of the following segments:
 1. [Scaling GeekQuiz using Azure Storage](#segment3)
 1. [Auto-scaling result](#segment4)
 
-<a name="segment1" />
+<a name="segment1"></a>
 ### Configuring auto-scaling ###
 
 1. Open the [Azure Portal](https://portal.azure.com/) and log in with your credentials.
@@ -129,7 +129,7 @@ This demo is composed of the following segments:
 	> **Note:** Don't close the management portal.
 
 
-<a name="segment2" />
+<a name="segment2"></a>
 ### Load testing with Visual Studio ###
 
 1. Open the **StressGeekQuiz.sln** solution located under **source\end**.
@@ -254,7 +254,7 @@ This demo is composed of the following segments:
 
 1. Close the current instance of **Visual Studio**.
 
-<a name="segment3" />
+<a name="segment3"></a>
 ### Scaling GeekQuiz using Azure Storage ###
 
 1. Open _Microsoft Edge_.
@@ -297,7 +297,7 @@ This demo is composed of the following segments:
 
 	_Showing the redirect in Dev Tools_
 
-<a name="segment4" />
+<a name="segment4"></a>
 ### Auto-scaling result ###
 
 1. Back in the management portal, press **CTRL + F5** to refresh the page.
@@ -310,7 +310,7 @@ This demo is composed of the following segments:
 
 ---
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 By completing this demo you should have:

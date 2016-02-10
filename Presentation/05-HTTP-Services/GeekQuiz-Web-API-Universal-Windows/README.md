@@ -1,19 +1,19 @@
-﻿<a name="title" />
+<a name="title"></a>
 # Building a Universal Windows application front end #
 
 ---
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 This demo demonstrates a Universal Windows application frond end (developed with HTML & JS) that allows users to take the quiz. It tours through already existing code that retrieves data from the REST API and shows the quiz running in a Universal Windows  application.
 
-<a id="goals" />
+<a id="goals"></a>
 ### Goals ###
 In this demo, you will see how to:
 
 1. Retrieve data from a REST API from a Universal Windows application.
 1. Leverage WinJS data-binding capabilities to automatically update the UI.
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Key Technologies ###
 
 - [HTML](http://www.w3schools.com/html/)
@@ -21,7 +21,7 @@ In this demo, you will see how to:
 - [ASP.NET Core](http://docs.asp.net)
 
 
-<a name="setup" />
+<a name="setup"></a>
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
@@ -30,7 +30,7 @@ Follow these steps to setup your environment for the demo.
 1. Collapse the **GeekQuiz.Web** project node in **Solution Explorer**.
 1. In Visual Studio, close all open files.
 
-<a name="Demo" />
+<a name="Demo"></a>
 ## Demo ##
 This demo is composed of the following segments:
 
@@ -39,7 +39,7 @@ This demo is composed of the following segments:
 1. [Walkthrough of default.html](#segment3)
 1. [Running the application](#segment4)
 
-<a name="segment1" />
+<a name="segment1"></a>
 ### Walkthrough of default.js ###
 
 1. Open the file **default.js** located inside the **js** folder of the **GeekQuiz** project.
@@ -80,7 +80,7 @@ This demo is composed of the following segments:
 	> **Speaking Point:** Explain that this is required for every Universal Windows application that takes advantage of data binding. Source [here](http://msdn.microsoft.com/en-us/library/windows/apps/jj215606.aspx).
 
 
-<a name="segment2" />
+<a name="segment2"></a>
 ### Walkthrough of viewModel.js ###
 
 1. Open the file **viewModel.js** located inside the **js** folder of the **GeekQuiz** project.
@@ -237,7 +237,7 @@ This demo is composed of the following segments:
 
 	> **Speaking point:** Explain that this is similar to the `nextQuestion` method, but the main difference is that we are using an HTTP POST instead of a GET.
 
-<a name="segment3" />
+<a name="segment3"></a>
 ### Walkthrough of default.html ###
 
 1. In **Solution Explorer**, double-click **default.html** to open it in the editor.
@@ -295,7 +295,7 @@ This demo is composed of the following segments:
 
 	> **Speaking point:** Explain that these `<div>` elements are also bound to the ViewModel's state (using different converters).
 
-<a name="segment4" />
+<a name="segment4"></a>
 ### Running the application ###
 
 1. In **Solution Explorer**, right-click the **GeekQuiz.Web** project, expand the **Start** menu and select **Start new instance**.
@@ -318,7 +318,7 @@ This demo is composed of the following segments:
 
 ---
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 By completing this demo you should have understood how you can leverage a ASP.NET Core API from a Universal Windows application to quickly build a front end for an existing web application.

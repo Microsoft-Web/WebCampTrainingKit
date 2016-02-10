@@ -1,28 +1,28 @@
-﻿<a name="title" />
+<a name="title"></a>
 # Azure Active Directory Authentication #
 
 ---
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 
 1. File / New / Configure Azure Active Directory in a new project.
 1. Show the GeekQuiz solution with Azure Active Directory Authentication.
 1. Deploy and show portal configuration.
 
-<a id="goals" />
+<a id="goals"></a>
 ### Goals ###
 In this demo, you will see how to:
 
 1. Create an application in Visual Studio that is automatically integrated with an Azure Active Directory tenant.
 1. Deploy an existing application using Visual Studio to an Azure Web App and have it automatically integrate with an Azure Active Directory tenant.
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Key Technologies ###
 
 - [Azure Active Directory](http://azure.microsoft.com/en-us/services/active-directory/)
 - [Visual Studio 2015](https://www.visualstudio.com/)
 
-<a name="Setup" />
+<a name="Setup"></a>
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
@@ -44,14 +44,14 @@ Follow these steps to setup your environment for the demo.
 
 1. Open Visual Studio 2015.
 
-<a name="Demo" />
+<a name="Demo"></a>
 ## Demo ##
 This demo is composed of the following segments:
 
 1. [Adding a new website to an organization](#segment1).
 1. [Running the organization's GeekQuiz](#segment2).
 
-<a name="segment1" />
+<a name="segment1"></a>
 ### Adding a new website to an organization ###
 
 1. Open the **File / New / Project** dialog and select the **Visual C# / Web** templates.
@@ -134,7 +134,7 @@ This demo is composed of the following segments:
 
 1. Close the browser.
 
-<a name="segment2" />
+<a name="segment2"></a>
 ### Running the organization's GeekQuiz ###
 
 1. Open the **GeekQuiz.sln** solution located under **source\end-segment2**.
@@ -209,7 +209,7 @@ This demo is composed of the following segments:
 
 ---
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 By completing this demo you learned how to integrate your website with an existing Azure Active Directory tenant.

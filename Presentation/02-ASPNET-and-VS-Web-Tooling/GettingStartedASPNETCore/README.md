@@ -1,8 +1,8 @@
-﻿<a name="title" />
+<a name="title"></a>
 # Getting started with ASP.NET Core #
 
 ---
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 
 This demo demonstrates how to create a simple ASP.NET Core project using Visual Studio 2015.
@@ -10,7 +10,7 @@ This demo demonstrates how to create a simple ASP.NET Core project using Visual 
 ASP.NET Core is an open source web framework for building modern web applications that can be developed and run on Windows, Linux and Mac. It includes the MVC 6 framework, which now combines the features of MVC and Web API into a single web programming framework.
 
 
-<a id="goals" />
+<a id="goals"></a>
 ### Goals ###
 In this demo, you will see how to:
 
@@ -18,7 +18,7 @@ In this demo, you will see how to:
 
 1. Take advantage of Visual Studio's support for NPM and Bower.
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Key Technologies ###
 
 - [ASP.NET Core][1]
@@ -29,7 +29,7 @@ In this demo, you will see how to:
 [2]: http://www.asp.net/web-api
 [3]: https://www.visualstudio.com/
 
-<a name="Setup" />
+<a name="Setup"></a>
 ### Setup and Configuration ###
 Follow these steps to set up your environment for the demo.
 
@@ -39,13 +39,13 @@ Follow these steps to set up your environment for the demo.
 
 > **Note:** Inside the source code you will find an **End** folder containing a Visual Studio solution with the code that results from completing the steps in the demo. You can use this solution as guidance if you need additional help as you work through this demo.
 
-<a name="Demo" />
+<a name="Demo"></a>
 ## Demo ##
 This demo is composed of the following segments:
 
 1. [Creating a new web site with Visual Studio 2015](#segment1).
 
-<a name="segment1" />
+<a name="segment1"></a>
 ### Creating a new web site with Visual Studio 2015###
 
 1. Go to **File | New | Project**.
@@ -128,7 +128,7 @@ This demo is composed of the following segments:
 
 ---
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 By completing this demo, you have walked through Visual Studio 2015 and ASP.NET Core. You have seen the overall structure of the solution and the use of the **project.json**, **bower.json** and **package.json** files to manage the project dependencies. You have also seen how ASP.NET Core added support for native dependency injection.

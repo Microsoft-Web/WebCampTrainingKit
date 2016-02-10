@@ -1,4 +1,4 @@
-﻿README.md
+README.md
 ==========
 
 To use this solution you have to follow these steps:

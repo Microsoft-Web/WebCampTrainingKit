@@ -1,15 +1,15 @@
-﻿<a name="title" />
+<a name="title"></a>
 # Visual Studio and Web Essentials - Web Tooling #
 
 > **Note:** Many of the features in this demo (e.g. Browser Link) **do not work in the ASP.NET 5 RC1 release**. Support is being adding in Visual Studio web tools for ASP.NET Core, but is not available yet. **You can complete this demo using a new ASP.NET MVC 5 application (File / New / ASP.NET 5) until they are supported in ASP.NET Core**.
 
 ---
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 
 In this demo you will perform several changes to GeekQuiz in order to showcase top web developer featuers included in the new version of Visual Studio and Web Essentials.  
 
-<a id="goals" />
+<a id="goals"></a>
 ### Goals ###
 
 In this demo, you will see:
@@ -19,14 +19,14 @@ In this demo, you will see:
 1. Browser Link and the extension support for it
 1. IDs and classes Intellisense in JavaScript
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Key Technologies ###
 
 * [Web Essentials](http://vswebessentials.com/)
 * [Visual Studio 2015](http://www.visualstudio.com/)
 * [Browser Link](http://blogs.msdn.com/b/webdev/archive/2013/09/10/what-is-new-in-browser-link-with-visual-studio-2013-rc.aspx)
 
-<a name="setup" />
+<a name="setup"></a>
 ### Setup and Configuration ###
 
 Follow these steps to setup your environment for the demo.
@@ -41,14 +41,14 @@ Follow these steps to setup your environment for the demo.
 
 1. In Visual Studio, open Index.cshtml in the editor.
 
-<a name="Demo" />
+<a name="Demo"></a>
 ## Demo ##
 This demo is composed of the following segments:
 
 1. [Browser Link and Web Essentials](#segment1)
 1. [Snippets and Intellisense](#segment2)
 
-<a name="segment1" />
+<a name="segment1"></a>
 ### Browser Link and Web Essentials ###
 
 1. Expand the browser menu in the Visual Studio toolbar and select **Browse With...**.
@@ -169,7 +169,7 @@ This demo is composed of the following segments:
 	<meta name="description" content="GeekQuiz" />
 	````
 
-<a name="segment2" />
+<a name="segment2"></a>
 ### Snippets and Intellisense ###
 
 1. Switch back to the **Index.cshtml** editor.
@@ -291,7 +291,7 @@ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.
 
 ---
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 By completing this demo you should have showcased the features included in the new version of Visual Studio and Web Essentials while updating GeekQuiz:

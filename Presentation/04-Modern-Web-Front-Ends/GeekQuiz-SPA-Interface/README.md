@@ -1,13 +1,13 @@
-﻿<a name="title" />
+<a name="title"></a>
 # Building a SPA interface using Angular 2 #
 
 ---
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 
 In this demo you will go through the steps required to build the web front end portion of GeekQuiz, focusing on the single page application interaction using Angular 2, and the CSS3 flip animation. 
 
-<a id="goals" />
+<a id="goals"></a>
 ### Goals ###
 
 In this demo, you will see how to:
@@ -15,14 +15,14 @@ In this demo, you will see how to:
 1. Create a single page application using Angular 2 and ASP.NET Web API
 1. Use CSS3 to perform rich animations
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Key Technologies ###
 
 - [Angular 2](https://angular.io/)
 - [TypeScript](http://www.typescriptlang.org/)
 - [CSS3](http://www.w3schools.com/css/css3_intro.asp)
 
-<a name="setup" />
+<a name="setup"></a>
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
@@ -35,14 +35,14 @@ Follow these steps to setup your environment for the demo.
 1. In Visual Studio, close all open files.
 1. Make sure that you have an Internet connection, as this demo requires it to download the npm packages.
 
-<a name="Demo" />
+<a name="Demo"></a>
 ## Demo ##
 This demo is composed of the following segments:
 
 1. [Consuming data from a Web API in an Angular 2 app](#segment1)
 1. [Creating a flip animation using CSS3](#segment2)
 
-<a name="segment1" />
+<a name="segment1"></a>
 ### Consuming data from a Web API in an Angular 2 app ###
 
 1. Press **CTRL + ,** and search for "_Layout.cshtml" (without the quotes).
@@ -240,7 +240,7 @@ This demo is composed of the following segments:
 
 	_Showing the app running_
 
-<a name="segment2" />
+<a name="segment2"></a>
 ### Creating a flip animation using CSS3###
 
 1. Dock the Visual Studio window to the left, and the browser window to the right.
@@ -292,7 +292,7 @@ This demo is composed of the following segments:
 
 ---
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 By completing this demo you should have:

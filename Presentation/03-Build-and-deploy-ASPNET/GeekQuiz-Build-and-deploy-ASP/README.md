@@ -1,13 +1,13 @@
-﻿<a name="title" />
+<a name="title"></a>
 # Building and Deploying an ASP.NET Application #
 
 ---
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 
 In this demo you will create a new ASP.NET MVC application using the Web Application ASP.NET template, explain how routing works in MVC and show the default HomeController and Views. Then you will walk through the process of creating part of the GeekQuiz object model (TriviaQuestion and TriviaOption) and leverage MVC scaffolding to create the controllers and views. Finally, you'll deploy the site to a new Microsoft Azure Web App created from within Visual Studio using the new tooling.
 
-<a id="goals" />
+<a id="goals"></a>
 ### Goals ###
 In this demo, you will see how to:
 
@@ -16,7 +16,7 @@ In this demo, you will see how to:
 1. Use MVC Scaffolding to create controllers and views for your model
 1. Create a new Web App in Microsoft Azure and deploy
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Key Technologies ###
 
 - [Visual Studio 2015][1]
@@ -27,7 +27,7 @@ In this demo, you will see how to:
 [2]: http://www.asp.net/mvc
 [3]: http://azure.microsoft.com/
 
-<a name="Setup" />
+<a name="Setup"></a>
 ### Setup and Configuration ###
 In order to execute this demo you need to set up your environment.
 
@@ -37,7 +37,7 @@ In order to execute this demo you need to set up your environment.
 
 1. Visual Studio 2015 running.
 
-<a name="Demo" />
+<a name="Demo"></a>
 ## Demo ##
 This demo is composed of the following segments:
 
@@ -46,7 +46,7 @@ This demo is composed of the following segments:
 1. [Running the site locally](#Segment3)
 1. [Deploying to Microsoft Azure Web Apps](#Segment4).
 
-<a name="Segment1" />
+<a name="Segment1"></a>
 ### Creating the project ###
 
 1. Open the **File / New / Project** dialog and show the options in the **Visual C# / Web** section.
@@ -166,7 +166,7 @@ This demo is composed of the following segments:
 
 1. Build the solution.
 
-<a name="Segment2" />
+<a name="Segment2"></a>
 ### Creating the Controllers using Scaffolding ###
 
 1. Create the controller to manage the model's CRUD operations. To do that, right-click the **Controllers** folder and expand the **Add** menu and select **Controller...**
@@ -231,7 +231,7 @@ This demo is composed of the following segments:
 
 1. Build the solution. Then, repeat steps 1 through 7 to create the **OptionController** for the **TriviaOption** class using the already existing **TriviaContext**.
 
-<a name="Segment3" />
+<a name="Segment3"></a>
 ### Running the site locally ###
 
 1. Press **F5** to run the web site.
@@ -250,7 +250,7 @@ This demo is composed of the following segments:
 
 1. Close the browser to stop the solution.
 
-<a name="Segment4" />
+<a name="Segment4"></a>
 ### Deploying to Microsoft Azure Web Apps ###
 
 1. Right-click the **GeekQuiz** project and select **Publish...**
@@ -337,7 +337,7 @@ This demo is composed of the following segments:
 
 ---
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 By completing this demo you should have:
