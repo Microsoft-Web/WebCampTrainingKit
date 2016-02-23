@@ -15,7 +15,7 @@ body {
 	background-color: rgb(255,255,255);
 }
 .jumbotron {
-	background-color: rgb(0, 171, 236);
+	background-color: rgb(46, 57, 145);
 	color: white;
 }
 .jumbotron p a {
@@ -28,7 +28,8 @@ body {
 }
 	
 .btn.btn-success {
-	background-color: rgb(165, 206, 0);
+	background-color: rgb(60, 120, 50);
+	border-color: rgb(158, 158, 158);
 	border-radius: 0;
 	padding: 10px;
 	font-size: 1.4em;

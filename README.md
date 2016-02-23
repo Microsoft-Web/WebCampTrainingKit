@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-    <div class="jumbotron">
+    <div class="jumbotron text-center">
       <h1>Web Camp</h1>
       <p>February 2016 release. Source: <a href="http://aka.ms/webcamps-training-kit">http://aka.ms/webcamps-training-kit</a></p>
       <p>
