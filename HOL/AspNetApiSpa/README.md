@@ -280,6 +280,9 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 	using GeekQuiz.Models;
 	using Microsoft.AspNet.Authorization;
 	using Microsoft.Data.Entity;
+	using Microsoft.AspNet.Mvc;
+	using System.Linq;
+	using System.Threading.Tasks;
 	````
 
 1. Add the following code at the beginning of the **TriviaController** class to define, initialize and dispose the **TriviaContext** instance in the controller.
